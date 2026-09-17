@@ -1,0 +1,28 @@
+{
+  "name": "energy-network-sim",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test dist/test/*.test.js",
+    "demo": "npm run build --silent && node dist/src/demo.js",
+    "demo:seq": "npm run build --silent && node dist/src/demo-sequence.js",
+    "exp:scale": "npm run build --silent && node dist/src/experiment-scale.js",
+    "proto": "npm run build --silent && node dist/src/prototype/runner.js",
+    "proto:plant": "npm run build --silent && node dist/src/topics/runner-plant.js",
+    "exp:layers": "npm run build --silent && node dist/src/layers/runner-layers.js",
+    "exp:pop": "npm run build --silent && node dist/src/pop/runner-pop.js",
+    "exp:attention": "npm run build --silent && node dist/src/pop/attention/runner-attention.js",
+    "exp:concept": "npm run build --silent && node dist/src/pop/concept/runner-formation.js",
+    "exp:capacity": "npm run build --silent && node dist/src/topics/runner-capacity.js",
+    "demo:walk": "npm run build --silent && node dist/src/prototype/demo-walkthrough.js",
+    "bench": "npm run build --silent && node dist/src/benchmark.js",
+    "verify": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/node": "24.12.0"
+  }
+}

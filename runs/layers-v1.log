@@ -1,0 +1,41 @@
+三层神经网络（R1/R2/R3 各自独立成网）端到端预测实验
+对照：单网原型 proto-v1 细粒度 83.3%、粗粒度 100%
+
+── 完整三层模型（G=3，退火读出，查询参与学习） ──
+  组 color-group      R2B差分通道=[color] 影响因素=[] θHigh=5
+  组 speed-group      R2B差分通道=[speed] 影响因素=[speed] θHigh=5
+  组 stiffness-group  R2B差分通道=[wallStiffness] 影响因素=[wallStiffness] θHigh=5
+  组 hitwall-group    R2B差分通道=[hitWall] 影响因素=[hitWall] θHigh=5
+  组 damping-group    R2B差分通道=[damping] 影响因素=[] θHigh=5
+  组 direction-group  R2B差分通道=[direction] 影响因素=[] θHigh=5
+  seen-combo    细粒度  15/18（83.3%）  粗粒度反弹 100.0%  错 3  歧义 0
+  unseen-color  细粒度  12/18（66.7%）  粗粒度反弹 100.0%  错 6  歧义 0
+  unseen-combo  细粒度  21/36（58.3%）  粗粒度反弹 100.0%  错 15  歧义 0
+  miss-wall     细粒度  72/72（100.0%）  粗粒度反弹 100.0%  错 0  歧义 0
+  总计：细粒度 120/144（83.3%），粗粒度反弹 100.0%
+
+── 消融 G=0（断 R2B 侧重） ──
+  组 color-group      R2B差分通道=[color] 影响因素=[] θHigh=5
+  组 speed-group      R2B差分通道=[speed] 影响因素=[speed] θHigh=5
+  组 stiffness-group  R2B差分通道=[wallStiffness] 影响因素=[wallStiffness] θHigh=5
+  组 hitwall-group    R2B差分通道=[hitWall] 影响因素=[hitWall] θHigh=5
+  组 damping-group    R2B差分通道=[damping] 影响因素=[] θHigh=5
+  组 direction-group  R2B差分通道=[direction] 影响因素=[] θHigh=5
+  seen-combo    细粒度  16/18（88.9%）  粗粒度反弹 100.0%  错 2  歧义 0
+  unseen-color  细粒度   9/18（50.0%）  粗粒度反弹 100.0%  错 9  歧义 0
+  unseen-combo  细粒度  20/36（55.6%）  粗粒度反弹 100.0%  错 16  歧义 0
+  miss-wall     细粒度   4/72（5.6%）  粗粒度反弹 5.6%  错 68  歧义 0
+  总计：细粒度 49/144（34.0%），粗粒度反弹 52.8%
+
+── 消融 无查询学习 ──
+  组 color-group      R2B差分通道=[color] 影响因素=[] θHigh=5
+  组 speed-group      R2B差分通道=[speed] 影响因素=[speed] θHigh=5
+  组 stiffness-group  R2B差分通道=[wallStiffness] 影响因素=[wallStiffness] θHigh=5
+  组 hitwall-group    R2B差分通道=[hitWall] 影响因素=[hitWall] θHigh=5
+  组 damping-group    R2B差分通道=[damping] 影响因素=[] θHigh=5
+  组 direction-group  R2B差分通道=[direction] 影响因素=[] θHigh=5
+  seen-combo    细粒度  15/18（83.3%）  粗粒度反弹 100.0%  错 3  歧义 0
+  unseen-color  细粒度  15/18（83.3%）  粗粒度反弹 100.0%  错 3  歧义 0
+  unseen-combo  细粒度  18/36（50.0%）  粗粒度反弹 100.0%  错 18  歧义 0
+  miss-wall     细粒度  72/72（100.0%）  粗粒度反弹 100.0%  错 0  歧义 0
+  总计：细粒度 120/144（83.3%），粗粒度反弹 100.0%

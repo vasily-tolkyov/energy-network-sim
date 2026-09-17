@@ -1,0 +1,99 @@
+R1/R2A/R2B/R3 预测原型实机实验
+网络 27 神经元（条件 21 + 结果 6），θ=1.5，η=0.1
+课程：6 组控制变量实验；查询：48 个（含未教学组合与错过墙对照）
+
+── 完整模型（G=3，退火读出，查询参与学习） ──
+  组 color-group      变化候选=[color] 影响因素=[] 首对结果变化=false
+  组 speed-group      变化候选=[speed] 影响因素=[speed(m=0.28)] 首对结果变化=true
+  组 stiffness-group  变化候选=[wallStiffness] 影响因素=[wallStiffness(m=0.17)] 首对结果变化=true
+  组 hitwall-group    变化候选=[hitWall] 影响因素=[hitWall(m=0.75)] 首对结果变化=true
+  组 damping-group    变化候选=[damping] 影响因素=[] 首对结果变化=false
+  组 direction-group  变化候选=[direction] 影响因素=[] 首对结果变化=false
+  seen-combo    细粒度  15/18（83.3%）  粗粒度反弹 100.0%  错 3  歧义 0
+  unseen-color  细粒度  12/18（66.7%）  粗粒度反弹 100.0%  错 6  歧义 0
+  unseen-combo  细粒度  21/36（58.3%）  粗粒度反弹 100.0%  错 15  歧义 0
+  miss-wall     细粒度  72/72（100.0%）  粗粒度反弹 100.0%  错 0  歧义 0
+  总计：细粒度 120/144（83.3%），粗粒度反弹 100.0%
+  失败样例（seed 首个，至多 12 条）：
+    [unseen-color] 查询 {"color":6,"direction":0,"damping":0,"hitWall":1,"speed":1,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":1,"reboundSpeed":2}）
+    [unseen-combo] 查询 {"color":0,"direction":0,"damping":0,"hitWall":1,"speed":2,"wallStiffness":0} → 预测 {"rebound":1,"reboundSpeed":2}（真值 {"rebound":1,"reboundSpeed":1}）
+    [unseen-combo] 查询 {"color":0,"direction":0,"damping":0,"hitWall":1,"speed":2,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":2}（真值 {"rebound":1,"reboundSpeed":3}）
+    [unseen-combo] 查询 {"color":6,"direction":0,"damping":0,"hitWall":1,"speed":2,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":2}（真值 {"rebound":1,"reboundSpeed":3}）
+    [seen-combo] 查询 {"color":0,"direction":0,"damping":0,"hitWall":1,"speed":3,"wallStiffness":1} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":1,"reboundSpeed":3}）
+    [unseen-color] 查询 {"color":6,"direction":0,"damping":0,"hitWall":1,"speed":3,"wallStiffness":1} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":1,"reboundSpeed":3}）
+    [unseen-combo] 查询 {"color":0,"direction":0,"damping":0,"hitWall":1,"speed":3,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":2}（真值 {"rebound":1,"reboundSpeed":3}）
+    [unseen-combo] 查询 {"color":6,"direction":0,"damping":0,"hitWall":1,"speed":3,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":1,"reboundSpeed":3}）
+
+── 消融 G=0（断 R2B 侧重） ──
+  组 color-group      变化候选=[color] 影响因素=[] 首对结果变化=false
+  组 speed-group      变化候选=[speed] 影响因素=[speed(m=0.28)] 首对结果变化=true
+  组 stiffness-group  变化候选=[wallStiffness] 影响因素=[wallStiffness(m=0.17)] 首对结果变化=true
+  组 hitwall-group    变化候选=[hitWall] 影响因素=[hitWall(m=0.75)] 首对结果变化=true
+  组 damping-group    变化候选=[damping] 影响因素=[] 首对结果变化=false
+  组 direction-group  变化候选=[direction] 影响因素=[] 首对结果变化=false
+  seen-combo    细粒度  16/18（88.9%）  粗粒度反弹 100.0%  错 2  歧义 0
+  unseen-color  细粒度   9/18（50.0%）  粗粒度反弹 100.0%  错 9  歧义 0
+  unseen-combo  细粒度  20/36（55.6%）  粗粒度反弹 100.0%  错 16  歧义 0
+  miss-wall     细粒度   4/72（5.6%）  粗粒度反弹 5.6%  错 68  歧义 0
+  总计：细粒度 49/144（34.0%），粗粒度反弹 52.8%
+  失败样例（seed 首个，至多 12 条）：
+    [miss-wall] 查询 {"color":0,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":0} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
+    [miss-wall] 查询 {"color":6,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":0} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
+    [miss-wall] 查询 {"color":0,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":1} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
+    [miss-wall] 查询 {"color":6,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":1} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
+    [miss-wall] 查询 {"color":0,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
+    [miss-wall] 查询 {"color":6,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
+    [miss-wall] 查询 {"color":0,"direction":0,"damping":0,"hitWall":0,"speed":1,"wallStiffness":0} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
+    [miss-wall] 查询 {"color":6,"direction":0,"damping":0,"hitWall":0,"speed":1,"wallStiffness":0} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
+    [seen-combo] 查询 {"color":0,"direction":0,"damping":0,"hitWall":1,"speed":1,"wallStiffness":1} → 预测 {"rebound":1,"reboundSpeed":2}（真值 {"rebound":1,"reboundSpeed":1}）
+    [miss-wall] 查询 {"color":0,"direction":0,"damping":0,"hitWall":0,"speed":1,"wallStiffness":1} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
+    [miss-wall] 查询 {"color":6,"direction":0,"damping":0,"hitWall":0,"speed":1,"wallStiffness":1} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
+    [unseen-color] 查询 {"color":6,"direction":0,"damping":0,"hitWall":1,"speed":1,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":1,"reboundSpeed":2}）
+
+── 消融 greedy（纯贪心读出，无退火竞争） ──
+  组 color-group      变化候选=[color] 影响因素=[] 首对结果变化=false
+  组 speed-group      变化候选=[speed] 影响因素=[speed(m=0.28)] 首对结果变化=true
+  组 stiffness-group  变化候选=[wallStiffness] 影响因素=[wallStiffness(m=0.17)] 首对结果变化=true
+  组 hitwall-group    变化候选=[hitWall] 影响因素=[hitWall(m=0.75)] 首对结果变化=true
+  组 damping-group    变化候选=[damping] 影响因素=[] 首对结果变化=false
+  组 direction-group  变化候选=[direction] 影响因素=[] 首对结果变化=false
+  seen-combo    细粒度   0/18（0.0%）  粗粒度反弹 0.0%  错 0  歧义 18
+  unseen-color  细粒度   0/18（0.0%）  粗粒度反弹 0.0%  错 0  歧义 18
+  unseen-combo  细粒度   0/36（0.0%）  粗粒度反弹 0.0%  错 0  歧义 36
+  miss-wall     细粒度   0/72（0.0%）  粗粒度反弹 0.0%  错 0  歧义 72
+  总计：细粒度 0/144（0.0%），粗粒度反弹 0.0%
+  失败样例（seed 首个，至多 12 条）：
+    [unseen-combo] 查询 {"color":0,"direction":0,"damping":0,"hitWall":1,"speed":0,"wallStiffness":0} → 预测 {"rebound":"ambiguous","reboundSpeed":"ambiguous"}（真值 {"rebound":1,"reboundSpeed":1}）
+    [unseen-combo] 查询 {"color":6,"direction":0,"damping":0,"hitWall":1,"speed":0,"wallStiffness":0} → 预测 {"rebound":"ambiguous","reboundSpeed":"ambiguous"}（真值 {"rebound":1,"reboundSpeed":1}）
+    [miss-wall] 查询 {"color":0,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":0} → 预测 {"rebound":"ambiguous","reboundSpeed":"ambiguous"}（真值 {"rebound":0,"reboundSpeed":0}）
+    [miss-wall] 查询 {"color":6,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":0} → 预测 {"rebound":"ambiguous","reboundSpeed":"ambiguous"}（真值 {"rebound":0,"reboundSpeed":0}）
+    [seen-combo] 查询 {"color":0,"direction":0,"damping":0,"hitWall":1,"speed":0,"wallStiffness":1} → 预测 {"rebound":"ambiguous","reboundSpeed":"ambiguous"}（真值 {"rebound":1,"reboundSpeed":1}）
+    [unseen-color] 查询 {"color":6,"direction":0,"damping":0,"hitWall":1,"speed":0,"wallStiffness":1} → 预测 {"rebound":"ambiguous","reboundSpeed":"ambiguous"}（真值 {"rebound":1,"reboundSpeed":1}）
+    [miss-wall] 查询 {"color":0,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":1} → 预测 {"rebound":"ambiguous","reboundSpeed":"ambiguous"}（真值 {"rebound":0,"reboundSpeed":0}）
+    [miss-wall] 查询 {"color":6,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":1} → 预测 {"rebound":"ambiguous","reboundSpeed":"ambiguous"}（真值 {"rebound":0,"reboundSpeed":0}）
+    [unseen-combo] 查询 {"color":0,"direction":0,"damping":0,"hitWall":1,"speed":0,"wallStiffness":2} → 预测 {"rebound":"ambiguous","reboundSpeed":"ambiguous"}（真值 {"rebound":1,"reboundSpeed":1}）
+    [unseen-combo] 查询 {"color":6,"direction":0,"damping":0,"hitWall":1,"speed":0,"wallStiffness":2} → 预测 {"rebound":"ambiguous","reboundSpeed":"ambiguous"}（真值 {"rebound":1,"reboundSpeed":1}）
+    [miss-wall] 查询 {"color":0,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":2} → 预测 {"rebound":"ambiguous","reboundSpeed":"ambiguous"}（真值 {"rebound":0,"reboundSpeed":0}）
+    [miss-wall] 查询 {"color":6,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":2} → 预测 {"rebound":"ambiguous","reboundSpeed":"ambiguous"}（真值 {"rebound":0,"reboundSpeed":0}）
+
+── 消融 无查询学习 ──
+  组 color-group      变化候选=[color] 影响因素=[] 首对结果变化=false
+  组 speed-group      变化候选=[speed] 影响因素=[speed(m=0.28)] 首对结果变化=true
+  组 stiffness-group  变化候选=[wallStiffness] 影响因素=[wallStiffness(m=0.17)] 首对结果变化=true
+  组 hitwall-group    变化候选=[hitWall] 影响因素=[hitWall(m=0.75)] 首对结果变化=true
+  组 damping-group    变化候选=[damping] 影响因素=[] 首对结果变化=false
+  组 direction-group  变化候选=[direction] 影响因素=[] 首对结果变化=false
+  seen-combo    细粒度  15/18（83.3%）  粗粒度反弹 100.0%  错 3  歧义 0
+  unseen-color  细粒度  15/18（83.3%）  粗粒度反弹 100.0%  错 3  歧义 0
+  unseen-combo  细粒度  18/36（50.0%）  粗粒度反弹 100.0%  错 18  歧义 0
+  miss-wall     细粒度  72/72（100.0%）  粗粒度反弹 100.0%  错 0  歧义 0
+  总计：细粒度 120/144（83.3%），粗粒度反弹 100.0%
+  失败样例（seed 首个，至多 12 条）：
+    [unseen-combo] 查询 {"color":0,"direction":0,"damping":0,"hitWall":1,"speed":2,"wallStiffness":0} → 预测 {"rebound":1,"reboundSpeed":2}（真值 {"rebound":1,"reboundSpeed":1}）
+    [unseen-combo] 查询 {"color":6,"direction":0,"damping":0,"hitWall":1,"speed":2,"wallStiffness":0} → 预测 {"rebound":1,"reboundSpeed":2}（真值 {"rebound":1,"reboundSpeed":1}）
+    [unseen-combo] 查询 {"color":0,"direction":0,"damping":0,"hitWall":1,"speed":2,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":2}（真值 {"rebound":1,"reboundSpeed":3}）
+    [unseen-combo] 查询 {"color":6,"direction":0,"damping":0,"hitWall":1,"speed":2,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":2}（真值 {"rebound":1,"reboundSpeed":3}）
+    [seen-combo] 查询 {"color":0,"direction":0,"damping":0,"hitWall":1,"speed":3,"wallStiffness":1} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":1,"reboundSpeed":3}）
+    [unseen-color] 查询 {"color":6,"direction":0,"damping":0,"hitWall":1,"speed":3,"wallStiffness":1} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":1,"reboundSpeed":3}）
+    [unseen-combo] 查询 {"color":0,"direction":0,"damping":0,"hitWall":1,"speed":3,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":2}（真值 {"rebound":1,"reboundSpeed":3}）
+    [unseen-combo] 查询 {"color":6,"direction":0,"damping":0,"hitWall":1,"speed":3,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":2}（真值 {"rebound":1,"reboundSpeed":3}）
