@@ -92,6 +92,15 @@ export class EnergyNetwork {
     this.weights[j * n + i] = next;
   }
 
+  /** 绝对写入连接强度（对称）：用于需要"改写"而非"累加"的场（如失配场、惯性场） */
+  setWeight(i: number, j: number, value: number): void {
+    if (i === j) return;
+    const n = this.neuronCount;
+    const v = Math.max(0, Math.min(this.config.maxWeight, value));
+    this.weights[i * n + j] = v;
+    this.weights[j * n + i] = v;
+  }
+
   getDirectedWeight(from: number, to: number): number {
     const n = this.neuronCount;
     return this.directed[from * n + to] ?? 0;

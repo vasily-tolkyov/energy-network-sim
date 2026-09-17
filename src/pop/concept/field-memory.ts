@@ -37,6 +37,8 @@ export interface FieldPrediction {
   readonly ambiguous: readonly string[];
   readonly activeNeurons: readonly number[];
   readonly energy: number;
+  /** 获胜规则核索引（≥3/4 成员激活的核） */
+  readonly winningCores: readonly number[];
 }
 
 export class FieldRuleMemory {
@@ -73,6 +75,33 @@ export class FieldRuleMemory {
 
   get ruleCount(): number {
     return this.rules.length;
+  }
+
+  /** 活跃核索引：规则核成员 ≥3/4 激活视为该核被捕获/接受 */
+  activeCores(activeNeurons: Iterable<number>): number[] {
+    const active = new Set(activeNeurons);
+    const out: number[] = [];
+    this.rules.forEach((rule, idx) => {
+      let on = 0;
+      for (const id of rule.core) if (active.has(id)) on++;
+      if (on >= Math.max(1, Math.ceil((rule.core.length * 3) / 4))) out.push(idx);
+    });
+    return out;
+  }
+
+  /** 规则核绑定结果场（捕获检验用：读出某核的答案内容） */
+  ruleOutcomeFields(index: number): readonly number[] {
+    return this.rules[index]!.outcomeFields;
+  }
+
+  /** 某条规则核的成员神经元 */
+  ruleCore(index: number): readonly number[] {
+    return this.rules[index]!.core;
+  }
+
+  /** 全部规则核神经元（捕获检验的候选集） */
+  allCoreNeurons(): number[] {
+    return this.rules.flatMap((r) => [...r.core]);
   }
 
   private signatureOf(fields: readonly number[]): string {
@@ -234,7 +263,14 @@ export class FieldRuleMemory {
         ambiguous.push(dim);
       }
     }
-    return { values, distribution, ambiguous, activeNeurons: result.activeNeurons, energy: result.energy };
+    return {
+      values,
+      distribution,
+      ambiguous,
+      activeNeurons: result.activeNeurons,
+      energy: result.energy,
+      winningCores: this.activeCores(result.activeNeurons),
+    };
   }
 
   private outcomeDims: string[] = [];
