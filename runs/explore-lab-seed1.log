@@ -1,0 +1,48 @@
+
+── 种子 1 ──
+终止：实验 88 次（穷举基线 288），规则核 88 条，耗时 0.9 分钟；判定：未知 35 / 偏差 13 / 符合 40
+R2 发现的影响因素：[resistance,switch,temperature,voltage]（真值：[switch,voltage,resistance,temperature]，干扰 material 应缺席）
+  轨迹（前 20 步 + 全部偏差）：
+    #  0 [1,2,2,1,1] 预测 {} → 观察 {"lit":1,"brightness":2}  unknown-change（驱动 2.0，候选 0，核 1）
+    #  1 [1,2,2,0,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":1,"brightness":2}  unknown-change（驱动 0.4，候选 11，核 2）
+    #  2 [1,1,2,0,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":1,"brightness":0}  unknown-change（驱动 0.4，候选 19，核 3）
+    #  3 [1,2,1,1,1] 预测 {"lit":1,"brightness":null} → 观察 {"lit":1,"brightness":3}  unknown-change（驱动 0.4，候选 25，核 4）
+    #  4 [1,1,1,0,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":1,"brightness":1}  unknown-change（驱动 2.0，候选 31，核 5）
+    #  5 [1,0,2,1,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":0,"brightness":0}  unknown-change（驱动 0.4，候选 36，核 6）
+    #  6 [1,0,1,1,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":0,"brightness":0}  unknown-change（驱动 2.0，候选 41，核 7）
+    #  7 [1,1,1,1,1] 预测 {"lit":1,"brightness":null} → 观察 {"lit":1,"brightness":2}  unknown-change（驱动 0.4，候选 44，核 8）
+    #  8 [1,0,2,2,1] 预测 {"lit":null,"brightness":0} → 观察 {"lit":0,"brightness":0}  unknown-change（驱动 0.4，候选 48，核 9）
+    #  9 [1,0,2,0,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":0,"brightness":0}  unknown-change（驱动 2.0，候选 53，核 10）
+    # 10 [1,1,2,1,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":1,"brightness":1}  unknown-change（驱动 2.0，候选 57，核 11）
+    # 11 [1,2,2,2,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":1,"brightness":3}  unknown-change（驱动 2.0，候选 59，核 12）
+    # 12 [1,1,2,2,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":1,"brightness":1}  unknown-change（驱动 2.0，候选 63，核 13）
+    # 13 [1,0,1,0,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":0,"brightness":0}  unknown-change（驱动 2.0，候选 67，核 14）
+    # 14 [1,1,1,2,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":1,"brightness":2}  unknown-change（驱动 2.0，候选 69，核 15）
+    # 15 [1,0,1,2,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":0,"brightness":0}  unknown-change（驱动 2.0，候选 72，核 16）
+    # 16 [1,2,1,1,2] 预测 {"lit":1,"brightness":null} → 观察 {"lit":1,"brightness":3}  unknown-change（驱动 0.4，候选 74，核 17）
+    # 17 [1,2,1,0,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":1,"brightness":2}  unknown-change（驱动 2.0，候选 79，核 18）
+    # 18 [1,2,1,2,1] 预测 {"lit":null,"brightness":null} → 观察 {"lit":1,"brightness":3}  unknown-change（驱动 2.0，候选 80，核 19）
+    # 19 [1,1,2,1,0] 预测 {"lit":1,"brightness":1} → 观察 {"lit":1,"brightness":1}  within-envelope（驱动 0.4，候选 81，核 20）
+    # 20 [1,3,1,2,1] 预测 {"lit":0,"brightness":0} → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.4，候选 84，核 21）
+    # 26 [0,2,2,1,1] 预测 {"lit":1,"brightness":2} → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 0.4，候选 100，核 27）
+    # 27 [0,2,1,1,1] 预测 {"lit":1,"brightness":3} → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 1.0，候选 103，核 28）
+    # 41 [0,1,2,1,2] 预测 {"lit":1,"brightness":1} → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 0.4，候选 144，核 42）
+    # 58 [1,2,0,0,0] 预测 {"lit":1,"brightness":2} → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.4，候选 180，核 59）
+    # 59 [1,2,3,0,0] 预测 {"lit":1,"brightness":2} → 观察 {"lit":1,"brightness":1}  prediction-violation（驱动 1.0，候选 184，核 60）
+    # 61 [1,1,3,0,0] 预测 {"lit":1,"brightness":1} → 观察 {"lit":1,"brightness":0}  prediction-violation（驱动 0.7，候选 188，核 62）
+    # 63 [1,3,3,0,0] 预测 {"lit":1,"brightness":3} → 观察 {"lit":1,"brightness":2}  prediction-violation（驱动 0.8，候选 191，核 64）
+    # 65 [1,3,3,0,1] 预测 {"lit":1,"brightness":3} → 观察 {"lit":1,"brightness":2}  prediction-violation（驱动 0.7，候选 191，核 66）
+    # 75 [1,1,3,1,0] 预测 {"lit":1,"brightness":2} → 观察 {"lit":1,"brightness":0}  prediction-violation（驱动 0.4，候选 193，核 76）
+    # 77 [1,1,3,1,2] 预测 {"lit":1,"brightness":2} → 观察 {"lit":1,"brightness":0}  prediction-violation（驱动 0.7，候选 192，核 78）
+    # 78 [1,1,3,1,1] 预测 {"lit":1,"brightness":2} → 观察 {"lit":1,"brightness":0}  prediction-violation（驱动 1.1，候选 191，核 79）
+    # 79 [1,2,3,1,1] 预测 {"lit":1,"brightness":2} → 观察 {"lit":1,"brightness":1}  prediction-violation（驱动 1.0，候选 190，核 80）
+    …评分进度 48/288
+    …评分进度 96/288
+    …评分进度 144/288
+    …评分进度 192/288
+    …评分进度 240/288
+    …评分进度 288/288
+    self-taught 细粒度 80/88（90.9%）  粗粒度亮灭 93.2%
+    gate-off    细粒度 122/138（88.4%）  粗粒度亮灭 88.4%
+    heldout     细粒度 47/62（75.8%）  粗粒度亮灭 98.4%
+    总计       细粒度 249/288（86.5%）  粗粒度 92.0%

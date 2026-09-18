@@ -118,6 +118,12 @@ export interface AnnealOptions {
    * 条件档，全网扫尾会引起雪崩。
    */
   readonly quenchCandidatesOnly?: boolean;
+  /**
+   * 淬火尾巴的翻转上限（默认 100×N）。大核数下长尾爬降（每次翻转仅微幅
+   * 改善）会把单次读出拖到秒级以上；调用方可按读出精度需求调低——
+   * 超限时回退到途中最低能态（如实记录为非收敛终止），语义不变。
+   */
+  readonly quenchMaxFlips?: number;
 }
 
 export interface AnnealResult extends SettleResult {

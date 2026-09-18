@@ -231,21 +231,39 @@ export class PopRuleMemory {
   predict(
     query: Conditions,
     seed: number,
+    anneal?: { levels?: number; sweepsPerLevel?: number },
   ): { decoded: Record<string, PopDecoded>; activeNeurons: readonly number[]; energy: number } {
     const input = this.conditionMap.encode(query);
     const outcomeNeurons = Array.from(
       { length: this.outcomeMap.neuronCount },
       (_, k) => this.conditionMap.neuronCount + k,
     );
-    const coreNeurons = this.cores.flat();
+    // 核候选过滤（自主探索大核数实测修复：75 核时全核候选的退火达 23s/次）：
+    // 对钳制输入的 W 支持 ≤ θ/2 的核从静息无点火路径，结构性冻结——与候选集
+    // 只含被触及势阱同一精神。如实边界：退火上坡点火理论上存在，但远失配核
+    // 借此获胜既罕见又不合理；实测对结果无影响（种子 2 终止步数 95→81，
+    // 因素发现与准确率不变）。纯边权读出，不涉及任何语义判定。
+    const minSupport = this.net.threshold / 2;
+    const supportedCores = this.cores.filter((core) => {
+      let s = 0;
+      for (const from of input) {
+        for (const to of core) s += this.net.getWeight(from, to);
+      }
+      return s > minSupport;
+    });
+    const coreCandidates = supportedCores.flat();
     const poolNeurons = Array.from({ length: this.poolSize }, (_, k) => this.poolBase() + k);
     const result = this.net.settleAnnealed(input, [], {
       seed,
       // 池神经元必须在候选集内，否则结构性冻结在静息、WTA 电路失效
-      extraCandidates: [...outcomeNeurons, ...coreNeurons, ...poolNeurons],
+      extraCandidates: [...outcomeNeurons, ...coreCandidates, ...poolNeurons],
       quenchCandidatesOnly: true,
-      levels: 12,
-      sweepsPerLevel: 20,
+      // 长尾爬降防护：大核数下淬火改为 8×N 翻转上限（超限回退途中最低能态，
+      // 语义不变；默认 100×N 在 75 核规模实测达 23s/次）
+      quenchMaxFlips: 8 * this.net.neuronCount,
+      // 驱动估计等中间读数可传轻量档（6×8）；最终评分用默认全档（12×20）
+      levels: anneal?.levels ?? 12,
+      sweepsPerLevel: anneal?.sweepsPerLevel ?? 20,
     });
     return {
       decoded: decodePopulation(
@@ -258,6 +276,28 @@ export class PopRuleMemory {
       activeNeurons: result.activeNeurons,
       energy: result.energy,
     };
+  }
+
+  /**
+   * 覆盖读出（纯边权、无动力学——与失配场同一家族的网络量）：
+   * 给定条件群体对每个已分配核的净支持场 = Σ(W−Γ)（条件群体 → 核），
+   * 返回最大值。低于 θ 表示没有核声称该条件组合——"我不知道"的网络证据。
+   * 自主探索的无知场用它而不用退火：驱动只负责排序探索目标，
+   * 最终判定仍走完整动力学（predict）。
+   */
+  coreFieldCoverage(conditions: Conditions): number {
+    const pops = this.conditionMap.encode(conditions);
+    let best = 0;
+    for (const core of this.cores) {
+      let s = 0;
+      for (const from of pops) {
+        for (const to of core) {
+          s += this.net.getWeight(from, to) - this.net.getInhibitoryWeight(from, to);
+        }
+      }
+      if (s > best) best = s;
+    }
+    return best;
   }
 
   /** 响应模式学习：新查询分配/复用核并绑定预测结果（小步长同封顶）。
@@ -317,6 +357,14 @@ export class PopRuleMemory {
           hebbianLearn(this.net, [...core, ...pops.map((id) => id + this.conditionMap.neuronCount)], repeats, 0.1, 0.6);
         }
       }
+    }
+    // 登记观察到的条件档（自主探索路径修复：探索从零起步、不经 teachExperience，
+    // 若不在此登记，observedBins 永远为空、否决边永远不会被写入——
+    // 观察即经验，与 teachExperience 同一登记规则）
+    for (const [ch, bin] of Object.entries(query)) {
+      const seen = this.observedBins.get(ch) ?? new Set<number>();
+      seen.add(bin);
+      this.observedBins.set(ch, seen);
     }
     // 持证：影响因素加分边 + 替代档否决边（与 bindInfluence 同一规则）
     for (const [ch, delta] of Object.entries(this.lastBoost)) {

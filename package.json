@@ -18,6 +18,7 @@
     "exp:concept": "npm run build --silent && node dist/src/pop/concept/runner-formation.js",
     "exp:capacity": "npm run build --silent && node dist/src/topics/runner-capacity.js",
     "exp:chem": "npm run build --silent && node dist/src/topics/runner-chem-pop.js",
+    "exp:explore": "npm run build --silent && node dist/src/pop/explore/runner-explore.js",
     "demo:walk": "npm run build --silent && node dist/src/prototype/demo-walkthrough.js",
     "bench": "npm run build --silent && node dist/src/benchmark.js",
     "verify": "npm run build && npm test"

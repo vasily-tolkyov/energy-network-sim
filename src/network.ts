@@ -409,7 +409,7 @@ export class EnergyNetwork {
     const quenchScope = options.quenchCandidatesOnly
       ? freeCandidates
       : Array.from({ length: n }, (_, i) => i);
-    const maxFlips = 100 * n;
+    const maxFlips = options.quenchMaxFlips ?? 100 * n;
     const EPS = 1e-4; // 能量分辨率下限：近平局的尘埃翻转既慢又无意义（实测 >1e5 步仍不收敛）
     for (;;) {
       let flipped = false;
