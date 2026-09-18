@@ -94,6 +94,26 @@ export class FieldRuleMemory {
     return this.rules[index]!.outcomeFields;
   }
 
+  /**
+   * 覆盖读出（纯边权、无动力学——与失配场同一家族的网络量）：
+   * 查询的感受野对每个已分配核的净支持场 = Σ(W−Γ)（查询场 → 核），返回最大值。
+   * 低于 θ 表示没有核声称该查询——"我不知道"的网络证据（自主探索的无知场）。
+   */
+  coreFieldCoverage(query: Record<string, number>): number {
+    const fields = this.encoder.encode(query);
+    let best = 0;
+    for (const rule of this.rules) {
+      let s = 0;
+      for (const from of fields) {
+        for (const to of rule.core) {
+          s += this.net.getWeight(from, to) - this.net.getInhibitoryWeight(from, to);
+        }
+      }
+      if (s > best) best = s;
+    }
+    return best;
+  }
+
   /** 某条规则核的成员神经元 */
   ruleCore(index: number): readonly number[] {
     return this.rules[index]!.core;
@@ -213,15 +233,29 @@ export class FieldRuleMemory {
    */
   predict(query: Record<string, number>, seed: number): FieldPrediction {
     const input = this.encoder.encode(query);
-    const coreNeurons = this.rules.flatMap((r) => [...r.core]);
+    // 核候选过滤（与 PopRuleMemory 同一修复，自主探索大核数实测同病：
+    // 全核候选 + 淬火长尾爬降把单次读出拖到十秒级）：对钳制输入的
+    // W 支持 ≤ θ/2 的核从静息无点火路径，结构性冻结；退火上坡点火理论上
+    // 存在，实测对结果无影响。纯边权读出，不涉及任何语义判定。
+    const minSupport = this.net.threshold / 2;
+    const supportedCores: number[] = [];
+    for (const rule of this.rules) {
+      let s = 0;
+      for (const from of input) {
+        for (const to of rule.core) s += this.net.getWeight(from, to);
+      }
+      if (s > minSupport) supportedCores.push(...rule.core);
+    }
     const result = this.net.settleAnnealed(input, [], {
       seed,
       extraCandidates: [
-        ...coreNeurons,
+        ...supportedCores,
         ...this.outcomeDimFields,
         ...Array.from({ length: this.poolSize }, (_, k) => this.poolBase + k),
       ],
       quenchCandidatesOnly: true,
+      // 长尾爬降防护：8×N 翻转上限，超限回退途中最低能态（语义不变）
+      quenchMaxFlips: 8 * this.net.neuronCount,
       levels: 12,
       sweepsPerLevel: 20,
     });
@@ -309,6 +343,8 @@ export class FieldRuleMemory {
     cap: number,
   ): void {
     const condFields = this.encoder.encode(conditions);
+    const sig = this.signatureOf(condFields);
+    const isNew = !this.signatureToCore.has(sig);
     const core = this.coreFor(condFields);
     hebbianLearn(this.net, [...condFields, ...core], repeats, eta, cap);
     // 结果场星型绑定（同 teachExperiment，防幻影块）
@@ -318,6 +354,12 @@ export class FieldRuleMemory {
       for (const to of outFields) {
         for (const from of core) this.net.strengthen(from, to, cap, cap);
       }
+    }
+    // 自主探索路径实测修复：新签名的观察核必须登记进 rules——
+    // 否则它有全部绑定却不在 predict/读出候选集中，观察写入的经验不可见
+    // （空白起步的纯观察驱动学习因此全部读空；概念形成时代被预训练覆盖掩盖）。
+    if (isNew) {
+      this.rules.push({ core, conditionFields: condFields, outcomeFields: this.encoder.encode(outcomes) });
     }
     // 持证：按侧重并集补正/否决（场级，与 bindInfluence 同一规则）
     const own = new Set(condFields);

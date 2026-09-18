@@ -1,0 +1,51 @@
+
+── 种子 3 ──
+终止：实验 118 次（语料相 32 + 全机器相 86；穷举基线 432），规则核 88 条，耗时 0.9 分钟；判定：未知 66 / 偏差 22 / 符合 30
+  概念形成（由自己的实验史结晶）：
+    switchPos   3 个概念，中心=[0.1, 0.5, 0.9]
+    voltage     4 个概念，中心=[0.3, 1.2, 2.1, 2.85]
+    resistance  4 个概念，中心=[0.3, 1.2, 2.1, 2.85]
+    temperature 3 个概念，中心=[0.3, 1, 1.7]
+    material    3 个概念，中心=[0.3, 1, 1.7]
+    lit         2 个概念，中心=[0.05, 0.95]
+    brightness  1 个概念，中心=[1.5]
+  R2 发现的影响因素：[resistance,switchPos,temperature,voltage]（真值：[switchPos,voltage,resistance,temperature]，干扰 material 应缺席）
+  轨迹（前 15 步 + 相切换 + 全部偏差）：
+    #  0 [语] [0.5,2.1,2.1,1,1] 预测lit=∅ → 观察 {"lit":1,"brightness":2.55}  unknown-change（驱动 2.0，候选 0，核 1）
+    #  1 [语] [0.5,2.1,2.1,1,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.55}  within-envelope（驱动 0.4，候选 12，核 1）
+    #  2 [语] [0.5,2.1,0.3,1,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  within-envelope（驱动 0.4，候选 21，核 1）
+    #  3 [语] [0.5,1.2,2.1,1,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.4249999999999998}  prediction-violation（驱动 0.4，候选 28，核 2）
+    #  4 [语] [0.5,1.2,0.3,1,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.775}  prediction-violation（驱动 1.0，候选 35，核 3）
+    #  5 [语] [0.5,1.2,1.2,1,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.1}  prediction-violation（驱动 1.3，候选 41，核 4）
+    #  6 [语] [0.5,1.2,3,1,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":0.75}  prediction-violation（驱动 1.4，候选 48，核 5）
+    #  7 [语] [0.5,1.2,3,1,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":0.75}  prediction-violation（驱动 1.0，候选 55，核 6）
+    #  8 [语] [0.5,1.2,3,1,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":0.75}  within-envelope（驱动 1.3，候选 61，核 6）
+    #  9 [语] [0.5,1.2,0.3,1,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.775}  prediction-violation（驱动 0.7，候选 66，核 7）
+    # 10 [语] [0.5,1.2,1.2,1,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.1}  prediction-violation（驱动 1.2，候选 71，核 8）
+    # 11 [语] [0.5,1.2,1.2,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.45}  prediction-violation（驱动 1.0，候选 77，核 9）
+    # 12 [语] [0.5,1.2,1.2,0.3,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.75}  within-envelope（驱动 1.3，候选 83，核 9）
+    # 13 [语] [0.5,1.2,3,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.1}  within-envelope（驱动 0.7，候选 89，核 9）
+    # 14 [语] [0.5,1.2,1.2,1.7,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.45}  within-envelope（驱动 0.6，候选 93，核 9）
+    # 15 [语] [0.5,2.1,1.2,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.5，候选 99，核 10）
+    # 16 [语] [0.5,0.3,1.2,1.7,0.3] 预测lit=0.95 → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 1.0，候选 103，核 11）
+    # 17 [语] [0.5,3,1.2,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.3，候选 107，核 12）
+    # 18 [语] [0.5,3,1.2,1.7,1] 预测lit=0.049999999999999996 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.0，候选 111，核 13）
+    # 20 [语] [0.1,3,1.2,1.7,1] 预测lit=0.95 → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 0.7，候选 122，核 14）
+    # 22 [语] [0.1,1.2,1.2,1.7,1] 预测lit=0.95 → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 0.7，候选 134，核 15）
+    # 24 [语] [0.9,1.2,1.2,1.7,1] 预测lit=0.049999999999999996 → 观察 {"lit":1,"brightness":2.45}  prediction-violation（驱动 0.7，候选 144，核 16）
+    # 25 [语] [0.9,1.2,0.3,1.7,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.0，候选 149，核 17）
+    # 26 [语] [0.9,1.2,3,1.7,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.1}  prediction-violation（驱动 1.3，候选 154，核 18）
+    # 27 [语] [0.9,1.2,3,1,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":0.75}  prediction-violation（驱动 1.0，候选 157，核 19）
+    # 32 [全] [0.1,3,1.2,0.3,1] 预测lit=∅ → 观察 {"lit":0,"brightness":0}  unknown-change（驱动 2.0，候选 174，核 20） ◄── 概念形成完成
+    #102 [全] [0.5,0.3,2.1,0.3,1.7] 预测lit=0.95 → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 0.4，候选 284，核 85）
+    #104 [全] [0.5,3,2.1,0.3,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.7，候选 283，核 86）
+    #107 [全] [0.5,3,2.1,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.4，候选 285，核 87）
+    #109 [全] [0.5,3,0.3,1.7,0.3] 预测lit=0.049999999999999996 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.7，候选 284，核 88）
+    …评分进度 96/432
+    …评分进度 192/432
+    …评分进度 288/432
+    …评分进度 384/432
+    self-taught 细粒度 106/118（89.8%）  粗粒度亮灭 99.2%
+    gate-off    细粒度 163/167（97.6%）  粗粒度亮灭 97.6%
+    heldout     细粒度 97/147（66.0%）  粗粒度亮灭 95.9%
+    总计       细粒度 366/432（84.7%）  粗粒度 97.5%

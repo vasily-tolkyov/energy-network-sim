@@ -27,8 +27,17 @@ export class ExperimentPlanner {
   private readonly violationBoost = new Map<string, number>();
 
   constructor(
-    private readonly specs: readonly { readonly name: string; readonly bins: number }[],
+    private readonly specs: readonly {
+      readonly name: string;
+      readonly bins: number;
+      /** 连续模式：候选实验值集合（动作空间只有这些点）；缺省用整数档 0..bins-1 */
+      readonly values?: readonly number[];
+    }[],
   ) {}
+
+  private valuesOf(s: { name: string; bins: number; values?: readonly number[] }): readonly number[] {
+    return s.values ?? Array.from({ length: s.bins }, (_, k) => k);
+  }
 
   private keyOf(c: Conditions): string {
     return this.specs.map((s) => c[s.name]).join(",");
@@ -77,7 +86,7 @@ export class ExperimentPlanner {
     const seen = new Set<string>();
     for (const ep of this.episodes) {
       for (const s of this.specs) {
-        for (let v = 0; v < s.bins; v++) {
+        for (const v of this.valuesOf(s)) {
           if (v === ep.conditions[s.name]) continue;
           const c: Conditions = { ...ep.conditions, [s.name]: v };
           const k = this.keyOf(c);
@@ -85,6 +94,18 @@ export class ExperimentPlanner {
           seen.add(k);
           out.push(c);
         }
+      }
+    }
+    return out;
+  }
+
+  /** 全部自动对（重算 Hamming-1，附操纵维度——概念形成间歇期的全量回溯用） */
+  allAutoPairs(): { pair: Pair; dim: string }[] {
+    const out: { pair: Pair; dim: string }[] = [];
+    for (let i = 0; i < this.episodes.length; i++) {
+      for (let j = i + 1; j < this.episodes.length; j++) {
+        const dim = this.differInOneDim(this.episodes[i]!.conditions, this.episodes[j]!.conditions);
+        if (dim !== null) out.push({ pair: { e0: this.episodes[i]!, e1: this.episodes[j]! }, dim });
       }
     }
     return out;
