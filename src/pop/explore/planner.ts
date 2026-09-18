@@ -36,7 +36,20 @@ export class ExperimentPlanner {
   ) {}
 
   private valuesOf(s: { name: string; bins: number; values?: readonly number[] }): readonly number[] {
-    return s.values ?? Array.from({ length: s.bins }, (_, k) => k);
+    const base = s.values ?? Array.from({ length: s.bins }, (_, k) => k);
+    const extra = this.extraValues.get(s.name);
+    return extra ? [...base, ...extra] : base;
+  }
+
+  private readonly extraValues = new Map<string, number[]>();
+
+  /**
+   * 量程扩展（世界在中途展示比假设更大的范围）：给某维追加候选值。
+   * 新值不在任何已存概念的覆盖内——概念更新机制的触发源。
+   */
+  extendValues(dim: string, values: readonly number[]): void {
+    const cur = this.extraValues.get(dim) ?? [];
+    this.extraValues.set(dim, [...cur, ...values]);
   }
 
   private keyOf(c: Conditions): string {

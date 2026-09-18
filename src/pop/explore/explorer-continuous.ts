@@ -43,12 +43,16 @@ export interface ContExploreConfig {
   /** B0 语料阶段的自然终止验证数（默认 4，比 B2 松——语料够用就形成概念） */
   readonly corpusQuorum?: number;
   readonly fieldsPerDim?: number;
+  /** 概念更新开关（默认 true；false = 冻结对照） */
+  readonly conceptUpdate?: boolean;
+  /** 概念更新的周期触发（每 N 次实验刷新一次，含细分检查），默认 25 */
+  readonly reformPeriod?: number;
 }
 
 export class ContinuousExplorer {
   readonly mem: FieldRuleMemory;
   readonly enc: SensoryEncoder;
-  private readonly formation: ConceptFormation;
+  private formation: ConceptFormation;
   private em: EmergentMap | null = null;
   private r2: R2PopLayer | null = null;
   private readonly planner: ExperimentPlanner;
@@ -62,9 +66,14 @@ export class ContinuousExplorer {
   private withinStreak = 0;
   private stepSeed: number;
   private phase: "corpus" | "full" = "corpus";
+  private sinceFormation = 0;
   readonly log: ContExploreStep[] = [];
-  /** 形成间歇期的记录（验收报告用） */
-  formationReport: { conceptsPerDim: Record<string, number>; centers: Record<string, number[]> } | null = null;
+  /** 概念形成历史（每次形成/更新一条，验收报告用） */
+  readonly formationHistory: { conceptsPerDim: Record<string, number>; centers: Record<string, number[]> }[] = [];
+  /** 最近一次概念形成报告（兼容既有测试与报告） */
+  get formationReport(): { conceptsPerDim: Record<string, number>; centers: Record<string, number[]> } | null {
+    return this.formationHistory.length > 0 ? this.formationHistory[this.formationHistory.length - 1]! : null;
+  }
 
   constructor(
     condDims: readonly { name: string; min: number; max: number }[],
@@ -92,6 +101,8 @@ export class ContinuousExplorer {
       ignoranceDrive: config.ignoranceDrive ?? 2.0,
       corpusQuorum: config.corpusQuorum ?? 4,
       fieldsPerDim: config.fieldsPerDim ?? 40,
+      conceptUpdate: config.conceptUpdate ?? true,
+      reformPeriod: config.reformPeriod ?? 25,
     };
     this.stepSeed = seed;
   }
@@ -102,6 +113,11 @@ export class ContinuousExplorer {
 
   get influentialDims(): string[] {
     return [...this.magSum.keys()].sort();
+  }
+
+  /** 各维度累计的归因证据数（自动对中该维被判为影响因素的次数，概念更新验收用） */
+  magEvidence(): Record<string, number> {
+    return Object.fromEntries(this.magCount);
   }
 
   private ignoranceOf(c: Conditions): number {
@@ -190,7 +206,13 @@ export class ContinuousExplorer {
     this.withinStreak = classification === "within-envelope" ? this.withinStreak + 1 : 0;
 
     const { pairs, newBins } = this.planner.register({ conditions: chosen, outcomes: observed, classification });
-    if (this.phase === "full") this.absorbPairs(pairs, newBins);
+    if (this.phase === "full") {
+      this.sinceFormation++;
+      // 概念更新：覆盖缺口（新值无任何概念）或周期到达 → 先重形成再差分，
+      // 保证这对实验在新通道面上被归因
+      if (this.shouldReform(chosen)) this.formConcepts();
+      this.absorbPairs(pairs, newBins);
+    }
     if (classification === "prediction-violation") this.planner.boostNeighbors(chosen, 1.2);
     this.planner.decayBoosts();
 
@@ -224,8 +246,28 @@ export class ContinuousExplorer {
     return true;
   }
 
-  /** 形成间歇期：自己的实验史 → 共现成阱 → 概念图 → R2 → 全量侧重/持证 */
+  /**
+   * 概念更新触发（B2 相，规则核绑定的是感受野不是概念——概念层演化
+   * 不会损坏任何已学规则，只管 R2 通道面与归因分辨率）：
+   * - 覆盖缺口：最新实验的某条件维取值解析不到任何概念（无重叠 → null）；
+   * - 周期刷新：每 reformPeriod 次实验一次（粗概念内部多峰化时的细分机会——
+   *   "共性先行、细分后至"的后半句）。
+   */
+  private shouldReform(latest: Conditions): boolean {
+    if (!this.cfg.conceptUpdate || this.em === null) return false;
+    for (const name of this.condDimNames) {
+      if (this.em.resolve(name, latest[name]!) === null) return true;
+    }
+    return this.sinceFormation >= this.cfg.reformPeriod;
+  }
+
+  /**
+   * 概念形成/更新（同一入口）：从情景缓冲**全量重放**到全新的 ConceptFormation
+   * （旧实例不可增量复用——重复呈现同一语料会把差分边全部顶到 cap、聚类糊掉），
+   * 幅度累计器清零后在**新通道面上重分析全部自动对**——旧归因不混入新表面。
+   */
   private formConcepts(): void {
+    this.formation = new ConceptFormation(this.enc);
     for (const ep of this.planner.allEpisodes) {
       this.formation.presentExperiment({ ...ep.conditions, ...ep.outcomes }, 2);
     }
@@ -250,9 +292,12 @@ export class ContinuousExplorer {
       conceptsPerDim[name] = cs.length;
       centers[name] = cs.map((c) => +c.centerValue.toFixed(2));
     }
-    this.formationReport = { conceptsPerDim, centers };
+    this.formationHistory.push({ conceptsPerDim, centers });
+    this.sinceFormation = 0;
 
-    // 全量回溯：全部自动对差分 → 全局侧重 → 全体补持证 + 结果互斥
+    // 全量回溯（重分析）：幅度累计器清零——旧通道面的归因不混入新表面
+    this.magSum.clear();
+    this.magCount.clear();
     const bin = (e: { conditions: Conditions; outcomes: Outcomes }): { conditions: Conditions; outcomes: Outcomes } => ({
       conditions: Object.fromEntries(
         Object.entries(e.conditions).map(([d, v]) => [d, this.em!.resolve(d, v) ?? -1]),

@@ -38,8 +38,12 @@ export function labContTruth(c: LCValues): LCValues {
 export class LabContBench {
   private cost = 0;
 
+  constructor(
+    private readonly dims: readonly ContinuousDim[] = LAB_CONT_CONDITION_DIMS,
+  ) {}
+
   conduct(conditions: LCValues): LCValues {
-    for (const d of LAB_CONT_CONDITION_DIMS) {
+    for (const d of this.dims) {
       const v = conditions[d.name];
       if (v === undefined || v < d.min - 1e-9 || v > d.max + 1e-9) {
         throw new Error(`非法实验条件：${d.name}=${v}（应在 [${d.min}, ${d.max}]）`);
@@ -63,28 +67,52 @@ export const LAB_CONT_GRID: Readonly<Record<string, readonly number[]>> = {
   material: [0.3, 1.0, 1.7],
 };
 
+/** 量程扩展场景（概念更新验收）：电压量程 [0,4.5]，但初始候选网格不含高压区 */
+export const LAB_CONT_CONDITION_DIMS_EXT: ContinuousDim[] = [
+  { name: "switchPos", min: 0, max: 1 },
+  { name: "voltage", min: 0, max: 4.5 },
+  { name: "resistance", min: 0, max: 3 },
+  { name: "temperature", min: 0, max: 2 },
+  { name: "material", min: 0, max: 2 },
+];
+
+export const LAB_CONT_GRID_EXT_BASE: Readonly<Record<string, readonly number[]>> = {
+  ...LAB_CONT_GRID,
+  voltage: [0.3, 1.2, 2.1, 3.0],
+};
+
+/** 中途扩展出的新候选值（世界比假设更大） */
+export const LAB_CONT_EXT_NEW_VALUES: Readonly<Record<string, readonly number[]>> = {
+  voltage: [3.9, 4.5],
+};
+
 export interface LCProbe {
   readonly conditions: LCValues;
   readonly truth: LCValues;
-  readonly kind: "self-taught" | "gate-off" | "heldout";
+  readonly kind: "self-taught" | "gate-off" | "heldout" | "extended";
 }
 
-/** 评分探针：网格全组合（3×4×4×3×3=432），按来源分档 */
-export function labContProbes(conducted: ReadonlySet<string>): LCProbe[] {
-  const key = (c: LCValues) => LAB_CONT_CONDITION_DIMS.map((d) => c[d.name]).join(",");
+/** 评分探针：网格全组合，按来源分档；voltage≥3.9 的扩展场景标 "extended" */
+export function labContProbes(
+  conducted: ReadonlySet<string>,
+  grid: Readonly<Record<string, readonly number[]>> = LAB_CONT_GRID,
+): LCProbe[] {
+  const key = (c: LCValues) => labContKey(c);
   const out: LCProbe[] = [];
-  for (const switchPos of LAB_CONT_GRID.switchPos!) {
-    for (const voltage of LAB_CONT_GRID.voltage!) {
-      for (const resistance of LAB_CONT_GRID.resistance!) {
-        for (const temperature of LAB_CONT_GRID.temperature!) {
-          for (const material of LAB_CONT_GRID.material!) {
+  for (const switchPos of grid.switchPos!) {
+    for (const voltage of grid.voltage!) {
+      for (const resistance of grid.resistance!) {
+        for (const temperature of grid.temperature!) {
+          for (const material of grid.material!) {
             const conditions: LCValues = { switchPos, voltage, resistance, temperature, material };
             const kind: LCProbe["kind"] =
-              conducted.has(key(conditions))
-                ? "self-taught"
-                : switchPos < 0.5 || voltage < 1.0
-                  ? "gate-off"
-                  : "heldout";
+              voltage >= 3.9
+                ? "extended"
+                : conducted.has(key(conditions))
+                  ? "self-taught"
+                  : switchPos < 0.5 || voltage < 1.0
+                    ? "gate-off"
+                    : "heldout";
             out.push({ conditions, truth: labContTruth(conditions), kind });
           }
         }

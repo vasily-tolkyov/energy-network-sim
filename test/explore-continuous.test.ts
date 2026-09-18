@@ -4,14 +4,67 @@ import { ExperimentPlanner } from "../src/pop/explore/planner.js";
 import { ContinuousExplorer } from "../src/pop/explore/explorer-continuous.js";
 import {
   LAB_CONT_CONDITION_DIMS,
+  LAB_CONT_CONDITION_DIMS_EXT,
   LAB_CONT_OUTCOME_DIMS,
   LAB_CONT_GRID,
+  LAB_CONT_GRID_EXT_BASE,
+  LAB_CONT_EXT_NEW_VALUES,
   LabContBench,
   labContTruth,
   lcScore,
 } from "../src/topics/lab-continuous-world.js";
 
 // 阶段 B（连续自主探索）锁定测试
+
+test("量程扩展：概念更新让新区域结晶为概念，冻结对照概念层停滞", { timeout: 900_000 }, () => {
+  const DIMS = LAB_CONT_CONDITION_DIMS_EXT;
+  const FULL: Record<string, readonly number[]> = {
+    ...LAB_CONT_GRID_EXT_BASE,
+    voltage: [...LAB_CONT_GRID_EXT_BASE.voltage!, ...LAB_CONT_EXT_NEW_VALUES.voltage!],
+  };
+  const SPECS_EXT = DIMS.map((d) => ({
+    name: d.name,
+    bins: FULL[d.name]!.length,
+    values: LAB_CONT_GRID_EXT_BASE[d.name]!,
+  }));
+
+  const build = (updating: boolean) => {
+    const bench = new LabContBench(DIMS);
+    const planner = new ExperimentPlanner(SPECS_EXT);
+    const ex = new ContinuousExplorer(
+      DIMS,
+      LAB_CONT_OUTCOME_DIMS,
+      planner,
+      SPECS_EXT,
+      bench,
+      { lit: 1, brightness: 3 },
+      { budget: 400, conceptUpdate: updating },
+      1,
+    );
+    return { ex, planner };
+  };
+
+  // 更新模式：扩展后应再次形成，voltage 概念覆盖高压区
+  const u = build(true);
+  while (u.ex.step()) {}
+  u.planner.extendValues("voltage", LAB_CONT_EXT_NEW_VALUES.voltage!);
+  while (u.ex.step()) {}
+  assert.ok(u.ex.formationHistory.length >= 2, `更新模式扩展后应再次形成，实 ${u.ex.formationHistory.length} 次`);
+  const lastCenters = u.ex.formationReport!.centers.voltage ?? [];
+  assert.ok(
+    lastCenters.some((c) => c > 3.5),
+    `更新模式的 voltage 概念应覆盖扩展区，实 [${lastCenters}]`,
+  );
+  assert.ok(u.ex.influentialDims.includes("voltage"), "更新模式 voltage 应保持影响因素地位");
+
+  // 冻结模式：形成历史恒为 1（概念层停滞），但不崩溃（重叠容忍）
+  const f = build(false);
+  while (f.ex.step()) {}
+  f.planner.extendValues("voltage", LAB_CONT_EXT_NEW_VALUES.voltage!);
+  while (f.ex.step()) {}
+  assert.equal(f.ex.formationHistory.length, 1, "冻结模式扩展后不应再形成");
+  assert.ok((f.ex.magEvidence().voltage ?? 0) > 0, "冻结模式仍能归因（重叠容忍，如实记录）");
+});
 
 const SPECS = LAB_CONT_CONDITION_DIMS.map((d) => ({
   name: d.name,
