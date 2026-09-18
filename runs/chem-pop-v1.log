@@ -1,0 +1,156 @@
+════════════════════════════════════════════════════════════════════════
+第三主题（独立测试）：化学反应实验 —— 预测核心（群体编码+规则核，机制冻结）
+════════════════════════════════════════════════════════════════════════
+网络规模：条件 64（5 通道×档×4）+ 结果 24 + 核区 128×4 = 600 神经元
+
+【学习集】教师程序带领的控制变量实验（每组只操纵一个因素；下为 v1 稀疏门控覆盖版）：
+  组 vessel-group（操纵 vessel）：
+    cat1 conc1 temp1 stir1 ves0 → reacted=1 rate=1  ⇄  cat1 conc1 temp1 stir1 ves1 → reacted=1 rate=1
+    cat1 conc2 temp2 stir1 ves0 → reacted=1 rate=3  ⇄  cat1 conc2 temp2 stir1 ves1 → reacted=1 rate=3
+  组 catalyst-group（操纵 catalyst）：
+    cat0 conc1 temp1 stir1 ves0 → reacted=0 rate=0  ⇄  cat1 conc1 temp1 stir1 ves0 → reacted=1 rate=1
+    cat0 conc1 temp2 stir1 ves0 → reacted=0 rate=0  ⇄  cat1 conc1 temp2 stir1 ves0 → reacted=1 rate=2
+  组 concentration-group（操纵 concentration）：
+    cat1 conc0 temp1 stir1 ves0 → reacted=1 rate=1  ⇄  cat1 conc2 temp1 stir1 ves0 → reacted=1 rate=2
+    cat1 conc1 temp1 stir1 ves0 → reacted=1 rate=1  ⇄  cat1 conc3 temp1 stir1 ves0 → reacted=1 rate=3
+    cat1 conc2 temp1 stir1 ves0 → reacted=1 rate=2  ⇄  cat1 conc3 temp1 stir1 ves0 → reacted=1 rate=3
+  组 temperature-group（操纵 temperature）：
+    cat1 conc1 temp0 stir1 ves0 → reacted=1 rate=1  ⇄  cat1 conc1 temp2 stir1 ves0 → reacted=1 rate=2
+    cat0 conc1 temp2 stir1 ves0 → reacted=0 rate=0  ⇄  cat0 conc1 temp3 stir1 ves0 → reacted=1 rate=2
+  组 stirring-group（操纵 stirring）：
+    cat1 conc1 temp1 stir0 ves0 → reacted=1 rate=1  ⇄  cat1 conc1 temp1 stir2 ves0 → reacted=1 rate=2
+  （v2 均衡门控覆盖版另加 5 对：催化剂对换在 conc=0/2/3、temp=0 背景各一次，温度对换补 conc=2 背景跨门控一对；对照评分见末段）
+
+【R2 神经化因素提取】（seed 1，逐对）：
+    对 vessel: 变化=false 条件差分=[vessel] → 影响因素=[] 结果档差={}
+    对 vessel: 变化=false 条件差分=[vessel] → 影响因素=[] 结果档差={}
+  组 vessel-group         影响因素侧重：{}
+    对 catalyst: 变化=true 条件差分=[catalyst] → 影响因素=[catalyst] 结果档差={"reacted":1,"rate":1}
+    对 catalyst: 变化=true 条件差分=[catalyst] → 影响因素=[catalyst] 结果档差={"reacted":1,"rate":2}
+  组 catalyst-group       影响因素侧重：{"catalyst":0.169}
+    对 concentration: 变化=true 条件差分=[concentration] → 影响因素=[concentration] 结果档差={"rate":1}
+    对 concentration: 变化=true 条件差分=[concentration] → 影响因素=[concentration] 结果档差={"rate":2}
+    对 concentration: 变化=true 条件差分=[concentration] → 影响因素=[concentration] 结果档差={"rate":1}
+  组 concentration-group  影响因素侧重：{"concentration":0.015}
+    对 temperature: 变化=true 条件差分=[temperature] → 影响因素=[temperature] 结果档差={"rate":1}
+    对 temperature: 变化=true 条件差分=[temperature] → 影响因素=[temperature] 结果档差={"reacted":1,"rate":2}
+  组 temperature-group    影响因素侧重：{"temperature":0.075}
+    对 stirring: 变化=true 条件差分=[stirring] → 影响因素=[stirring] 结果档差={"rate":1}
+  组 stirring-group       影响因素侧重：{"stirring":0.008}
+教学后形成规则核 14 条（v2 课程另加数条，见末段对照）
+
+【预测过程走查】钳制条件群体 → 局部退火选获胜核 → 读出结果（seed 1，完整模型）：
+  教过的组合（基线）
+    条件 {"catalyst":1,"concentration":1,"temperature":1,"stirring":1,"vessel":0}（钳制 20 神经元）
+    退火后激活 32 神经元，获胜核块=[0]，能耗=-92.56
+    预测 {"reacted":1,"rate":1}，真值 {"reacted":1,"rate":1} → correct
+  未见组合：高浓+高温+有催化剂（需要跨经验组合）
+    条件 {"catalyst":1,"concentration":3,"temperature":3,"stirring":1,"vessel":0}（钳制 20 神经元）
+    退火后激活 32 神经元，获胜核块=[12]，能耗=-74.31
+    预测 {"reacted":1,"rate":3}，真值 {"reacted":1,"rate":3} → correct
+  未见组合：无催化剂+高浓+中温（门控应保持关闭）
+    条件 {"catalyst":0,"concentration":3,"temperature":2,"stirring":1,"vessel":0}（钳制 20 神经元）
+    退火后激活 32 神经元，获胜核块=[5]，能耗=-87.35
+    预测 {"reacted":0,"rate":0}，真值 {"reacted":0,"rate":0} → correct
+
+【全量评分】64 查询 × 3 种子，按查询类型分档；v1/v2 两版课程对照（机制不变）：
+
+  ══ 课程 v1 稀疏门控覆盖 ══
+
+  ── 完整模型（G=3，查询参与学习） ──
+    seen-combo          细粒度  24/24（100.0%）  粗粒度反应判定 100.0%  错 0  歧义 0
+    unseen-vessel       细粒度  40/60（66.7%）  粗粒度反应判定 95.0%  错 20  歧义 0
+    unseen-combo        细粒度  13/36（36.1%）  粗粒度反应判定 94.4%  错 23  歧义 0
+    no-reaction-control 细粒度  41/72（56.9%）  粗粒度反应判定 56.9%  错 31  歧义 0
+    总计：细粒度 118/192（61.5%），粗粒度 81.3%；核 68 条；单次预测均时 144.0ms，平均激活 32 神经元
+    失败样例（seed 1，至多 8 条）：
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":0,"stirring":1,"vessel":0} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":0}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":0,"stirring":1,"vessel":2} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":0}）
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":2,"stirring":1,"vessel":0} → {"reacted":1,"rate":2}（真值 {"reacted":1,"rate":1}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":2,"stirring":1,"vessel":2} → {"reacted":1,"rate":2}（真值 {"reacted":1,"rate":1}）
+    [unseen-vessel] {"catalyst":0,"concentration":0,"temperature":3,"stirring":1,"vessel":2} → {"reacted":0,"rate":0}（真值 {"reacted":1,"rate":2}）
+    [unseen-combo] {"catalyst":1,"concentration":1,"temperature":3,"stirring":1,"vessel":0} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":2}）
+    [unseen-vessel] {"catalyst":1,"concentration":1,"temperature":3,"stirring":1,"vessel":2} → {"reacted":1,"rate":3}（真值 {"reacted":1,"rate":2}）
+    [no-reaction-control] {"catalyst":0,"concentration":2,"temperature":0,"stirring":1,"vessel":0} → {"reacted":1,"rate":2}（真值 {"reacted":0,"rate":0}）
+
+  ── 消融 G=0（断 R2B 侧重/否决） ──
+    seen-combo          细粒度  24/24（100.0%）  粗粒度反应判定 100.0%  错 0  歧义 0
+    unseen-vessel       细粒度  39/60（65.0%）  粗粒度反应判定 100.0%  错 21  歧义 0
+    unseen-combo        细粒度  16/36（44.4%）  粗粒度反应判定 100.0%  错 20  歧义 0
+    no-reaction-control 细粒度  28/72（38.9%）  粗粒度反应判定 38.9%  错 44  歧义 0
+    总计：细粒度 107/192（55.7%），粗粒度 77.1%；核 68 条；单次预测均时 150.4ms，平均激活 32 神经元
+    失败样例（seed 1，至多 8 条）：
+    [no-reaction-control] {"catalyst":0,"concentration":0,"temperature":0,"stirring":1,"vessel":0} → {"reacted":1,"rate":1}（真值 {"reacted":0,"rate":0}）
+    [no-reaction-control] {"catalyst":0,"concentration":0,"temperature":0,"stirring":1,"vessel":2} → {"reacted":1,"rate":1}（真值 {"reacted":0,"rate":0}）
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":0,"stirring":1,"vessel":0} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":0}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":0,"stirring":1,"vessel":2} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":0}）
+    [no-reaction-control] {"catalyst":0,"concentration":0,"temperature":1,"stirring":1,"vessel":2} → {"reacted":1,"rate":1}（真值 {"reacted":0,"rate":0}）
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":2,"stirring":1,"vessel":0} → {"reacted":1,"rate":2}（真值 {"reacted":1,"rate":1}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":2,"stirring":1,"vessel":2} → {"reacted":1,"rate":2}（真值 {"reacted":1,"rate":1}）
+    [unseen-combo] {"catalyst":1,"concentration":1,"temperature":3,"stirring":1,"vessel":0} → {"reacted":1,"rate":3}（真值 {"reacted":1,"rate":2}）
+
+  ── 消融 无查询学习 ──
+    seen-combo          细粒度  20/24（83.3%）  粗粒度反应判定 95.8%  错 4  歧义 0
+    unseen-vessel       细粒度  24/60（40.0%）  粗粒度反应判定 90.0%  错 36  歧义 0
+    unseen-combo        细粒度   7/36（19.4%）  粗粒度反应判定 83.3%  错 29  歧义 0
+    no-reaction-control 细粒度  69/72（95.8%）  粗粒度反应判定 95.8%  错 3  歧义 0
+    总计：细粒度 120/192（62.5%），粗粒度 91.7%；核 14 条；单次预测均时 65.1ms，平均激活 32 神经元
+    失败样例（seed 1，至多 8 条）：
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":0,"stirring":1,"vessel":0} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":0}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":0,"stirring":1,"vessel":2} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":0}）
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":2,"stirring":1,"vessel":0} → {"reacted":1,"rate":2}（真值 {"reacted":1,"rate":1}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":2,"stirring":1,"vessel":2} → {"reacted":1,"rate":2}（真值 {"reacted":1,"rate":1}）
+    [unseen-combo] {"catalyst":0,"concentration":0,"temperature":3,"stirring":1,"vessel":0} → {"reacted":0,"rate":0}（真值 {"reacted":1,"rate":2}）
+    [unseen-vessel] {"catalyst":0,"concentration":0,"temperature":3,"stirring":1,"vessel":2} → {"reacted":0,"rate":0}（真值 {"reacted":1,"rate":2}）
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":3,"stirring":1,"vessel":0} → {"reacted":1,"rate":3}（真值 {"reacted":1,"rate":2}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":3,"stirring":1,"vessel":2} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":2}）
+
+  ══ 课程 v2 均衡门控覆盖 ══
+
+  ── 完整模型（G=3，查询参与学习） ──
+    seen-combo          细粒度  27/27（100.0%）  粗粒度反应判定 100.0%  错 0  歧义 0
+    unseen-vessel       细粒度  41/60（68.3%）  粗粒度反应判定 95.0%  错 19  歧义 0
+    unseen-combo        细粒度  12/33（36.4%）  粗粒度反应判定 93.9%  错 21  歧义 0
+    no-reaction-control 细粒度  72/72（100.0%）  粗粒度反应判定 100.0%  错 0  歧义 0
+    总计：细粒度 152/192（79.2%），粗粒度 97.4%；核 68 条；单次预测均时 164.8ms，平均激活 32 神经元
+    失败样例（seed 1，至多 8 条）：
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":0,"stirring":1,"vessel":0} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":0}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":0,"stirring":1,"vessel":2} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":0}）
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":2,"stirring":1,"vessel":0} → {"reacted":1,"rate":2}（真值 {"reacted":1,"rate":1}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":2,"stirring":1,"vessel":2} → {"reacted":1,"rate":2}（真值 {"reacted":1,"rate":1}）
+    [unseen-vessel] {"catalyst":0,"concentration":0,"temperature":3,"stirring":1,"vessel":2} → {"reacted":1,"rate":3}（真值 {"reacted":1,"rate":2}）
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":3,"stirring":1,"vessel":0} → {"reacted":1,"rate":3}（真值 {"reacted":1,"rate":2}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":3,"stirring":1,"vessel":2} → {"reacted":1,"rate":3}（真值 {"reacted":1,"rate":2}）
+    [unseen-combo] {"catalyst":1,"concentration":1,"temperature":3,"stirring":1,"vessel":0} → {"reacted":1,"rate":3}（真值 {"reacted":1,"rate":2}）
+
+  ── 消融 G=0（断 R2B 侧重/否决） ──
+    seen-combo          细粒度  27/27（100.0%）  粗粒度反应判定 100.0%  错 0  歧义 0
+    unseen-vessel       细粒度  35/60（58.3%）  粗粒度反应判定 100.0%  错 25  歧义 0
+    unseen-combo        细粒度  11/33（33.3%）  粗粒度反应判定 93.9%  错 22  歧义 0
+    no-reaction-control 细粒度  65/72（90.3%）  粗粒度反应判定 90.3%  错 7  歧义 0
+    总计：细粒度 138/192（71.9%），粗粒度 95.3%；核 68 条；单次预测均时 159.8ms，平均激活 32 神经元
+    失败样例（seed 1，至多 8 条）：
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":0,"stirring":1,"vessel":0} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":0}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":0,"stirring":1,"vessel":2} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":0}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":1,"stirring":1,"vessel":2} → {"reacted":1,"rate":3}（真值 {"reacted":1,"rate":1}）
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":2,"stirring":1,"vessel":0} → {"reacted":0,"rate":0}（真值 {"reacted":1,"rate":1}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":2,"stirring":1,"vessel":2} → {"reacted":1,"rate":2}（真值 {"reacted":1,"rate":1}）
+    [unseen-combo] {"catalyst":0,"concentration":0,"temperature":3,"stirring":1,"vessel":0} → {"reacted":1,"rate":3}（真值 {"reacted":1,"rate":2}）
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":3,"stirring":1,"vessel":0} → {"reacted":1,"rate":3}（真值 {"reacted":1,"rate":2}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":3,"stirring":1,"vessel":2} → {"reacted":1,"rate":3}（真值 {"reacted":1,"rate":2}）
+
+  ── 消融 无查询学习 ──
+    seen-combo          细粒度  22/27（81.5%）  粗粒度反应判定 92.6%  错 5  歧义 0
+    unseen-vessel       细粒度  26/60（43.3%）  粗粒度反应判定 86.7%  错 34  歧义 0
+    unseen-combo        细粒度   4/33（12.1%）  粗粒度反应判定 87.9%  错 29  歧义 0
+    no-reaction-control 细粒度  72/72（100.0%）  粗粒度反应判定 100.0%  错 0  歧义 0
+    总计：细粒度 124/192（64.6%），粗粒度 92.7%；核 20 条；单次预测均时 89.4ms，平均激活 32 神经元
+    失败样例（seed 1，至多 8 条）：
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":0,"stirring":1,"vessel":0} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":0}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":0,"stirring":1,"vessel":2} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":0}）
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":2,"stirring":1,"vessel":0} → {"reacted":1,"rate":2}（真值 {"reacted":1,"rate":1}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":2,"stirring":1,"vessel":2} → {"reacted":1,"rate":2}（真值 {"reacted":1,"rate":1}）
+    [unseen-combo] {"catalyst":0,"concentration":0,"temperature":3,"stirring":1,"vessel":0} → {"reacted":1,"rate":3}（真值 {"reacted":1,"rate":2}）
+    [unseen-vessel] {"catalyst":0,"concentration":0,"temperature":3,"stirring":1,"vessel":2} → {"reacted":0,"rate":0}（真值 {"reacted":1,"rate":2}）
+    [unseen-combo] {"catalyst":1,"concentration":0,"temperature":3,"stirring":1,"vessel":0} → {"reacted":1,"rate":1}（真值 {"reacted":1,"rate":2}）
+    [unseen-vessel] {"catalyst":1,"concentration":0,"temperature":3,"stirring":1,"vessel":2} → {"reacted":1,"rate":3}（真值 {"reacted":1,"rate":2}）

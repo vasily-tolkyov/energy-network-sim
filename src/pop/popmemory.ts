@@ -11,8 +11,12 @@ import type { Conditions, Experiment, Outcomes } from "../prototype/world.js";
  *     → 规则核（每条经验私有的 coreSize 个神经元）
  *     → 结果群体（共享）
  *
- * - 教学：条件群体 ∪ 核 ∪ 结果群体共激活赫布绑定（基础封顶 baseCap）；
- *   核间建抑制边 Γ（候选规则互斥，赢家通吃）；
+ * - 教学：两段绑定——条件群体↔核一段、核↔结果群体按通道各一段
+ *   （基础封顶 baseCap；绝不允许三者同集合共激活，防条件→结果直连与
+ *   结果通道间接力两种泄漏）；
+ *   核间建抑制边 Γ（候选规则互斥），另有前馈抑制池 WTA 电路
+ *   （分级招募、按联盟规模加压，逼出单核胜出——两两 Γ 的共激活代价
+ *   固定、压不住多核共存，池是自 field-memory 移植的已知解）；
  * - 侧重（§7.1 类比）：影响因素通道群体 → 该经验核的连接 ×(η·G·m²) 增强；
  * - 预测：钳制查询条件群体，候选集 = 全部核 ∪ 结果群体，局部退火选出
  *   能耗极小的获胜核（匹配条件越多场越强），获胜核点亮其结果群体；
@@ -36,6 +40,14 @@ export class PopRuleMemory {
   private coreCursor = 0;
   private readonly signatureToCore = new Map<string, readonly number[]>();
   private readonly cores: number[][] = [];
+  /** 前馈抑制池规模（WTA 电路，自 field-memory 移植） */
+  private readonly poolSize = 2;
+  /**
+   * 池→核前馈抑制强度，按本模块核支持尺度重新标定（field-memory 用 20，
+   * 其核支持 ~20-27；本模块持证精确核净场 ≈8-12，1-失配核净场 ≈+2）：
+   * 须压灭 1-失配核（γ>2），同时让持证精确核在池点燃的暂态中存活（γ<8−θ）。
+   */
+  private readonly poolGamma = 4.5;
 
   constructor(
     readonly conditionMap: PopChannelMap,
@@ -45,7 +57,7 @@ export class PopRuleMemory {
     this.coreSize = config.coreSize ?? 4;
     this.maxRules = config.maxRules ?? 128;
     const totalNeurons =
-      conditionMap.neuronCount + outcomeMap.neuronCount + this.maxRules * this.coreSize;
+      conditionMap.neuronCount + outcomeMap.neuronCount + this.maxRules * this.coreSize + this.poolSize;
     this.net = new EnergyNetwork({
       neuronCount: totalNeurons,
       activationEnergy: config.activationEnergy ?? 1.0,
@@ -89,6 +101,10 @@ export class PopRuleMemory {
     return this.conditionMap.neuronCount + this.outcomeMap.neuronCount;
   }
 
+  private poolBase(): number {
+    return this.coreBase() + this.maxRules * this.coreSize;
+  }
+
   private signature(conditions: Conditions): string {
     return Object.keys(conditions)
       .sort()
@@ -107,10 +123,27 @@ export class PopRuleMemory {
     const base = this.coreBase() + this.coreCursor * this.coreSize;
     const core = Array.from({ length: this.coreSize }, (_, k) => base + k);
     this.coreCursor++;
-    // 与既有核互斥（Γ_core）
+    // 与既有核互斥（Γ_core=3.0，与 field-memory 同值）。
+    // 历史值 1.5 压不住强支持核：1-失配核净场可达 +2~+8 > θ−6，会在胜者
+    // 两两抑制下复燃，与池构成"压制-熄火-复燃"弛豫振荡，淬火被迫跑满
+    // maxFlips（实测单次预测均时 1.2s、最慢 4s）。3.0（联盟代价 4×3=12）
+    // 使任何 1-失配核在胜者存活时净场 < 0，单核态成为稳定不动点。
     for (const other of this.cores) {
       for (const x of core) {
-        for (const y of other) this.net.strengthenInhibitory(x, y, 1.5);
+        for (const y of other) this.net.strengthenInhibitory(x, y, 3.0);
+      }
+    }
+    // 全局抑制池接线（WTA 电路，前馈抑制版，自 field-memory 移植）：
+    // 核 → 池分级招募（0.3/0.15）：单核活跃（4×0.3=1.2<θ=1.5）池沉睡；
+    // ≥2 核共存（8×0.3=2.4>θ）池点燃，DI 前馈抑制压回所有核——
+    // 弱者（1-失配核，净场≈+2）被压灭，持证胜者（净场≈8-12）存活，
+    // 池失去驱动后熄灭，逐个淘汰至单核胜出。
+    // 两两互斥 Γ 的共激活代价是固定的、不随联盟规模增长（化学主题实测
+    // 双核满激活共存），池让代价随联盟规模上涨，联盟自我拆台。
+    for (const x of core) {
+      for (let k = 0; k < this.poolSize; k++) {
+        this.net.strengthen(x, this.poolBase() + k, 0.3 / (k + 1));
+        this.net.strengthenDirectedInhibitory(this.poolBase() + k, x, this.poolGamma, this.poolGamma);
       }
     }
     this.cores.push(core);
@@ -205,9 +238,11 @@ export class PopRuleMemory {
       (_, k) => this.conditionMap.neuronCount + k,
     );
     const coreNeurons = this.cores.flat();
+    const poolNeurons = Array.from({ length: this.poolSize }, (_, k) => this.poolBase() + k);
     const result = this.net.settleAnnealed(input, [], {
       seed,
-      extraCandidates: [...outcomeNeurons, ...coreNeurons],
+      // 池神经元必须在候选集内，否则结构性冻结在静息、WTA 电路失效
+      extraCandidates: [...outcomeNeurons, ...coreNeurons, ...poolNeurons],
       quenchCandidatesOnly: true,
       levels: 12,
       sweepsPerLevel: 20,
@@ -225,19 +260,40 @@ export class PopRuleMemory {
     };
   }
 
-  /** 响应模式学习：新查询分配/复用核并绑定预测结果（小步长同封顶） */
+  /** 响应模式学习：新查询分配/复用核并绑定预测结果（小步长同封顶）。
+   * 绑定必须分两段（化学主题实测修复）：条件↔核一段、核↔结果按通道各一段，
+   * 绝不允许把三者放进同一集合——否则赫布学习会写下条件→结果直连边与
+   * 结果通道间接力边（teachExperience 已记录在案的两种泄漏），
+   * 几十个查询累积后输入群体绕开核直接驱动结果群体，规则核桥梁被短路。 */
   learnFromQuery(query: Conditions, predicted: Record<string, PopDecoded>, repeats: number): void {
     const core = this.coreFor(query);
-    const outcomeIds: number[] = [];
-    for (const [ch, bin] of Object.entries(predicted)) {
-      if (typeof bin === "number") {
-        for (const id of this.outcomeMap.population(ch, bin)) {
-          outcomeIds.push(id + this.conditionMap.neuronCount);
+    const condIds = this.conditionMap.encode(query);
+    if (Object.values(predicted).some((v) => typeof v === "number")) {
+      hebbianLearn(this.net, [...condIds, ...core], repeats, 0.05, 0.4);
+      for (const spec of this.outcomeMap.specs) {
+        const bin = predicted[spec.name];
+        if (typeof bin === "number") {
+          const pops = this.outcomeMap.population(spec.name, bin);
+          hebbianLearn(this.net, [...core, ...pops.map((id) => id + this.conditionMap.neuronCount)], repeats, 0.05, 0.4);
         }
       }
     }
-    if (outcomeIds.length > 0) {
-      hebbianLearn(this.net, [...this.conditionMap.encode(query), ...core, ...outcomeIds], repeats, 0.05, 0.4);
+    // 持证上岗（与 learnFromObservation 同一规则，化学主题实测补入）：
+    // 新核必须带侧重加分边 + 替代档否决边，否则它绕开否决体系——
+    // 无否决惩罚的核在任何近似查询上白拿匹配支持，压垮持证核，
+    // 错误预测再被学习，形成自我强化级联（v2 课程完整模型曾因此崩盘）。
+    for (const [ch, delta] of Object.entries(this.lastBoost)) {
+      if (delta > 0) {
+        for (const from of this.conditionMap.population(ch, query[ch]!)) {
+          for (const to of core) this.net.strengthen(from, to, delta);
+        }
+      }
+      for (const alt of this.observedBins.get(ch) ?? []) {
+        if (alt === query[ch]) continue;
+        for (const from of this.conditionMap.population(ch, alt)) {
+          for (const to of core) this.net.strengthenInhibitory(from, to, this.lastGammaVeto);
+        }
+      }
     }
   }
 

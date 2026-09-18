@@ -50,8 +50,8 @@ export class FieldRuleMemory {
   private readonly coreBase: number;
   private readonly poolBase: number;
   private readonly poolSize = 2;
-  /** 池→核抑制强度：两核联盟时弱者净场 < θ 而胜者存活（按支持 ~20-27 标定） */
-  private readonly poolGamma = 7.0;
+  /** 池→核抑制强度：两核联盟时弱者净场 < θ 而胜者存活（按本模块核支持 ~20-27 标定） */
+  private readonly poolGamma = 20;
   private lastBoost: Record<string, number> = {};
   private lastGammaVeto = 1.2;
 
@@ -128,7 +128,7 @@ export class FieldRuleMemory {
       for (let k = 0; k < this.poolSize; k++) {
         // 单核（总量 4）时池沉睡（w_0=0.3 需 >5 才点燃），≥2 核时点燃压制
         this.net.strengthen(x, this.poolBase + k, 0.3 / (k + 1));
-        this.net.strengthenDirectedInhibitory(this.poolBase + k, x, 20, 20);
+        this.net.strengthenDirectedInhibitory(this.poolBase + k, x, this.poolGamma, this.poolGamma);
       }
     }
     this.signatureToCore.set(sig, core);
