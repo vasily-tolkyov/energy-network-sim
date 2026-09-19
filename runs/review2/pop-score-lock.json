@@ -1,0 +1,6097 @@
+{
+  "source": "current teaching weights, seed 1, original 48 small-ball queries",
+  "distinctConfigurations": 4,
+  "configurations": [
+    {
+      "gain": 0,
+      "veto": false,
+      "W": "a80e0b33b6cfc22919f5d040a7bee3497df989b05c1d6fa0198082d8a40de4ff",
+      "Gamma": "7bf343974fde02a839269b9020fc912bf380a452cca29f6738b4f9186d1a15aa",
+      "n": 48,
+      "fine": 32,
+      "coarse": 40,
+      "miss": {
+        "n": 24,
+        "correct": 16
+      },
+      "unseen": {
+        "n": 12,
+        "correct": 8
+      },
+      "rows": [
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.0000000000009,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.199999999999754,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -82.80000000000057,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -41.999999999999794,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -108.40000000000099,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.00000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.0000000000009,
+          "driveEngaged": false,
+          "coarse": false,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.19999999999974,
+          "driveEngaged": false,
+          "coarse": false,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.0000000000009,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.19999999999974,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -82.80000000000057,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -41.999999999999794,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.8000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.00000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.00000000000092,
+          "driveEngaged": false,
+          "coarse": false,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.19999999999974,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -108.40000000000099,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.00000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.8000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.00000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.8000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -67.60000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.00000000000092,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.19999999999974,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.0000000000009,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -54.79999999999974,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -89.20000000000068,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -48.39999999999976,
+          "driveEngaged": false,
+          "coarse": false,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.8000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -67.60000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.8000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -67.60000000000022,
+          "driveEngaged": false,
+          "coarse": false,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.0000000000009,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -54.79999999999974,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -95.6000000000008,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -48.399999999999764,
+          "driveEngaged": false,
+          "coarse": false,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.00000000000087,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.199999999999754,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -82.80000000000057,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -41.999999999999794,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -108.40000000000099,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.00000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -95.60000000000078,
+          "driveEngaged": false,
+          "coarse": false,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.19999999999974,
+          "driveEngaged": false,
+          "coarse": false,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.0000000000009,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.19999999999974,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -82.80000000000057,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -41.999999999999794,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        }
+      ]
+    },
+    {
+      "gain": 0,
+      "veto": true,
+      "W": "a80e0b33b6cfc22919f5d040a7bee3497df989b05c1d6fa0198082d8a40de4ff",
+      "Gamma": "e3e3878a4f29f583e0ce36808b2059c41e3d8a0ddb10fc92592f3a875e4aad8d",
+      "n": 48,
+      "fine": 41,
+      "coarse": 45,
+      "miss": {
+        "n": 24,
+        "correct": 21
+      },
+      "unseen": {
+        "n": 12,
+        "correct": 8
+      },
+      "rows": [
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.00000000000087,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.19999999999974,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -82.80000000000057,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -41.999999999999794,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.8000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.00000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.00000000000087,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.199999999999754,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.0000000000009,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.199999999999754,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -82.80000000000057,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -41.999999999999794,
+          "driveEngaged": false,
+          "coarse": false,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.8000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.00000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.00000000000092,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.19999999999974,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.8000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.00000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.8000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.00000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.8000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.00000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.00000000000092,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.19999999999974,
+          "driveEngaged": false,
+          "coarse": false,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.00000000000087,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.19999999999974,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -89.20000000000068,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -54.799999999999734,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.8000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.00000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.8000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.00000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.00000000000087,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.199999999999754,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -95.6000000000008,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -48.399999999999764,
+          "driveEngaged": false,
+          "coarse": false,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.00000000000087,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -54.79999999999974,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -82.80000000000057,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -41.999999999999794,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.8000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.00000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.00000000000087,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.199999999999754,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.0000000000009,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.19999999999974,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -82.80000000000057,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -41.999999999999794,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        }
+      ]
+    },
+    {
+      "gain": 3,
+      "veto": false,
+      "W": "b33aa78aeba33d924c33f89ea34460587f82f4a177419073dd198ba4cb14cf7d",
+      "Gamma": "7bf343974fde02a839269b9020fc912bf380a452cca29f6738b4f9186d1a15aa",
+      "n": 48,
+      "fine": 37,
+      "coarse": 48,
+      "miss": {
+        "n": 24,
+        "correct": 24
+      },
+      "unseen": {
+        "n": 12,
+        "correct": 4
+      },
+      "rows": [
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -106.40000000000073,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -65.60000000000012,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -93.60000000000052,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -52.79999999999986,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -119.7740740740752,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -78.93333333333344,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -113.20000000000098,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -72.00000000000014,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -106.40000000000073,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -64.1629629629629,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -93.60000000000052,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -52.79999999999986,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -116.63703703703825,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -79.88148148148161,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -112.80000000000088,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -72.00000000000013,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -127.6148148148159,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -86.81481481481511,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -126.00000000000111,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -78.80000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -120.6814814814825,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.53333333333363,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -112.80000000000088,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -72.00000000000013,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.2814814814824,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -65.60000000000012,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -106.40000000000076,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -65.60000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -127.0814814814826,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -86.28148148148179,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -126.00000000000111,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -78.80000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.2814814814824,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -73.48148148148161,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -100.40000000000082,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -65.60000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -106.40000000000073,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -65.60000000000012,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -93.60000000000052,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -52.79999999999986,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -119.20000000000094,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -78.40000000000013,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -113.20000000000098,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -72.00000000000014,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -104.9629629629639,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -65.60000000000012,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -93.60000000000052,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -52.79999999999986,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        }
+      ]
+    },
+    {
+      "gain": 3,
+      "veto": true,
+      "W": "b33aa78aeba33d924c33f89ea34460587f82f4a177419073dd198ba4cb14cf7d",
+      "Gamma": "e3e3878a4f29f583e0ce36808b2059c41e3d8a0ddb10fc92592f3a875e4aad8d",
+      "n": 48,
+      "fine": 39,
+      "coarse": 47,
+      "miss": {
+        "n": 24,
+        "correct": 23
+      },
+      "unseen": {
+        "n": 12,
+        "correct": 5
+      },
+      "rows": [
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -104.9629629629639,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -64.1629629629629,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -93.60000000000052,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -52.79999999999986,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -117.76296296296408,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -76.96296296296336,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -104.9629629629639,
+          "driveEngaged": false,
+          "coarse": false,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -72.00000000000014,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -104.9629629629639,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -64.1629629629629,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -93.60000000000052,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 0,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -52.79999999999986,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -115.86666666666771,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -75.06666666666706,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -112.80000000000088,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -72.00000000000013,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -127.6148148148159,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -86.81481481481511,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -126.00000000000111,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -84.80000000000027,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -115.33333333333441,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -74.53333333333363,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -112.80000000000088,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 1,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -72.00000000000013,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -103.06666666666747,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -73.48148148148161,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -100.40000000000082,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -65.60000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -127.0814814814826,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -86.28148148148179,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -126.00000000000111,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -78.80000000000031,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -114.2814814814824,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -73.48148148148161,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -106.40000000000076,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 2,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -65.60000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -104.9629629629639,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -64.1629629629629,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -93.60000000000052,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 0
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -52.79999999999986,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "seen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -117.76296296296408,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-color",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 1
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -67.60000000000011,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": false,
+          "reason": "quiet-constraint",
+          "energy": -113.20000000000098,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 1
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -72.00000000000014,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -102.53333333333417,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 1,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 1,
+            "reboundSpeed": 3
+          },
+          "kind": "unseen-combo",
+          "prediction": {
+            "rebound": 1,
+            "reboundSpeed": 2
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -61.7333333333331,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": false
+        },
+        {
+          "conditions": {
+            "color": 0,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -93.60000000000052,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        },
+        {
+          "conditions": {
+            "color": 6,
+            "direction": 0,
+            "damping": 0,
+            "hitWall": 0,
+            "speed": 3,
+            "wallStiffness": 2
+          },
+          "truth": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "kind": "miss-wall",
+          "prediction": {
+            "rebound": 0,
+            "reboundSpeed": 0
+          },
+          "converged": true,
+          "reason": "fixed-point",
+          "energy": -52.79999999999986,
+          "driveEngaged": false,
+          "coarse": true,
+          "fine": true
+        }
+      ]
+    }
+  ],
+  "sameWeightsOldSolver": {
+    "n": 48,
+    "fine": 41,
+    "coarse": 48,
+    "miss": {
+      "n": 24,
+      "correct": 24
+    },
+    "unseen": {
+      "n": 12,
+      "correct": 5
+    },
+    "rows": [
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 0,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "unseen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -104.9629629629639,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 0,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "unseen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -64.1629629629629,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 0,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -93.60000000000052,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 0,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -52.79999999999986,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 0,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "seen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -117.76296296296408,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 0,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "unseen-color",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -76.96296296296336,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 0,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": false,
+        "reason": "flip-budget",
+        "energy": -114.30000000000112,
+        "driveEngaged": true,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 0,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -72.00000000000014,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 0,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "unseen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -104.9629629629639,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 0,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "unseen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -64.1629629629629,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 0,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -93.60000000000052,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 0,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -52.79999999999986,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 1,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "seen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -115.86666666666771,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 1,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "unseen-color",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -75.06666666666706,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 1,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -112.80000000000088,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 1,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -72.00000000000013,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 1,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "seen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -127.6148148148159,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 1,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "unseen-color",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -86.81481481481511,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 1,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": false,
+        "reason": "flip-budget",
+        "energy": -129.60000000000124,
+        "driveEngaged": true,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 1,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -84.80000000000027,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 1,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 2
+        },
+        "kind": "seen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 2
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -115.33333333333441,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 1,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 2
+        },
+        "kind": "unseen-color",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 2
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -74.53333333333363,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 1,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -112.80000000000088,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 1,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -72.00000000000013,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 2,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "unseen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 2
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -114.2814814814824,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": false
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 2,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "unseen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 2
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -73.48148148148161,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": false
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 2,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -106.40000000000076,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 2,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -65.60000000000011,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 2,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 2
+        },
+        "kind": "seen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 2
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -127.0814814814826,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 2,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 2
+        },
+        "kind": "unseen-color",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 2
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -86.28148148148179,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 2,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": false,
+        "reason": "flip-budget",
+        "energy": -126.00000000000111,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 2,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -84.80000000000027,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 2,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 3
+        },
+        "kind": "unseen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 2
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -114.2814814814824,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": false
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 2,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 3
+        },
+        "kind": "unseen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 2
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -73.48148148148161,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": false
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 2,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -106.40000000000076,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 2,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -65.60000000000011,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 3,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "unseen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 3
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -104.9629629629639,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": false
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 3,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 1
+        },
+        "kind": "unseen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 3
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -64.1629629629629,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": false
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 3,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -93.60000000000052,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 3,
+          "wallStiffness": 0
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -52.79999999999986,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 3,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 3
+        },
+        "kind": "seen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 3
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -117.76296296296408,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 3,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 3
+        },
+        "kind": "unseen-color",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 3
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -76.96296296296336,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 3,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": false,
+        "reason": "flip-budget",
+        "energy": -114.00000000000111,
+        "driveEngaged": true,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 3,
+          "wallStiffness": 1
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -72.00000000000014,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 3,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 3
+        },
+        "kind": "unseen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 2
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -102.53333333333417,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": false
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 1,
+          "speed": 3,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 1,
+          "reboundSpeed": 3
+        },
+        "kind": "unseen-combo",
+        "prediction": {
+          "rebound": 1,
+          "reboundSpeed": 3
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -64.1629629629629,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 0,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 3,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -93.60000000000052,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      },
+      {
+        "conditions": {
+          "color": 6,
+          "direction": 0,
+          "damping": 0,
+          "hitWall": 0,
+          "speed": 3,
+          "wallStiffness": 2
+        },
+        "truth": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "kind": "miss-wall",
+        "prediction": {
+          "rebound": 0,
+          "reboundSpeed": 0
+        },
+        "converged": true,
+        "reason": "fixed-point",
+        "energy": -52.79999999999986,
+        "driveEngaged": false,
+        "coarse": true,
+        "fine": true
+      }
+    ]
+  }
+}

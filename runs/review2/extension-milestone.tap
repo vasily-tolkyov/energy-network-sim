@@ -1,0 +1,16 @@
+TAP version 13
+# Subtest: 量程扩展：概念更新让新区域结晶为概念，冻结对照概念层停滞
+ok 1 - 量程扩展：概念更新让新区域结晶为概念，冻结对照概念层停滞
+  ---
+  duration_ms: 7636.8052
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8173.9943

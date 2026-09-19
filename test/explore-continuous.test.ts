@@ -46,9 +46,12 @@ test("量程扩展：概念更新让新区域结晶为概念，冻结对照概�
 
   // 更新模式：扩展后应再次形成，voltage 概念覆盖高压区
   const u = build(true);
-  while (u.ex.log.length < 200 && u.ex.step()) {}
+  // The full 200+200 experiment remains in runner-explore-ext. This test
+  // advances to representation milestones, not to a prediction score target.
+  while (u.ex.currentPhase === "corpus" && u.ex.step()) {}
+  assert.equal(u.ex.currentPhase, "full");
   u.planner.extendValues("voltage", LAB_CONT_EXT_NEW_VALUES.voltage!);
-  while (u.ex.step()) {}
+  while (!(u.ex.formationReport?.centers.voltage ?? []).some(c => c > 3.5) && u.ex.step()) {}
   assert.ok(u.ex.formationHistory.length >= 2, `更新模式扩展后应再次形成，实 ${u.ex.formationHistory.length} 次`);
   const lastCenters = u.ex.formationReport!.centers.voltage ?? [];
   assert.ok(
@@ -59,9 +62,12 @@ test("量程扩展：概念更新让新区域结晶为概念，冻结对照概�
 
   // 冻结模式：形成历史恒为 1（概念层停滞），但不崩溃（重叠容忍）
   const f = build(false);
-  while (f.ex.log.length < 200 && f.ex.step()) {}
+  while (f.ex.currentPhase === "corpus" && f.ex.step()) {}
   f.planner.extendValues("voltage", LAB_CONT_EXT_NEW_VALUES.voltage!);
-  while (f.ex.step()) {}
+  // Wait for actual extended-range exposure and a voltage contrast as well;
+  // a tiny corpus containing only gate-off outcomes cannot prove attribution.
+  while ((f.ex.log.length < u.ex.log.length || !(f.ex.magEvidence().voltage ?? 0) ||
+    !f.ex.log.some(s => LAB_CONT_EXT_NEW_VALUES.voltage!.includes(s.conditions.voltage!))) && f.ex.step()) {}
   assert.equal(f.ex.formationHistory.length, 1, "冻结模式扩展后不应再形成");
   assert.ok((f.ex.magEvidence().voltage ?? 0) > 0, "冻结模式仍能归因（重叠容忍，如实记录）");
 });

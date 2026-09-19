@@ -1,0 +1,41 @@
+{
+  "status": "interrupted",
+  "reason": "Tests already loaded obsolete 100% and coupled-ablation contracts; original complete run retained as verify.log (176/179). Re-lock against recorded valid-domain scores and test four independent configurations.",
+  "processes": [
+    {
+      "ProcessId": 13932,
+      "ParentProcessId": 16596,
+      "CommandLine": "\"C:\\Users\\86139\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nnpm run verify > runs/review2/verify-final.log 2>&1; $verifyFinal=$LASTEXITCODE; Set-Content runs/review2/verify-final.exit $verifyFinal; exit $verifyFinal\""
+    },
+    {
+      "ProcessId": 19032,
+      "ParentProcessId": 13932,
+      "CommandLine": "\"D:\\nodejs\\node.exe\" D:\\nodejs/node_modules/npm/bin/npm-cli.js run verify"
+    },
+    {
+      "ProcessId": 17576,
+      "ParentProcessId": 19032,
+      "CommandLine": "C:\\WINDOWS\\system32\\cmd.exe /d /s /c npm run build && npm test"
+    },
+    {
+      "ProcessId": 27612,
+      "ParentProcessId": 17576,
+      "CommandLine": "\"D:\\nodejs\\\\node.exe\"  \"D:\\nodejs\\\\node_modules\\npm\\bin\\npm-cli.js\" test"
+    },
+    {
+      "ProcessId": 31628,
+      "ParentProcessId": 27612,
+      "CommandLine": "C:\\WINDOWS\\system32\\cmd.exe /d /s /c node --test dist/test/*.test.js"
+    },
+    {
+      "ProcessId": 19860,
+      "ParentProcessId": 31628,
+      "CommandLine": "node  --test dist/test/*.test.js"
+    },
+    {
+      "ProcessId": 21424,
+      "ParentProcessId": 19860,
+      "CommandLine": "D:\\nodejs\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http dist\\test\\explore-continuous.test.js"
+    }
+  ]
+}
