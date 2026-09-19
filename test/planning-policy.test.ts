@@ -40,3 +40,18 @@ test("all output dimensions required, invalid observation cannot mutate evidence
   assert.equal(model.mem.ruleCount, 0);
   assert.equal(model.mem.evidenceGeneration, 0);
 });
+
+test("bounded rollout reports depth and prediction exhaustion separately from unknown reachability", () => {
+  const p = prediction(1);
+  const chain: TransitionReader = { space: { ...PATH_SPACE, diameter: 1 }, actions: [p.action],
+    predict: state => ({ ...p, state, next: { pos: state.pos! + 1 } }) };
+  const depth = planGoal(chain, { pos: 0 }, { pos: 7 }, 1);
+  assert.equal(depth.status, "depth-limit");
+  assert.equal(depth.predictions.length, 2);
+  const tree: TransitionReader = { space: { ...PATH_SPACE, diameter: 1 },
+    actions: [p.action, { id: 1, values: { move: 1 } }], predict: (state, action) => ({ ...p, state, action,
+      next: { pos: state.pos === 0 ? action.id + 1 : state.pos === 1 ? 0 : 7 } }) };
+  const budget = planGoal(tree, { pos: 0 }, { pos: 7 }, 1);
+  assert.equal(budget.status, "prediction-budget");
+  assert.equal(budget.predictions.length, budget.predictBudget);
+});

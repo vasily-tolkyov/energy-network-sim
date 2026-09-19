@@ -1,0 +1,50 @@
+{
+  "validation": [
+    {
+      "seed": 1,
+      "P1": true,
+      "P2": true,
+      "P3": true,
+      "P4": true,
+      "P5": true,
+      "P6": true,
+      "P7": true,
+      "P8": true,
+      "predictCalls": 1132,
+      "retainedOpenLoopFailures": 0
+    },
+    {
+      "seed": 2,
+      "P1": true,
+      "P2": true,
+      "P3": true,
+      "P4": true,
+      "P5": true,
+      "P6": true,
+      "P7": true,
+      "P8": true,
+      "predictCalls": 1136,
+      "retainedOpenLoopFailures": 1
+    },
+    {
+      "seed": 3,
+      "P1": true,
+      "P2": true,
+      "P3": true,
+      "P4": true,
+      "P5": true,
+      "P6": true,
+      "P7": true,
+      "P8": true,
+      "predictCalls": 1132,
+      "retainedOpenLoopFailures": 0
+    }
+  ],
+  "P9": {
+    "tests": 198,
+    "passed": 198,
+    "failed": 0,
+    "exitCode": 0
+  },
+  "hashedFiles": 119
+}

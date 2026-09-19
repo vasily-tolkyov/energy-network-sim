@@ -1,6 +1,8 @@
 # 第三方复审与复现指南
 
-本轮基线为 `e732f2b4ef46e0ac482480095a31cb5aa23ec6be`。当前验收结论、测试数与完整实测表仅以 [第二轮修复记录](docs/REVIEW2-REMEDIATION.zh-CN.md) 为准；原指南的旧数字和已撤回契约保存在 [基线快照](docs/history/e732f2b-REVIEW-GUIDE.zh-CN.md)。
+最新工作为基于 `33f8b6a` 的 [PLAN-009 规划核心与实测](docs/EVALUATION-PLAN-009.zh-CN.md)，运行 `npm run exp:plan`，证据在 `runs/plan-*.json`。规划与执行模块在 `src/planning/`；BFS 只存在于评分模块 `src/topics/plan-evaluation.ts`。
+
+此前第二轮修复基线为 `e732f2b4ef46e0ac482480095a31cb5aa23ec6be`，对应验收结论、测试数与实测表见 [第二轮修复记录](docs/REVIEW2-REMEDIATION.zh-CN.md)；原指南的旧数字和已撤回契约保存在 [基线快照](docs/history/e732f2b-REVIEW-GUIDE.zh-CN.md)。下文原样复审步骤属于该轮历史证据。
 
 ## 工具链与永久测试
 

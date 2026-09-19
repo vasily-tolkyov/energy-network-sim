@@ -15,9 +15,12 @@ npm run exp:explore-ext   # 扩展量程：更新与冻结
 npm run exp:pop           # 小球与容量
 npm run exp:chem
 npm run exp:concept
+npm run exp:plan          # PLAN-009：路径/单向链、执行监控、随机与无重规划对照
 ```
 
-完整测试数、逐种子指标、失败记录和原样复审结果集中在 [第二轮修复与复验记录](docs/REVIEW2-REMEDIATION.zh-CN.md)；基准原始日志在 `runs/review2/` 与 `review-artifacts/reproduction/`。历史数字见 [e732f2b README 快照](docs/history/e732f2b-README.md)，不作为当前能力声明。运行器会覆盖同名日志，比较前须另存历史输出。
+最新规划实现、逐种子指标与失败记录见 [PLAN-009 实测](docs/EVALUATION-PLAN-009.zh-CN.md)：原始路径到达率 100%/98.2%/100%，监控执行三种子均 100%；单向链两种扰动均通过。规划控制流是程序化先验，全部单步转移预测来自神经记忆；只读 rollout 不写入假设。基准原始日志为 `runs/plan-*.json`。
+
+前一轮修复的测试数与原样复审结果见 [第二轮修复与复验记录](docs/REVIEW2-REMEDIATION.zh-CN.md)；原始日志在 `runs/review2/` 与 `review-artifacts/reproduction/`。历史数字见 [e732f2b README 快照](docs/history/e732f2b-README.md)。运行器会覆盖同名日志，比较前须另存历史输出。
 
 ## 当前契约
 

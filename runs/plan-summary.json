@@ -1,0 +1,311 @@
+[
+  {
+    "seed": 1,
+    "summary": {
+      "seed": 1,
+      "path": {
+        "n": 56,
+        "reached": 56,
+        "reachRate": 1,
+        "successfulStepRatio": {
+          "n": 56,
+          "min": 1,
+          "median": 1,
+          "p90": 1,
+          "max": 1,
+          "mean": 1
+        },
+        "allStepRatio": {
+          "n": 56,
+          "min": 1,
+          "median": 1,
+          "p90": 1,
+          "max": 1,
+          "mean": 1
+        },
+        "predictCalls": {
+          "n": 56,
+          "min": 2,
+          "median": 8,
+          "p90": 14,
+          "max": 14,
+          "mean": 8
+        },
+        "randomReached": 29,
+        "randomReachRate": 0.5178571428571429,
+        "monitoredReached": 56,
+        "monitoredStepRatio": {
+          "n": 56,
+          "min": 1,
+          "median": 1,
+          "p90": 1,
+          "max": 1,
+          "mean": 1
+        },
+        "replans": 0,
+        "selectedFixedPointFraction": 1
+      },
+      "chain": {
+        "ordered": true,
+        "noReverseDoor": true,
+        "closedGate": true,
+        "displacement": true,
+        "replanPredictIncrements": [
+          2,
+          2
+        ],
+        "noReplanClosedGateReached": false,
+        "noReplanDisplacementReached": true,
+        "noReplanFailureRate": 0.5,
+        "randomReached": 37,
+        "randomN": 56
+      },
+      "isolation": {
+        "pathUnchanged": 16,
+        "pathN": 16,
+        "pathHashEqual": true,
+        "chainAllUnchanged": true
+      },
+      "predictions": {
+        "calls": 1132,
+        "reasons": {
+          "fixed-point": 1132
+        },
+        "noQuietCandidate": 0,
+        "nonconverged": 0,
+        "nonconvergedRate": 0,
+        "anyOutputRefusalRate": 0,
+        "unknownDecodedRate": 0,
+        "ledgerMismatches": 0,
+        "maxLedgerError": 3.552713678800501e-14,
+        "statusMissing": 0,
+        "milliseconds": {
+          "n": 1132,
+          "min": 11.21730000000025,
+          "median": 19.97699999999986,
+          "p90": 23.67413000000106,
+          "max": 40.091599999999744,
+          "mean": 19.81596651943463
+        }
+      },
+      "selectedFixedPointFraction": 1,
+      "totalMilliseconds": 24160.3503
+    },
+    "acceptance": {
+      "P1": true,
+      "P2": true,
+      "P3": true,
+      "P4": true,
+      "P5": true,
+      "P6": true,
+      "P7": true,
+      "P8": true
+    }
+  },
+  {
+    "seed": 2,
+    "summary": {
+      "seed": 2,
+      "path": {
+        "n": 56,
+        "reached": 55,
+        "reachRate": 0.9821428571428571,
+        "successfulStepRatio": {
+          "n": 55,
+          "min": 1,
+          "median": 1,
+          "p90": 1,
+          "max": 1,
+          "mean": 1
+        },
+        "allStepRatio": {
+          "n": 56,
+          "min": 1,
+          "median": 1,
+          "p90": 1,
+          "max": 2,
+          "mean": 1.0178571428571428
+        },
+        "predictCalls": {
+          "n": 56,
+          "min": 2,
+          "median": 8,
+          "p90": 14,
+          "max": 14,
+          "mean": 8
+        },
+        "randomReached": 31,
+        "randomReachRate": 0.5535714285714286,
+        "monitoredReached": 56,
+        "monitoredStepRatio": {
+          "n": 56,
+          "min": 1,
+          "median": 1,
+          "p90": 1,
+          "max": 3,
+          "mean": 1.0357142857142858
+        },
+        "replans": 1,
+        "selectedFixedPointFraction": 1
+      },
+      "chain": {
+        "ordered": true,
+        "noReverseDoor": true,
+        "closedGate": true,
+        "displacement": true,
+        "replanPredictIncrements": [
+          2,
+          2
+        ],
+        "noReplanClosedGateReached": false,
+        "noReplanDisplacementReached": true,
+        "noReplanFailureRate": 0.5,
+        "randomReached": 30,
+        "randomN": 56
+      },
+      "isolation": {
+        "pathUnchanged": 16,
+        "pathN": 16,
+        "pathHashEqual": true,
+        "chainAllUnchanged": true
+      },
+      "predictions": {
+        "calls": 1136,
+        "reasons": {
+          "fixed-point": 1136
+        },
+        "noQuietCandidate": 0,
+        "nonconverged": 0,
+        "nonconvergedRate": 0,
+        "anyOutputRefusalRate": 0,
+        "unknownDecodedRate": 0,
+        "ledgerMismatches": 0,
+        "maxLedgerError": 5.861977570020827e-14,
+        "statusMissing": 0,
+        "milliseconds": {
+          "n": 1136,
+          "min": 11.035400000000664,
+          "median": 19.771850000000995,
+          "p90": 23.020950000003722,
+          "max": 81.52030000000013,
+          "mean": 20.281416549295688
+        }
+      },
+      "selectedFixedPointFraction": 1,
+      "totalMilliseconds": 24420.4299
+    },
+    "acceptance": {
+      "P1": true,
+      "P2": true,
+      "P3": true,
+      "P4": true,
+      "P5": true,
+      "P6": true,
+      "P7": true,
+      "P8": true
+    }
+  },
+  {
+    "seed": 3,
+    "summary": {
+      "seed": 3,
+      "path": {
+        "n": 56,
+        "reached": 56,
+        "reachRate": 1,
+        "successfulStepRatio": {
+          "n": 56,
+          "min": 1,
+          "median": 1,
+          "p90": 1,
+          "max": 1,
+          "mean": 1
+        },
+        "allStepRatio": {
+          "n": 56,
+          "min": 1,
+          "median": 1,
+          "p90": 1,
+          "max": 1,
+          "mean": 1
+        },
+        "predictCalls": {
+          "n": 56,
+          "min": 2,
+          "median": 8,
+          "p90": 14,
+          "max": 14,
+          "mean": 8
+        },
+        "randomReached": 32,
+        "randomReachRate": 0.5714285714285714,
+        "monitoredReached": 56,
+        "monitoredStepRatio": {
+          "n": 56,
+          "min": 1,
+          "median": 1,
+          "p90": 1,
+          "max": 1,
+          "mean": 1
+        },
+        "replans": 0,
+        "selectedFixedPointFraction": 1
+      },
+      "chain": {
+        "ordered": true,
+        "noReverseDoor": true,
+        "closedGate": true,
+        "displacement": true,
+        "replanPredictIncrements": [
+          2,
+          2
+        ],
+        "noReplanClosedGateReached": false,
+        "noReplanDisplacementReached": true,
+        "noReplanFailureRate": 0.5,
+        "randomReached": 42,
+        "randomN": 56
+      },
+      "isolation": {
+        "pathUnchanged": 16,
+        "pathN": 16,
+        "pathHashEqual": true,
+        "chainAllUnchanged": true
+      },
+      "predictions": {
+        "calls": 1132,
+        "reasons": {
+          "fixed-point": 1132
+        },
+        "noQuietCandidate": 0,
+        "nonconverged": 0,
+        "nonconvergedRate": 0,
+        "anyOutputRefusalRate": 0,
+        "unknownDecodedRate": 0,
+        "ledgerMismatches": 0,
+        "maxLedgerError": 3.552713678800501e-14,
+        "statusMissing": 0,
+        "milliseconds": {
+          "n": 1132,
+          "min": 11.081500000000233,
+          "median": 19.7612500000032,
+          "p90": 23.362050000007727,
+          "max": 85.67740000000049,
+          "mean": 20.416898409894074
+        }
+      },
+      "selectedFixedPointFraction": 1,
+      "totalMilliseconds": 24453.899899999997
+    },
+    "acceptance": {
+      "P1": true,
+      "P2": true,
+      "P3": true,
+      "P4": true,
+      "P5": true,
+      "P6": true,
+      "P7": true,
+      "P8": true
+    }
+  }
+]

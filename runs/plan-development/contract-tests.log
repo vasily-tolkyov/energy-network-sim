@@ -1,0 +1,15 @@
+✔ evaluation uses BFS only on bench side and reports empty denominators as N/A (2.7054ms)
+✔ rollout preserves all synapses; source observations change evidence; snapshot stays immutable (155.5779ms)
+✔ no-replanning control executes old chain and can succeed after displacement without detection credit (195.0801ms)
+✔ quiet failure is infeasible; unknown is retained; approximate valued steps remain usable (2.9363ms)
+✔ candidate ranking and cycle detection do not use distance to goal (0.4588ms)
+✔ all output dimensions required, invalid observation cannot mutate evidence (2.8194ms)
+✔ bounded rollout reports depth and prediction exhaustion separately from unknown reachability (0.5512ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 510.7713
