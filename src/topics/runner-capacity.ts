@@ -1,3 +1,4 @@
+import { PredictionQuality } from "../pop/prediction-quality.js";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { EnergyNetwork, hebbianLearn, detectWells } from "../index.js";
 import { ChannelMap } from "../prototype/channels.js";
@@ -23,6 +24,7 @@ import {
  */
 
 const lines: string[] = [];
+const quality = new PredictionQuality();
 const out = (s = "") => {
   console.log(s);
   lines.push(s);
@@ -83,7 +85,9 @@ for (const [variant, truthFn] of [
       const taughtSet = new Set(combos.map(([a, b]) => `${a},${b}`));
       for (const q of capQueries(taughtSet, truthFn)) {
         const t0 = performance.now();
-        const { decoded } = mem.predict(q.conditions, seed);
+        const prediction = mem.predict(q.conditions, seed);
+        const { decoded } = prediction;
+        quality.record(decoded, prediction.converged, prediction.terminationReason);
         queryMs += performance.now() - t0;
         const ok = decoded.out === q.truth.out;
         if (q.kind === "taught") {
@@ -98,7 +102,7 @@ for (const [variant, truthFn] of [
     out(
       String(E).padStart(4) +
         `${((taughtCorrect / taughtTotal) * 100).toFixed(1)}%`.padStart(16) +
-        `${(heldTotal === 0 ? 0 : (heldCorrect / heldTotal) * 100).toFixed(1)}%`.padStart(16) +
+        (heldTotal === 0 ? "N/A (n=0)" : `${((heldCorrect / heldTotal) * 100).toFixed(1)}%`).padStart(16) +
         (queryMs / (taughtTotal + heldTotal)).toFixed(2).padStart(10),
     );
   }
@@ -112,7 +116,9 @@ for (const [variant, truthFn] of [
     const combos = sampleCombos(32, seed);
     const mem = teachCapacityNet(combos, 0, capTruth);
     for (const q of capQueries(new Set(combos.map(([a, b]) => `${a},${b}`)), capTruth)) {
-      const { decoded } = mem.predict(q.conditions, seed);
+      const prediction = mem.predict(q.conditions, seed);
+        const { decoded } = prediction;
+        quality.record(decoded, prediction.converged, prediction.terminationReason);
       total++;
       if (decoded.out === q.truth.out) correct++;
     }
@@ -121,6 +127,7 @@ for (const [variant, truthFn] of [
 }
 
 // ── C2 装配容量（资源侧）─────────────────────────────────────────
+out(`C1 动力学与任一输出拒答（答案质量另列）：${JSON.stringify(quality.snapshot())}`);
 const skipC2 = process.argv.includes("--skip-c2");
 if (!skipC2) {
 out("");
@@ -168,10 +175,12 @@ for (const count of [100, 200, 400]) {
   let completion = 0;
   let stray = 0;
   let settleMs = 0;
+  let nonconverged = 0;
   for (const c of clusters) {
     const cue = c.slice(0, WS / 4);
     const t2 = performance.now();
     const r = net.settle(cue);
+    if (!r.converged) nonconverged++;
     settleMs += performance.now() - t2;
     const active = new Set(r.activeNeurons);
     let hit = 0;
@@ -185,7 +194,7 @@ for (const count of [100, 200, 400]) {
       `${((completion / count) * 100).toFixed(1)}%`.padStart(12) +
       (stray / count).toFixed(2).padStart(9) +
       (settleMs / count).toFixed(1).padStart(12) +
-      `  [learn ${learnMs.toFixed(0)}ms, detect ${detectMs.toFixed(0)}ms]`,
+      `  [learn ${learnMs.toFixed(0)}ms, detect ${detectMs.toFixed(0)}ms] nonconverged=${nonconverged}/${count}; refusal=N/A (capture completion is reported)`,
   );
 }
 } // end if (!skipC2)

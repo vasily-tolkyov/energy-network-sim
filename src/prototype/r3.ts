@@ -82,7 +82,7 @@ export class RuleMemory {
   predict(
     query: Conditions,
     seed: number,
-  ): { decoded: Record<string, DecodedOutcome>; activeNeurons: readonly number[]; energy: number } {
+  ): { decoded: Record<string, DecodedOutcome>; activeNeurons: readonly number[]; energy: number; converged: boolean; terminationReason: string } {
     const input = this.conditionMap.encode(query);
     const result = this.net.settleAnnealed(input, [], {
       seed,
@@ -93,14 +93,16 @@ export class RuleMemory {
       decoded: decodeChannels(result.activeNeurons, this.outcomeMap, this.outcomeMap.channelNames(), this.conditionMap.neuronCount),
       activeNeurons: result.activeNeurons,
       energy: result.energy,
+      converged: result.converged, terminationReason: result.terminationReason,
     };
   }
 
   /** 消融用：纯贪心读出（无退火竞争），结果取 settle 后的激活结果神经元 */
-  predictGreedy(query: Conditions): { decoded: Record<string, DecodedOutcome> } {
+  predictGreedy(query: Conditions): { decoded: Record<string, DecodedOutcome>; converged: boolean; terminationReason: string } {
     const input = this.conditionMap.encode(query);
     const result = this.net.settle(input);
     return {
+      converged: result.converged, terminationReason: result.terminationReason,
       decoded: decodeChannels(result.activeNeurons, this.outcomeMap, this.outcomeMap.channelNames(), this.conditionMap.neuronCount),
     };
   }
