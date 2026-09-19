@@ -1,0 +1,79 @@
+✔ R09 invalid observation must not consume a rule slot or write weights (3.0709ms)
+ℹ {"error":"channel y: bin NaN out of range [0, 2)","rules":0,"allocated":0,"conditionCoreWeight":0}
+✔ R10 sensory NaN must be rejected before registration (1.7751ms)
+ℹ {"rejected":true,"rules":0}
+✔ R11 finite integer annealing options must be validated (2.2406ms)
+ℹ {"accepted":[]}
+✔ R12 infinite levels must reject promptly (isolated child with 2.5s hard timeout) (146.6883ms)
+ℹ {"result":"rejected"}
+✔ R13 zero quench budget must reject or perform zero quench flips (1.1043ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5,1.5],"flipCount":0,"driveWork":0},"converged":false,"terminationReason":"flip-budget","residualFlips":1,"candidateSet":[0],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":0,"acceptedUphill":0}
+✔ R15 fractional rule capacity must be rejected at construction (0.3795ms)
+ℹ {"rejected":true}
+✔ R17 allocator rejects ordinary overflow without changing registered state (2.8199ms)
+ℹ {"n":1,"count":1,"after":1}
+✔ R01 DI accounting and reported residuals across 24 fresh random networks (7.7564ms)
+ℹ {"networks":24,"limited":0}
+✔ R02 explicit candidate freeze blocks a connected outside chain (1.5235ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5],"flipCount":0,"driveWork":0},"converged":true,"terminationReason":"fixed-point","residualFlips":0,"candidateSet":[0],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":0,"acceptedUphill":0}
+✔ R03 current documented peak-edge example is executable (2.8605ms)
+ℹ {"wells":2}
+✔ R04 quiet-only fallback must not return an engaged driver when quiet state was visited (0.8847ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5,1,0.5,3,1.5,1,0.5,3,1.5,1.5],"flipCount":10,"driveWork":-8},"converged":false,"terminationReason":"flip-budget","residualFlips":1,"candidateSet":[0,1,2],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":2,"acceptedUphill":0,"engaged":false,"visitedQuietState":[0],"quietEnergy":1.5}
+✔ R05 self-written guess cannot veto a previously confirmed observation (15.036ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-3.1999999999999993,"converged":true,"terminationReason":"fixed-point"}
+✔ R06 repeated same-world truth must recover after an erroneous self-written guess (7.6719ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-11.999999999999988,"converged":true,"terminationReason":"fixed-point"}
+✔ R07 field observations within identical receptive-field code cannot erase that code (19.5307ms)
+ℹ {"values":{"y":0.505},"distribution":{"y":[{"center":0.5,"count":8}]},"ambiguous":[],"activeNeurons":[4,5,6,7,8,9,10,11,56,57,58,59,60,61,62,63,80,81,82,83],"energy":-15.600000000000012,"winningCores":[0],"converged":true,"terminationReason":"fixed-point"}
+✔ R08 nearby but distinct inputs of a stationary function must retain a readable shared code (30.3553ms)
+ℹ {"rules":1,"a":{"y":0.505},"b":{"y":0.505}}
+✔ R14 R2 unchanged outcomes across variable dimensions and population sizes (11.8053ms)
+ℹ {"checked":12}
+✔ R18 actual observation can correct a prior wrong guess in the supported one-way order (4.8096ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-5.399999999999993,"converged":true,"terminationReason":"fixed-point"}
+✔ R19 field R2 outcome change detection must be invariant to pair reversal (22.3123ms)
+ℹ {"forward":{"undecidable":false,"outcomeChanged":true,"outcomeDelta":{"y":0.125},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":7.6000000000000005},"reverse":{"undecidable":false,"outcomeChanged":true,"outcomeDelta":{"y":-0.125},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":7.6000000000000005}}
+✔ R20 influence allocation and reverse observation order preserve registration identity (24.8017ms)
+ℹ {"rules":2,"a":{"y":0.09999999999999999},"b":{"y":0.9},"winning":[[1],[0]]}
+✔ N01 strong observation must not be vetoed by weaker self-written guess (48.3509ms)
+✔ N02 stationary truth can repair one intervening false guess (12.8997ms)
+✔ N03 identical sensory codes in static y=x must not erase each other (116.7652ms)
+✔ N04 repeated identical raw observations preserve continuous recall (61.2696ms)
+✔ N05 invalid Pop condition must not consume capacity (1.3059ms)
+✔ N06 invalid Pop outcome must not partially write a rule (1.226ms)
+✔ N07 unknown Field outcome must leave memory unchanged on rejection (6.012ms)
+✔ N08 multiple preallocated Field cores get pairwise exclusion on registration (1.9075ms)
+✔ N09 invalid Hebbian batch is rejected before any edge is changed (0.3364ms)
+✔ N10 fractional anneal candidates must be rejected (0.4235ms)
+✔ N11 nonfinite anneal level count must be rejected (0.2707ms)
+✔ N12 nonfinite anneal temperature must be rejected (0.2456ms)
+✔ N13 invalid anneal options must not mutate current state (0.3315ms)
+✔ N14 zero quench budget cannot execute a flip (or must reject) (0.2918ms)
+✔ N15 negative directed-inhibition cap must not create excitation (0.2043ms)
+✔ N16 sensory NaN cannot silently encode as absent dimension (0.3936ms)
+✔ N17 discrete lab rejects fractional bins before charging cost (0.223ms)
+✔ N20 incomplete observations cannot allocate evidence-bearing Field rules (0.63ms)
+✔ N21 updated unseen metric includes both classes and constant baseline is nonperfect (0.8218ms)
+✔ N22 weakened focus contract honestly flags multi-marker readout (0.5953ms)
+✔ N23 valid integer DI networks preserve ledger and residual contract (200 randomized cases) (12.6255ms)
+✔ N24 Explorer must not classify an explicitly nonconverged forecast as confident verification (7.1885ms)
+✔ N29 capture correctly accepts a matching forecast (positive control) (17.4559ms)
+✔ F1 evidence sequence: truth-guess (45.7879ms)
+✔ F1 evidence sequence: guess-truth (19.4609ms)
+✔ F1 evidence sequence: truth-guess-truth (15.9172ms)
+✔ F1 evidence sequence: partial (15.8293ms)
+✔ F1 evidence sequence: truth-change-return (18.0596ms)
+✔ F2 aliases aggregate equally, overlap survives, disjoint correction reverses (80.2815ms)
+✔ F3 joint capture: matching, contradiction, novel result, partial conflict (106.6594ms)
+✔ F3 unseen threshold correction uses independent memories for each seed (review N28) (116.5959ms)
+✔ F3 cached value snapshot survives changed core semantics (29.3897ms)
+✔ F4 no legal quiet candidate returns structured failure, symmetric decay conserves Γ (1.391ms)
+ℹ tests 52
+ℹ suites 0
+ℹ pass 52
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 654.0784

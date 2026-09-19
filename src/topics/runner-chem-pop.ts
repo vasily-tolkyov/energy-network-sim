@@ -1,3 +1,4 @@
+import { predictionQuality } from "../pop/prediction-quality.js";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { performance } from "node:perf_hooks";
 import { PopChannelMap } from "../pop/popmap.js";
@@ -251,5 +252,7 @@ for (const variant of [
 }
 
 mkdirSync("runs", { recursive: true });
+out(`动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：${JSON.stringify(predictionQuality.snapshot())}`);
 writeFileSync("runs/chem-pop-v1.log", lines.join("\n") + "\n");
+predictionQuality.reset();
 out(`\n日志已写入 runs/chem-pop-v1.log`);

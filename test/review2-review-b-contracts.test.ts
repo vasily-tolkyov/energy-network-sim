@@ -1,0 +1,53 @@
+// @ts-nocheck -- verbatim independent JavaScript audit cases, imports and diagnostic sink relocated.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {writeFileSync} from 'node:fs';
+import {EnergyNetwork} from '../src/network.js';
+import {hebbianLearn} from '../src/hebbian.js';
+import {mulberry32} from '../src/prng.js';
+import {PopChannelMap} from '../src/pop/popmap.js';
+import {PopRuleMemory} from '../src/pop/popmemory.js';
+import {FieldRuleMemory} from '../src/pop/concept/field-memory.js';
+import {EmergentMap} from '../src/pop/concept/emergent-map.js';
+import {captureClassify} from '../src/pop/attention/capture.js';
+import {SensoryEncoder} from '../src/pop/concept/sensory.js';
+import {NeuralFocusNet} from '../src/pop/attention/neural-focus.js';
+import {ExperimentPlanner} from '../src/pop/explore/planner.js';
+import {Explorer} from '../src/pop/explore/explorer.js';
+import {LabBench,labProbes} from '../src/topics/lab-world.js';
+const save = (_id: string, _value: unknown) => {};
+const pop=(cfg={})=>new PopRuleMemory(new PopChannelMap([{name:'x',bins:2}],4),new PopChannelMap([{name:'y',bins:2}],4),{maxRules:8,...cfg});
+function field(cfg={}){const enc=new SensoryEncoder([{name:'x',min:0,max:1},{name:'y',min:0,max:1}]);const mem=new FieldRuleMemory(enc,new EmergentMap([],enc), {maxRules:8,...cfg});mem.setOutcomeDimensions(['y']);return {enc,mem};}
+const reads=m=>Array.from({length:5},(_,i)=>m.predict({x:0},i+1).decoded.y);
+const freads=m=>Array.from({length:5},(_,i)=>m.predict({x:.2},i+1).values.y);
+function snapshot(net){const vals=[];for(let i=0;i<net.neuronCount;i++)for(let j=0;j<net.neuronCount;j++)vals.push(net.getWeight(i,j),net.getInhibitoryWeight(i,j),net.getDirectedInhibitoryWeight(i,j));return JSON.stringify(vals);}
+
+test('N01 strong observation must not be vetoed by weaker self-written guess',()=>{const m=pop();m.learnFromObservation({x:0},{y:1},6);assert.deepEqual(reads(m),[1,1,1,1,1]);m.learnFromQuery({x:0},{y:0},2);const got=reads(m);save('N01',{got});assert.deepEqual(got,[1,1,1,1,1]);});
+test('N02 stationary truth can repair one intervening false guess',()=>{const m=pop();m.learnFromObservation({x:0},{y:1},6);m.learnFromQuery({x:0},{y:0},2);for(let i=0;i<10;i++)m.learnFromObservation({x:0},{y:1},6);const got=reads(m);save('N02',{got});assert.deepEqual(got,[1,1,1,1,1]);});
+test('N03 identical sensory codes in static y=x must not erase each other',()=>{const {enc,mem}=field();assert.deepEqual(enc.encode({x:.2}),enc.encode({x:.201}));assert.deepEqual(enc.encode({y:.2}),enc.encode({y:.201}));mem.learnFromObservation({x:.2},{y:.2},6);const before=freads(mem);mem.learnFromObservation({x:.201},{y:.201},6);const after=freads(mem);save('N03',{before,after,rules:mem.ruleCount});assert.ok(after.every(v=>v!==null&&Math.abs(v-.2)<.03));});
+test('N04 repeated identical raw observations preserve continuous recall',()=>{const {mem}=field();for(let i=0;i<12;i++)mem.learnFromObservation({x:.2},{y:.2},6);const got=freads(mem);save('N04',{got});assert.ok(got.every(v=>v!==null&&Math.abs(v-.2)<.03));});
+test('N05 invalid Pop condition must not consume capacity',()=>{const m=pop({maxRules:1}),before=snapshot(m.net);assert.throws(()=>m.learnFromObservation({x:9},{y:0},2));save('N05',{rules:m.ruleCount,changed:snapshot(m.net)!==before});assert.equal(m.ruleCount,0);assert.equal(snapshot(m.net),before);});
+test('N06 invalid Pop outcome must not partially write a rule',()=>{const m=pop(),before=snapshot(m.net);assert.throws(()=>m.learnFromObservation({x:0},{y:9},2));save('N06',{rules:m.ruleCount,changed:snapshot(m.net)!==before});assert.equal(snapshot(m.net),before);});
+test('N07 unknown Field outcome must leave memory unchanged on rejection',()=>{const {mem}=field(),before=snapshot(mem.net);assert.throws(()=>mem.learnFromObservation({x:.2},{unknown:.5},2));save('N07',{rules:mem.ruleCount,changed:snapshot(mem.net)!==before});assert.equal(snapshot(mem.net),before);});
+test('N08 multiple preallocated Field cores get pairwise exclusion on registration',()=>{const {mem}=field();mem.bindInfluence({x:.2},{x:.1},2);mem.bindInfluence({x:.8},{x:.1},2);mem.learnFromObservation({x:.2},{y:.2},6);mem.learnFromObservation({x:.8},{y:.8},6);const a=mem.ruleCore(0),b=mem.ruleCore(1),gamma=mem.net.getInhibitoryWeight(a[0],b[0]);save('N08',{a,b,gamma});assert.equal(gamma,3);});
+test('N09 invalid Hebbian batch is rejected before any edge is changed',()=>{const n=new EnergyNetwork({neuronCount:3,activationEnergy:1,maintenanceEnergy:.5});assert.throws(()=>hebbianLearn(n,[0,1,3]));const got=n.getWeight(0,1);save('N09',{changedEdge:got});assert.equal(got,0);});
+test('N10 fractional anneal candidates must be rejected',()=>{const n=new EnergyNetwork({neuronCount:4,activationEnergy:1,maintenanceEnergy:.5,maxWeight:10});n.strengthen(1,2,4);let r=null;let error=null;try{r=n.settleAnnealed([0],[],{extraCandidates:[1.5],quenchCandidatesOnly:true,levels:1,sweepsPerLevel:1});}catch(e){error=String(e);}save('N10',r?{energy:r.energy,traceEnd:r.trace.energies.at(-1),flipCount:r.trace.flipCount,driveWork:r.trace.driveWork,residual:r.residualFlips}: {error});assert.ok(error,'fractional candidate accepted');});
+test('N11 nonfinite anneal level count must be rejected',()=>{const n=new EnergyNetwork({neuronCount:3,activationEnergy:1,maintenanceEnergy:.5});assert.throws(()=>n.settleAnnealed([0],[],{levels:NaN}));});
+test('N12 nonfinite anneal temperature must be rejected',()=>{const n=new EnergyNetwork({neuronCount:3,activationEnergy:1,maintenanceEnergy:.5});assert.throws(()=>n.settleAnnealed([0],[],{initialTemperature:NaN,levels:1,sweepsPerLevel:1}));});
+test('N13 invalid anneal options must not mutate current state',()=>{const n=new EnergyNetwork({neuronCount:3,activationEnergy:1,maintenanceEnergy:.5});n.runStep([2]);assert.throws(()=>n.settleAnnealed([0],[],{coolingFactor:0}));save('N13',{state:n.activeNeurons()});assert.deepEqual(n.activeNeurons(),[2]);});
+test('N14 zero quench budget cannot execute a flip (or must reject)',()=>{const n=new EnergyNetwork({neuronCount:3,activationEnergy:1,maintenanceEnergy:.5,maxWeight:3});n.strengthen(0,1,2);let r;try{r=n.settleAnnealed([0],[],{levels:1,sweepsPerLevel:1,quenchMaxFlips:0});}catch{return;}save('N14',{flipCount:r.trace.flipCount,state:r.activeNeurons});assert.equal(r.trace.flipCount,0);});
+test('N15 negative directed-inhibition cap must not create excitation',()=>{const n=new EnergyNetwork({neuronCount:3,activationEnergy:1,maintenanceEnergy:.5});let error;try{n.strengthenDirectedInhibitory(0,1,1,-2);}catch(e){error=String(e);}const weight=n.getDirectedInhibitoryWeight(0,1);save('N15',{weight,error});assert.ok(error||weight>=0);});
+test('N16 sensory NaN cannot silently encode as absent dimension',()=>{const {enc}=field();assert.throws(()=>enc.encode({x:NaN}));});
+test('N17 discrete lab rejects fractional bins before charging cost',()=>{const b=new LabBench(),q={switch:.5,voltage:2,resistance:1,temperature:1,material:0};let err;try{b.conduct(q);}catch(e){err=String(e);}save('N17',{cost:b.experimentsUsed,err});assert.ok(err);assert.equal(b.experimentsUsed,0);});
+test('N20 incomplete observations cannot allocate evidence-bearing Field rules',()=>{const {mem}=field();try{mem.learnFromObservation({x:.2},{},2);}catch{}save('N20',{rules:mem.ruleCount,coverage:mem.coreFieldCoverage({x:.2}),uncovered:mem.uncoveredDims({x:.2})});assert.equal(mem.ruleCount,0);});
+test('N21 updated unseen metric includes both classes and constant baseline is nonperfect',()=>{const p=labProbes(new Set()),unseen=p.filter(x=>x.kind.startsWith('unseen-'));save('N21',{count:unseen.length,off:unseen.filter(x=>x.truth.lit===0).length,on:unseen.filter(x=>x.truth.lit===1).length});assert.equal(unseen.length,288);assert.deepEqual([...new Set(unseen.map(x=>x.truth.lit))].sort(),[0,1]);});
+test('N22 weakened focus contract honestly flags multi-marker readout',()=>{const f=new NeuralFocusNet(['a','b'],{inertia:0});f.beginFrame();f.setMismatch('a',8);f.setMismatch('b',8);const selected=f.select(1),markers=f.net.activeNeurons().filter(x=>x%2===1);save('N22',{selected,markers,tied:f.lastSelectionTied});assert.ok(['a','b'].includes(selected));assert.equal(f.lastSelectionTied,markers.length>1);});
+test('N23 valid integer DI networks preserve ledger and residual contract (200 randomized cases)',()=>{let nonconverged=0,maxError=0;for(let seed=1;seed<=200;seed++){const rand=mulberry32(seed),n=new EnergyNetwork({neuronCount:5,activationEnergy:1,maintenanceEnergy:.5,maxWeight:4,maxDirectedWeight:4});for(let i=0;i<5;i++)for(let j=i+1;j<5;j++){n.strengthen(i,j,rand()*3);n.strengthenInhibitory(i,j,rand());if(rand()<.3)n.strengthenDirectedInhibitory(j,i,rand()*4);}
+ const r=n.settleAnnealed([0],[],{extraCandidates:[1,2,3,4],levels:3,sweepsPerLevel:4,seed,quenchMaxFlips:50});const active=new Set(r.activeNeurons);let oracleE=n.threshold*active.size;for(let i=0;i<5;i++)for(let j=i+1;j<5;j++)if(active.has(i)&&active.has(j))oracleE+=n.getInhibitoryWeight(i,j)-n.getWeight(i,j);let oracleResidual=0;for(let i=1;i<5;i++){let h=0;for(const j of active)h+=n.getWeight(i,j)-n.getInhibitoryWeight(i,j)-n.getDirectedInhibitoryWeight(j,i);const delta=active.has(i)?h-n.threshold:n.threshold-h;if(delta< -1e-4)oracleResidual++;}assert.equal(r.residualFlips,oracleResidual);const err=Math.abs(oracleE-r.trace.energies.at(-1));maxError=Math.max(err,maxError);assert.ok(err<1e-8);assert.ok(Math.abs(oracleE-r.energy)<1e-8);if(!r.converged)nonconverged++;else assert.equal(oracleResidual,0);}
+ save('N23',{cases:200,nonconverged,maxError});});
+test('N24 Explorer must not classify an explicitly nonconverged forecast as confident verification',()=>{const cm=new PopChannelMap([{name:'x',bins:2}]),om=new PopChannelMap([{name:'y',bins:2}]),p=new ExperimentPlanner(cm.specs),ex=new Explorer(cm,om,p,cm.specs,{conduct:()=>({y:0})},{y:1},{budget:2},1);assert.equal(ex.step(),true);
+ // Contract fault injection only: isolate caller handling of an explicit backend status.
+ ex.mem.predict=()=>({decoded:{y:0},activeNeurons:[],energy:0,converged:false});assert.equal(ex.step(),true);save('N24',{classification:ex.log.at(-1).classification});assert.notEqual(ex.log.at(-1).classification,'within-envelope');});
+test('N29 capture correctly accepts a matching forecast (positive control)',()=>{
+ const {mem}=field();mem.learnFromObservation({x:.2},{y:.2},6);const p=mem.predict({x:.2},1);const r=captureClassify(mem,{x:.2},{y:.2},p.winningCores[0]??null,1);save('N29',r);assert.equal(r.class,'within-envelope');
+});

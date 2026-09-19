@@ -1,3 +1,5 @@
+import { predictionQuality } from "../prediction-quality.js";
+import { integer, learning, nonnegative, nonempty } from "../../validate.js";
 import { OutcomeEvidence, sameSupport, compatibleSupports } from "../evidence.js";
 import type { SettleTermination } from "../../types.js";
 import { EnergyNetwork, hebbianLearn } from "../../index.js";
@@ -112,6 +114,7 @@ export class FieldRuleMemory {
   ) {
     this.coreSize = config.coreSize ?? 4;
     this.maxRules = config.maxRules ?? 128;
+    integer(this.coreSize, "coreSize", 1); integer(this.maxRules, "maxRules", 1);
     this.coreBase = encoder.neuronCount;
     this.poolBase = encoder.neuronCount + this.maxRules * this.coreSize;
     this.net = new EnergyNetwork({
@@ -203,6 +206,22 @@ export class FieldRuleMemory {
     return this.rules.flatMap((r) => [...r.core]);
   }
 
+  /** Lifecycle: allocation is separate from result evidence, registration and
+   * prediction eligibility. Empty outcomes cannot advance the lifecycle. */
+  private planWrite(conditions: Record<string, number>, outcomes: Record<string, number> | undefined,
+    repeats: number, eta: number, cap: number): void {
+    learning(repeats, eta, cap); nonempty(conditions, "conditions");
+    for (const dim of Object.keys(conditions)) if (this.outcomeDims.includes(dim)) throw new Error(`outcome used as condition: ${dim}`);
+    const condFields = this.encoder.encode(conditions);
+    if (outcomes !== undefined) {
+      nonempty(outcomes, "outcomes");
+      for (const dim of Object.keys(outcomes)) if (!this.outcomeDims.includes(dim)) throw new Error(`unknown outcome dimension: ${dim}`);
+      this.encoder.encode(outcomes);
+    }
+    if (!this.signatureToCore.has(this.signatureOf(condFields)) && this.coreCursor >= this.maxRules)
+      throw new Error(`rule capacity exhausted (maxRules=${this.maxRules})`);
+  }
+
   private signatureOf(fields: readonly number[]): string {
     return [...fields].sort((a, b) => a - b).join(",");
   }
@@ -220,9 +239,9 @@ export class FieldRuleMemory {
     const base = this.coreBase + this.coreCursor * this.coreSize;
     const core = Array.from({ length: this.coreSize }, (_, k) => base + k);
     this.coreCursor++;
-    for (const rule of this.rules) {
+    for (const other of this.signatureToCore.values()) {
       for (const x of core) {
-        for (const y of rule.core) this.net.strengthenInhibitory(x, y, 3.0);
+        for (const y of other) this.net.strengthenInhibitory(x, y, 3.0);
       }
     }
     // 全局抑制池接线（WTA 电路，前馈抑制版）：
@@ -276,6 +295,7 @@ export class FieldRuleMemory {
     repeats = 4,
     baseCap = 0.4,
   ): void {
+    this.planWrite(conditions, outcomes, repeats, this.net.config.learningRate, baseCap);
     const condFields = this.encoder.encode(conditions);
     const sig = this.signatureOf(condFields);
     const core = this.coreFor(condFields);
@@ -310,6 +330,13 @@ export class FieldRuleMemory {
     gammaVeto = 1.2,
     veto = true,
   ): void {
+    this.planWrite(conditions, undefined, repeats, 0, 0);
+    nonnegative(gammaVeto, "gammaVeto");
+    for (const [dim, delta] of Object.entries(channelBoost)) {
+      nonnegative(delta, `boost ${dim}`);
+      if (this.outcomeDims.includes(dim)) throw new Error(`outcome used as influence: ${dim}`);
+      this.encoder.encodeDimension(dim, conditions[dim]!);
+    }
     for (const [dim, delta] of Object.entries(channelBoost)) {
       this.lastBoost[dim] = Math.max(this.lastBoost[dim] ?? 0, delta);
     }
@@ -442,6 +469,7 @@ export class FieldRuleMemory {
       const support = this.outcomeDimFields.filter(id => active.has(id) && this.encoder.fieldOf(id)?.dimension === dim);
       if (values[dim] !== null && e.samples > 1 && sameSupport(support, e.support)) values[dim] = e.value;
     }
+    predictionQuality.record(values, result.converged, result.terminationReason);
     return {
       values,
       distribution,
@@ -459,14 +487,16 @@ export class FieldRuleMemory {
 
   /** 指定哪些维度是结果维度（读出侧） */
   setOutcomeDimensions(dims: readonly string[]): void {
-    this.outcomeDims = [...dims];
-    this.outcomeDimFields = dims.flatMap((d) =>
+    if (this.coreCursor > 0 && dims.join() !== this.outcomeDims.join()) throw new Error("cannot change outcome schema after allocation");
+    const fields = dims.flatMap((d) =>
       Array.from({ length: this.encoder.fieldsPerDim }, (_, k) => this.encoder.dimensionOffset(d) + k),
     );
+    this.outcomeDims = [...dims]; this.outcomeDimFields = fields;
   }
 
   /** 结果侧替代值互斥（写入本网络）：换对观察到的两个值区域之间写抑制边 */
   learnExclusion(dimension: string, valueA: number, valueB: number, strength = 3.0): void {
+    nonnegative(strength, "exclusion strength");
     const a = this.encoder.encodeDimension(dimension, valueA);
     const b = this.encoder.encodeDimension(dimension, valueB);
     if (compatibleSupports(a, b)) return;
@@ -495,6 +525,7 @@ export class FieldRuleMemory {
     eta: number,
     cap: number,
   ): void {
+    this.planWrite(conditions, outcomes, repeats, eta, cap);
     const condFields = this.encoder.encode(conditions);
     const sig = this.signatureOf(condFields);
     const core = this.coreFor(condFields);
@@ -516,7 +547,7 @@ export class FieldRuleMemory {
     // 持证：按侧重并集补正/否决（场级，与 bindInfluence 同一规则）
     for (const [dim, delta] of Object.entries(this.lastBoost)) {
       // 评审 F06 同一规则：零增益通道不加分也不写否决
-      if (delta <= 0) continue;
+      if (delta <= 0 || conditions[dim] === undefined) continue;
       for (const from of this.encoder.encodeDimension(dim, conditions[dim]!)) {
         for (const to of core) this.net.strengthen(from, to, delta);
       }

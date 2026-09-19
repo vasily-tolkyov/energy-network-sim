@@ -1,3 +1,5 @@
+import { predictionQuality } from "./prediction-quality.js";
+import { integer, learning, nonnegative, nonempty } from "../validate.js";
 import { OutcomeEvidence } from "./evidence.js";
 import type { SettleTermination } from "../types.js";
 import { EnergyNetwork, hebbianLearn } from "../index.js";
@@ -65,6 +67,8 @@ export class PopRuleMemory {
     this.coreSize = config.coreSize ?? 4;
     this.maxRules = config.maxRules ?? 128;
     this.gammaCore = config.gammaCore ?? 3.0;
+    integer(this.coreSize, "coreSize", 1); integer(this.maxRules, "maxRules", 1);
+    nonnegative(this.gammaCore, "gammaCore");
     const totalNeurons =
       conditionMap.neuronCount + outcomeMap.neuronCount + this.maxRules * this.coreSize + this.poolSize;
     this.net = new EnergyNetwork({
@@ -89,6 +93,10 @@ export class PopRuleMemory {
     binB: number,
     strength: number,
   ): void {
+    nonnegative(strength, "exclusion strength");
+    if (map !== "condition" && map !== "outcome") throw new Error(`unknown map: ${map}`);
+    const target = map === "condition" ? this.conditionMap : this.outcomeMap;
+    target.population(channel, binA); target.population(channel, binB);
     if (binA === binB || strength <= 0) return;
     const m = map === "condition" ? this.conditionMap : this.outcomeMap;
     const off = map === "condition" ? 0 : this.conditionMap.neuronCount;
@@ -105,6 +113,17 @@ export class PopRuleMemory {
   }
 
   private readonly observedBins = new Map<string, Set<number>>();
+
+  /** Lifecycle: allocated -> result evidence -> registered -> prediction eligible.
+   * validate/plan runs before coreFor or evidence/boost counters commit. */
+  private planWrite(conditions: Conditions, outcomes?: Outcomes, repeats = 0, eta = 0, cap = 0): void {
+    learning(repeats, eta, cap);
+    nonempty(conditions, "conditions");
+    this.conditionMap.encode(conditions);
+    if (outcomes !== undefined) { nonempty(outcomes, "outcomes"); this.outcomeMap.encode(outcomes); }
+    if (!this.signatureToCore.has(this.signature(conditions)) && this.coreCursor >= this.maxRules)
+      throw new Error(`rule capacity exhausted (maxRules=${this.maxRules})`);
+  }
 
   private coreBase(): number {
     return this.conditionMap.neuronCount + this.outcomeMap.neuronCount;
@@ -185,6 +204,7 @@ export class PopRuleMemory {
    * 试过再加封顶 0.1 的弱直连做插值偏置，实测在规则多时重新引入
    * 混答（直连把每个历史结果档都喂一点分），已回滚并记录在案。 */
   teachExperience(exp: Experiment, repeats: number, baseCap = 0.4): void {
+    this.planWrite(exp.conditions, exp.outcomes, repeats, this.net.config.learningRate, baseCap);
     const core = this.coreFor(exp.conditions);
     const condPops = this.conditionMap.encode(exp.conditions);
     const accepted = this.acceptOutcomes(core, exp.outcomes, "observation");
@@ -225,6 +245,11 @@ export class PopRuleMemory {
     gammaVeto = 1.5,
     veto = true,
   ): void {
+    this.planWrite(exp.conditions, undefined, repeats, 0, 0);
+    nonnegative(gammaVeto, "gammaVeto");
+    for (const [ch, delta] of Object.entries(channelBoost)) {
+      nonnegative(delta, `boost ${ch}`); this.conditionMap.population(ch, exp.conditions[ch]!);
+    }
     // 记录侧重/否决参数的并集（逐通道取最大），供响应学习写入的新核"持证上岗"
     for (const [ch, delta] of Object.entries(channelBoost)) {
       this.lastBoost[ch] = Math.max(this.lastBoost[ch] ?? 0, delta);
@@ -301,14 +326,16 @@ export class PopRuleMemory {
       levels: anneal?.levels ?? 12,
       sweepsPerLevel: anneal?.sweepsPerLevel ?? 20,
     });
-    return {
-      decoded: decodePopulation(
+    const decoded = decodePopulation(
         result.activeNeurons
           .filter((id) => id >= this.conditionMap.neuronCount)
           .map((id) => id - this.conditionMap.neuronCount),
         this.outcomeMap,
         this.outcomeMap.channelNames(),
-      ),
+      );
+    predictionQuality.record(decoded, result.converged, result.terminationReason);
+    return {
+      decoded,
       activeNeurons: result.activeNeurons,
       energy: result.energy,
       // 非平衡驱动下不承诺无条件收敛：非收敛如实向上传播（评审 F01 修复附带）
@@ -392,6 +419,14 @@ export class PopRuleMemory {
    * 结果通道间接力边（teachExperience 已记录在案的两种泄漏），
    * 几十个查询累积后输入群体绕开核直接驱动结果群体，规则核桥梁被短路。 */
   learnFromQuery(query: Conditions, predicted: Record<string, PopDecoded>, repeats: number): void {
+    this.conditionMap.encode(query);
+    learning(repeats, .05, .4);
+    for (const [ch, v] of Object.entries(predicted)) {
+      if (!this.outcomeMap.channelNames().includes(ch)) throw new Error(`unknown outcome: ${ch}`);
+      if (typeof v === "number") this.outcomeMap.population(ch, v);
+      else if (v !== null && v !== "ambiguous") throw new Error(`invalid prediction: ${ch}`);
+    }
+    if (Object.values(predicted).some(v => typeof v === "number")) this.planWrite(query);
     // 评审 B03 修复：无可写结果证据（全 null/歧义）时不分配核——
     // 修复前全空预测也白占一个私有核（容量被无证据查询消耗）。
     if (!Object.values(predicted).some((v) => typeof v === "number")) return;
@@ -416,7 +451,7 @@ export class PopRuleMemory {
     // 错误预测再被学习，形成自我强化级联（v2 课程完整模型曾因此崩盘）。
     for (const [ch, delta] of Object.entries(this.lastBoost)) {
       // 评审 F06 同一规则：零增益通道不加分也不写否决；lastGammaVeto=0 断否决
-      if (delta <= 0) continue;
+      if (delta <= 0 || query[ch] === undefined) continue;
       for (const from of this.conditionMap.population(ch, query[ch]!)) {
         for (const to of core) this.net.strengthen(from, to, delta);
       }
@@ -437,6 +472,7 @@ export class PopRuleMemory {
    * 否则未持证的新核会在竞争中充当干净外表的噪声竞争者。
    */
   learnFromObservation(query: Conditions, observed: Outcomes, repeats: number): void {
+    this.planWrite(query, observed, repeats, .1, .6);
     const core = this.coreFor(query);
     const condIds = this.conditionMap.encode(query);
     const accepted = this.acceptOutcomes(core, observed, "observation");
@@ -465,7 +501,7 @@ export class PopRuleMemory {
     // 持证：影响因素加分边 + 替代档否决边（与 bindInfluence 同一规则）
     for (const [ch, delta] of Object.entries(this.lastBoost)) {
       // 评审 F06 同一规则：零增益通道不加分也不写否决；lastGammaVeto=0 断否决
-      if (delta <= 0) continue;
+      if (delta <= 0 || query[ch] === undefined) continue;
       for (const from of this.conditionMap.population(ch, query[ch]!)) {
         for (const to of core) this.net.strengthen(from, to, delta);
       }

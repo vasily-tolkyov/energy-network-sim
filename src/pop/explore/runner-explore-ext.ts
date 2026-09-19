@@ -1,3 +1,4 @@
+import { predictionQuality } from "../prediction-quality.js";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { ExperimentPlanner } from "./planner.js";
 import { ContinuousExplorer } from "./explorer-continuous.js";
@@ -127,7 +128,9 @@ for (const seed of seeds) {
     const mark = lines.length;
     runMode(mode, seed);
     mkdirSync("runs", { recursive: true });
+    out(`动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：${JSON.stringify(predictionQuality.snapshot())}`);
     writeFileSync(`runs/explore-ext-${mode}-seed${seed}.log`, lines.slice(mark).join("\n") + "\n");
+    predictionQuality.reset();
   }
 }
 

@@ -1,3 +1,4 @@
+import { predictionQuality } from "../prediction-quality.js";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { performance } from "node:perf_hooks";
 import { PopChannelMap } from "../popmap.js";
@@ -91,7 +92,7 @@ function runSeed(seed: number): void {
     const b = (perKind[p.kind] ??= { fine: 0, strict: 0, coarse: 0, refused: 0, total: 0, truthLit: 0 });
     b.total++;
     if (p.truth.lit === 1) b.truthLit++;
-    if (decoded.lit === null || decoded.lit === "ambiguous") b.refused++;
+    if (Object.values(decoded).some(v => typeof v !== "number")) b.refused++;
     if (decoded.lit === p.truth.lit) b.coarse++;
     if (verdict === "correct") b.fine++;
     // 严格联合：亮灭正确 且 亮度档精确（灭灯时亮度必须为 0，不许为空/错档）
@@ -139,7 +140,9 @@ for (const seed of seeds) {
   runSeed(seed);
   // 逐种子独立落盘（explore-lab-seedN.log）：长任务分段可恢复、可检视、不互相覆盖
   mkdirSync("runs", { recursive: true });
+  out(`动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：${JSON.stringify(predictionQuality.snapshot())}`);
   writeFileSync(`runs/explore-lab-seed${seed}.log`, lines.slice(mark).join("\n") + "\n");
+  predictionQuality.reset();
 }
 
 out(`\n日志已写入 runs/explore-lab-seed*.log`);

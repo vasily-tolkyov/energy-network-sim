@@ -29,6 +29,9 @@ export interface ContExploreStep {
   readonly conditions: Conditions;
   readonly predictedLit: number | null;
   readonly observed: Outcomes;
+  readonly converged: boolean | null;
+  readonly terminationReason: string;
+  readonly anyOutputAbstained: boolean;
   readonly classification: Episode["classification"];
   readonly drive: number;
   readonly candidateCount: number;
@@ -149,6 +152,7 @@ export class ContinuousExplorer {
       this.planner.register({ conditions: c, outcomes: observed, classification: "unknown-change" });
       this.log.push({
         index: 0, phase: this.phase, conditions: c, predictedLit: null, observed,
+        converged: null, terminationReason: "not-predicted", anyOutputAbstained: true,
         classification: "unknown-change", drive: this.cfg.ignoranceDrive, candidateCount: 0, rulesFormed: 1,
       });
       return true;
@@ -198,7 +202,8 @@ export class ContinuousExplorer {
     const predicted = this.mem.predict(chosen, this.stepSeed);
     const observed = this.bench.conduct(chosen);
     const predLit = predicted.values.lit ?? null;
-    const unconfident = Object.values(predicted.values).some((v) => v === null) || predicted.ambiguous.length > 0;
+    const anyOutputAbstained = Object.values(predicted.values).some((v) => v === null) || predicted.ambiguous.length > 0;
+    const unconfident = !predicted.converged || anyOutputAbstained;
     const mismatch =
       !unconfident &&
       Object.entries(observed).some(([ch, v]) => {
@@ -240,6 +245,7 @@ export class ContinuousExplorer {
       phase: this.phase,
       conditions: chosen,
       predictedLit: predLit,
+      converged: predicted.converged, terminationReason: predicted.terminationReason, anyOutputAbstained,
       observed,
       classification,
       drive: drives.get(chosenId) ?? 0,

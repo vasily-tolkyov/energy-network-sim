@@ -1,3 +1,4 @@
+import { integer, positive, nonnegative, neuronId } from "./validate.js";
 import { mulberry32 } from "./prng.js";
 import { resolveConfig } from "./types.js";
 import type {
@@ -96,7 +97,7 @@ export class EnergyNetwork {
   /** 对称地增加连接强度：只增不减，封顶 cap（默认 maxWeight）——已达 cap 的边不动 */
   strengthen(i: number, j: number, delta: number, cap?: number): void {
     this.checkEdge(i, j, delta);
-    if (cap !== undefined && !Number.isFinite(cap)) throw new Error(`cap must be finite, got ${cap}`);
+    if (cap !== undefined) nonnegative(cap, "cap");
     if (i === j || delta <= 0) return;
     const n = this.neuronCount;
     const limit = cap ?? this.config.maxWeight;
@@ -215,7 +216,7 @@ export class EnergyNetwork {
   /** 单向地增加前馈抑制强度并裁剪到 [0, cap]（默认 maxDirectedWeight） */
   strengthenDirectedInhibitory(from: number, to: number, delta: number, cap?: number): void {
     this.checkEdge(from, to, delta);
-    if (cap !== undefined && !Number.isFinite(cap)) throw new Error(`cap must be finite, got ${cap}`);
+    if (cap !== undefined) nonnegative(cap, "cap");
     if (from === to || delta <= 0) return;
     this.diSourceCache = null; // DI 源缓存失效
     const n = this.neuronCount;
@@ -442,6 +443,22 @@ export class EnergyNetwork {
       clamped.add(i);
     }
 
+    const theta = this.threshold;
+    const coolingFactor = options.coolingFactor ?? 0.7;
+    const levels = options.levels ?? 20;
+    const sweepsPerLevel = options.sweepsPerLevel ?? 30;
+    if (!(coolingFactor > 0 && coolingFactor < 1)) {
+      throw new Error(`coolingFactor must be in (0, 1), got ${coolingFactor}`);
+    }
+    integer(levels, "levels", 1);
+    integer(sweepsPerLevel, "sweepsPerLevel", 1);
+    integer(options.quenchMaxFlips ?? 100 * n, "quenchMaxFlips");
+    const quietOnly = options.fallbackQuietOnly ?? false;
+    let temperature = options.initialTemperature ?? theta;
+    positive(temperature, "initialTemperature");
+    const extraCandidates = options.extraCandidates ? [...options.extraCandidates] : [];
+    for (const id of extraCandidates) neuronId(id, n);
+    for (const well of wells) for (const id of well.memberNeuronIds) neuronId(id, n);
     // 从静息 + 钳制出发（无独立贪心相）
     this.state.fill(0);
     for (const i of clamped) this.state[i] = 1;
@@ -456,29 +473,13 @@ export class EnergyNetwork {
         }
       }
     }
-    if (options.extraCandidates) {
-      for (const id of options.extraCandidates) {
+    if (extraCandidates) {
+      for (const id of extraCandidates) {
         if (id >= 0 && id < n) candidate.add(id);
       }
     }
     const freeCandidates = [...candidate].filter((id) => !clamped.has(id)).sort((a, b) => a - b);
 
-    // Metropolis 退火（仅 C\I）
-    const theta = this.threshold;
-    const coolingFactor = options.coolingFactor ?? 0.7;
-    const levels = options.levels ?? 20;
-    const sweepsPerLevel = options.sweepsPerLevel ?? 30;
-    if (!(coolingFactor > 0 && coolingFactor < 1)) {
-      throw new Error(`coolingFactor must be in (0, 1), got ${coolingFactor}`);
-    }
-    if (levels < 1 || sweepsPerLevel < 1) {
-      throw new Error(`levels and sweepsPerLevel must be >= 1`);
-    }
-    const quietOnly = options.fallbackQuietOnly ?? false;
-    let temperature = options.initialTemperature ?? theta;
-    if (temperature <= 0) {
-      throw new Error(`initialTemperature must be > 0, got ${temperature}`);
-    }
     const rand = mulberry32(options.seed ?? 1);
     let proposals = 0;
     let acceptedUphill = 0;
@@ -567,6 +568,12 @@ export class EnergyNetwork {
         if (clamped.has(i)) continue;
         const { decision, cons } = deltas(i);
         if (decision < -EPS) {
+          if (quenchFlips >= maxFlips) {
+            terminated = "flip-budget";
+            this.state.set(quenchBestState);
+            quenchEnergies.push(quenchBestEnergy);
+            break outer;
+          }
           this.state[i] = this.state[i] === 0 ? 1 : 0;
           flipCount++;
           quenchFlips++;

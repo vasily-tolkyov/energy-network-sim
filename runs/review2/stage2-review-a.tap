@@ -1,0 +1,24 @@
+✔ R09 invalid observation must not consume a rule slot or write weights (2.244ms)
+ℹ {"error":"channel y: bin NaN out of range [0, 2)","rules":0,"allocated":0,"conditionCoreWeight":0}
+✔ R10 sensory NaN must be rejected before registration (1.2285ms)
+ℹ {"rejected":true,"rules":0}
+✔ R11 finite integer annealing options must be validated (1.4644ms)
+ℹ {"accepted":[]}
+✔ R12 infinite levels must reject promptly (isolated child with 2.5s hard timeout) (93.8608ms)
+ℹ {"result":"rejected"}
+✔ R13 zero quench budget must reject or perform zero quench flips (1.0881ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5,1.5],"flipCount":0,"driveWork":0},"converged":false,"terminationReason":"flip-budget","residualFlips":1,"candidateSet":[0],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":0,"acceptedUphill":0}
+✔ R15 fractional rule capacity must be rejected at construction (0.3577ms)
+ℹ {"rejected":true}
+✔ R17 allocator rejects ordinary overflow without changing registered state (2.2767ms)
+ℹ {"n":1,"count":1,"after":1}
+✔ R20 influence allocation and reverse observation order preserve registration identity (36.7163ms)
+ℹ {"rules":2,"a":{"y":0.09999999999999999},"b":{"y":0.9},"winning":[[1],[0]]}
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 263.42

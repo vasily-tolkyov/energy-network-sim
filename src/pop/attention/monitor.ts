@@ -36,6 +36,9 @@ export interface Forecast {
   readonly subjectId: string;
   readonly predicted: Record<string, PopDecoded>;
   readonly confident: boolean;
+  readonly converged?: boolean;
+  readonly terminationReason?: string;
+  readonly generation?: number;
   readonly originTick: number;
   readonly completedTick: number;
 }
@@ -83,7 +86,7 @@ export class AttentionMonitor {
     changed: boolean,
   ): ChangeClassification {
     if (!changed) return "within-envelope";
-    if (!forecast || !forecast.confident) return "unknown-change";
+    if (!forecast || !forecast.confident || forecast.converged === false) return "unknown-change";
     for (const [ch, obs] of Object.entries(observed)) {
       if (forecast.predicted[ch] !== obs) return "prediction-violation";
     }
@@ -158,14 +161,16 @@ export class AttentionMonitor {
     if (snapshot.focusTargetId) {
       const focus = frame.objects.find((o) => o.id === snapshot.focusTargetId);
       if (focus) {
-        const predicted = this.memory.predict(focus.conditions, this.#seedCursor++).decoded;
-        const confident = Object.values(predicted).every(
+        const result = this.memory.predict(focus.conditions, this.#seedCursor++);
+        const predicted = { ...result.decoded };
+        const confident = result.converged && Object.values(predicted).every(
           (v) => typeof v === "number",
         );
         this.#forecast = {
           subjectId: focus.id,
           predicted,
           confident,
+          converged: result.converged, terminationReason: result.terminationReason, generation: this.memory.evidenceGeneration,
           originTick: frame.tick,
           completedTick: frame.tick, // 预测在观察处理内同步完成
         };

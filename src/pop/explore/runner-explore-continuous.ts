@@ -1,3 +1,4 @@
+import { predictionQuality } from "../prediction-quality.js";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { performance } from "node:perf_hooks";
 import { ExperimentPlanner } from "./planner.js";
@@ -100,7 +101,7 @@ function runSeed(seed: number): void {
     const b = (perKind[p.kind] ??= { fine: 0, coarse: 0, refused: 0, total: 0, truthLit: 0 });
     b.total++;
     if (p.truth.lit === 1) b.truthLit++;
-    if (pred.values.lit === null) b.refused++;
+    if (Object.values(pred.values).some(v => v === null) || pred.ambiguous.length) b.refused++;
     if (s.coarse) b.coarse++;
     if (s.fine) b.fine++;
     if ((pi + 1) % 96 === 0) out(`    …评分进度 ${pi + 1}/${probes.length}`);
@@ -138,7 +139,9 @@ for (const seed of seeds) {
   const mark = lines.length;
   runSeed(seed);
   mkdirSync("runs", { recursive: true });
+  out(`动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：${JSON.stringify(predictionQuality.snapshot())}`);
   writeFileSync(`runs/explore-cont-seed${seed}.log`, lines.slice(mark).join("\n") + "\n");
+  predictionQuality.reset();
 }
 
 out(`\n日志已写入 runs/explore-cont-seed*.log`);

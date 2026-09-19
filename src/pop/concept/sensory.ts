@@ -8,6 +8,8 @@
  * 值概念将由共现统计在这些感受野上结晶。
  */
 
+import { integer, finite } from "../../validate.js";
+
 export interface DimensionSpec {
   readonly name: string;
   readonly min: number;
@@ -29,11 +31,13 @@ export class SensoryEncoder {
   private readonly sigmas = new Map<string, number>();
 
   constructor(dimensions: readonly DimensionSpec[], fieldsPerDim = 40) {
-    if (fieldsPerDim < 2) throw new Error(`fieldsPerDim must be >= 2, got ${fieldsPerDim}`);
-    this.dimensions = dimensions;
+    integer(fieldsPerDim, "fieldsPerDim", 2);
+    this.dimensions = dimensions.map(d => ({ ...d }));
     this.fieldsPerDim = fieldsPerDim;
     let offset = 0;
     for (const dim of dimensions) {
+      finite(dim.min, `${dim.name}.min`); finite(dim.max, `${dim.name}.max`);
+      if (this.offsets.has(dim.name)) throw new Error(`duplicate dimension: ${dim.name}`);
       const range = dim.max - dim.min;
       if (!(range > 0)) throw new Error(`dimension ${dim.name}: max must be > min`);
       this.offsets.set(dim.name, offset);
@@ -56,6 +60,7 @@ export class SensoryEncoder {
 
   /** 连续值 → 激活的神经元 id（|x−c| < 2σ；量程外夹到边界） */
   encodeDimension(dimension: string, value: number): number[] {
+    finite(value, dimension);
     const offset = this.offsets.get(dimension);
     const centers = this.centers.get(dimension);
     const sigma = this.sigmas.get(dimension);

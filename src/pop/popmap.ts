@@ -4,6 +4,8 @@
  * 输入/查询钳制整个群体（或其子集作为部分线索），捕获机制补齐其余成员。
  */
 
+import { integer } from "../validate.js";
+
 export interface PopChannelSpec {
   readonly name: string;
   readonly bins: number;
@@ -16,12 +18,13 @@ export class PopChannelMap {
   private readonly byName = new Map<string, PopChannelSpec & { offset: number }>();
 
   constructor(specs: readonly PopChannelSpec[], popSize = 4) {
-    if (popSize < 1) throw new Error(`popSize must be >= 1, got ${popSize}`);
+    integer(popSize, "popSize", 1);
     this.popSize = popSize;
     let offset = 0;
     const resolved: (PopChannelSpec & { offset: number })[] = [];
     for (const spec of specs) {
-      if (spec.bins < 1) throw new Error(`channel ${spec.name}: bins must be >= 1`);
+      integer(spec.bins, `channel ${spec.name} bins`, 1);
+      if (this.byName.has(spec.name)) throw new Error(`duplicate channel: ${spec.name}`);
       resolved.push({ ...spec, offset });
       this.byName.set(spec.name, resolved[resolved.length - 1]!);
       offset += spec.bins * popSize;

@@ -48,7 +48,7 @@ export class LabBench {
       const v = conditions[spec.name];
       // 评审 A07 修复：NaN/非有限值绕过比较（NaN 比较恒 false 曾返回"灭灯"假象），
       // 显式拒绝且不计成本
-      if (v === undefined || !Number.isFinite(v) || v < 0 || v >= spec.bins) {
+      if (v === undefined || !Number.isInteger(v) || v < 0 || v >= spec.bins) {
         throw new Error(`非法实验条件：${spec.name}=${v}（应在 [0, ${spec.bins})）`);
       }
     }

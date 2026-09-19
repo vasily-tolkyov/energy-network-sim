@@ -1,3 +1,4 @@
+import { predictionQuality } from "../prediction-quality.js";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { SensoryEncoder } from "./sensory.js";
 import { ConceptFormation } from "./formation.js";
@@ -166,5 +167,7 @@ out(`  总计：细粒度 ${okSum}/${totalSum}（${((okSum / totalSum) * 100).to
 out(`  规则核数 ${mem.ruleCount}，网络规模 ${mem.net.neuronCount}（感受野 ${enc.neuronCount} + 核区）`);
 
 mkdirSync("runs", { recursive: true });
+out(`动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：${JSON.stringify(predictionQuality.snapshot())}`);
 writeFileSync("runs/concept-formation-v1.log", lines.join("\n") + "\n");
+predictionQuality.reset();
 out(`\n日志已写入 runs/concept-formation-v1.log`);

@@ -1,0 +1,23 @@
+✔ N05 invalid Pop condition must not consume capacity (4.5879ms)
+✔ N06 invalid Pop outcome must not partially write a rule (5.9613ms)
+✔ N07 unknown Field outcome must leave memory unchanged on rejection (9.529ms)
+✔ N08 multiple preallocated Field cores get pairwise exclusion on registration (5.0095ms)
+✔ N09 invalid Hebbian batch is rejected before any edge is changed (0.7581ms)
+✔ N10 fractional anneal candidates must be rejected (5.4114ms)
+✔ N11 nonfinite anneal level count must be rejected (0.2671ms)
+✔ N12 nonfinite anneal temperature must be rejected (0.2277ms)
+✔ N13 invalid anneal options must not mutate current state (5.9123ms)
+✔ N14 zero quench budget cannot execute a flip (or must reject) (6.1903ms)
+✔ N15 negative directed-inhibition cap must not create excitation (6.1034ms)
+✔ N16 sensory NaN cannot silently encode as absent dimension (0.4981ms)
+✔ N17 discrete lab rejects fractional bins before charging cost (5.5812ms)
+✔ N20 incomplete observations cannot allocate evidence-bearing Field rules (6.7235ms)
+✔ N24 Explorer must not classify an explicitly nonconverged forecast as confident verification (11.7032ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 220.0209

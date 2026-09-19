@@ -1,3 +1,4 @@
+import { predictionQuality } from "../prediction-quality.js";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { pretrainContinuous } from "../concept/pretrain.js";
 import { continuousStream } from "../concept/stream-continuous.js";
@@ -161,5 +162,7 @@ out(SEP);
 }
 
 mkdirSync("runs", { recursive: true });
+out(`动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：${JSON.stringify(predictionQuality.snapshot())}`);
 writeFileSync("runs/neural-attention-v1.log", lines.join("\n") + "\n");
+predictionQuality.reset();
 out(`\n日志已写入 runs/neural-attention-v1.log`);

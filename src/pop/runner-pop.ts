@@ -1,3 +1,4 @@
+import { predictionQuality } from "./prediction-quality.js";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { PopChannelMap } from "./popmap.js";
 import { PopRuleMemory } from "./popmemory.js";
@@ -211,5 +212,7 @@ for (const [variant, truthFn] of [
 out(`\n容量版网络规模：条件 ${ccm.neuronCount} + 结果 ${com.neuronCount} + 核区 192×4 = ${ccm.neuronCount + com.neuronCount + 768} 神经元`);
 
 mkdirSync("runs", { recursive: true });
+out(`动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：${JSON.stringify(predictionQuality.snapshot())}`);
 writeFileSync("runs/pop-v1.log", lines.join("\n") + "\n");
+predictionQuality.reset();
 out(`\n日志已写入 runs/pop-v1.log`);

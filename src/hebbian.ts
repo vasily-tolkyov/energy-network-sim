@@ -1,3 +1,4 @@
+import { learning, neuronId } from "./validate.js";
 import type { EnergyNetwork } from "./network.js";
 
 /**
@@ -14,6 +15,9 @@ export function hebbianLearn(
 ): void {
   const neurons = [...new Set(activePattern)].sort((a, b) => a - b);
   const step = eta ?? network.config.learningRate;
+  // Whole-batch atomicity: validate every endpoint, even singleton/zero-repeat batches.
+  learning(repeats, step, cap ?? network.config.maxWeight);
+  for (const id of neurons) neuronId(id, network.neuronCount);
   for (let r = 0; r < repeats; r++) {
     for (let a = 0; a < neurons.length; a++) {
       for (let b = a + 1; b < neurons.length; b++) {

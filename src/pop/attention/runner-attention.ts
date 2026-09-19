@@ -1,3 +1,4 @@
+import { predictionQuality } from "../prediction-quality.js";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { PopChannelMap } from "../popmap.js";
 import { PopRuleMemory } from "../popmemory.js";
@@ -145,5 +146,7 @@ for (const mode of ["gated", "ungated", "none"] as const) {
 }
 
 mkdirSync("runs", { recursive: true });
+out(`动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：${JSON.stringify(predictionQuality.snapshot())}`);
 writeFileSync("runs/attention-v1.log", lines.join("\n") + "\n");
+predictionQuality.reset();
 out(`\n日志已写入 runs/attention-v1.log`);

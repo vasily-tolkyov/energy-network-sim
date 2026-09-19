@@ -28,6 +28,9 @@ export interface ExploreStep {
   readonly conditions: Conditions;
   readonly predicted: Record<string, number | null | "ambiguous">;
   readonly observed: Outcomes;
+  readonly converged: boolean | null;
+  readonly terminationReason: string;
+  readonly anyOutputAbstained: boolean;
   readonly classification: Episode["classification"];
   readonly drive: number;
   readonly candidateCount: number;
@@ -143,6 +146,7 @@ export class Explorer {
         index: 0,
         conditions: c,
         predicted: {},
+        converged: null, terminationReason: "not-predicted", anyOutputAbstained: true,
         observed,
         classification: "unknown-change",
         drive: this.cfg.ignoranceDrive,
@@ -192,9 +196,11 @@ export class Explorer {
     const chosen = candidates.find((c) => this.planner.candidateId(c) === chosenId)!;
 
     // 执行：先全档预测（三类判定用），再上台观察
-    const predicted = this.mem.predict(chosen, this.stepSeed).decoded;
+    const forecast = this.mem.predict(chosen, this.stepSeed);
+    const predicted = forecast.decoded;
     const observed = this.bench.conduct(chosen);
-    const unconfident = Object.values(predicted).some((v) => v === null || v === "ambiguous");
+    const anyOutputAbstained = Object.values(predicted).some((v) => v === null || v === "ambiguous");
+    const unconfident = !forecast.converged || anyOutputAbstained;
     const mismatch = !unconfident && Object.entries(observed).some(([ch, v]) => predicted[ch] !== v);
     const classification: Episode["classification"] = unconfident
       ? "unknown-change"
@@ -223,6 +229,7 @@ export class Explorer {
       index: this.planner.experimentCount - 1,
       conditions: chosen,
       predicted,
+      converged: forecast.converged, terminationReason: forecast.terminationReason, anyOutputAbstained,
       observed,
       classification,
       drive: drives.get(chosenId) ?? 0,
