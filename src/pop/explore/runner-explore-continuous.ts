@@ -89,31 +89,37 @@ function runSeed(seed: number): void {
     }
   }
 
-  // 外部评分：网格全组合探针（不进学习）；每 96 个打一行进度
+  // 外部评分：网格全组合探针（不进学习）；每 96 个打一行进度。
+  // 评审 F10 口径：报告拒答率与常数基线；细粒度口径见 lcScore（灭灯也校验亮度）。
   const probes = labContProbes(conducted);
-  const perKind: Record<string, { fine: number; coarse: number; total: number }> = {};
+  const perKind: Record<string, { fine: number; coarse: number; refused: number; total: number; truthLit: number }> =
+    {};
   for (const [pi, p] of probes.entries()) {
     const pred = explorer.mem.predict(p.conditions, seed);
     const s = lcScore(pred.values, p.truth);
-    const b = (perKind[p.kind] ??= { fine: 0, coarse: 0, total: 0 });
+    const b = (perKind[p.kind] ??= { fine: 0, coarse: 0, refused: 0, total: 0, truthLit: 0 });
     b.total++;
+    if (p.truth.lit === 1) b.truthLit++;
+    if (pred.values.lit === null) b.refused++;
     if (s.coarse) b.coarse++;
     if (s.fine) b.fine++;
     if ((pi + 1) % 96 === 0) out(`    …评分进度 ${pi + 1}/${probes.length}`);
   }
   let fine = 0;
   let coarse = 0;
-  for (const kind of ["self-taught", "gate-off", "heldout"] as const) {
-    const b = perKind[kind] ?? { fine: 0, coarse: 0, total: 0 };
+  for (const kind of ["self-taught", "unseen-gate-off", "unseen-gate-on"] as const) {
+    const b = perKind[kind] ?? { fine: 0, coarse: 0, refused: 0, total: 0, truthLit: 0 };
     fine += b.fine;
     coarse += b.coarse;
+    const constBase = Math.max(b.truthLit, b.total - b.truthLit) / Math.max(1, b.total);
     out(
-      `    ${kind.padEnd(11)} 细粒度 ${b.fine}/${b.total}（${((b.fine / b.total) * 100).toFixed(1)}%）` +
-        `  粗粒度亮灭 ${((b.coarse / b.total) * 100).toFixed(1)}%`,
+      `    ${kind.padEnd(15)} 细粒度 ${b.fine}/${b.total}（${((b.fine / b.total) * 100).toFixed(1)}%）` +
+        `  粗粒度亮灭 ${((b.coarse / b.total) * 100).toFixed(1)}%  拒答 ${((b.refused / b.total) * 100).toFixed(1)}%` +
+        `  常数基线 ${(constBase * 100).toFixed(1)}%`,
     );
   }
   out(
-    `    总计       细粒度 ${fine}/${probes.length}（${((fine / probes.length) * 100).toFixed(1)}%）` +
+    `    总计             细粒度 ${fine}/${probes.length}（${((fine / probes.length) * 100).toFixed(1)}%）` +
       `  粗粒度 ${((coarse / probes.length) * 100).toFixed(1)}%`,
   );
 }

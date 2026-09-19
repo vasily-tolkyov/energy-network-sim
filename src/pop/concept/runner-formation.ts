@@ -34,12 +34,6 @@ for (const group of contCurriculum()) {
     for (const e of [pair.e0, pair.e1]) {
       formation.presentExperiment({ ...e.conditions, ...e.outcomes }, 4);
     }
-    formation.presentSwap(
-      group.manipulated,
-      pair.e0.conditions[group.manipulated]!,
-      pair.e1.conditions[group.manipulated]!,
-      3.0,
-    );
   }
 }
 const emergent = new EmergentMap(formation.extractConcepts(0.5), enc);
@@ -99,6 +93,7 @@ for (const group of contCurriculum()) {
       e0: { conditions: binarize(emergent, pair.e0.conditions), outcomes: pair.e0.outcomes },
       e1: { conditions: binarize(emergent, pair.e1.conditions), outcomes: pair.e1.outcomes },
     });
+    if (analysis.undecidable) continue; // 不可判定对不进幅度累计（评审 F04）
     for (const ch of analysis.influentialChannels) {
       let m = 0;
       for (const [och, delta] of Object.entries(analysis.outcomeDelta)) {

@@ -46,7 +46,9 @@ export class LabBench {
   conduct(conditions: Conditions): Outcomes {
     for (const spec of LAB_CONDITION_SPECS) {
       const v = conditions[spec.name];
-      if (v === undefined || v < 0 || v >= spec.bins) {
+      // 评审 A07 修复：NaN/非有限值绕过比较（NaN 比较恒 false 曾返回"灭灯"假象），
+      // 显式拒绝且不计成本
+      if (v === undefined || !Number.isFinite(v) || v < 0 || v >= spec.bins) {
         throw new Error(`非法实验条件：${spec.name}=${v}（应在 [0, ${spec.bins})）`);
       }
     }
@@ -62,7 +64,13 @@ export class LabBench {
 export interface LabProbe {
   readonly conditions: Conditions;
   readonly truth: Outcomes;
-  readonly kind: "self-taught" | "gate-off" | "heldout";
+  /**
+   * 分桶（评审 F10/E01 修复：原 heldout 桶按构造全是"亮"，常数基线 100%，
+   * 不能作为门控泛化证据）：self-taught = 已做实验；unseen-gate-off =
+  未做且门控关闭；unseen-gate-on = 未做且门控开启。两个 unseen 桶的并集 =
+   * 全部未观察组合，报告时必须同时给常数基线对照。
+   */
+  readonly kind: "self-taught" | "unseen-gate-off" | "unseen-gate-on";
 }
 
 /** 评分探针：条件全网格（288 个），按来源分档（self-taught 集合由探索轨迹给出） */
@@ -82,12 +90,11 @@ export function labProbes(conducted: ReadonlySet<string>): LabProbe[] {
               temperature,
               material,
             };
-            const kind: LabProbe["kind"] =
-              conducted.has(key(conditions))
-                ? "self-taught"
-                : sw === 0 || voltage === 0
-                  ? "gate-off"
-                  : "heldout";
+            const kind: LabProbe["kind"] = conducted.has(key(conditions))
+              ? "self-taught"
+              : sw === 0 || voltage === 0
+                ? "unseen-gate-off"
+                : "unseen-gate-on";
             out.push({ conditions, truth: labTruth(conditions), kind });
           }
         }

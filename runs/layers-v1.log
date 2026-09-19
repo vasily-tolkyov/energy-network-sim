@@ -21,11 +21,11 @@
   组 hitwall-group    R2B差分通道=[hitWall] 影响因素=[hitWall] θHigh=5
   组 damping-group    R2B差分通道=[damping] 影响因素=[] θHigh=5
   组 direction-group  R2B差分通道=[direction] 影响因素=[] θHigh=5
-  seen-combo    细粒度  16/18（88.9%）  粗粒度反弹 100.0%  错 2  歧义 0
+  seen-combo    细粒度  17/18（94.4%）  粗粒度反弹 100.0%  错 1  歧义 0
   unseen-color  细粒度   9/18（50.0%）  粗粒度反弹 100.0%  错 9  歧义 0
-  unseen-combo  细粒度  20/36（55.6%）  粗粒度反弹 100.0%  错 16  歧义 0
-  miss-wall     细粒度   4/72（5.6%）  粗粒度反弹 5.6%  错 68  歧义 0
-  总计：细粒度 49/144（34.0%），粗粒度反弹 52.8%
+  unseen-combo  细粒度  22/36（61.1%）  粗粒度反弹 100.0%  错 14  歧义 0
+  miss-wall     细粒度   6/72（8.3%）  粗粒度反弹 8.3%  错 66  歧义 0
+  总计：细粒度 54/144（37.5%），粗粒度反弹 54.2%
 
 ── 消融 无查询学习 ──
   组 color-group      R2B差分通道=[color] 影响因素=[] θHigh=5

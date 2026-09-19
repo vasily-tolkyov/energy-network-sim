@@ -29,12 +29,19 @@ export class NeuralFocusNet {
       learningRate: 0.1,
       maxWeight: 40.0,
     });
-    this.ids.forEach((_, i) => {
-      const marker = 2 * i + 1;
-      this.ids.forEach((_, j) => {
-        if (j !== i) this.net.strengthenInhibitory(marker, 2 * j + 1, 3.0);
-      });
-    });
+    // 评审 A15/C08 修复（WTA 诚实化）：
+    // ① 互抑只写无序对一次（修复前 (i,j)/(j,i) 双写，Γ 意外翻倍）；
+    // ② Γ=6 的语义：切换要求挑战者失配 > 在位者 + 惯性 + Γ − θ 量级——
+    //    惯性持焦与换焦都由动力学完成（既有测试锁定）；
+    // ③ 诚实边界：完全等强的候选可以共存（8−6=2>θ），此时 select 的择一是
+    //    **读出层**操作（argmax）——机制叙述应为"神经候选筛选 + 读出择优"，
+    //    唯一性不靠静默兜底，平局由 lastSelectionTied 如实上报。
+    const GAMMA = 6;
+    for (let i = 0; i < this.ids.length; i++) {
+      for (let j = i + 1; j < this.ids.length; j++) {
+        this.net.strengthenInhibitory(2 * i + 1, 2 * j + 1, GAMMA);
+      }
+    }
     for (const id of this.ids) this.mismatches.set(id, 0);
   }
 
@@ -56,6 +63,9 @@ export class NeuralFocusNet {
     this.mismatches.set(id, field);
   }
 
+  /** 上一次择选是否出现多 marker 平局（如实上报；Γ 严格化后应为否） */
+  lastSelectionTied = false;
+
   /** 焦点动力学择选：重写边强 → 钳制全部 driver → 退火 marker 竞争 → 胜者 id */
   select(seed = 1): string {
     for (const id of this.ids) {
@@ -71,10 +81,11 @@ export class NeuralFocusNet {
       levels: 8,
       sweepsPerLevel: 10,
     });
-    // 胜者：激活 marker 中边最强者
+    // 读出：激活 marker 中边最强者；多激活 = 平局如实标记（不静默兜底）
+    const active = this.ids.filter((id) => result.activeNeurons.includes(this.marker(id)));
+    this.lastSelectionTied = active.length > 1;
     let best: { id: string; field: number } | null = null;
-    for (const id of this.ids) {
-      if (!result.activeNeurons.includes(this.marker(id))) continue;
+    for (const id of active) {
       const f = this.net.getWeight(this.driver(id), this.marker(id));
       if (!best || f > best.field) best = { id, field: f };
     }

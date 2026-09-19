@@ -10,21 +10,21 @@
   组 temperature-group  变化候选=[temperature] → 影响因素=[temperature(m=0.17)]
   组 pest-group         变化候选=[pest] → 影响因素=[pest(m=0.92)]
   seen-combo      细粒度  15/24（62.5%）  粗粒度存活 100.0%  错 9  歧义 0
-  unseen-species  细粒度   9/24（37.5%）  粗粒度存活 100.0%  错 15  歧义 0
-  unseen-combo    细粒度  27/48（56.3%）  粗粒度存活 100.0%  错 21  歧义 0
+  unseen-species  细粒度  15/24（62.5%）  粗粒度存活 100.0%  错 9  歧义 0
+  unseen-combo    细粒度  36/48（75.0%）  粗粒度存活 100.0%  错 12  歧义 0
   pest-control    细粒度  96/96（100.0%）  粗粒度存活 100.0%  错 0  歧义 0
-  总计：细粒度 147/192（76.6%），粗粒度存活 100.0%
+  总计：细粒度 162/192（84.4%），粗粒度存活 100.0%
   失败样例（seed 首个，至多 10 条）：
-    [seen-combo] {"species":0,"light":0,"water":1,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":1}）
-    [unseen-species] {"species":3,"light":0,"water":1,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":1}）
-    [unseen-combo] {"species":0,"light":0,"water":2,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":2}）
-    [unseen-combo] {"species":3,"light":0,"water":2,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":2}）
+    [seen-combo] {"species":0,"light":0,"water":1,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":2}（真值 {"alive":1,"growth":1}）
+    [unseen-species] {"species":3,"light":0,"water":1,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":2}（真值 {"alive":1,"growth":1}）
     [unseen-combo] {"species":0,"light":0,"water":3,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":2}）
     [unseen-combo] {"species":3,"light":0,"water":3,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":2}）
     [seen-combo] {"species":0,"light":1,"water":0,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":2}（真值 {"alive":1,"growth":1}）
-    [unseen-species] {"species":3,"light":1,"water":0,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":1}）
-    [unseen-species] {"species":3,"light":1,"water":1,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":2}）
-    [unseen-species] {"species":3,"light":1,"water":2,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":2}）
+    [unseen-species] {"species":3,"light":1,"water":0,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":2}（真值 {"alive":1,"growth":1}）
+    [seen-combo] {"species":0,"light":2,"water":2,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":2}（真值 {"alive":1,"growth":3}）
+    [unseen-species] {"species":3,"light":2,"water":2,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":2}（真值 {"alive":1,"growth":3}）
+    [unseen-combo] {"species":0,"light":3,"water":0,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":2}）
+    [unseen-combo] {"species":3,"light":3,"water":0,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":2}）
 
 ── 消融 G=0（断 R2B 侧重） ──
   组 species-group      变化候选=[species] → 影响因素=[]
@@ -35,9 +35,9 @@
   组 pest-group         变化候选=[pest] → 影响因素=[pest(m=0.92)]
   seen-combo      细粒度  18/24（75.0%）  粗粒度存活 100.0%  错 6  歧义 0
   unseen-species  细粒度   6/24（25.0%）  粗粒度存活 100.0%  错 18  歧义 0
-  unseen-combo    细粒度  13/48（27.1%）  粗粒度存活 100.0%  错 35  歧义 0
+  unseen-combo    细粒度  15/48（31.3%）  粗粒度存活 100.0%  错 33  歧义 0
   pest-control    细粒度  11/96（11.5%）  粗粒度存活 11.5%  错 85  歧义 0
-  总计：细粒度 48/192（25.0%），粗粒度存活 55.7%
+  总计：细粒度 50/192（26.0%），粗粒度存活 55.7%
   失败样例（seed 首个，至多 10 条）：
     [pest-control] {"species":0,"light":0,"water":0,"fertilizer":1,"temperature":1,"pest":1} → {"alive":1,"growth":1}（真值 {"alive":0,"growth":0}）
     [pest-control] {"species":3,"light":0,"water":0,"fertilizer":1,"temperature":1,"pest":1} → {"alive":1,"growth":1}（真值 {"alive":0,"growth":0}）
@@ -47,7 +47,7 @@
     [unseen-combo] {"species":3,"light":0,"water":2,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":1}（真值 {"alive":1,"growth":2}）
     [pest-control] {"species":0,"light":0,"water":2,"fertilizer":1,"temperature":1,"pest":1} → {"alive":1,"growth":1}（真值 {"alive":0,"growth":0}）
     [pest-control] {"species":3,"light":0,"water":2,"fertilizer":1,"temperature":1,"pest":1} → {"alive":1,"growth":1}（真值 {"alive":0,"growth":0}）
-    [unseen-combo] {"species":0,"light":0,"water":3,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":1}（真值 {"alive":1,"growth":2}）
+    [unseen-combo] {"species":0,"light":0,"water":3,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":2}）
     [unseen-combo] {"species":3,"light":0,"water":3,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":1}（真值 {"alive":1,"growth":2}）
 
 ── 消融 greedy（纯贪心读出） ──
@@ -88,7 +88,7 @@
   总计：细粒度 162/192（84.4%），粗粒度存活 100.0%
   失败样例（seed 首个，至多 10 条）：
     [seen-combo] {"species":0,"light":0,"water":1,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":2}（真值 {"alive":1,"growth":1}）
-    [unseen-species] {"species":3,"light":0,"water":1,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":2}（真值 {"alive":1,"growth":1}）
+    [unseen-species] {"species":3,"light":0,"water":1,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":1}）
     [unseen-combo] {"species":0,"light":0,"water":3,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":2}）
     [unseen-combo] {"species":3,"light":0,"water":3,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":3}（真值 {"alive":1,"growth":2}）
     [seen-combo] {"species":0,"light":1,"water":0,"fertilizer":1,"temperature":1,"pest":0} → {"alive":1,"growth":2}（真值 {"alive":1,"growth":1}）

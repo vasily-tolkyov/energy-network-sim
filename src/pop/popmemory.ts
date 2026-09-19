@@ -26,11 +26,8 @@ import type { Conditions, Experiment, Outcomes } from "../prototype/world.js";
 export interface PopMemoryConfig {
   readonly coreSize?: number;
   readonly maxRules?: number;
+  /** 核间互斥强度 Γ_core（默认 3.0，评审 B07 修复：配置必须真实生效） */
   readonly gammaCore?: number;
-  readonly gammaOutcome?: number;
-  readonly r1Repeats?: number;
-  readonly influenceGain?: number;
-  readonly r3Repeats?: number;
 }
 
 export class PopRuleMemory {
@@ -40,6 +37,11 @@ export class PopRuleMemory {
   private coreCursor = 0;
   private readonly signatureToCore = new Map<string, readonly number[]>();
   private readonly cores: number[][] = [];
+  /** 核是否已有结果证据（评审 F02 的 Pop 侧同款修复：bindInfluence 可分配
+   *  无结果绑定的核——它只能竞争却永远读空；预测候选只收有证据的核） */
+  private readonly coreEvidence: boolean[] = [];
+  /** 核最近一次写入的结果（纠错否决用：观察覆盖了谁就否决谁） */
+  private readonly coreLastOutcome = new Map<number, Record<string, number>>();
   /** 前馈抑制池规模（WTA 电路，自 field-memory 移植） */
   private readonly poolSize = 2;
   /**
@@ -48,6 +50,8 @@ export class PopRuleMemory {
    * 须压灭 1-失配核（γ>2），同时让持证精确核在池点燃的暂态中存活（γ<8−θ）。
    */
   private readonly poolGamma = 4.5;
+  /** 核间互斥强度（默认 3.0，可由 config.gammaCore 覆盖） */
+  private readonly gammaCore: number;
 
   constructor(
     readonly conditionMap: PopChannelMap,
@@ -56,6 +60,7 @@ export class PopRuleMemory {
   ) {
     this.coreSize = config.coreSize ?? 4;
     this.maxRules = config.maxRules ?? 128;
+    this.gammaCore = config.gammaCore ?? 3.0;
     const totalNeurons =
       conditionMap.neuronCount + outcomeMap.neuronCount + this.maxRules * this.coreSize + this.poolSize;
     this.net = new EnergyNetwork({
@@ -123,14 +128,14 @@ export class PopRuleMemory {
     const base = this.coreBase() + this.coreCursor * this.coreSize;
     const core = Array.from({ length: this.coreSize }, (_, k) => base + k);
     this.coreCursor++;
-    // 与既有核互斥（Γ_core=3.0，与 field-memory 同值）。
-    // 历史值 1.5 压不住强支持核：1-失配核净场可达 +2~+8 > θ−6，会在胜者
-    // 两两抑制下复燃，与池构成"压制-熄火-复燃"弛豫振荡，淬火被迫跑满
+    // 与既有核互斥（Γ_core，强度可配置——评审 B07：写死参数曾让消融配置表面变化）。
+    // 默认 3.0 的由来：历史值 1.5 压不住强支持核（1-失配核净场可达 +2~+8 > θ−6），
+    // 会在胜者两两抑制下复燃，与池构成"压制-熄火-复燃"弛豫振荡，淬火被迫跑满
     // maxFlips（实测单次预测均时 1.2s、最慢 4s）。3.0（联盟代价 4×3=12）
     // 使任何 1-失配核在胜者存活时净场 < 0，单核态成为稳定不动点。
     for (const other of this.cores) {
       for (const x of core) {
-        for (const y of other) this.net.strengthenInhibitory(x, y, 3.0);
+        for (const y of other) this.net.strengthenInhibitory(x, y, this.gammaCore);
       }
     }
     // 全局抑制池接线（WTA 电路，前馈抑制版，自 field-memory 移植）：
@@ -147,8 +152,40 @@ export class PopRuleMemory {
       }
     }
     this.cores.push(core);
+    this.coreEvidence.push(false);
     this.signatureToCore.set(sig, core);
     return core;
+  }
+
+  /** 标记核已有结果证据（可参与预测候选） */
+  private markCoreEvidence(core: readonly number[]): void {
+    const idx = this.cores.indexOf(core as number[]);
+    if (idx >= 0) this.coreEvidence[idx] = true;
+  }
+
+  /**
+   * 纠错否决（评审 B04 修复）：同一核再次写入结果时，若某通道新值与上次不同，
+   * 核↔旧结果档写抑制边——替代值互斥的核内版本。修复前纠错只加强新绑定
+   * （0.6>0.4），新旧两结果群体仍可能同时点燃报歧义；纠错不依赖预先学过的
+   * 结果互斥。非平稳反复反转（B06）是声明过的边界：双向否决累积后报歧义。
+   */
+  private vetoSupersededOutcomes(core: readonly number[], outcomes: Outcomes): void {
+    const idx = this.cores.indexOf(core as number[]);
+    if (idx < 0) return;
+    const last = this.coreLastOutcome.get(idx);
+    for (const spec of this.outcomeMap.specs) {
+      const bin = outcomes[spec.name];
+      if (typeof bin !== "number") continue;
+      const prev = last?.[spec.name];
+      if (prev !== undefined && prev !== bin) {
+        for (const from of core) {
+          for (const to of this.outcomeMap.population(spec.name, prev)) {
+            this.net.strengthenInhibitory(from, to + this.conditionMap.neuronCount, 3.0);
+          }
+        }
+      }
+    }
+    this.coreLastOutcome.set(idx, { ...last, ...outcomes } as Record<string, number>);
   }
 
   private outcomeIds(exp: Experiment): number[] {
@@ -184,6 +221,8 @@ export class PopRuleMemory {
       seen.add(bin);
       this.observedBins.set(ch, seen);
     }
+    this.markCoreEvidence(core);
+    this.vetoSupersededOutcomes(core, exp.outcomes as Record<string, number>);
   }
 
   /**
@@ -198,12 +237,13 @@ export class PopRuleMemory {
     channelBoost: Readonly<Record<string, number>>,
     repeats: number,
     gammaVeto = 1.5,
+    veto = true,
   ): void {
     // 记录侧重/否决参数的并集（逐通道取最大），供响应学习写入的新核"持证上岗"
     for (const [ch, delta] of Object.entries(channelBoost)) {
       this.lastBoost[ch] = Math.max(this.lastBoost[ch] ?? 0, delta);
     }
-    this.lastGammaVeto = gammaVeto;
+    this.lastGammaVeto = veto ? gammaVeto : 0;
     const core = this.coreFor(exp.conditions);
     for (const [ch, delta] of Object.entries(channelBoost)) {
       if (delta > 0 && repeats > 0) {
@@ -213,6 +253,10 @@ export class PopRuleMemory {
           }
         }
       }
+      // 评审 F06/A17 修复：否决边只对真正有加分（delta>0）的通道写——
+      // 修复前零增益通道也写否决，"G=0 断侧重"消融实际没断否决，
+      // 消融结论无法分离两个机制的因果贡献。veto=false 显式断否决（2×2 消融用）。
+      if (!veto || delta <= 0) continue;
       // 否决：同通道的其余已观察档 → 核 抑制
       const own = exp.conditions[ch]!;
       for (const alt of this.observedBins.get(ch) ?? []) {
@@ -232,7 +276,7 @@ export class PopRuleMemory {
     query: Conditions,
     seed: number,
     anneal?: { levels?: number; sweepsPerLevel?: number },
-  ): { decoded: Record<string, PopDecoded>; activeNeurons: readonly number[]; energy: number } {
+  ): { decoded: Record<string, PopDecoded>; activeNeurons: readonly number[]; energy: number; converged: boolean } {
     const input = this.conditionMap.encode(query);
     const outcomeNeurons = Array.from(
       { length: this.outcomeMap.neuronCount },
@@ -244,7 +288,10 @@ export class PopRuleMemory {
     // 借此获胜既罕见又不合理；实测对结果无影响（种子 2 终止步数 95→81，
     // 因素发现与准确率不变）。纯边权读出，不涉及任何语义判定。
     const minSupport = this.net.threshold / 2;
-    const supportedCores = this.cores.filter((core) => {
+    // 只收有结果证据的核（评审 F02 的 Pop 侧同款：bindInfluence 可分配
+    // 无结果绑定的核——它只能竞争却永远读空，曾致 C05 全关角读空）
+    const supportedCores = this.cores.filter((core, k) => {
+      if (!this.coreEvidence[k]) return false;
       let s = 0;
       for (const from of input) {
         for (const to of core) s += this.net.getWeight(from, to);
@@ -261,6 +308,9 @@ export class PopRuleMemory {
       // 长尾爬降防护：大核数下淬火改为 8×N 翻转上限（超限回退途中最低能态，
       // 语义不变；默认 100×N 在 75 核规模实测达 23s/次）
       quenchMaxFlips: 8 * this.net.neuronCount,
+      // 池电路专属：最优回退只在驱动静息态中选（多核共存态真实能量更低但
+      // 破坏 WTA 单核语义；评审 F01 修复引入的显式开关）
+      fallbackQuietOnly: true,
       // 驱动估计等中间读数可传轻量档（6×8）；最终评分用默认全档（12×20）
       levels: anneal?.levels ?? 12,
       sweepsPerLevel: anneal?.sweepsPerLevel ?? 20,
@@ -275,6 +325,8 @@ export class PopRuleMemory {
       ),
       activeNeurons: result.activeNeurons,
       energy: result.energy,
+      // 非平衡驱动下不承诺无条件收敛：非收敛如实向上传播（评审 F01 修复附带）
+      converged: result.converged,
     };
   }
 
@@ -300,36 +352,90 @@ export class PopRuleMemory {
     return best;
   }
 
+  /**
+   * 未覆盖维度读出（评审修复：量程扩展场景中 4/5 维匹配的候选看似"置信"，
+   * 但它在从未观察过的取值上纯属泛化猜测）：某条件维的钳制群体对任何
+   * 有证据核都没有 W 边 = 该取值从未被观察/学习过。探索驱动必须把
+   * "维从未被操纵过的值"当作未知，否则扩展区/门控角永远不被主动探针触及。
+   */
+  uncoveredDims(conditions: Conditions): string[] {
+    const out: string[] = [];
+    const evidenceCores: number[][] = [];
+    this.cores.forEach((c, k) => {
+      if (this.coreEvidence[k]) evidenceCores.push(c);
+    });
+    if (evidenceCores.length === 0) return Object.keys(conditions);
+    for (const [ch, bin] of Object.entries(conditions)) {
+      const pops = this.conditionMap.population(ch, bin);
+      let covered = false;
+      for (const from of pops) {
+        for (const core of evidenceCores) {
+          for (const to of core) {
+            if (this.net.getWeight(from, to) > 0) {
+              covered = true;
+              break;
+            }
+          }
+          if (covered) break;
+        }
+        if (covered) break;
+      }
+      if (!covered) out.push(ch);
+    }
+    return out;
+  }
+
+  /**
+   * 点火不等式（评审 C01–C04 根因修复）：单核-单结果群体结构中，
+   * 结果群体神经元的最大支持 = (coreSize + popSize − 1) × η × repeats，
+   * 必须超过 θ 才能在 T=0 下被读出。不足时自动放大 repeats——
+   * 如实推导写入强度，而不是给每个新世界单独加参数补丁。
+   * 修复前 repeats=2、η=0.1 → 支持 1.4 < θ=1.5，小世界观察全部读空。
+   */
+  private effectiveRepeats(repeats: number, eta: number): number {
+    const popSize = this.outcomeMap.popSize;
+    const supportPerRepeat = eta * (this.coreSize + popSize - 1);
+    const need = this.net.threshold * 1.2 + 1e-9;
+    return Math.max(repeats, Math.ceil(need / supportPerRepeat));
+  }
+
   /** 响应模式学习：新查询分配/复用核并绑定预测结果（小步长同封顶）。
    * 绑定必须分两段（化学主题实测修复）：条件↔核一段、核↔结果按通道各一段，
    * 绝不允许把三者放进同一集合——否则赫布学习会写下条件→结果直连边与
    * 结果通道间接力边（teachExperience 已记录在案的两种泄漏），
    * 几十个查询累积后输入群体绕开核直接驱动结果群体，规则核桥梁被短路。 */
   learnFromQuery(query: Conditions, predicted: Record<string, PopDecoded>, repeats: number): void {
+    // 评审 B03 修复：无可写结果证据（全 null/歧义）时不分配核——
+    // 修复前全空预测也白占一个私有核（容量被无证据查询消耗）。
+    if (!Object.values(predicted).some((v) => typeof v === "number")) return;
+    const effRepeats = this.effectiveRepeats(repeats, 0.05);
     const core = this.coreFor(query);
     const condIds = this.conditionMap.encode(query);
-    if (Object.values(predicted).some((v) => typeof v === "number")) {
-      hebbianLearn(this.net, [...condIds, ...core], repeats, 0.05, 0.4);
-      for (const spec of this.outcomeMap.specs) {
-        const bin = predicted[spec.name];
-        if (typeof bin === "number") {
-          const pops = this.outcomeMap.population(spec.name, bin);
-          hebbianLearn(this.net, [...core, ...pops.map((id) => id + this.conditionMap.neuronCount)], repeats, 0.05, 0.4);
-        }
+    hebbianLearn(this.net, [...condIds, ...core], effRepeats, 0.05, 0.4);
+    for (const spec of this.outcomeMap.specs) {
+      const bin = predicted[spec.name];
+      if (typeof bin === "number") {
+        const pops = this.outcomeMap.population(spec.name, bin);
+        hebbianLearn(this.net, [...core, ...pops.map((id) => id + this.conditionMap.neuronCount)], effRepeats, 0.05, 0.4);
       }
     }
+    this.markCoreEvidence(core);
+    // 纠错否决同一规则：自写猜测被后续观察/新预测覆盖时同样否决旧结果档
+    const numeric: Record<string, number> = {};
+    for (const [ch, v] of Object.entries(predicted)) if (typeof v === "number") numeric[ch] = v;
+    this.vetoSupersededOutcomes(core, numeric);
     // 持证上岗（与 learnFromObservation 同一规则，化学主题实测补入）：
     // 新核必须带侧重加分边 + 替代档否决边，否则它绕开否决体系——
     // 无否决惩罚的核在任何近似查询上白拿匹配支持，压垮持证核，
     // 错误预测再被学习，形成自我强化级联（v2 课程完整模型曾因此崩盘）。
     for (const [ch, delta] of Object.entries(this.lastBoost)) {
-      if (delta > 0) {
-        for (const from of this.conditionMap.population(ch, query[ch]!)) {
-          for (const to of core) this.net.strengthen(from, to, delta);
-        }
+      // 评审 F06 同一规则：零增益通道不加分也不写否决；lastGammaVeto=0 断否决
+      if (delta <= 0) continue;
+      for (const from of this.conditionMap.population(ch, query[ch]!)) {
+        for (const to of core) this.net.strengthen(from, to, delta);
       }
       for (const alt of this.observedBins.get(ch) ?? []) {
-        if (alt === query[ch]) continue;
+        if (alt === query[ch] || this.lastGammaVeto <= 0) continue;
         for (const from of this.conditionMap.population(ch, alt)) {
           for (const to of core) this.net.strengthenInhibitory(from, to, this.lastGammaVeto);
         }
@@ -348,15 +454,18 @@ export class PopRuleMemory {
     const core = this.coreFor(query);
     const condIds = this.conditionMap.encode(query);
     if (Object.values(observed).some((v) => typeof v === "number")) {
-      hebbianLearn(this.net, [...condIds, ...core], repeats, 0.1, 0.6);
+      const effRepeats = this.effectiveRepeats(repeats, 0.1);
+      hebbianLearn(this.net, [...condIds, ...core], effRepeats, 0.1, 0.6);
       // 结果按通道分别绑定到核（同 teachExperience，防跨通道接力）
       for (const spec of this.outcomeMap.specs) {
         const bin = observed[spec.name];
         if (typeof bin === "number") {
           const pops = this.outcomeMap.population(spec.name, bin);
-          hebbianLearn(this.net, [...core, ...pops.map((id) => id + this.conditionMap.neuronCount)], repeats, 0.1, 0.6);
+          hebbianLearn(this.net, [...core, ...pops.map((id) => id + this.conditionMap.neuronCount)], effRepeats, 0.1, 0.6);
         }
       }
+      this.markCoreEvidence(core);
+      this.vetoSupersededOutcomes(core, observed);
     }
     // 登记观察到的条件档（自主探索路径修复：探索从零起步、不经 teachExperience，
     // 若不在此登记，observedBins 永远为空、否决边永远不会被写入——
@@ -368,13 +477,13 @@ export class PopRuleMemory {
     }
     // 持证：影响因素加分边 + 替代档否决边（与 bindInfluence 同一规则）
     for (const [ch, delta] of Object.entries(this.lastBoost)) {
-      if (delta > 0) {
-        for (const from of this.conditionMap.population(ch, query[ch]!)) {
-          for (const to of core) this.net.strengthen(from, to, delta);
-        }
+      // 评审 F06 同一规则：零增益通道不加分也不写否决；lastGammaVeto=0 断否决
+      if (delta <= 0) continue;
+      for (const from of this.conditionMap.population(ch, query[ch]!)) {
+        for (const to of core) this.net.strengthen(from, to, delta);
       }
       for (const alt of this.observedBins.get(ch) ?? []) {
-        if (alt === query[ch]) continue;
+        if (alt === query[ch] || this.lastGammaVeto <= 0) continue;
         for (const from of this.conditionMap.population(ch, alt)) {
           for (const to of core) this.net.strengthenInhibitory(from, to, this.lastGammaVeto);
         }

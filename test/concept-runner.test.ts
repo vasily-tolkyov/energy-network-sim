@@ -23,7 +23,6 @@ function setup(): { mem: FieldRuleMemory; enc: SensoryEncoder; em: EmergentMap }
   for (const g of contCurriculum()) {
     for (const p of g.pairs) {
       for (const e of [p.e0, p.e1]) formation.presentExperiment({ ...e.conditions, ...e.outcomes }, 4);
-      formation.presentSwap(g.manipulated, p.e0.conditions[g.manipulated]!, p.e1.conditions[g.manipulated]!, 3.0);
     }
   }
   const em = new EmergentMap(formation.extractConcepts(0.5), enc);

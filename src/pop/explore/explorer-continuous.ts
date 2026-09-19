@@ -52,6 +52,8 @@ export interface ContExploreConfig {
 export class ContinuousExplorer {
   readonly mem: FieldRuleMemory;
   readonly enc: SensoryEncoder;
+  /** 终止原因（评审"多种结束原因均为 false"修复）；运行中为 null */
+  terminationReason: "budget-exhausted" | "frontier-exhausted" | "quorum-met" | null = null;
   private formation: ConceptFormation;
   private em: EmergentMap | null = null;
   private r2: R2PopLayer | null = null;
@@ -112,7 +114,8 @@ export class ContinuousExplorer {
   }
 
   get influentialDims(): string[] {
-    return [...this.magSum.keys()].sort();
+    // 过滤零幅度键（评审 F04/C07：不可判定对曾留下 sum=0 的键被误报为因素）
+    return [...this.magSum.entries()].filter(([, sum]) => sum > 1e-9).map(([k]) => k).sort();
   }
 
   /** 各维度累计的归因证据数（自动对中该维被判为影响因素的次数，概念更新验收用） */
@@ -120,13 +123,19 @@ export class ContinuousExplorer {
     return Object.fromEntries(this.magCount);
   }
 
+  /** 无知场：无核覆盖（< θ）或有维度的取值从未被观察（uncoveredDims）→ 未知 */
   private ignoranceOf(c: Conditions): number {
-    return this.mem.coreFieldCoverage(c) < this.mem.net.threshold ? this.cfg.ignoranceDrive : 0.4;
+    const unknown =
+      this.mem.coreFieldCoverage(c) < this.mem.net.threshold || this.mem.uncoveredDims(c).length > 0;
+    return unknown ? this.cfg.ignoranceDrive : 0.4;
   }
 
   /** 推进一步。返回 false 表示该阶段结束（B0 达标或整体终止）。 */
   step(): boolean {
-    if (this.planner.experimentCount >= this.cfg.budget) return false;
+    if (this.planner.experimentCount >= this.cfg.budget) {
+      this.terminationReason = "budget-exhausted";
+      return false;
+    }
 
     // 首实验：每个条件维取候选值中位数附近的点（任意但固定的起点）
     if (this.planner.experimentCount === 0) {
@@ -146,7 +155,10 @@ export class ContinuousExplorer {
     }
 
     const candidates = this.planner.candidates();
-    if (candidates.length === 0) return false;
+    if (candidates.length === 0) {
+      this.terminationReason = "frontier-exhausted";
+      return false;
+    }
 
     const drives = new Map<string, number>();
     for (const c of candidates) {
@@ -169,6 +181,7 @@ export class ContinuousExplorer {
           return true; // 间歇期完成，进入 B2
         }
       } else {
+        this.terminationReason = "quorum-met";
         return false; // B2 达标，整体终止
       }
     }
@@ -200,9 +213,10 @@ export class ContinuousExplorer {
         ? "prediction-violation"
         : "within-envelope";
 
-    if (classification !== "within-envelope") {
-      this.mem.learnFromObservation(chosen, observed, this.cfg.learnRepeats);
-    }
+    // 每次实验都是证据（评审 C05 根因修复，与离散版同一规则）：
+    // 符合/偏差/未知都写观察——写的是世界真值而非自猜。
+    // 修复前"符合不写"留下有侧重无结果的空核，门控角读数随之漂移。
+    this.mem.learnFromObservation(chosen, observed, this.cfg.learnRepeats);
     this.withinStreak = classification === "within-envelope" ? this.withinStreak + 1 : 0;
 
     const { pairs, newBins } = this.planner.register({ conditions: chosen, outcomes: observed, classification });
@@ -210,8 +224,13 @@ export class ContinuousExplorer {
       this.sinceFormation++;
       // 概念更新：覆盖缺口（新值无任何概念）或周期到达 → 先重形成再差分，
       // 保证这对实验在新通道面上被归因
-      if (this.shouldReform(chosen)) this.formConcepts();
-      this.absorbPairs(pairs, newBins);
+      if (this.shouldReform(chosen)) {
+        // 重形成的全量重放已包含当前步的对——跳过 absorbPairs 的二次处理
+        // （评审 §7 修复：重形成步的证据与加强曾被计算两次）
+        this.formConcepts();
+      } else {
+        this.absorbPairs(pairs, newBins);
+      }
     }
     if (classification === "prediction-violation") this.planner.boostNeighbors(chosen, 1.2);
     this.planner.decayBoosts();
@@ -272,9 +291,8 @@ export class ContinuousExplorer {
       this.formation.presentExperiment({ ...ep.conditions, ...ep.outcomes }, 2);
     }
     const allPairs = this.planner.allAutoPairs();
-    for (const { pair, dim } of allPairs) {
-      this.formation.presentSwap(dim, pair.e0.conditions[dim]!, pair.e1.conditions[dim]!, 3.0);
-    }
+    // 注：换对抑制不再进形成网（死参数删除，评审 A12）；替代值区域由非共现
+    // 统计自然分离；结果侧互斥在下方的 learnExclusion 循环（写入记忆层）。
     this.em = new EmergentMap(this.formation.extractConcepts(0.5), this.enc);
     const condAdapter = new EmergentChannelAdapter(this.em, this.condDimNames, 0);
     const outAdapter = new EmergentChannelAdapter(
@@ -311,6 +329,7 @@ export class ContinuousExplorer {
         const b = pair.e1.outcomes[och]!;
         if (Math.abs(a - b) > 1e-9) this.mem.learnExclusion(och, a, b, 3.0);
       }
+      if (analysis.undecidable) continue; // 不可判定对不进幅度累计（评审 F04）
       for (const ch of analysis.influentialChannels) {
         let m = 0;
         for (const [och, delta] of Object.entries(analysis.outcomeDelta)) {
@@ -344,6 +363,7 @@ export class ContinuousExplorer {
         const b = pair.e1.outcomes[och]!;
         if (Math.abs(a - b) > 1e-9) this.mem.learnExclusion(och, a, b, 3.0);
       }
+      if (analysis.undecidable) continue; // 不可判定对不进幅度累计（评审 F04）
       for (const ch of analysis.influentialChannels) {
         let m = 0;
         for (const [och, delta] of Object.entries(analysis.outcomeDelta)) {

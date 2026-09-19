@@ -7,6 +7,7 @@ import type {
   NetworkConfig,
   NetworkConfigInput,
   SettleResult,
+  SettleTermination,
   WellMembership,
 } from "./types.js";
 
@@ -80,8 +81,21 @@ export class EnergyNetwork {
     return this.weights[i * n + j] ?? 0;
   }
 
+  /** 评审 A05/A06 修复：公开写边入口统一校验——非 [0,N) 整数索引/非有限权值
+   *  直接抛错且零部分写入（修复前越界列经一维下标别名到下一行，破坏 W 对称性） */
+  private checkEdge(i: number, j: number, value: number): void {
+    for (const k of [i, j]) {
+      if (!Number.isInteger(k) || k < 0 || k >= this.neuronCount) {
+        throw new Error(`neuron index out of range: ${k}`);
+      }
+    }
+    if (!Number.isFinite(value)) throw new Error(`weight delta must be finite, got ${value}`);
+  }
+
   /** 对称地增加连接强度：只增不减，封顶 cap（默认 maxWeight）——已达 cap 的边不动 */
   strengthen(i: number, j: number, delta: number, cap?: number): void {
+    this.checkEdge(i, j, delta);
+    if (cap !== undefined && !Number.isFinite(cap)) throw new Error(`cap must be finite, got ${cap}`);
     if (i === j || delta <= 0) return;
     const n = this.neuronCount;
     const limit = cap ?? this.config.maxWeight;
@@ -94,6 +108,7 @@ export class EnergyNetwork {
 
   /** 绝对写入连接强度（对称）：用于需要"改写"而非"累加"的场（如失配场、惯性场） */
   setWeight(i: number, j: number, value: number): void {
+    this.checkEdge(i, j, value);
     if (i === j) return;
     const n = this.neuronCount;
     const v = Math.max(0, Math.min(this.config.maxWeight, value));
@@ -108,6 +123,7 @@ export class EnergyNetwork {
 
   /** 单向地增加有向通道强度并裁剪到 [0, maxDirectedWeight]（时序学习用） */
   strengthenDirected(from: number, to: number, delta: number): void {
+    this.checkEdge(from, to, delta);
     if (from === to || delta <= 0) return;
     const n = this.neuronCount;
     const idx = from * n + to;
@@ -131,6 +147,7 @@ export class EnergyNetwork {
 
   /** 对称地增加抑制强度并裁剪到 [0, maxWeight]（竞争学习用） */
   strengthenInhibitory(i: number, j: number, delta: number): void {
+    this.checkEdge(i, j, delta);
     if (i === j || delta <= 0) return;
     const n = this.neuronCount;
     const next = Math.min(this.config.maxWeight, (this.inhibitory[i * n + j] ?? 0) + delta);
@@ -155,7 +172,10 @@ export class EnergyNetwork {
 
   /** 单向地增加前馈抑制强度并裁剪到 [0, cap]（默认 maxDirectedWeight） */
   strengthenDirectedInhibitory(from: number, to: number, delta: number, cap?: number): void {
+    this.checkEdge(from, to, delta);
+    if (cap !== undefined && !Number.isFinite(cap)) throw new Error(`cap must be finite, got ${cap}`);
     if (from === to || delta <= 0) return;
+    this.diSourceCache = null; // DI 源缓存失效
     const n = this.neuronCount;
     const idx = from * n + to;
     const limit = cap ?? this.config.maxDirectedWeight;
@@ -170,6 +190,35 @@ export class EnergyNetwork {
       if (pattern[j] === 1) g += this.directedInhibitory[j * n + i] ?? 0;
     }
     return g;
+  }
+
+  /** DI 源神经元缓存（有出向 DI 边的神经元）；写 DI 边时失效重建 */
+  private diSourceCache: number[] | null = null;
+  /** DI 驱动介入判定：源活跃，或源虽静息但场已越阈（即将点燃）——
+   *  只有驱动真正静息的状态才有资格做最优回退候选。
+   *  （修复瞬时快照漏洞：2 核共存+池恰熄灭的中瞬态曾被误记为最优态） */
+  private diDriveEngaged(): boolean {
+    if (this.diSourceCache === null) {
+      const n = this.neuronCount;
+      const src: number[] = [];
+      for (let from = 0; from < n; from++) {
+        for (let to = 0; to < n; to++) {
+          if ((this.directedInhibitory[from * n + to] ?? 0) > 0) {
+            src.push(from);
+            break;
+          }
+        }
+      }
+      this.diSourceCache = src;
+    }
+    if (this.diSourceCache.length === 0) return false;
+    const theta = this.threshold;
+    for (const j of this.diSourceCache) {
+      if (this.state[j] === 1) return true;
+      const h = this.localField(j, this.state) - this.inhibitoryField(j, this.state);
+      if (h > theta) return true; // 即将点燃
+    }
+    return false;
   }
 
   /**
@@ -239,7 +288,7 @@ export class EnergyNetwork {
     const n = this.neuronCount;
     const clamped = new Uint8Array(n);
     for (const i of inputNeurons) {
-      if (i < 0 || i >= n) throw new Error(`input neuron index out of range: ${i}`);
+      if (!Number.isInteger(i) || i < 0 || i >= n) throw new Error(`input neuron index out of range: ${i}`);
       clamped[i] = 1;
     }
     // 从静息出发：被钳制的激活，其余静息
@@ -250,44 +299,77 @@ export class EnergyNetwork {
     const energies: number[] = [this.energy()];
     let currentEnergy = energies[0]!;
     let flipCount = 0;
+    let driveWork = 0;
     // 浮点尘埃保护：能量差小于 EPS 的翻转会引发近平局无限循环（实测挂死），
     // 要求每次翻转都有实质降幅；另有总翻转数上限与最优回退双保险。
     const EPS = 1e-4;
     const maxFlips = 100 * n;
     let bestEnergy = currentEnergy;
     const bestState = Uint8Array.from(this.state);
+    let terminated: SettleTermination = "fixed-point";
     // 异步贪心扫描：只要某次完整扫描没有任何翻转，即为局部极小
-    for (;;) {
+    outer: for (;;) {
       let flippedThisSweep = false;
       for (let i = 0; i < n; i++) {
         if (clamped[i] === 1) continue;
-        const h = this.symmetricField(i, this.state);
-        // 0→1: ΔE = theta − h；1→0: ΔE = −(theta − h)；仅在 ΔE<0 时翻转
-        const dE = this.state[i] === 0 ? theta - h : -(theta - h);
-        if (dE >= -EPS) continue;
-        this.state[i] = this.state[i] === 0 ? 1 : 0;
+        // 第三方评审 F01 修复：决策场含 DI（非平衡驱动照常参与动力学），
+        // 但账本只累计保守部分 ΔE_cons = θ − (W场 − Γ场)——它恰好是 energy()
+        // 的差分，轨迹与真实能量逐点一致；DI 部分独立累计为 driveWork。
+        // 修复前：账本混入驱动做功，闭环一圈漂移 −γ，最优回退按漂移账本失真。
+        const hCons = this.localField(i, this.state) - this.inhibitoryField(i, this.state);
+        const di = this.directedInhibitoryField(i, this.state);
+        const active = this.state[i] === 1;
+        const dEDecision = active ? -(theta - (hCons - di)) : theta - (hCons - di);
+        if (dEDecision >= -EPS) continue;
+        const dECons = active ? -(theta - hCons) : theta - hCons;
+        this.state[i] = active ? 0 : 1;
         flipCount++;
         flippedThisSweep = true;
-        currentEnergy += dE; // 增量记账，避免每翻转一次就 O(N²) 重算能量
+        currentEnergy += dECons;
+        driveWork += dEDecision - dECons;
         energies.push(currentEnergy);
         if (currentEnergy < bestEnergy) {
           bestEnergy = currentEnergy;
           bestState.set(this.state);
         }
+        // 预算逐翻转立即检查（原为整轮扫描后检查，会超出上限）
+        if (flipCount >= maxFlips) {
+          terminated = "flip-budget";
+          // 非收敛终止：回退到途中最低能态（按真实保守能量）
+          this.state.set(bestState);
+          energies.push(bestEnergy);
+          break outer;
+        }
       }
       if (!flippedThisSweep) break;
-      if (flipCount > maxFlips) {
-        // 非收敛终止：回退到途中最低能态（如实记录）
-        this.state.set(bestState);
-        energies.push(bestEnergy);
-        break;
-      }
     }
     return {
       activeNeurons: this.activeNeurons(),
       energy: this.energy(),
-      trace: { energies, flipCount },
+      trace: { energies, flipCount, driveWork },
+      converged: terminated === "fixed-point",
+      terminationReason: terminated,
+      residualFlips: this.countResidualFlips((i) => clamped[i] === 1, null, EPS),
     };
+  }
+
+  /** 返回态在指定范围内仍可翻转的神经元数（决策场口径，含 DI；0 = 固定点） */
+  private countResidualFlips(
+    isClamped: (i: number) => boolean,
+    scope: ReadonlySet<number> | null,
+    eps: number,
+  ): number {
+    const theta = this.threshold;
+    const n = this.neuronCount;
+    let count = 0;
+    for (let i = 0; i < n; i++) {
+      if (scope !== null && !scope.has(i)) continue;
+      if (isClamped(i)) continue;
+      const h = this.symmetricField(i, this.state);
+      const dE = this.state[i] === 0 ? theta - h : -(theta - h);
+      if (dE < -eps) count++;
+    }
+    return count;
   }
 
   /**
@@ -314,7 +396,7 @@ export class EnergyNetwork {
     const n = this.neuronCount;
     const clamped = new Set<number>();
     for (const i of inputNeurons) {
-      if (i < 0 || i >= n) throw new Error(`input neuron index out of range: ${i}`);
+      if (!Number.isInteger(i) || i < 0 || i >= n) throw new Error(`input neuron index out of range: ${i}`);
       clamped.add(i);
     }
 
@@ -350,6 +432,7 @@ export class EnergyNetwork {
     if (levels < 1 || sweepsPerLevel < 1) {
       throw new Error(`levels and sweepsPerLevel must be >= 1`);
     }
+    const quietOnly = options.fallbackQuietOnly ?? false;
     let temperature = options.initialTemperature ?? theta;
     if (temperature <= 0) {
       throw new Error(`initialTemperature must be > 0, got ${temperature}`);
@@ -357,10 +440,18 @@ export class EnergyNetwork {
     const rand = mulberry32(options.seed ?? 1);
     let proposals = 0;
     let acceptedUphill = 0;
-    const flipDelta = (i: number): number => {
-      const h = this.symmetricField(i, this.state);
-      // 0→1: ΔE = theta − h；1→0: ΔE = −(theta − h)
-      return this.state[i] === 0 ? theta - h : -(theta - h);
+    let driveWork = 0;
+    let flipCount = 0;
+    // F01 修复（同 settle）：决策场含 DI（动力学不变），账本只记保守部分
+    // （≡ energy() 的差分），DI 部分独立累计为 driveWork。最优状态按真实能量。
+    const deltas = (i: number): { decision: number; cons: number } => {
+      const hCons = this.localField(i, this.state) - this.inhibitoryField(i, this.state);
+      const di = this.directedInhibitoryField(i, this.state);
+      const active = this.state[i] === 1;
+      return {
+        decision: active ? -(theta - (hCons - di)) : theta - (hCons - di),
+        cons: active ? -(theta - hCons) : theta - hCons,
+      };
     };
     let currentEnergy = initialEnergy;
     let bestEnergy = initialEnergy;
@@ -376,18 +467,22 @@ export class EnergyNetwork {
           freeCandidates[j] = tmp;
         }
         for (const i of freeCandidates) {
-          const dE = flipDelta(i);
+          const { decision, cons } = deltas(i);
           proposals++;
-          if (dE < 0) {
+          if (decision < 0) {
             this.state[i] = this.state[i] === 0 ? 1 : 0;
-          } else if (rand() < Math.exp(-dE / temperature)) {
+          } else if (rand() < Math.exp(-decision / temperature)) {
             this.state[i] = this.state[i] === 0 ? 1 : 0;
             acceptedUphill++;
           } else {
             continue;
           }
-          currentEnergy += dE;
-          if (currentEnergy < bestEnergy) {
+          flipCount++;
+          currentEnergy += cons;
+          driveWork += decision - cons;
+          // fallbackQuietOnly：带池 WTA 电路只认驱动静息期的最低真实能态
+          // （多核共存态真实能量更低但破坏单核语义）；默认全访问态（评审 A04 契约）
+          if (currentEnergy < bestEnergy && !(quietOnly && this.diDriveEngaged())) {
             bestEnergy = currentEnergy;
             bestState.set(this.state);
           }
@@ -397,11 +492,12 @@ export class EnergyNetwork {
     if (bestEnergy < currentEnergy) this.state.set(bestState);
     const annealEndEnergy = this.energy();
 
-    // 淬火尾巴：T=0 贪心扫描至无翻转，能量严格单调下降（增量记账）。
+    // 淬火尾巴：T=0 贪心扫描至无翻转（保守账本随翻转变化；DI 驱动可致上坡）。
     // 范围默认全网（招募无势垒的普通连接神经元）；读出场景限制在候选集内，
     // 防止对称 W 把结果活动反传回未查询条件档引发雪崩。
-    // 引入非平衡驱动（DI 前馈抑制）后可能出现弛豫振荡（压制-熄火-复燃循环），
-    // 因此淬火改为有界迭代 + 最优回退：记录途中最低能态，超限则回退到它。
+    // 非平衡驱动（DI 前馈抑制）可能出现弛豫振荡（压制-熄火-复燃循环），
+    // 因此淬火是有界迭代 + 最优回退（按真实能量），并如实报告终止原因与
+    // 残余可翻转数——非平衡驱动下不再承诺无条件收敛。
     const quenchEnergies: number[] = [];
     let quenchEnergy = annealEndEnergy;
     let quenchBestEnergy = annealEndEnergy;
@@ -409,38 +505,49 @@ export class EnergyNetwork {
     const quenchScope = options.quenchCandidatesOnly
       ? freeCandidates
       : Array.from({ length: n }, (_, i) => i);
+    const quenchScopeSet = new Set(quenchScope);
     const maxFlips = options.quenchMaxFlips ?? 100 * n;
     const EPS = 1e-4; // 能量分辨率下限：近平局的尘埃翻转既慢又无意义（实测 >1e5 步仍不收敛）
-    for (;;) {
+    let terminated: SettleTermination = "fixed-point";
+    let quenchFlips = 0; // 预算只管淬火尾巴（退火相按温度层数自然结束）
+    outer: for (;;) {
       let flipped = false;
       for (const i of quenchScope) {
         if (clamped.has(i)) continue;
-        const dE = flipDelta(i);
-        if (dE < -EPS) {
+        const { decision, cons } = deltas(i);
+        if (decision < -EPS) {
           this.state[i] = this.state[i] === 0 ? 1 : 0;
-          quenchEnergy += dE;
+          flipCount++;
+          quenchFlips++;
+          quenchEnergy += cons;
+          driveWork += decision - cons;
           quenchEnergies.push(quenchEnergy);
-          if (quenchEnergy < quenchBestEnergy) {
+          if (quenchEnergy < quenchBestEnergy && !(quietOnly && this.diDriveEngaged())) {
             quenchBestEnergy = quenchEnergy;
             quenchBestState.set(this.state);
           }
           flipped = true;
+          // 预算逐翻转立即检查（原为整轮扫描后检查，会超出上限）；
+          // 回退写入轨迹但不计为翻转（评审 A12 反例）
+          if (quenchFlips >= maxFlips) {
+            terminated = "flip-budget";
+            this.state.set(quenchBestState);
+            quenchEnergies.push(quenchBestEnergy);
+            break outer;
+          }
         }
       }
       if (!flipped) break;
-      if (quenchEnergies.length > maxFlips) {
-        // 驱动振荡：回退到途中最低能态（如实记录为非收敛终止）
-        this.state.set(quenchBestState);
-        quenchEnergies.push(quenchBestEnergy);
-        break;
-      }
     }
 
     const energies = [annealEndEnergy, ...quenchEnergies];
     return {
       activeNeurons: this.activeNeurons(),
       energy: this.energy(),
-      trace: { energies, flipCount: quenchEnergies.length },
+      trace: { energies, flipCount, driveWork },
+      converged: terminated === "fixed-point",
+      terminationReason: terminated,
+      residualFlips: this.countResidualFlips((i) => clamped.has(i), quenchScopeSet, EPS),
       candidateSet: [...candidate].sort((a, b) => a - b),
       initialEnergy,
       annealEndEnergy,
@@ -460,7 +567,7 @@ export class EnergyNetwork {
     const n = this.neuronCount;
     const next = new Uint8Array(n);
     for (const i of nextActive) {
-      if (i < 0 || i >= n) throw new Error(`neuron index out of range: ${i}`);
+      if (!Number.isInteger(i) || i < 0 || i >= n) throw new Error(`neuron index out of range: ${i}`);
       next[i] = 1;
     }
     for (let i = 0; i < n; i++) {

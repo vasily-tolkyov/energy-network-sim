@@ -22,8 +22,35 @@ export class ReadoutModule {
     this.threshold = readoutThreshold;
   }
 
-  /** 势阱快照更新（学习导致连接变化后重新检测） */
+  /** 势阱快照更新（学习导致连接变化后重新检测）。
+   * 标签迁移（评审 B09 修复）：新势阱按成员重叠率（≥0.5）匹配继承旧标签；
+   * 无法匹配则标签失效（不保留）。修复前标签按数字 ID 保留，
+   * 峰强排序变化后原 A 区域的标签会漂到 B 上。 */
   updateWells(wells: PotentialWell[]): void {
+    const oldWells = this.wells;
+    const usedOld = new Set<number>();
+    const nextLabels = new Map<number, string>();
+    for (const w of wells) {
+      let best: { id: number; overlap: number } | null = null;
+      const members = new Set(w.memberNeuronIds);
+      for (const old of oldWells) {
+        if (usedOld.has(old.wellId)) continue;
+        const label = this.labels.get(old.wellId);
+        if (label === undefined || old.memberNeuronIds.length === 0) continue;
+        let hit = 0;
+        for (const id of old.memberNeuronIds) if (members.has(id)) hit++;
+        const overlap = hit / old.memberNeuronIds.length;
+        if (overlap >= 0.5 && (best === null || overlap > best.overlap)) {
+          best = { id: old.wellId, overlap };
+        }
+      }
+      if (best !== null) {
+        usedOld.add(best.id);
+        nextLabels.set(w.wellId, this.labels.get(best.id)!);
+      }
+    }
+    this.labels.clear();
+    for (const [id, l] of nextLabels) this.labels.set(id, l);
     this.wells = wells;
   }
 

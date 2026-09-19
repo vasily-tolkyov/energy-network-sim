@@ -51,15 +51,6 @@ export class ConceptFormation {
     hebbianLearn(this.net, this.encoder.encode(values), repeats, undefined, 0.4);
   }
 
-  /** 换对互斥：同维度两个被对换的值区域之间写抑制边 */
-  presentSwap(dimension: string, valueA: number, valueB: number, strength = 3.0): void {
-    const a = this.encoder.encodeDimension(dimension, valueA);
-    const b = this.encoder.encodeDimension(dimension, valueB);
-    for (const x of a) {
-      for (const y of b) this.net.strengthenInhibitory(x, y, strength);
-    }
-  }
-
   /**
    * 按维度提取自形成值概念：在维度内部的权重子图上，
    * 取边强 ≥ ratio × 本维最大边强的边，做连通分量聚类。

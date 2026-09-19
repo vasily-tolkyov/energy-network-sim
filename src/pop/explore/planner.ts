@@ -70,9 +70,17 @@ export class ExperimentPlanner {
 
   /** 登记一次实验并给出它自动成对的对（与全部历史实验比对，Hamming-1 即成对） */
   register(episode: Omit<Episode, "index">): { pairs: Pair[]; newBins: string[] } {
-    const key = this.keyOf(episode.conditions);
+    // 评审 C10 修复：防御性拷贝——调用方之后修改条件/结果对象不得污染历史
+    const safeConditions = { ...episode.conditions };
+    const safeOutcomes = { ...episode.outcomes };
+    const key = this.keyOf(safeConditions);
     this.conductedKeys.add(key);
-    const full: Episode = { ...episode, index: this.episodes.length };
+    const full: Episode = {
+      conditions: safeConditions,
+      outcomes: safeOutcomes,
+      classification: episode.classification,
+      index: this.episodes.length,
+    };
     const pairs: Pair[] = [];
     for (const past of this.episodes) {
       if (this.differInOneDim(full.conditions, past.conditions) !== null) {

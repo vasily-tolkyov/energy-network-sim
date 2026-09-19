@@ -44,6 +44,7 @@ function pretrain(): PopRuleMemory {
         if (a !== b) mem.teachExclusion("outcome", spec.name, a, b, 3.0);
       }
       const analysis = r2.analyzePair(pair);
+          if (analysis.undecidable) continue; // 不可判定对不进幅度累计（评审 F04）
       for (const ch of analysis.influentialChannels) {
         let m = 0;
         for (const [och, delta] of Object.entries(analysis.outcomeDelta)) {

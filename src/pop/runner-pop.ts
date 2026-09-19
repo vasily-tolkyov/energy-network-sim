@@ -41,9 +41,11 @@ interface RunConfig {
   readonly label: string;
   readonly gain: number;
   readonly learnFromQueries: boolean;
+  /** 断否决开关（2×2 消融，评审 F06）：false 时 bindInfluence 不写否决边 */
+  readonly veto?: boolean;
 }
 
-function runBall(cfg: RunConfig, seed: number): { fine: number; coarse: number; missWall: number; missTotal: number } {
+function runBall(cfg: RunConfig & { veto?: boolean }, seed: number): { fine: number; coarse: number; missWall: number; missTotal: number } {
   const mem = new PopRuleMemory(cm, om, { maxRules: 128 });
   const r2 = new R2PopLayer(cm, om);
   let correct = 0;
@@ -63,6 +65,7 @@ function runBall(cfg: RunConfig, seed: number): { fine: number; coarse: number; 
       }
       // R2 神经化：全模式差分，R2A/R2B 双侧读出
       const analysis = r2.analyzePair(pair);
+          if (analysis.undecidable) continue; // 不可判定对不进幅度累计（评审 F04）
       for (const ch of analysis.influentialChannels) {
         let m = 0;
         for (const [och, delta] of Object.entries(analysis.outcomeDelta)) {
@@ -78,7 +81,7 @@ function runBall(cfg: RunConfig, seed: number): { fine: number; coarse: number; 
       boost[ch] = 0.1 * cfg.gain * (sum / Math.max(1, magCount.get(ch) ?? 1)) ** 2;
     }
     for (const pair of group.pairs) {
-      for (const e of [pair.e0, pair.e1]) mem.bindInfluence(e, boost, 4);
+      for (const e of [pair.e0, pair.e1]) mem.bindInfluence(e, boost, 4, 1.5, cfg.veto ?? true);
     }
   }
   const all = queries();
@@ -106,9 +109,11 @@ out("═".repeat(64));
 out(`网络规模：条件 ${cm.neuronCount} + 结果 ${om.neuronCount} + 核区 128×4（按需分配）= ${cm.neuronCount + om.neuronCount + 512} 神经元`);
 
 for (const cfg of [
-  { label: "完整（G=3，查询参与学习）", gain: 3, learnFromQueries: true },
-  { label: "消融 G=0", gain: 0, learnFromQueries: true },
-  { label: "消融 无查询学习", gain: 3, learnFromQueries: false },
+  { label: "完整（G=3+否决，查询参与学习）", gain: 3, learnFromQueries: true, veto: true },
+  { label: "消融 断侧重（G=0，真断开）", gain: 0, learnFromQueries: true, veto: true },
+  { label: "消融 断否决（G=3，veto=false）", gain: 3, learnFromQueries: true, veto: false },
+  { label: "消融 双断", gain: 0, learnFromQueries: true, veto: false },
+  { label: "消融 无查询学习", gain: 3, learnFromQueries: false, veto: true },
 ] as const) {
   let fine = 0;
   let coarse = 0;
@@ -152,6 +157,7 @@ function teachCap(combos: readonly [number, number][], truth: typeof capTruth): 
         if (a !== b) mem.teachExclusion("outcome", spec.name, a, b, 3.0);
       }
       const analysis = r2.analyzePair(pair);
+          if (analysis.undecidable) continue; // 不可判定对不进幅度累计（评审 F04）
       for (const ch of analysis.influentialChannels) {
         const m = Math.abs(analysis.outcomeDelta.out ?? 0) / CAP_SPAN.out;
         magSum.set(ch, (magSum.get(ch) ?? 0) + m);

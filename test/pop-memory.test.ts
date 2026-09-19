@@ -54,6 +54,7 @@ function teachBall(gain: number): PopRuleMemory {
         if (a !== b) mem.teachExclusion("outcome", spec.name, a, b, 3.0);
       }
       const analysis = r2.analyzePair(pair);
+          if (analysis.undecidable) continue; // 不可判定对不进幅度累计（评审 F04）
       for (const ch of analysis.influentialChannels) {
         let m = 0;
         for (const [och, delta] of Object.entries(analysis.outcomeDelta)) {
@@ -177,6 +178,7 @@ test("容量：mod-8 E=64 时否决制 taught ≥ 80%（此前 47.7%）", { time
         if (a !== b) mem.teachExclusion("outcome", spec.name, a, b, 3.0);
       }
       const analysis = r2.analyzePair(pair);
+          if (analysis.undecidable) continue; // 不可判定对不进幅度累计（评审 F04）
       for (const ch of analysis.influentialChannels) {
         const m = Math.abs(analysis.outcomeDelta.out ?? 0) / 7;
         magSum.set(ch, (magSum.get(ch) ?? 0) + m);

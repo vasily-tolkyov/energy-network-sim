@@ -31,11 +31,11 @@ R1/R2A/R2B/R3 预测原型实机实验
   组 hitwall-group    变化候选=[hitWall] 影响因素=[hitWall(m=0.75)] 首对结果变化=true
   组 damping-group    变化候选=[damping] 影响因素=[] 首对结果变化=false
   组 direction-group  变化候选=[direction] 影响因素=[] 首对结果变化=false
-  seen-combo    细粒度  16/18（88.9%）  粗粒度反弹 100.0%  错 2  歧义 0
+  seen-combo    细粒度  17/18（94.4%）  粗粒度反弹 100.0%  错 1  歧义 0
   unseen-color  细粒度   9/18（50.0%）  粗粒度反弹 100.0%  错 9  歧义 0
-  unseen-combo  细粒度  20/36（55.6%）  粗粒度反弹 100.0%  错 16  歧义 0
-  miss-wall     细粒度   4/72（5.6%）  粗粒度反弹 5.6%  错 68  歧义 0
-  总计：细粒度 49/144（34.0%），粗粒度反弹 52.8%
+  unseen-combo  细粒度  22/36（61.1%）  粗粒度反弹 100.0%  错 14  歧义 0
+  miss-wall     细粒度   6/72（8.3%）  粗粒度反弹 8.3%  错 66  歧义 0
+  总计：细粒度 54/144（37.5%），粗粒度反弹 54.2%
   失败样例（seed 首个，至多 12 条）：
     [miss-wall] 查询 {"color":0,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":0} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
     [miss-wall] 查询 {"color":6,"direction":0,"damping":0,"hitWall":0,"speed":0,"wallStiffness":0} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
@@ -46,9 +46,9 @@ R1/R2A/R2B/R3 预测原型实机实验
     [miss-wall] 查询 {"color":0,"direction":0,"damping":0,"hitWall":0,"speed":1,"wallStiffness":0} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
     [miss-wall] 查询 {"color":6,"direction":0,"damping":0,"hitWall":0,"speed":1,"wallStiffness":0} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
     [seen-combo] 查询 {"color":0,"direction":0,"damping":0,"hitWall":1,"speed":1,"wallStiffness":1} → 预测 {"rebound":1,"reboundSpeed":2}（真值 {"rebound":1,"reboundSpeed":1}）
-    [miss-wall] 查询 {"color":0,"direction":0,"damping":0,"hitWall":0,"speed":1,"wallStiffness":1} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
     [miss-wall] 查询 {"color":6,"direction":0,"damping":0,"hitWall":0,"speed":1,"wallStiffness":1} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
     [unseen-color] 查询 {"color":6,"direction":0,"damping":0,"hitWall":1,"speed":1,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":1,"reboundSpeed":2}）
+    [miss-wall] 查询 {"color":0,"direction":0,"damping":0,"hitWall":0,"speed":1,"wallStiffness":2} → 预测 {"rebound":1,"reboundSpeed":1}（真值 {"rebound":0,"reboundSpeed":0}）
 
 ── 消融 greedy（纯贪心读出，无退火竞争） ──
   组 color-group      变化候选=[color] 影响因素=[] 首对结果变化=false

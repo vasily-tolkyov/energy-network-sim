@@ -28,7 +28,7 @@ export interface R2ChannelSurface {
  */
 
 export interface R2PopAnalysis {
-  /** R2A：结果是否变化（结果侧有差分成员） */
+  /** R2A：结果是否变化（结果侧有差分成员且至少一个通道 |档差| > ε） */
   readonly outcomeChanged: boolean;
   /** R2A：逐结果通道的带符号档差（含方向与数值；未变化通道不出现） */
   readonly outcomeDelta: Readonly<Record<string, number>>;
@@ -39,17 +39,33 @@ export interface R2PopAnalysis {
   /** 双源 AND 判为影响因素的通道（差分 ∩ 结果变化） */
   readonly influentialChannels: readonly string[];
   readonly thetaHigh: number;
+  /**
+   * 差分构型不可判定（分层窗口不存在或交集为空）——调用方不得据此归因。
+   * 评审 F04/C07/C12 修复：修复前回退常数 θHigh=27，小模式上共同项被熄灭、
+   * 再被当作双侧差分，恒定结果的世界也报"发现影响因素"。
+   */
+  readonly undecidable: boolean;
 }
 
 export class R2PopLayer {
-  /** 见上：窗口 (24.8, 30.4) 取 27 */
-  readonly thetaHigh = 27;
   private readonly wellRepeats = 8;
 
   constructor(
     readonly conditionMap: R2ChannelSurface,
     readonly outcomeMap: R2ChannelSurface,
   ) {}
+
+  private undecidableResult(): R2PopAnalysis {
+    return {
+      undecidable: true,
+      outcomeChanged: false,
+      outcomeDelta: {},
+      conditionCommonNeurons: [],
+      diffChannels: [],
+      influentialChannels: [],
+      thetaHigh: NaN,
+    };
+  }
 
   analyzePair(pair: Pair): R2PopAnalysis {
     const condN = this.conditionMap.neuronCount;
@@ -73,8 +89,11 @@ export class R2PopLayer {
     const patternB = patternOf(pair.e1);
     hebbianLearn(net, patternA, this.wellRepeats);
     hebbianLearn(net, patternB, this.wellRepeats);
-    // θHigh 自适应（群体规模变化时固定阈值失效）：
-    // 窗口 = (单阱自维持 w·(|A|−1), 交集塌缩后自维持 2w·(|∩|−1)) 的中点
+    // θHigh 自适应 + 分层自校验（评审 F04/C07/C12 修复，取代回退常数 27）：
+    // 初值取 (hSingle, hCommon) 中点（交集为空时取 hSingle+ε）；
+    // 分层结果必须让**全部交集成员驻留**（common == ∩），否则说明阈值过高
+    // 把共同项也熄灭了（它们会被误当双侧差分——恒定世界误报因素的根因），
+    // 降档重试；至多 3 次仍不成立才如实报"不可判定"。
     const setA = new Set(patternA);
     const setB = new Set(patternB);
     let inter = 0;
@@ -82,13 +101,19 @@ export class R2PopLayer {
     const w = 0.1 * this.wellRepeats;
     const hSingle = w * (Math.max(patternA.length, patternB.length) - 1);
     const hCommon = 2 * w * Math.max(0, inter - 1);
-    const thetaHigh = hCommon > hSingle ? (hSingle + hCommon) / 2 : this.thetaHigh;
-    const diff = neuralDifferential(net, patternA, patternB, thetaHigh);
+    let thetaHigh = inter === 0 ? hSingle + 0.1 : (hSingle + hCommon) / 2;
+    let diff = neuralDifferential(net, patternA, patternB, thetaHigh);
+    for (let attempt = 0; attempt < 3 && inter > 0 && diff.common.length < inter && thetaHigh * 0.7 > 0.05; attempt++) {
+      thetaHigh *= 0.7;
+      diff = neuralDifferential(net, patternA, patternB, thetaHigh);
+    }
+    if (inter > 0 && diff.common.length < inter) {
+      return this.undecidableResult();
+    }
 
     // —— R2A 侧读出：结果成员里的差分 ——
     const outDiffA = diff.onlyA.filter((id) => id >= condN);
     const outDiffB = diff.onlyB.filter((id) => id >= condN);
-    const outcomeChanged = outDiffA.length + outDiffB.length > 0;
     // 逐通道带符号档差：按 (通道, 档) 去重（群体成员只计一次），flag 与数值分离
     const binsOf = (ids: readonly number[]): Map<string, Set<number>> => {
       const m = new Map<string, Set<number>>();
@@ -141,6 +166,9 @@ export class R2PopLayer {
 
     // —— R2B 侧读出：条件成员里的差分 + 双源 AND ——
     const condDiff = [...diff.onlyA, ...diff.onlyB].filter((id) => id < condN);
+    // 变化标志与数值一致：至少一个结果通道 |档差| > ε 才算结果变化
+    // （评审 C07：修复前恒定结果的对因差分侧非空而误报变化，delta 却全为 0）
+    const outcomeChanged = Object.values(outcomeDelta).some((d) => Math.abs(d) > 1e-9);
     this.conditionMap.specs.forEach((spec, k) => {
       const x = influenceBase + k;
       net.strengthen(outcomeChangeNeuron, x, 1.0);
@@ -178,6 +206,7 @@ export class R2PopLayer {
     ].sort();
 
     return {
+      undecidable: false,
       outcomeChanged,
       outcomeDelta,
       conditionCommonNeurons: diff.common.filter((id) => id < condN),

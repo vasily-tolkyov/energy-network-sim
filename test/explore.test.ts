@@ -46,7 +46,11 @@ test("探索闭环（预算 40 步）：自主成对喂 R2，干扰维不被判�
   const planner = new ExperimentPlanner(LAB_CONDITION_SPECS.map((s) => ({ ...s })));
   const ex = new Explorer(cm, om, planner, cm.specs, bench, { lit: 1, brightness: 3 }, { budget: 40 }, 1);
   while (ex.step()) {}
-  assert.equal(ex.log.length, 40, "预算内应持续推进（前沿未枯竭）");
+  // 修复后的诚实契约：允许提前终止，但提前终止必须是"验证达标"而非卡死/耗尽
+  assert.ok(ex.log.length <= 40, "不得超过预算");
+  if (ex.log.length < 40) {
+    assert.equal(ex.terminationReason, "quorum-met", `提前终止原因应为 quorum-met，实为 ${ex.terminationReason}`);
+  }
   assert.ok(ex.mem.ruleCount >= 20, `核数 ${ex.mem.ruleCount} 应随实验增长`);
   const found = ex.influentialDims;
   assert.ok(!found.includes("material"), "干扰维 material 不应被判为影响因素");

@@ -29,12 +29,9 @@ export function pretrainContinuous(fieldsPerDim = 40): PretrainedContinuous {
       for (const e of [pair.e0, pair.e1]) {
         formation.presentExperiment({ ...e.conditions, ...e.outcomes }, 4);
       }
-      formation.presentSwap(
-        group.manipulated,
-        pair.e0.conditions[group.manipulated]!,
-        pair.e1.conditions[group.manipulated]!,
-        3.0,
-      );
+      // 注：原 presentSwap（形成网里的换对 Γ）已删除——概念提取只读 W 共现，
+      // 替代值区域由非共现统计自然分离（评审 A12 证明 Γ 对提取无作用；
+      // 死参数不假装活着）。结果侧互斥由记忆层的 learnExclusion 承担（下）。
     }
   }
   const em = new EmergentMap(formation.extractConcepts(0.5), enc);
@@ -67,6 +64,7 @@ export function pretrainContinuous(fieldsPerDim = 40): PretrainedContinuous {
         e0: { conditions: bin(pair.e0.conditions), outcomes: pair.e0.outcomes },
         e1: { conditions: bin(pair.e1.conditions), outcomes: pair.e1.outcomes },
       });
+      if (analysis.undecidable) continue; // 不可判定对不进幅度累计（评审 F04）
       for (const ch of analysis.influentialChannels) {
         let m = 0;
         for (const [och, delta] of Object.entries(analysis.outcomeDelta)) {

@@ -48,19 +48,27 @@ out(SEP);
   const { mem, enc } = pretrainContinuous();
   const focus = new NeuralFocusNet(["A", "B", "C"], { inertia: 2.0 });
   const prevConditions = new Map<string, string>();
+  // 评审 §8.2 修复（两条）：①时序纪律——预测在上一帧结束时生成并缓存
+  // （含当时的规则核索引），本帧只比对已存在的缓存预测；修复前是到当前帧
+  // 才用当前权重重算旧条件，不构成"变化发生前已完成预测"。
+  // ②焦点因果作用——只有焦点对象获得下帧预测（可消融：焦点决定预测谁）。
+  let cachedForecast: { subjectId: string; coreIdx: number | null; originTick: number } | null = null;
   const acc: string[] = [];
   for (const frame of continuousStream()) {
+    // 焦点先择（基于截至上帧的失配场）
+    const prevFocus = focus.focus;
+    const winner = focus.select(frame.tick);
+    if (winner !== prevFocus || frame.tick === 1) {
+      out(`  t${frame.tick} 焦点 ${prevFocus ?? "∅"} → ${winner}`);
+    }
     focus.beginFrame();
     for (const obj of frame.objects) {
       const key = JSON.stringify(obj.conditions);
       if (prevConditions.get(obj.id) === key) continue;
-      const prevKey = prevConditions.get(obj.id);
       prevConditions.set(obj.id, key);
-      // 预测（时序纪律：用上一帧条件形成，与本帧观察比对）
-      const oldCond = prevKey ? (JSON.parse(prevKey) as typeof obj.conditions) : null;
-      const fc = oldCond ? mem.predict(oldCond, frame.tick - 1) : null;
-      const fcCore = fc && fc.winningCores.length > 0 ? fc.winningCores[0]! : null;
-      // 捕获判定（观察结果 vs 预测核）
+      // 用缓存的上一帧预测比对（只对焦点对象存在缓存预测）
+      const fcCore = cachedForecast && cachedForecast.subjectId === obj.id ? cachedForecast.coreIdx : null;
+      // 捕获判定（观察结果 vs 已缓存预测核）
       const cap = captureClassify(mem, obj.conditions, obj.outcomes, fcCore, frame.tick);
       // 失配场 → 写入竞争
       // 失配必须对**预测核**（被违反的期望）测量——捕获核是吻合观察的，失配恒为 0
@@ -71,10 +79,17 @@ out(SEP);
         out(`  t${frame.tick} ${obj.id} ${cap.class === "prediction-violation" ? "偏差" : "未知"} → 写观察（核 ${fcCore ?? "无"}）`);
       }
     }
-    const prevFocus = focus.focus;
-    const winner = focus.select(frame.tick);
-    if (winner !== prevFocus || frame.tick === 1) {
-      out(`  t${frame.tick} 焦点 ${prevFocus ?? "∅"} → ${winner}`);
+    // 帧末：为当前焦点对象生成下一帧预测并缓存（真正在变化前完成）
+    const focusObj = frame.objects.find((o) => o.id === winner);
+    if (focusObj) {
+      const fc = mem.predict(focusObj.conditions, frame.tick);
+      cachedForecast = {
+        subjectId: winner,
+        coreIdx: fc.winningCores.length > 0 ? fc.winningCores[0]! : null,
+        originTick: frame.tick,
+      };
+    } else {
+      cachedForecast = null;
     }
     if (frame.tick === 60) acc.push(`t${frame.tick}:${(accuracy(mem) * 100).toFixed(0)}%`);
     void enc;

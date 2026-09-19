@@ -22,10 +22,8 @@ function presentCurriculum(formation: ConceptFormation): void {
         const frame = { ...e.conditions, ...e.outcomes };
         formation.presentExperiment(frame, 4);
       }
-      // 换对互斥：被操纵维度的两个值区域
-      const a = pair.e0.conditions[group.manipulated]!;
-      const b = pair.e1.conditions[group.manipulated]!;
-      formation.presentSwap(group.manipulated, a, b, 3.0);
+      // 注：原 formation.presentSwap（换对 Γ）已删除——概念提取只读 W 共现，
+      // 替代值区域由非共现统计自然分离（评审 A12 证明 Γ 对提取无作用）。
     }
   }
 }
@@ -90,11 +88,13 @@ test("替代值区域之间的边显著弱于同区域内部边（从不共激�
   );
 });
 
-test("换对互斥：被对换的值区域之间出现抑制边", () => {
+test("替代值分离来自非共现（评审 A12 后删除死参数 presentSwap）：不同值区域分属不同概念", () => {
   const formation = buildFormation();
   presentCurriculum(formation);
-  const enc = formation.encoder;
-  const a = enc.encodeDimension("speed", 0.8)[0]!;
-  const b = enc.encodeDimension("speed", 6.5)[0]!;
-  assert.ok(formation.net.getInhibitoryWeight(a, b) > 0, "swap exclusion should exist");
+  // 评审 A12 实测：概念提取对换对抑制 Γ 无响应——替代值分离的功劳本属
+  // 非共现统计（每次实验每维只取一个值，替代区从不共激活、互连微弱）。
+  // 死参数已删除；结果侧互斥由记忆层 learnExclusion 承担。
+  const concepts = formation.extractConcepts(0.5);
+  const speedConcepts = concepts.filter((c) => c.dimension === "speed");
+  assert.ok(speedConcepts.length >= 2, `speed 应分离出多个值概念，实得 ${speedConcepts.length}`);
 });

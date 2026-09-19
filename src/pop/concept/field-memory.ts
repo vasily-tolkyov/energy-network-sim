@@ -19,6 +19,13 @@ export interface FieldRule {
   readonly outcomeFields: readonly number[];
 }
 
+/** 内部可变形态（再观察时结果场元数据并集更新；对外只读视图） */
+interface FieldRuleInternal {
+  core: number[];
+  conditionFields: number[];
+  outcomeFields: number[];
+}
+
 export interface OutcomeCluster {
   /** 簇中心（成员感受野中心均值） */
   center: number;
@@ -39,14 +46,19 @@ export interface FieldPrediction {
   readonly energy: number;
   /** 获胜规则核索引（≥3/4 成员激活的核） */
   readonly winningCores: readonly number[];
+  /** 退火是否以固定点终止（非平衡驱动下如实上报非收敛） */
+  readonly converged: boolean;
 }
 
 export class FieldRuleMemory {
   readonly net: EnergyNetwork;
-  private readonly rules: FieldRule[] = [];
+  private readonly rules: FieldRuleInternal[] = [];
   private readonly signatureToCore = new Map<string, readonly number[]>();
+  /** 规则注册表：签名 → rules 下标。生命周期判定以它为准（与分配解耦） */
+  private readonly sigRegistered = new Map<string, number>();
   private coreCursor = 0;
   private readonly coreSize: number;
+  private readonly maxRules: number;
   private readonly coreBase: number;
   private readonly poolBase: number;
   private readonly poolSize = 2;
@@ -54,6 +66,10 @@ export class FieldRuleMemory {
   private readonly poolGamma = 20;
   private lastBoost: Record<string, number> = {};
   private lastGammaVeto = 1.2;
+  /** 签名 → 最近一次写入的结果值（纠错否决用，与 PopRuleMemory 同一规则） */
+  private readonly lastOutcomeBySig = new Map<string, Record<string, number>>();
+  /** 每维已观察到的条件值集合（否决源登记——评审 F05：只否决已观察替代值的域） */
+  private readonly observedValues = new Map<string, Set<number>>();
 
   constructor(
     readonly encoder: SensoryEncoder,
@@ -61,11 +77,11 @@ export class FieldRuleMemory {
     config: { coreSize?: number; maxRules?: number; activationEnergy?: number; maintenanceEnergy?: number; learningRate?: number; maxWeight?: number } = {},
   ) {
     this.coreSize = config.coreSize ?? 4;
-    const maxRules = config.maxRules ?? 128;
+    this.maxRules = config.maxRules ?? 128;
     this.coreBase = encoder.neuronCount;
-    this.poolBase = encoder.neuronCount + maxRules * this.coreSize;
+    this.poolBase = encoder.neuronCount + this.maxRules * this.coreSize;
     this.net = new EnergyNetwork({
-      neuronCount: encoder.neuronCount + maxRules * this.coreSize + this.poolSize,
+      neuronCount: encoder.neuronCount + this.maxRules * this.coreSize + this.poolSize,
       activationEnergy: config.activationEnergy ?? 1.0,
       maintenanceEnergy: config.maintenanceEnergy ?? 0.5,
       learningRate: config.learningRate ?? 0.1,
@@ -86,6 +102,35 @@ export class FieldRuleMemory {
       for (const id of rule.core) if (active.has(id)) on++;
       if (on >= Math.max(1, Math.ceil((rule.core.length * 3) / 4))) out.push(idx);
     });
+    return out;
+  }
+
+  /**
+   * 未覆盖维度读出（与 PopRuleMemory.uncoveredDims 同一规则，场级版）：
+   * 某维查询值的感受野对任何已注册规则核都没有 W 边 = 该值从未被学习过。
+   */
+  uncoveredDims(query: Record<string, number>): string[] {
+    const out: string[] = [];
+    if (this.rules.length === 0) return this.encoder.dimensions.map((d) => d.name).filter((n) => query[n] !== undefined);
+    for (const dim of this.encoder.dimensions) {
+      const v = query[dim.name];
+      if (v === undefined) continue;
+      const fields = this.encoder.encodeDimension(dim.name, v);
+      let covered = false;
+      for (const from of fields) {
+        for (const rule of this.rules) {
+          for (const to of rule.core) {
+            if (this.net.getWeight(from, to) > 0) {
+              covered = true;
+              break;
+            }
+          }
+          if (covered) break;
+        }
+        if (covered) break;
+      }
+      if (!covered) out.push(dim.name);
+    }
     return out;
   }
 
@@ -132,6 +177,12 @@ export class FieldRuleMemory {
     const sig = this.signatureOf(condFields);
     const existing = this.signatureToCore.get(sig);
     if (existing) return existing;
+    // 容量边界（评审 D01/F03 修复）：分配前检查，越界显式抛错——
+    // 修复前第二核会静默覆盖抑制池神经元并产生超出 N 的索引
+    // （TypedArray 越界写不报错，池区被别名污染）。
+    if (this.coreCursor >= this.maxRules) {
+      throw new Error(`rule capacity exhausted (maxRules=${this.maxRules})`);
+    }
     const base = this.coreBase + this.coreCursor * this.coreSize;
     const core = Array.from({ length: this.coreSize }, (_, k) => base + k);
     this.coreCursor++;
@@ -156,6 +207,31 @@ export class FieldRuleMemory {
   }
 
   /**
+   * 规则注册事务（生命周期唯一入口；评审 D02/F02、D03/F13 修复）：
+   * - 首个**结果证据**写入时把核登记进 rules——判定以注册表为准，
+   *   与签名分配（signatureToCore）解耦：先 bindInfluence 分配的核
+   *   不阻止后续真实观察注册（修复前 isNew 看签名表，永不注册）；
+   * - 已注册规则的再次观察：结果场元数据取**并集**——解释接口
+   *   （ruleOutcomeFields/mismatchField）读到的是当前真实绑定。
+   */
+  private registerOrUpdateRule(
+    sig: string,
+    core: readonly number[],
+    condFields: readonly number[],
+    outcomes: Record<string, number>,
+  ): void {
+    const outFields = this.encoder.encode(outcomes);
+    const existing = this.sigRegistered.get(sig);
+    if (existing === undefined) {
+      this.sigRegistered.set(sig, this.rules.length);
+      this.rules.push({ core: [...core], conditionFields: [...condFields], outcomeFields: outFields });
+    } else {
+      const rule = this.rules[existing]!;
+      rule.outcomeFields = [...new Set([...rule.outcomeFields, ...outFields])].sort((a, b) => a - b);
+    }
+  }
+
+  /**
    * 教学：场级三段绑定——条件场↔核、核↔结果场（按结果维度分别绑定，防跨维接力）。
    * 条件场集合即该经验的场级签名（概念不参与，保持细分精度）。
    */
@@ -167,7 +243,6 @@ export class FieldRuleMemory {
   ): void {
     const condFields = this.encoder.encode(conditions);
     const sig = this.signatureOf(condFields);
-    const isNew = !this.signatureToCore.has(sig);
     const core = this.coreFor(condFields);
     hebbianLearn(this.net, [...condFields, ...core], repeats, undefined, baseCap);
     // 结果场星型绑定：只写 核↔结果场，不写 结果场↔结果场——
@@ -182,9 +257,9 @@ export class FieldRuleMemory {
         for (const from of core) this.net.strengthen(from, to, 0.6, 0.6);
       }
     }
-    if (isNew) {
-      this.rules.push({ core, conditionFields: condFields, outcomeFields: this.encoder.encode(outcomes) });
-    }
+    this.registerOrUpdateRule(sig, core, condFields, outcomes);
+    this.vetoSupersededOutcomes(sig, core, outcomes);
+    this.registerObservedValues(conditions);
   }
 
   /**
@@ -198,11 +273,12 @@ export class FieldRuleMemory {
     channelBoost: Readonly<Record<string, number>>,
     repeats = 4,
     gammaVeto = 1.2,
+    veto = true,
   ): void {
     for (const [dim, delta] of Object.entries(channelBoost)) {
       this.lastBoost[dim] = Math.max(this.lastBoost[dim] ?? 0, delta);
     }
-    this.lastGammaVeto = gammaVeto;
+    this.lastGammaVeto = veto ? gammaVeto : 0;
     const condFields = this.encoder.encode(conditions);
     const core = this.coreFor(condFields);
     const own = new Set(condFields);
@@ -215,15 +291,38 @@ export class FieldRuleMemory {
           }
         }
       }
-      // 场级否决：该维全部感受野中不属于本核条件场者 → 核 抑制。
-      // （试过按影响幅度缩放否决强度：门控略升但整体下降，已回退——记录）
+      // 评审 F06 同一规则：零增益通道不加分也不写否决；veto=false 显式断否决
+      if (!veto || delta <= 0) continue;
+      // 场级否决（评审 F05 根因修复）：只从"该维已观察到的替代值的感受野"
+      // 写否决边（去掉本核自己的场）——否决强度随观察覆盖增长而增长；
+      // 修复前从该维全部非己感受野写入：落在未观察区域的输入会把所有核
+      // 压灭（同量程网格外 128 探针 109 个读空，12.5% vs 最近邻 81.3%）。
       const vetoGamma = gammaVeto;
-      const offset = this.encoder.dimensionOffset(dim);
-      for (let k = 0; k < this.encoder.fieldsPerDim; k++) {
-        const from = offset + k;
-        if (own.has(from)) continue;
+      const ownDimFields = new Set(ownFields);
+      for (const from of this.vetoSourcesFor(dim, ownDimFields)) {
         for (const to of core) this.net.strengthenInhibitory(from, to, vetoGamma);
       }
+    }
+  }
+
+  /** 否决源集合：该维已观察替代值的感受野（去掉本核自己的场） */
+  private vetoSourcesFor(dim: string, ownDimFields: ReadonlySet<number>): number[] {
+    const out = new Set<number>();
+    for (const alt of this.observedValues.get(dim) ?? []) {
+      for (const f of this.encoder.encodeDimension(dim, alt)) {
+        if (!ownDimFields.has(f)) out.add(f);
+      }
+    }
+    return [...out];
+  }
+
+  /** 登记观察到的条件值（否决源登记的素材——观察即经验） */
+  private registerObservedValues(conditions: Record<string, number>): void {
+    for (const [d, v] of Object.entries(conditions)) {
+      if (this.outcomeDims.includes(d)) continue;
+      const s = this.observedValues.get(d) ?? new Set<number>();
+      s.add(v);
+      this.observedValues.set(d, s);
     }
   }
 
@@ -256,6 +355,9 @@ export class FieldRuleMemory {
       quenchCandidatesOnly: true,
       // 长尾爬降防护：8×N 翻转上限，超限回退途中最低能态（语义不变）
       quenchMaxFlips: 8 * this.net.neuronCount,
+      // 池电路专属：最优回退只在驱动静息态中选（多核共存态真实能量更低但
+      // 破坏 WTA 单核语义；评审 F01 修复引入的显式开关）
+      fallbackQuietOnly: true,
       levels: 12,
       sweepsPerLevel: 20,
     });
@@ -304,6 +406,7 @@ export class FieldRuleMemory {
       activeNeurons: result.activeNeurons,
       energy: result.energy,
       winningCores: this.activeCores(result.activeNeurons),
+      converged: result.converged,
     };
   }
 
@@ -335,6 +438,26 @@ export class FieldRuleMemory {
     this.teachExperimentWithCap(conditions, observed, repeats, 0.1, 0.6);
   }
 
+  /**
+   * 纠错否决（评审 B04 的场级版）：同签名再次写入结果时，某结果维的新值
+   * 与上次不同 → 核↔旧值感受野写抑制边。纠正不依赖预先学过的结果互斥。
+   */
+  private vetoSupersededOutcomes(sig: string, core: readonly number[], outcomes: Record<string, number>): void {
+    const last = this.lastOutcomeBySig.get(sig);
+    for (const dim of this.encoder.dimensions) {
+      const v = outcomes[dim.name];
+      if (v === undefined) continue;
+      const prev = last?.[dim.name];
+      if (prev !== undefined && Math.abs(prev - v) > 1e-9) {
+        const oldFields = this.encoder.encodeDimension(dim.name, prev);
+        for (const from of core) {
+          for (const to of oldFields) this.net.strengthenInhibitory(from, to, 3.0);
+        }
+      }
+    }
+    this.lastOutcomeBySig.set(sig, { ...last, ...outcomes });
+  }
+
   private teachExperimentWithCap(
     conditions: Record<string, number>,
     outcomes: Record<string, number>,
@@ -344,7 +467,6 @@ export class FieldRuleMemory {
   ): void {
     const condFields = this.encoder.encode(conditions);
     const sig = this.signatureOf(condFields);
-    const isNew = !this.signatureToCore.has(sig);
     const core = this.coreFor(condFields);
     hebbianLearn(this.net, [...condFields, ...core], repeats, eta, cap);
     // 结果场星型绑定（同 teachExperiment，防幻影块）
@@ -355,24 +477,22 @@ export class FieldRuleMemory {
         for (const from of core) this.net.strengthen(from, to, cap, cap);
       }
     }
-    // 自主探索路径实测修复：新签名的观察核必须登记进 rules——
-    // 否则它有全部绑定却不在 predict/读出候选集中，观察写入的经验不可见
-    // （空白起步的纯观察驱动学习因此全部读空；概念形成时代被预训练覆盖掩盖）。
-    if (isNew) {
-      this.rules.push({ core, conditionFields: condFields, outcomeFields: this.encoder.encode(outcomes) });
-    }
+    // 生命周期事务（评审 D02 修复 + 早前空白起步修复的完成版）：
+    // 观察写入 = 结果证据 → 注册/更新规则。判定以注册表为准——
+    // 先侧重（bindInfluence 分配核）后观察的顺序不再漏登记。
+    this.registerOrUpdateRule(sig, core, condFields, outcomes);
+    this.vetoSupersededOutcomes(sig, core, outcomes);
+    this.registerObservedValues(conditions);
     // 持证：按侧重并集补正/否决（场级，与 bindInfluence 同一规则）
-    const own = new Set(condFields);
     for (const [dim, delta] of Object.entries(this.lastBoost)) {
-      if (delta > 0) {
-        for (const from of this.encoder.encodeDimension(dim, conditions[dim]!)) {
-          for (const to of core) this.net.strengthen(from, to, delta);
-        }
+      // 评审 F06 同一规则：零增益通道不加分也不写否决
+      if (delta <= 0) continue;
+      for (const from of this.encoder.encodeDimension(dim, conditions[dim]!)) {
+        for (const to of core) this.net.strengthen(from, to, delta);
       }
-      const offset = this.encoder.dimensionOffset(dim);
-      for (let k = 0; k < this.encoder.fieldsPerDim; k++) {
-        const from = offset + k;
-        if (own.has(from)) continue;
+      // 否决源 = 已观察替代值的感受野（评审 F05 同一修复，不再全维写入）
+      const ownDimFields = new Set(this.encoder.encodeDimension(dim, conditions[dim]!));
+      for (const from of this.vetoSourcesFor(dim, ownDimFields)) {
         for (const to of core) this.net.strengthenInhibitory(from, to, this.lastGammaVeto);
       }
     }

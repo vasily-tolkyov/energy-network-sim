@@ -45,7 +45,8 @@ export class LabContBench {
   conduct(conditions: LCValues): LCValues {
     for (const d of this.dims) {
       const v = conditions[d.name];
-      if (v === undefined || v < d.min - 1e-9 || v > d.max + 1e-9) {
+      // 评审 A07 修复：NaN 比较恒 false，曾返回"灭灯"假象并计成本——显式拒绝
+      if (v === undefined || !Number.isFinite(v) || v < d.min - 1e-9 || v > d.max + 1e-9) {
         throw new Error(`非法实验条件：${d.name}=${v}（应在 [${d.min}, ${d.max}]）`);
       }
     }
@@ -89,7 +90,8 @@ export const LAB_CONT_EXT_NEW_VALUES: Readonly<Record<string, readonly number[]>
 export interface LCProbe {
   readonly conditions: LCValues;
   readonly truth: LCValues;
-  readonly kind: "self-taught" | "gate-off" | "heldout" | "extended";
+  /** 分桶（评审 F10 修复同离散版）：两个 unseen 桶的并集 = 全部未观察组合 */
+  readonly kind: "self-taught" | "unseen-gate-off" | "unseen-gate-on" | "extended";
 }
 
 /** 评分探针：网格全组合，按来源分档；voltage≥3.9 的扩展场景标 "extended" */
@@ -111,8 +113,8 @@ export function labContProbes(
                 : conducted.has(key(conditions))
                   ? "self-taught"
                   : switchPos < 0.5 || voltage < 1.0
-                    ? "gate-off"
-                    : "heldout";
+                    ? "unseen-gate-off"
+                    : "unseen-gate-on";
             out.push({ conditions, truth: labContTruth(conditions), kind });
           }
         }
@@ -128,7 +130,9 @@ export function labContKey(c: LCValues): string {
 
 /**
  * 容差评分：lit 精确（预测值阈值 0.5 化 0/1），brightness |预测−真值| ≤ 0.5。
- * 粗粒度 = 亮灭判定正确；细粒度 = 粗粒度 且 亮度在容差内。
+ * 粗粒度 = 亮灭判定正确；细粒度 = 粗粒度 且 亮度在容差内——
+ * 灭灯时也必须校验亮度（评审 A13/F10：修复前灭灯直接判对，亮度=999 也算细粒度正确）。
+ * 拒答（null）计为不正确而非正确。
  */
 export function lcScore(
   values: Record<string, number | null>,
@@ -138,7 +142,7 @@ export function lcScore(
   const predLit = litV === null ? null : litV >= 0.5 ? 1 : 0;
   const coarse = predLit === truth.lit;
   if (!coarse) return { coarse: false, fine: false };
-  if (truth.lit === 0) return { coarse: true, fine: true };
   const b = values.brightness ?? null;
+  if (truth.lit === 0) return { coarse: true, fine: b !== null && Math.abs(b - truth.brightness!) <= 0.5 };
   return { coarse: true, fine: b !== null && Math.abs(b - truth.brightness!) <= 0.5 };
 }

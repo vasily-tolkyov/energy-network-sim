@@ -34,7 +34,7 @@ export class PopChannelMap {
   population(channel: string, bin: number): number[] {
     const spec = this.byName.get(channel);
     if (!spec) throw new Error(`unknown channel: ${channel}`);
-    if (bin < 0 || bin >= spec.bins) {
+    if (!Number.isInteger(bin) || bin < 0 || bin >= spec.bins) {
       throw new Error(`channel ${channel}: bin ${bin} out of range [0, ${spec.bins})`);
     }
     const base = spec.offset + bin * this.popSize;

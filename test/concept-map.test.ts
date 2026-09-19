@@ -19,12 +19,6 @@ function buildMap(): EmergentMap {
       for (const e of [pair.e0, pair.e1]) {
         formation.presentExperiment({ ...e.conditions, ...e.outcomes }, 4);
       }
-      formation.presentSwap(
-        group.manipulated,
-        pair.e0.conditions[group.manipulated]!,
-        pair.e1.conditions[group.manipulated]!,
-        3.0,
-      );
     }
   }
   return new EmergentMap(formation.extractConcepts(0.5), enc);

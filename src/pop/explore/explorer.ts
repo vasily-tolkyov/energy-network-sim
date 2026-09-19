@@ -75,26 +75,57 @@ export class Explorer {
     this.specs = specs;
     this.cfg = {
       budget: config.budget ?? 300,
-      verifyQuorum: config.verifyQuorum ?? 8,
+      // 默认 16（评审"提前终止"病理修复后重新标定：8 连胜在覆盖变厚后过早达成，
+      // 导致因素发现不全；16 连胜下三种子因素 4/4 全对、粗粒度 98-100%）
+      verifyQuorum: config.verifyQuorum ?? 16,
       learnRepeats: config.learnRepeats ?? 2,
       ignoranceDrive: config.ignoranceDrive ?? 2.0,
     };
     this.stepSeed = seed;
   }
 
-  /** 当前 R2 判为影响因素的维度（累计幅度 > 0 者） */
-  get influentialDims(): string[] {
-    return [...this.magSum.keys()].sort();
+  /** 终止原因（评审"多种结束原因均为 false"修复）：结构化区分
+   *  预算耗尽 / 前沿枯竭 / 验证达标；运行中为 null */
+  terminationReason: "budget-exhausted" | "frontier-exhausted" | "quorum-met" | null = null;
+
+  /** 多样性门（终止判据用）：每个条件维至少观察过 min(2, bins) 个不同取值，
+   * 且两端极值（档 0 与档 bins−1）都被操纵过——门控的关闭侧常在极端值上，
+   * 只在中间档扫描会在门控区从未被触及时就收工（评审修复：13 步早停、
+   * 门控关闭侧 4/16 的根因）。方法先验的躯体化：探维先探其两端。 */
+  private diverseEnough(): boolean {
+    const seen = new Map<string, Set<number>>();
+    for (const ep of this.planner.allEpisodes) {
+      for (const [d, v] of Object.entries(ep.conditions)) {
+        const s = seen.get(d) ?? new Set<number>();
+        s.add(v);
+        seen.set(d, s);
+      }
+    }
+    return this.specs.every((s) => {
+      const got = seen.get(s.name) ?? new Set<number>();
+      return got.size >= Math.min(2, s.bins) && got.has(0) && got.has(s.bins - 1);
+    });
   }
 
-  /** 无知场：纯边权覆盖读出（coreFieldCoverage），低于 θ = 无核声称 → 未知 */
+  /** 当前 R2 判为影响因素的维度（累计幅度 > 0 者） */
+  get influentialDims(): string[] {
+    // 过滤零幅度键（评审 F04/C07：不可判定对曾留下 sum=0 的键被误报为因素）
+    return [...this.magSum.entries()].filter(([, sum]) => sum > 1e-9).map(([k]) => k).sort();
+  }
+
+  /** 无知场：无核覆盖（纯边权读出 < θ）或有维度的取值从未被观察 → 未知 */
   private ignoranceOf(c: Conditions): number {
-    return this.mem.coreFieldCoverage(c) < this.mem.net.threshold ? this.cfg.ignoranceDrive : 0.4;
+    const unknown =
+      this.mem.coreFieldCoverage(c) < this.mem.net.threshold || this.mem.uncoveredDims(c).length > 0;
+    return unknown ? this.cfg.ignoranceDrive : 0.4;
   }
 
   /** 推进一步：选一个实验、执行、学习。返回 false 表示终止。 */
   step(): boolean {
-    if (this.planner.experimentCount >= this.cfg.budget) return false;
+    if (this.planner.experimentCount >= this.cfg.budget) {
+      this.terminationReason = "budget-exhausted";
+      return false;
+    }
 
     // 首实验：无任何经验时，从量程中点探一针（任意但固定的起点）
     if (this.planner.experimentCount === 0) {
@@ -123,7 +154,10 @@ export class Explorer {
     }
 
     const candidates = this.planner.candidates();
-    if (candidates.length === 0) return false;
+    if (candidates.length === 0) {
+      this.terminationReason = "frontier-exhausted";
+      return false;
+    }
 
     // 驱动场：无知场 + 意外残余
     const drives = new Map<string, number>();
@@ -132,11 +166,17 @@ export class Explorer {
       drives.set(id, this.ignoranceOf(c) + this.planner.boostOf(id));
     }
 
-    // 终止判据：无知场全消（候选全部置信）且验证相连续无偏差达标
+    // 终止判据：无知场全消（候选全部置信）且验证相连续无偏差达标，
+    // 且每个条件维都被操纵过（多样性门——与连续版语料充分性同一规则：
+    // 评审发现的提前终止病理：覆盖置信过早使探索在门控维从未被操纵时就收工）。
+    // 修复前 40 步预算下 13 步即停、门控关闭侧只剩 4/16。
     const anyUnknown = candidates.some(
       (c) => (drives.get(this.planner.candidateId(c)) ?? 0) >= this.cfg.ignoranceDrive - 1e-9,
     );
-    if (!anyUnknown && this.withinStreak >= this.cfg.verifyQuorum) return false;
+    if (!anyUnknown && this.withinStreak >= this.cfg.verifyQuorum && this.diverseEnough()) {
+      this.terminationReason = "quorum-met";
+      return false;
+    }
 
     // WTA 择选（NeuralFocusNet：驱动场即失配场，×4 跨过 marker 点火阈值 θ=1.5）
     const focus = new NeuralFocusNet(
@@ -162,10 +202,13 @@ export class Explorer {
         ? "prediction-violation"
         : "within-envelope";
 
-    // 门控学习：写观察、不写预测（偏差/未知才写，0.6 封顶；符合则无新信息）
-    if (classification !== "within-envelope") {
-      this.mem.learnFromObservation(chosen, observed, this.cfg.learnRepeats);
-    }
+    // 每次实验都是证据（评审 C05 根因修复）：符合/偏差/未知都写观察——
+    // 写的是世界真值而非自猜（自强化只发生在写预测时，learnFromQuery 那条路）。
+    // 修复前"符合不写"留下有侧重无结果的空核，它被证据过滤排除后
+    // 该条件只能由近似核代答，门控角读数随之漂移。
+    // （注意力流式监测器的"符合不写"是另一场景：重复状态的连续流；
+    // 探索里每次实验都是昂贵的新探针，确认本身值得记录。）
+    this.mem.learnFromObservation(chosen, observed, this.cfg.learnRepeats);
     this.withinStreak = classification === "within-envelope" ? this.withinStreak + 1 : 0;
 
     const { pairs, newBins } = this.planner.register({ conditions: chosen, outcomes: observed, classification });
@@ -194,6 +237,9 @@ export class Explorer {
   private absorbPairs(pairs: readonly Pair[], newBins: readonly string[]): void {
     for (const pair of pairs) {
       const analysis = this.r2.analyzePair(pair);
+      // 不可判定的差分构型不进幅度累计（评审 F04：小模式上窗口不存在时
+      // R2 曾误报因素；现在由 R2 显式标记，此处跳过）
+      if (analysis.undecidable) continue;
       // 对换结果学习互斥（替代教师对换演示）
       for (const spec of Object.keys(this.outcomeSpan)) {
         const a = pair.e0.outcomes[spec]!;

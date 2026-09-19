@@ -43,6 +43,10 @@ export function resolveConfig(input: NetworkConfigInput): NetworkConfig {
   if (!Number.isInteger(config.neuronCount) || config.neuronCount < 2) {
     throw new Error(`neuronCount must be an integer >= 2, got ${config.neuronCount}`);
   }
+  // 评审 A06 修复：非有限值（NaN/Infinity）绕过一切比较检查，统一显式拒绝
+  for (const [k, v] of Object.entries(config)) {
+    if (!Number.isFinite(v)) throw new Error(`${k} must be finite, got ${v}`);
+  }
   // 要求 4：Ea > Em，不满足直接拒绝构造。
   if (!(config.activationEnergy > config.maintenanceEnergy)) {
     throw new Error(
@@ -66,18 +70,32 @@ export function resolveConfig(input: NetworkConfigInput): NetworkConfig {
 
 /** 一次 settle 的能耗轨迹记录（要求 10：验证只凭局部规律单调下降）。 */
 export interface SettleTrace {
-  /** 每一步翻转后的总能量，严格单调下降 */
+  /**
+   * 每一步翻转后的保守能量账本（≡ energy() 逐点差分累计）。
+   * 第三方评审 F01 修复后：账本只含对称部分（θ/W/Γ），DI 非平衡驱动
+   * 的做功不再混入（修复前闭环一周账本漂移 −γ，轨迹与真实能量脱钩）。
+   */
   readonly energies: readonly number[];
-  /** 执行的翻转次数 */
+  /** 执行的翻转次数（真实计数，回退写入不计） */
   readonly flipCount: number;
+  /** DI 非平衡驱动的累计做功（决策场与保守账本之差；无 DI 时为 0） */
+  readonly driveWork: number;
 }
+
+/** 终止原因：无翻转可降 = 固定点；翻转预算耗尽 = 非收敛（回退途中最低能态） */
+export type SettleTermination = "fixed-point" | "flip-budget";
 
 export interface SettleResult {
   /** 收敛后的激活神经元集合（含被输入钳制的神经元） */
   readonly activeNeurons: readonly number[];
-  /** 收敛后的总能量 */
+  /** 返回态的真实总能量（θ/W/Γ） */
   readonly energy: number;
   readonly trace: SettleTrace;
+  /** 是否以固定点终止（DI 存在时动力学可振荡，不再承诺无条件收敛） */
+  readonly converged: boolean;
+  readonly terminationReason: SettleTermination;
+  /** 返回态在作用域内仍可翻转的神经元数（决策场口径；0 = 真固定点） */
+  readonly residualFlips: number;
 }
 
 /** 时序记账账本（要求 1–4）：静息不计费，0→1 收 Ea，激活每步收 Em。 */
@@ -124,6 +142,14 @@ export interface AnnealOptions {
    * 超限时回退到途中最低能态（如实记录为非收敛终止），语义不变。
    */
   readonly quenchMaxFlips?: number;
+  /**
+   * 最优回退的选择域（默认 false = 全部访问态，保守系统/无 DI 的正确契约）：
+   * true = 只在驱动静息态（无 DI 源活跃或将点燃）中选最低真实能态——
+   * 带前馈抑制池的 WTA 电路必须开：多核共存态的真实能量反而更低
+   * （耦合更多），普适回退会破坏池的单核语义（第三方评审 F01 修复
+   * 引入的显式开关，池使用者（两个规则记忆）传 true）。
+   */
+  readonly fallbackQuietOnly?: boolean;
 }
 
 export interface AnnealResult extends SettleResult {

@@ -28,9 +28,11 @@ interface RunConfig {
   readonly label: string;
   readonly gain: number;
   readonly learnFromQueries: boolean;
+  /** 断否决开关（2×2 消融，评审 F06）：false 时 bindInfluence 不写否决边 */
+  readonly veto?: boolean;
 }
 
-function teach(mem: PopRuleMemory, r2: R2PopLayer, gain: number, verbose: boolean, curriculum: Group[]): void {
+function teach(mem: PopRuleMemory, r2: R2PopLayer, gain: number, verbose: boolean, curriculum: Group[], veto = true): void {
   for (const group of curriculum) {
     const magSum = new Map<string, number>();
     const magCount = new Map<string, number>();
@@ -42,6 +44,7 @@ function teach(mem: PopRuleMemory, r2: R2PopLayer, gain: number, verbose: boolea
         if (a !== b) mem.teachExclusion("outcome", spec.name, a, b, 3.0);
       }
       const analysis = r2.analyzePair(pair);
+          if (analysis.undecidable) continue; // 不可判定对不进幅度累计（评审 F04）
       for (const ch of analysis.influentialChannels) {
         let m = 0;
         for (const [och, delta] of Object.entries(analysis.outcomeDelta)) {
@@ -70,7 +73,7 @@ function teach(mem: PopRuleMemory, r2: R2PopLayer, gain: number, verbose: boolea
       );
     }
     for (const pair of group.pairs) {
-      for (const e of [pair.e0, pair.e1]) mem.bindInfluence(e, boost, 4);
+      for (const e of [pair.e0, pair.e1]) mem.bindInfluence(e, boost, 4, 1.5, veto);
     }
   }
 }
@@ -89,7 +92,7 @@ function score(
 function runChem(cfg: RunConfig, seed: number, verboseR2: boolean, curriculum: Group[]) {
   const mem = new PopRuleMemory(cm, om, { maxRules: 128 });
   const r2 = new R2PopLayer(cm, om);
-  teach(mem, r2, cfg.gain, verboseR2, curriculum);
+  teach(mem, r2, cfg.gain, verboseR2, curriculum, cfg.veto ?? true);
   const perKind: Record<string, { correct: number; wrong: number; ambiguous: number; total: number; coarse: number }> =
     {};
   const failures: string[] = [];
@@ -194,8 +197,10 @@ for (const variant of [
 ] as const) {
   out(`\n  ══ 课程 ${variant.label} ══`);
   for (const cfg of [
-    { label: "完整模型（G=3，查询参与学习）", gain: 3, learnFromQueries: true },
-    { label: "消融 G=0（断 R2B 侧重/否决）", gain: 0, learnFromQueries: true },
+    { label: "完整模型（G=3+否决，查询参与学习）", gain: 3, learnFromQueries: true },
+    { label: "消融 断侧重（G=0；零增益通道自动不写否决——真断开）", gain: 0, learnFromQueries: true },
+    { label: "消融 断否决（G=3，veto=false）", gain: 3, learnFromQueries: true, veto: false },
+    { label: "消融 双断（G=0 + 无否决）", gain: 0, learnFromQueries: true, veto: false },
     { label: "消融 无查询学习", gain: 3, learnFromQueries: false },
   ] as const) {
     out(`\n  ── ${cfg.label} ──`);

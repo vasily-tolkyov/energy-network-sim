@@ -6,6 +6,7 @@ export type {
   NetworkConfig,
   NetworkConfigInput,
   SettleResult,
+  SettleTermination,
   SettleTrace,
   WellMembership,
 } from "./types.js";

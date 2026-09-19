@@ -1,6 +1,6 @@
 
 ── 种子 3 ──
-终止：实验 118 次（语料相 32 + 全机器相 86；穷举基线 432），规则核 88 条，耗时 0.9 分钟；判定：未知 66 / 偏差 22 / 符合 30
+终止：实验 132 次（语料相 23 + 全机器相 109；穷举基线 432），规则核 132 条，耗时 3.2 分钟；判定：未知 37 / 偏差 35 / 符合 60
   概念形成（由自己的实验史结晶）：
     switchPos   3 个概念，中心=[0.1, 0.5, 0.9]
     voltage     4 个概念，中心=[0.3, 1.2, 2.1, 2.85]
@@ -12,40 +12,55 @@
   R2 发现的影响因素：[resistance,switchPos,temperature,voltage]（真值：[switchPos,voltage,resistance,temperature]，干扰 material 应缺席）
   轨迹（前 15 步 + 相切换 + 全部偏差）：
     #  0 [语] [0.5,2.1,2.1,1,1] 预测lit=∅ → 观察 {"lit":1,"brightness":2.55}  unknown-change（驱动 2.0，候选 0，核 1）
-    #  1 [语] [0.5,2.1,2.1,1,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.55}  within-envelope（驱动 0.4，候选 12，核 1）
-    #  2 [语] [0.5,2.1,0.3,1,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  within-envelope（驱动 0.4，候选 21，核 1）
-    #  3 [语] [0.5,1.2,2.1,1,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.4249999999999998}  prediction-violation（驱动 0.4，候选 28，核 2）
-    #  4 [语] [0.5,1.2,0.3,1,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.775}  prediction-violation（驱动 1.0，候选 35，核 3）
-    #  5 [语] [0.5,1.2,1.2,1,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.1}  prediction-violation（驱动 1.3，候选 41，核 4）
-    #  6 [语] [0.5,1.2,3,1,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":0.75}  prediction-violation（驱动 1.4，候选 48，核 5）
-    #  7 [语] [0.5,1.2,3,1,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":0.75}  prediction-violation（驱动 1.0，候选 55，核 6）
-    #  8 [语] [0.5,1.2,3,1,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":0.75}  within-envelope（驱动 1.3，候选 61，核 6）
-    #  9 [语] [0.5,1.2,0.3,1,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.775}  prediction-violation（驱动 0.7，候选 66，核 7）
-    # 10 [语] [0.5,1.2,1.2,1,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.1}  prediction-violation（驱动 1.2，候选 71，核 8）
-    # 11 [语] [0.5,1.2,1.2,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.45}  prediction-violation（驱动 1.0，候选 77，核 9）
-    # 12 [语] [0.5,1.2,1.2,0.3,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.75}  within-envelope（驱动 1.3，候选 83，核 9）
-    # 13 [语] [0.5,1.2,3,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.1}  within-envelope（驱动 0.7，候选 89，核 9）
-    # 14 [语] [0.5,1.2,1.2,1.7,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.45}  within-envelope（驱动 0.6，候选 93，核 9）
-    # 15 [语] [0.5,2.1,1.2,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.5，候选 99，核 10）
-    # 16 [语] [0.5,0.3,1.2,1.7,0.3] 预测lit=0.95 → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 1.0，候选 103，核 11）
-    # 17 [语] [0.5,3,1.2,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.3，候选 107，核 12）
-    # 18 [语] [0.5,3,1.2,1.7,1] 预测lit=0.049999999999999996 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.0，候选 111，核 13）
-    # 20 [语] [0.1,3,1.2,1.7,1] 预测lit=0.95 → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 0.7，候选 122，核 14）
-    # 22 [语] [0.1,1.2,1.2,1.7,1] 预测lit=0.95 → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 0.7，候选 134，核 15）
-    # 24 [语] [0.9,1.2,1.2,1.7,1] 预测lit=0.049999999999999996 → 观察 {"lit":1,"brightness":2.45}  prediction-violation（驱动 0.7，候选 144，核 16）
-    # 25 [语] [0.9,1.2,0.3,1.7,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.0，候选 149，核 17）
-    # 26 [语] [0.9,1.2,3,1.7,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.1}  prediction-violation（驱动 1.3，候选 154，核 18）
-    # 27 [语] [0.9,1.2,3,1,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":0.75}  prediction-violation（驱动 1.0，候选 157，核 19）
-    # 32 [全] [0.1,3,1.2,0.3,1] 预测lit=∅ → 观察 {"lit":0,"brightness":0}  unknown-change（驱动 2.0，候选 174，核 20） ◄── 概念形成完成
-    #102 [全] [0.5,0.3,2.1,0.3,1.7] 预测lit=0.95 → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 0.4，候选 284，核 85）
-    #104 [全] [0.5,3,2.1,0.3,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.7，候选 283，核 86）
-    #107 [全] [0.5,3,2.1,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.4，候选 285，核 87）
-    #109 [全] [0.5,3,0.3,1.7,0.3] 预测lit=0.049999999999999996 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.7，候选 284，核 88）
+    #  1 [语] [0.1,2.1,2.1,1,1] 预测lit=0.95 → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 2.0，候选 12，核 2）
+    #  2 [语] [0.1,3,2.1,1,1] 预测lit=0.049999999999999996 → 观察 {"lit":0,"brightness":0}  within-envelope（驱动 2.6，候选 21，核 3）
+    #  3 [语] [0.1,0.3,2.1,1,1] 预测lit=0.049999999999999996 → 观察 {"lit":0,"brightness":0}  within-envelope（驱动 2.3，候选 28，核 4）
+    #  4 [语] [0.9,2.1,2.1,1,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.55}  within-envelope（驱动 2.1，候选 35，核 5）
+    #  5 [语] [0.1,2.1,1.2,1,1] 预测lit=0.049999999999999996 → 观察 {"lit":0,"brightness":0}  within-envelope（驱动 2.1，候选 42，核 6）
+    #  6 [语] [0.1,0.3,0.3,1,1] 预测lit=0.049999999999999996 → 观察 {"lit":0,"brightness":0}  within-envelope（驱动 2.0，候选 46，核 7）
+    #  7 [语] [0.5,1.2,2.1,1,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.4249999999999998}  prediction-violation（驱动 2.0，候选 52，核 8）
+    #  8 [语] [0.5,1.2,2.1,1.7,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.775}  within-envelope（驱动 2.6，候选 58，核 9）
+    #  9 [语] [0.5,1.2,3,1,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":0.75}  prediction-violation（驱动 2.3，候选 66，核 10）
+    # 10 [语] [0.5,1.2,3,0.3,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":0.4}  within-envelope（驱动 2.6，候选 72，核 11）
+    # 11 [语] [0.5,1.2,3,1,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":0.75}  within-envelope（驱动 2.3，候选 80，核 12）
+    # 12 [语] [0.5,1.2,3,1,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":0.75}  within-envelope（驱动 2.1，候选 87，核 13）
+    # 13 [语] [0.5,1.2,0.3,1,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.775}  prediction-violation（驱动 0.5，候选 94，核 14）
+    # 14 [语] [0.5,1.2,1.2,1,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.1}  prediction-violation（驱动 1.0，候选 95，核 15）
+    # 15 [语] [0.5,3,1.2,1,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.0，候选 97，核 16）
+    # 16 [语] [0.5,0.3,1.2,1,1] 预测lit=0.95 → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 1.3，候选 101，核 17）
+    # 18 [语] [0.9,0.3,1.2,1,1] 预测lit=0.95 → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 0.7，候选 108，核 19）
+    # 23 [全] [0.5,2.1,3,0.3,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.525}  prediction-violation（驱动 2.0，候选 134，核 24） ◄── 概念形成完成
+    # 61 [全] [0.9,1.2,0.3,1,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.775}  prediction-violation（驱动 2.0，候选 232，核 62）
+    # 62 [全] [0.9,1.2,0.3,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 2.6，候选 234，核 63）
+    # 63 [全] [0.9,1.2,1.2,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.45}  prediction-violation（驱动 2.6，候选 238，核 64）
+    # 64 [全] [0.9,1.2,3,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.1}  prediction-violation（驱动 1.3，候选 240，核 65）
+    # 66 [全] [0.5,1.2,3,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.1}  prediction-violation（驱动 0.7，候选 245，核 67）
+    # 67 [全] [0.5,1.2,1.2,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.45}  prediction-violation（驱动 1.1，候选 246，核 68）
+    # 70 [全] [0.5,1.2,0.3,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.6，候选 252，核 71）
+    # 71 [全] [0.5,1.2,0.3,0.3,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.425}  prediction-violation（驱动 1.0，候选 252，核 72）
+    # 75 [全] [0.5,1.2,1.2,0.3,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.75}  prediction-violation（驱动 0.5，候选 261，核 76）
+    # 77 [全] [0.5,1.2,2.1,0.3,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.0749999999999997}  prediction-violation（驱动 0.7，候选 260，核 78）
+    # 81 [全] [0.9,1.2,2.1,0.3,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":1.0749999999999997}  prediction-violation（驱动 0.5，候选 264，核 82）
+    # 83 [全] [0.9,2.1,2.1,0.3,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.1999999999999997}  prediction-violation（驱动 0.7，候选 263，核 84）
+    # 84 [全] [0.9,3,2.1,0.3,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.1，候选 264，核 85）
+    # 85 [全] [0.9,3,0.3,0.3,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.0，候选 265，核 86）
+    # 86 [全] [0.9,3,1.2,0.3,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.3，候选 266，核 87）
+    # 90 [全] [0.9,3,1.2,1.7,0.3] 预测lit=0.049999999999999996 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.5，候选 271，核 91）
+    # 91 [全] [0.9,3,2.1,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.0，候选 271，核 92）
+    # 92 [全] [0.9,3,3,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.3，候选 272，核 93）
+    #100 [全] [0.5,3,3,1.7,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.4，候选 284，核 101）
+    #101 [全] [0.5,3,2.1,1.7,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.0，候选 286，核 102）
+    #104 [全] [0.5,3,2.1,1,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.6，候选 290，核 105）
+    #105 [全] [0.5,3,2.1,0.3,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.1，候选 292，核 106）
+    #107 [全] [0.5,2.1,2.1,0.3,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.1999999999999997}  prediction-violation（驱动 0.7，候选 292，核 108）
+    #115 [全] [0.5,2.1,3,1.7,1.7] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.225}  prediction-violation（驱动 0.4，候选 289，核 116）
+    #119 [全] [0.5,2.1,3,1.7,1] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.225}  prediction-violation（驱动 0.5，候选 289，核 120）
+    #123 [全] [0.5,2.1,3,1.7,0.3] 预测lit=0.95 → 观察 {"lit":1,"brightness":2.225}  prediction-violation（驱动 0.5，候选 285，核 124）
     …评分进度 96/432
     …评分进度 192/432
     …评分进度 288/432
     …评分进度 384/432
-    self-taught 细粒度 106/118（89.8%）  粗粒度亮灭 99.2%
-    gate-off    细粒度 163/167（97.6%）  粗粒度亮灭 97.6%
-    heldout     细粒度 97/147（66.0%）  粗粒度亮灭 95.9%
-    总计       细粒度 366/432（84.7%）  粗粒度 97.5%
+    self-taught     细粒度 123/132（93.2%）  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 62.1%
+    unseen-gate-off 细粒度 166/166（100.0%）  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 100.0%
+    unseen-gate-on  细粒度 107/134（79.9%）  粗粒度亮灭 99.3%  拒答 0.0%  常数基线 100.0%
+    总计             细粒度 396/432（91.7%）  粗粒度 99.8%
