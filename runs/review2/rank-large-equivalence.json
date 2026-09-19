@@ -1,0 +1,48 @@
+{
+  "note": "Synthetic performance/equivalence check only, not a learning capability demonstration. Old/new complete results are bit-identical; simultaneous process load affects timing.",
+  "n": 1082,
+  "coreCount": 256,
+  "pass": 5,
+  "rows": [
+    {
+      "seed": 1,
+      "oldMs": 694.4191,
+      "newMs": 455.63749999999993,
+      "proposals": 252000,
+      "converged": true,
+      "flips": 6700
+    },
+    {
+      "seed": 2,
+      "oldMs": 766.5486999999998,
+      "newMs": 478.4555999999998,
+      "proposals": 252000,
+      "converged": true,
+      "flips": 4200
+    },
+    {
+      "seed": 3,
+      "oldMs": 1262.4461999999999,
+      "newMs": 542.1172000000001,
+      "proposals": 252000,
+      "converged": true,
+      "flips": 6280
+    },
+    {
+      "seed": 4,
+      "oldMs": 1304.5397999999996,
+      "newMs": 571.9497999999994,
+      "proposals": 252000,
+      "converged": true,
+      "flips": 5372
+    },
+    {
+      "seed": 5,
+      "oldMs": 691.7390999999998,
+      "newMs": 470.92189999999937,
+      "proposals": 252000,
+      "converged": true,
+      "flips": 6910
+    }
+  ]
+}

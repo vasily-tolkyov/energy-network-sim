@@ -504,6 +504,9 @@ export class EnergyNetwork {
     }
     const freeCandidates = [...candidate].filter((id) => !clamped.has(id)).sort((a, b) => a - b);
 
+    // Ranks retain exactly the current shuffled proposal order. Filtering the
+    // small active view avoids rescanning every inactive candidate per exchange.
+    const freeRank = new Int32Array(n).fill(-1);
     const rand = mulberry32(options.seed ?? 1);
     let proposals = 0;
     let acceptedUphill = 0;
@@ -533,6 +536,7 @@ export class EnergyNetwork {
           freeCandidates[k] = freeCandidates[j]!;
           freeCandidates[j] = tmp;
         }
+        for (let k = 0; k < freeCandidates.length; k++) freeRank[freeCandidates[k]!] = k;
         for (const i of freeCandidates) {
           const { decision, cons } = deltas(i);
           proposals++;
@@ -549,7 +553,7 @@ export class EnergyNetwork {
             flip(i);
             if (!legal) {
               if (this.state[i] === 1) continue;
-              const activeFree = freeCandidates.filter(j => this.state[j] === 1);
+              const activeFree = activeIds.filter(j => freeRank[j]! >= 0).sort((a, b) => freeRank[a]! - freeRank[b]!);
               if (!activeFree.length) continue;
               const j = activeFree[Math.floor(rand() * activeFree.length)]!;
               conservativeDelta += deltas(j).cons + this.getWeight(i, j) - this.getInhibitoryWeight(i, j);
