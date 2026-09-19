@@ -77,7 +77,7 @@ out(SEP);
       // 门控学习：偏差/未知写观察
       if (cap.class !== "within-envelope") {
         mem.learnFromObservation(obj.conditions, obj.outcomes, 2);
-        out(`  t${frame.tick} ${obj.id} ${cap.class === "prediction-violation" ? "偏差" : "未知"} → 写观察（核 ${fcCore ?? "无"}）`);
+        out(`  t${frame.tick} ${obj.id} ${cap.class === "prediction-violation" ? "偏差" : "未知"} → 写观察（核 ${fcCore ?? "无"}；forecast=${cachedForecast?.converged ?? "N/A"}/${cachedForecast?.terminationReason ?? "not-predicted"}；capture=${cap.converged}/${cap.terminationReason}；generation=${cachedForecast?.generation ?? "N/A"}）`);
       }
     }
     // 帧末：为当前焦点对象生成下一帧预测并缓存（真正在变化前完成）
@@ -134,7 +134,7 @@ out(SEP);
         };
       }
       const predicted = mem.predict(obj.conditions, frame.tick);
-      const confident = Object.values(predicted.values).every((v) => v !== null);
+      const confident = predicted.converged && Object.values(predicted.values).every((v) => v !== null);
       const deviation =
         !confident ? null
         : Object.entries(obj.outcomes).some(

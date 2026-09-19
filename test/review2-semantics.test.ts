@@ -78,6 +78,9 @@ test("F3 cached value snapshot survives changed core semantics", () => {
   const p = mem.predict({ x: .2 }, 1);
   const snapshot: ForecastSnapshot = { coreIdx: p.winningCores[0]!, values: { ...p.values },
     generation: mem.evidenceGeneration, converged: p.converged, terminationReason: p.terminationReason };
+  assert.equal(captureClassify(mem, { x: .2 }, { y: .2, z: .2 },
+    { ...snapshot, converged: false, terminationReason: "flip-budget" }).class, "unknown-change",
+    "matching but nonconverged prediction is uncertainty, not a violation");
   mem.learnFromObservation({ x: .2 }, { y: .8 }, 6);
   assert.ok(mem.evidenceGeneration > snapshot.generation);
   assert.equal(snapshot.values.y, .2);

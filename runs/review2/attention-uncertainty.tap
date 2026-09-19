@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: WTA 择焦：失配大者胜、惯性持焦（失配随帧衰减）、失配更大者换焦
+ok 1 - WTA 择焦：失配大者胜、惯性持焦（失配随帧衰减）、失配更大者换焦
+  ---
+  duration_ms: 5.7242
+  type: 'test'
+  ...
+# Subtest: WTA 择焦：失配场是事件信号，帧清零后旧失配不再占优
+ok 2 - WTA 择焦：失配场是事件信号，帧清零后旧失配不再占优
+  ---
+  duration_ms: 1.0319
+  type: 'test'
+  ...
+# Subtest: 捕获判定三态：符合 / 偏差 / 未知（含无预测时报未知不报偏差）
+ok 3 - 捕获判定三态：符合 / 偏差 / 未知（含无预测时报未知不报偏差）
+  ---
+  duration_ms: 642.7398
+  type: 'test'
+  ...
+# Subtest: 失配场：符合≈0，违反大，未知最大
+ok 4 - 失配场：符合≈0，违反大，未知最大
+  ---
+  duration_ms: 437.6236
+  type: 'test'
+  ...
+# Subtest: F1 evidence sequence: truth-guess
+ok 5 - F1 evidence sequence: truth-guess
+  ---
+  duration_ms: 91.9917
+  type: 'test'
+  ...
+# Subtest: F1 evidence sequence: guess-truth
+ok 6 - F1 evidence sequence: guess-truth
+  ---
+  duration_ms: 36.6478
+  type: 'test'
+  ...
+# Subtest: F1 evidence sequence: truth-guess-truth
+ok 7 - F1 evidence sequence: truth-guess-truth
+  ---
+  duration_ms: 41.2592
+  type: 'test'
+  ...
+# Subtest: F1 evidence sequence: partial
+ok 8 - F1 evidence sequence: partial
+  ---
+  duration_ms: 51.6052
+  type: 'test'
+  ...
+# Subtest: F1 evidence sequence: truth-change-return
+ok 9 - F1 evidence sequence: truth-change-return
+  ---
+  duration_ms: 42.2154
+  type: 'test'
+  ...
+# Subtest: F2 aliases aggregate equally, overlap survives, disjoint correction reverses
+ok 10 - F2 aliases aggregate equally, overlap survives, disjoint correction reverses
+  ---
+  duration_ms: 138.0287
+  type: 'test'
+  ...
+# Subtest: F3 joint capture: matching, contradiction, novel result, partial conflict
+ok 11 - F3 joint capture: matching, contradiction, novel result, partial conflict
+  ---
+  duration_ms: 190.7587
+  type: 'test'
+  ...
+# Subtest: F3 unseen threshold correction uses independent memories for each seed (review N28)
+ok 12 - F3 unseen threshold correction uses independent memories for each seed (review N28)
+  ---
+  duration_ms: 181.8484
+  type: 'test'
+  ...
+# Subtest: F3 cached value snapshot survives changed core semantics
+ok 13 - F3 cached value snapshot survives changed core semantics
+  ---
+  duration_ms: 36.2162
+  type: 'test'
+  ...
+# Subtest: F4 no legal quiet candidate returns structured failure, symmetric decay conserves Γ
+ok 14 - F4 no legal quiet candidate returns structured failure, symmetric decay conserves Γ
+  ---
+  duration_ms: 3.6837
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1283.1315

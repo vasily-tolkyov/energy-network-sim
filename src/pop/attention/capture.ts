@@ -44,8 +44,10 @@ export function captureClassify(
     const old = snapshot ? snapshot.values[dim] : evidence[dim]?.value;
     return typeof old === "number" && compatibleSupports(mem.encoder.encodeDimension(dim, old), mem.encoder.encodeDimension(dim, value));
   });
-  if (captured.includes(forecastCoreIdx) && compatible && result.converged && (snapshot?.converged ?? true)) {
-    return { class: "within-envelope", capturedCores: captured, ...status };
+  if (captured.includes(forecastCoreIdx) && compatible) {
+    // Matching values without convergence are uncertainty, not a contradiction.
+    return { class: result.converged && (snapshot?.converged ?? true) ? "within-envelope" : "unknown-change",
+      capturedCores: captured, ...status };
   }
   if (captured.length > 0) {
     return { class: "prediction-violation", capturedCores: captured, ...status };
