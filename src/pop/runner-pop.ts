@@ -205,7 +205,7 @@ for (const [variant, truthFn] of [
     out(
       String(E).padStart(4) +
         `${((taughtCorrect / taughtTotal) * 100).toFixed(1)}%`.padStart(16) +
-        `${(heldTotal === 0 ? 0 : (heldCorrect / heldTotal) * 100).toFixed(1)}%`.padStart(16),
+        (heldTotal === 0 ? "N/A (n=0)" : `${((heldCorrect / heldTotal) * 100).toFixed(1)}%`).padStart(16),
     );
   }
 }

@@ -89,6 +89,7 @@ export class Explorer {
 
   /** 终止原因（评审"多种结束原因均为 false"修复）：结构化区分
    *  预算耗尽 / 前沿枯竭 / 验证达标；运行中为 null */
+  /** quorum-met is heuristic stopping, never a certificate of complete factors. */
   terminationReason: "budget-exhausted" | "frontier-exhausted" | "quorum-met" | null = null;
 
   /** 多样性门（终止判据用）：每个条件维至少观察过 min(2, bins) 个不同取值，

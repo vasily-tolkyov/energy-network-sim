@@ -34,9 +34,12 @@ export interface FormationConfig {
 export class ConceptFormation {
   readonly net: EnergyNetwork;
   readonly encoder: SensoryEncoder;
+  private readonly clusterThresholdRatio: number;
 
   constructor(encoder: SensoryEncoder, config: FormationConfig = {}) {
     this.encoder = encoder;
+    this.clusterThresholdRatio = config.clusterThresholdRatio ?? .5;
+    if (!(this.clusterThresholdRatio > 0 && this.clusterThresholdRatio <= 1)) throw new Error("clusterThresholdRatio must be in (0, 1]");
     this.net = new EnergyNetwork({
       neuronCount: encoder.neuronCount,
       activationEnergy: config.activationEnergy ?? 1.0,
@@ -56,7 +59,8 @@ export class ConceptFormation {
    * 取边强 ≥ ratio × 本维最大边强的边，做连通分量聚类。
    * 成员按感受野中心均值登记概念中心值。
    */
-  extractConcepts(ratio = 0.5): EmergentConcept[] {
+  extractConcepts(ratio = this.clusterThresholdRatio): EmergentConcept[] {
+    if (!(ratio > 0 && ratio <= 1)) throw new Error("cluster ratio must be in (0, 1]");
     const concepts: EmergentConcept[] = [];
     for (const dim of this.encoder.dimensions) {
       const centers = this.encoder.fieldCenters(dim.name);

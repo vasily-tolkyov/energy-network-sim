@@ -1,0 +1,48 @@
+✔ R01 DI accounting and reported residuals across 24 fresh random networks (5.5991ms)
+ℹ {"networks":24,"limited":0}
+✔ R02 explicit candidate freeze blocks a connected outside chain (0.8661ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5],"flipCount":0,"driveWork":0},"converged":true,"terminationReason":"fixed-point","residualFlips":0,"candidateSet":[0],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":0,"acceptedUphill":0}
+✔ R03 current documented peak-edge example is executable (1.1301ms)
+ℹ {"wells":2}
+✔ R04 quiet-only fallback must not return an engaged driver when quiet state was visited (0.3839ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5,1,0.5,3,1.5,1,0.5,3,1.5,1.5],"flipCount":10,"driveWork":-8},"converged":false,"terminationReason":"flip-budget","residualFlips":1,"candidateSet":[0,1,2],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":2,"acceptedUphill":0,"engaged":false,"visitedQuietState":[0],"quietEnergy":1.5}
+✔ R05 self-written guess cannot veto a previously confirmed observation (7.9976ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-3.1999999999999993,"converged":true,"terminationReason":"fixed-point"}
+✔ R06 repeated same-world truth must recover after an erroneous self-written guess (4.1947ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-11.999999999999988,"converged":true,"terminationReason":"fixed-point"}
+✔ R07 field observations within identical receptive-field code cannot erase that code (10.077ms)
+ℹ {"values":{"y":0.505},"distribution":{"y":[{"center":0.5,"count":8}]},"ambiguous":[],"activeNeurons":[4,5,6,7,8,9,10,11,56,57,58,59,60,61,62,63,80,81,82,83],"energy":-15.600000000000012,"winningCores":[0],"converged":true,"terminationReason":"fixed-point"}
+✔ R08 nearby but distinct inputs of a stationary function must retain a readable shared code (15.3891ms)
+ℹ {"rules":1,"a":{"y":0.505},"b":{"y":0.505}}
+✔ R09 invalid observation must not consume a rule slot or write weights (0.3479ms)
+ℹ {"error":"channel y: bin NaN out of range [0, 2)","rules":0,"allocated":0,"conditionCoreWeight":0}
+✔ R10 sensory NaN must be rejected before registration (0.5478ms)
+ℹ {"rejected":true,"rules":0}
+✔ R11 finite integer annealing options must be validated (0.4274ms)
+ℹ {"accepted":[]}
+✔ R12 infinite levels must reject promptly (isolated child with 2.5s hard timeout) (92.617ms)
+ℹ {"result":"rejected"}
+✔ R13 zero quench budget must reject or perform zero quench flips (0.2735ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5,1.5],"flipCount":0,"driveWork":0},"converged":false,"terminationReason":"flip-budget","residualFlips":1,"candidateSet":[0],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":0,"acceptedUphill":0}
+✔ R14 R2 unchanged outcomes across variable dimensions and population sizes (7.8714ms)
+ℹ {"checked":12}
+✔ R15 fractional rule capacity must be rejected at construction (0.2638ms)
+ℹ {"rejected":true}
+✔ R16 separate excitation/veto ablation must include excitation-off veto-on cell (2.9492ms)
+ℹ {"rows":[{"gain":0,"veto":false,"gamma":0},{"gain":0,"veto":true,"gamma":1.5},{"gain":0.3,"veto":false,"gamma":0},{"gain":0.3,"veto":true,"gamma":1.5}]}
+✔ R17 allocator rejects ordinary overflow without changing registered state (0.9174ms)
+ℹ {"n":1,"count":1,"after":1}
+✔ R18 actual observation can correct a prior wrong guess in the supported one-way order (4.9226ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-5.399999999999993,"converged":true,"terminationReason":"fixed-point"}
+✔ R19 field R2 outcome change detection must be invariant to pair reversal (16.8028ms)
+ℹ {"forward":{"undecidable":false,"outcomeChanged":true,"outcomeDelta":{"y":0.125},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":7.6000000000000005},"reverse":{"undecidable":false,"outcomeChanged":true,"outcomeDelta":{"y":-0.125},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":7.6000000000000005}}
+✔ R20 influence allocation and reverse observation order preserve registration identity (29.2664ms)
+ℹ {"rules":2,"a":{"y":0.09999999999999999},"b":{"y":0.9},"winning":[[1],[0]]}
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 325.3272

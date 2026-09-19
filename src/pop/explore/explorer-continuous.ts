@@ -56,6 +56,7 @@ export class ContinuousExplorer {
   readonly mem: FieldRuleMemory;
   readonly enc: SensoryEncoder;
   /** 终止原因（评审"多种结束原因均为 false"修复）；运行中为 null */
+  /** quorum-met is heuristic stopping, never a certificate of complete factors. */
   terminationReason: "budget-exhausted" | "frontier-exhausted" | "quorum-met" | null = null;
   private formation: ConceptFormation;
   private em: EmergentMap | null = null;
@@ -291,6 +292,9 @@ export class ContinuousExplorer {
    * （旧实例不可增量复用——重复呈现同一语料会把差分边全部顶到 cap、聚类糊掉），
    * 幅度累计器清零后在**新通道面上重分析全部自动对**——旧归因不混入新表面。
    */
+  // Deliberate training epoch: replay recomputes R2 evidence counts from zero,
+  // then bindInfluence adds another bounded plasticity pass to existing R3.
+  // This is NOT new independent evidence and is NOT an idempotent refresh.
   private formConcepts(): void {
     this.formation = new ConceptFormation(this.enc);
     for (const ep of this.planner.allEpisodes) {

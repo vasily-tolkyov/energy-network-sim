@@ -98,7 +98,7 @@ export class ExperimentPlanner {
         newBins.push(s.name);
       }
     }
-    return { pairs, newBins };
+    return structuredClone({ pairs, newBins });
   }
 
   /** 候选干预：全部未做过的 Hamming-1 前沿（相对任何已做实验差恰好一维） */
@@ -129,7 +129,7 @@ export class ExperimentPlanner {
         if (dim !== null) out.push({ pair: { e0: this.episodes[i]!, e1: this.episodes[j]! }, dim });
       }
     }
-    return out;
+    return structuredClone(out);
   }
 
   /** 候选干预 id（WTA 择选用——就是它的条件签名） */
@@ -165,6 +165,6 @@ export class ExperimentPlanner {
   }
 
   get allEpisodes(): readonly Episode[] {
-    return this.episodes;
+    return structuredClone(this.episodes);
   }
 }

@@ -78,6 +78,13 @@ export class PopRuleMemory {
       learningRate: config.learningRate ?? 0.1,
       maxWeight: config.maxWeight ?? 3.0,
     });
+    // cap is an absolute edge weight, not a repeat count: eta is already
+    // included in each learned weight. Multiplying cap by eta again is invalid.
+    const maxObservationWeight = Math.min(.6, this.net.config.maxWeight);
+    for (const [side, popSize] of [["condition", conditionMap.popSize], ["outcome", outcomeMap.popSize]] as const) {
+      const reachable = maxObservationWeight * (this.coreSize + popSize - 1);
+      if (reachable < this.net.threshold) throw new Error(`infeasible ${side} ignition: maximum field ${reachable} < threshold ${this.net.threshold}`);
+    }
     // 注意：结果通道的档位互斥不再预置——由 teachExclusion 从换对学习。
   }
 
@@ -264,10 +271,8 @@ export class PopRuleMemory {
           }
         }
       }
-      // 评审 F06/A17 修复：否决边只对真正有加分（delta>0）的通道写——
-      // 修复前零增益通道也写否决，"G=0 断侧重"消融实际没断否决，
-      // 消融结论无法分离两个机制的因果贡献。veto=false 显式断否决（2×2 消融用）。
-      if (!veto || delta <= 0) continue;
+      // Eligibility = channel is present in R2 boost map, even when gain is zero.
+      if (!veto) continue;
       // 否决：同通道的其余已观察档 → 核 抑制
       const own = exp.conditions[ch]!;
       for (const alt of this.observedBins.get(ch) ?? []) {
@@ -450,8 +455,8 @@ export class PopRuleMemory {
     // 无否决惩罚的核在任何近似查询上白拿匹配支持，压垮持证核，
     // 错误预测再被学习，形成自我强化级联（v2 课程完整模型曾因此崩盘）。
     for (const [ch, delta] of Object.entries(this.lastBoost)) {
-      // 评审 F06 同一规则：零增益通道不加分也不写否决；lastGammaVeto=0 断否决
-      if (delta <= 0 || query[ch] === undefined) continue;
+      // R2 eligible dimensions retain veto even with zero excitation gain.
+      if (query[ch] === undefined) continue;
       for (const from of this.conditionMap.population(ch, query[ch]!)) {
         for (const to of core) this.net.strengthen(from, to, delta);
       }
@@ -500,8 +505,8 @@ export class PopRuleMemory {
     }
     // 持证：影响因素加分边 + 替代档否决边（与 bindInfluence 同一规则）
     for (const [ch, delta] of Object.entries(this.lastBoost)) {
-      // 评审 F06 同一规则：零增益通道不加分也不写否决；lastGammaVeto=0 断否决
-      if (delta <= 0 || query[ch] === undefined) continue;
+      // R2 eligible dimensions retain veto even with zero excitation gain.
+      if (query[ch] === undefined) continue;
       for (const from of this.conditionMap.population(ch, query[ch]!)) {
         for (const to of core) this.net.strengthen(from, to, delta);
       }

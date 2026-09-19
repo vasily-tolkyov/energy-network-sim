@@ -173,7 +173,7 @@ export class FieldRuleMemory {
 
   /** 规则核绑定结果场（捕获检验用：读出某核的答案内容） */
   ruleOutcomeFields(index: number): readonly number[] {
-    return this.rules[index]!.outcomeFields;
+    return [...this.rules[index]!.outcomeFields];
   }
 
   /**
@@ -198,7 +198,7 @@ export class FieldRuleMemory {
 
   /** 某条规则核的成员神经元 */
   ruleCore(index: number): readonly number[] {
-    return this.rules[index]!.core;
+    return [...this.rules[index]!.core];
   }
 
   /** 全部规则核神经元（捕获检验的候选集） */
@@ -353,8 +353,8 @@ export class FieldRuleMemory {
           }
         }
       }
-      // 评审 F06 同一规则：零增益通道不加分也不写否决；veto=false 显式断否决
-      if (!veto || delta <= 0) continue;
+      // Key presence is R2 eligibility; gain controls W, veto controls Γ independently.
+      if (!veto) continue;
       // 场级否决（评审 F05 根因修复）：只从"该维已观察到的替代值的感受野"
       // 写否决边（去掉本核自己的场）——否决强度随观察覆盖增长而增长；
       // 修复前从该维全部非己感受野写入：落在未观察区域的输入会把所有核
@@ -546,8 +546,8 @@ export class FieldRuleMemory {
     this.registerObservedValues(conditions);
     // 持证：按侧重并集补正/否决（场级，与 bindInfluence 同一规则）
     for (const [dim, delta] of Object.entries(this.lastBoost)) {
-      // 评审 F06 同一规则：零增益通道不加分也不写否决
-      if (delta <= 0 || conditions[dim] === undefined) continue;
+      // Gain and veto are independent for eligible dimensions.
+      if (conditions[dim] === undefined) continue;
       for (const from of this.encoder.encodeDimension(dim, conditions[dim]!)) {
         for (const to of core) this.net.strengthen(from, to, delta);
       }
