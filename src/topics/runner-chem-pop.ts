@@ -199,7 +199,7 @@ for (const variant of [
   out(`\n  ══ 课程 ${variant.label} ══`);
   for (const cfg of [
     { label: "完整模型（G=3+否决，查询参与学习）", gain: 3, learnFromQueries: true },
-    { label: "消融 断侧重（G=0；零增益通道自动不写否决——真断开）", gain: 0, learnFromQueries: true },
+    { label: "消融 断侧重（G=0，veto=true）", gain: 0, learnFromQueries: true },
     { label: "消融 断否决（G=3，veto=false）", gain: 3, learnFromQueries: true, veto: false },
     { label: "消融 双断（G=0 + 无否决）", gain: 0, learnFromQueries: true, veto: false },
     { label: "消融 无查询学习", gain: 3, learnFromQueries: false },

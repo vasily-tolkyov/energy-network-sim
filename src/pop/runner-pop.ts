@@ -111,7 +111,7 @@ out(`网络规模：条件 ${cm.neuronCount} + 结果 ${om.neuronCount} + 核区
 
 for (const cfg of [
   { label: "完整（G=3+否决，查询参与学习）", gain: 3, learnFromQueries: true, veto: true },
-  { label: "消融 断侧重（G=0，真断开）", gain: 0, learnFromQueries: true, veto: true },
+  { label: "消融 断侧重（G=0，veto=true）", gain: 0, learnFromQueries: true, veto: true },
   { label: "消融 断否决（G=3，veto=false）", gain: 3, learnFromQueries: true, veto: false },
   { label: "消融 双断", gain: 0, learnFromQueries: true, veto: false },
   { label: "消融 无查询学习", gain: 3, learnFromQueries: false, veto: true },
