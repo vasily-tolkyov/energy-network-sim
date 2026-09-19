@@ -1,0 +1,213 @@
+{
+  "configuration": "raw numeric ranges, defaults, 64 observations",
+  "rows": [
+    {
+      "pos": 0,
+      "move": 0,
+      "values": {
+        "nextPos": 1
+      },
+      "cores": [
+        4
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 66.14939999999999
+    },
+    {
+      "pos": 0,
+      "move": 1,
+      "values": {
+        "nextPos": 1
+      },
+      "cores": [
+        1
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 61.511799999999994
+    },
+    {
+      "pos": 1,
+      "move": 0,
+      "values": {
+        "nextPos": 0
+      },
+      "cores": [
+        2
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 59.272200000000026
+    },
+    {
+      "pos": 1,
+      "move": 1,
+      "values": {
+        "nextPos": 2
+      },
+      "cores": [
+        3
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 57.60419999999999
+    },
+    {
+      "pos": 2,
+      "move": 0,
+      "values": {
+        "nextPos": 2
+      },
+      "cores": [
+        6
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 40.02719999999999
+    },
+    {
+      "pos": 2,
+      "move": 1,
+      "values": {
+        "nextPos": 4
+      },
+      "cores": [
+        7
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 38.637
+    },
+    {
+      "pos": 3,
+      "move": 0,
+      "values": {
+        "nextPos": 2
+      },
+      "cores": [
+        6
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 43.5419
+    },
+    {
+      "pos": 3,
+      "move": 1,
+      "values": {
+        "nextPos": 4
+      },
+      "cores": [
+        7
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 30.167500000000018
+    },
+    {
+      "pos": 4,
+      "move": 0,
+      "values": {
+        "nextPos": 5
+      },
+      "cores": [
+        9
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 40.34360000000004
+    },
+    {
+      "pos": 4,
+      "move": 1,
+      "values": {
+        "nextPos": 5
+      },
+      "cores": [
+        9
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 37.049600000000055
+    },
+    {
+      "pos": 5,
+      "move": 0,
+      "values": {
+        "nextPos": 4
+      },
+      "cores": [
+        10
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 36.39749999999992
+    },
+    {
+      "pos": 5,
+      "move": 1,
+      "values": {
+        "nextPos": 6
+      },
+      "cores": [
+        11
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 33.96080000000006
+    },
+    {
+      "pos": 6,
+      "move": 0,
+      "values": {
+        "nextPos": 5
+      },
+      "cores": [
+        12
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 26.143100000000004
+    },
+    {
+      "pos": 6,
+      "move": 1,
+      "values": {
+        "nextPos": 6
+      },
+      "cores": [
+        11
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 33.98810000000003
+    },
+    {
+      "pos": 7,
+      "move": 0,
+      "values": {
+        "nextPos": 6
+      },
+      "cores": [
+        14
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 36.6549
+    },
+    {
+      "pos": 7,
+      "move": 1,
+      "values": {
+        "nextPos": 5
+      },
+      "cores": [
+        9
+      ],
+      "converged": true,
+      "reason": "fixed-point",
+      "ms": 35.44219999999996
+    }
+  ]
+}

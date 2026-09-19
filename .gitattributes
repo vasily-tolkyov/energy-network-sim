@@ -2,3 +2,5 @@
 # Source code and maintained documentation retain normal whitespace checks.
 review-artifacts/** -text -whitespace
 runs/review2/** -text -whitespace
+runs/plan-development/** -text -whitespace
+runs/plan-*.log -text -whitespace

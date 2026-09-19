@@ -1,0 +1,1952 @@
+{
+  "training": {
+    "budget": 64,
+    "experiments": 64,
+    "terminationReason": "budget-exhausted",
+    "episodes": [
+      {
+        "conditions": {
+          "pos": 2,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 1
+        }
+      },
+      {
+        "conditions": {
+          "pos": 6,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 7
+        }
+      },
+      {
+        "conditions": {
+          "pos": 0,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 1
+        }
+      },
+      {
+        "conditions": {
+          "pos": 7,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 6
+        }
+      },
+      {
+        "conditions": {
+          "pos": 2,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 3
+        }
+      },
+      {
+        "conditions": {
+          "pos": 1,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 0
+        }
+      },
+      {
+        "conditions": {
+          "pos": 4,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 3
+        }
+      },
+      {
+        "conditions": {
+          "pos": 7,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 7
+        }
+      },
+      {
+        "conditions": {
+          "pos": 4,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 5
+        }
+      },
+      {
+        "conditions": {
+          "pos": 3,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 2
+        }
+      },
+      {
+        "conditions": {
+          "pos": 1,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 2
+        }
+      },
+      {
+        "conditions": {
+          "pos": 5,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 6
+        }
+      },
+      {
+        "conditions": {
+          "pos": 6,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 5
+        }
+      },
+      {
+        "conditions": {
+          "pos": 3,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 4
+        }
+      },
+      {
+        "conditions": {
+          "pos": 0,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 0
+        }
+      },
+      {
+        "conditions": {
+          "pos": 5,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 4
+        }
+      },
+      {
+        "conditions": {
+          "pos": 7,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 6
+        }
+      },
+      {
+        "conditions": {
+          "pos": 7,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 7
+        }
+      },
+      {
+        "conditions": {
+          "pos": 6,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 5
+        }
+      },
+      {
+        "conditions": {
+          "pos": 4,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 3
+        }
+      },
+      {
+        "conditions": {
+          "pos": 5,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 6
+        }
+      },
+      {
+        "conditions": {
+          "pos": 3,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 2
+        }
+      },
+      {
+        "conditions": {
+          "pos": 2,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 1
+        }
+      },
+      {
+        "conditions": {
+          "pos": 5,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 4
+        }
+      },
+      {
+        "conditions": {
+          "pos": 6,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 7
+        }
+      },
+      {
+        "conditions": {
+          "pos": 0,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 1
+        }
+      },
+      {
+        "conditions": {
+          "pos": 1,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 2
+        }
+      },
+      {
+        "conditions": {
+          "pos": 4,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 5
+        }
+      },
+      {
+        "conditions": {
+          "pos": 2,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 3
+        }
+      },
+      {
+        "conditions": {
+          "pos": 0,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 0
+        }
+      },
+      {
+        "conditions": {
+          "pos": 3,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 4
+        }
+      },
+      {
+        "conditions": {
+          "pos": 1,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 0
+        }
+      },
+      {
+        "conditions": {
+          "pos": 1,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 2
+        }
+      },
+      {
+        "conditions": {
+          "pos": 2,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 1
+        }
+      },
+      {
+        "conditions": {
+          "pos": 7,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 7
+        }
+      },
+      {
+        "conditions": {
+          "pos": 0,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 0
+        }
+      },
+      {
+        "conditions": {
+          "pos": 3,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 4
+        }
+      },
+      {
+        "conditions": {
+          "pos": 4,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 3
+        }
+      },
+      {
+        "conditions": {
+          "pos": 5,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 6
+        }
+      },
+      {
+        "conditions": {
+          "pos": 0,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 1
+        }
+      },
+      {
+        "conditions": {
+          "pos": 3,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 2
+        }
+      },
+      {
+        "conditions": {
+          "pos": 7,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 6
+        }
+      },
+      {
+        "conditions": {
+          "pos": 6,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 7
+        }
+      },
+      {
+        "conditions": {
+          "pos": 4,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 5
+        }
+      },
+      {
+        "conditions": {
+          "pos": 2,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 3
+        }
+      },
+      {
+        "conditions": {
+          "pos": 5,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 4
+        }
+      },
+      {
+        "conditions": {
+          "pos": 1,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 0
+        }
+      },
+      {
+        "conditions": {
+          "pos": 6,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 5
+        }
+      },
+      {
+        "conditions": {
+          "pos": 6,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 7
+        }
+      },
+      {
+        "conditions": {
+          "pos": 0,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 1
+        }
+      },
+      {
+        "conditions": {
+          "pos": 6,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 5
+        }
+      },
+      {
+        "conditions": {
+          "pos": 3,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 4
+        }
+      },
+      {
+        "conditions": {
+          "pos": 2,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 3
+        }
+      },
+      {
+        "conditions": {
+          "pos": 2,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 1
+        }
+      },
+      {
+        "conditions": {
+          "pos": 5,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 6
+        }
+      },
+      {
+        "conditions": {
+          "pos": 7,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 6
+        }
+      },
+      {
+        "conditions": {
+          "pos": 3,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 2
+        }
+      },
+      {
+        "conditions": {
+          "pos": 4,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 5
+        }
+      },
+      {
+        "conditions": {
+          "pos": 7,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 7
+        }
+      },
+      {
+        "conditions": {
+          "pos": 5,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 4
+        }
+      },
+      {
+        "conditions": {
+          "pos": 4,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 3
+        }
+      },
+      {
+        "conditions": {
+          "pos": 0,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 0
+        }
+      },
+      {
+        "conditions": {
+          "pos": 1,
+          "move": 1
+        },
+        "outcomes": {
+          "nextPos": 2
+        }
+      },
+      {
+        "conditions": {
+          "pos": 1,
+          "move": 0
+        },
+        "outcomes": {
+          "nextPos": 0
+        }
+      }
+    ],
+    "distinctQueries": 16,
+    "possibleQueries": 16,
+    "factors": [
+      "move",
+      "pos"
+    ],
+    "r2Pairs": 64,
+    "undecidablePairs": 0
+  },
+  "readback": [
+    {
+      "state": {
+        "pos": 0
+      },
+      "action": {
+        "id": 0,
+        "values": {
+          "move": 0
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 14,
+        "values": {
+          "nextPos": 0
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 0
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -25.200000000000053,
+        "traceEnd": -25.200000000000053,
+        "recomputed": -25.200000000000028,
+        "error": 2.4868995751603507e-14,
+        "mismatch": false
+      },
+      "milliseconds": 47.28560000000002
+    },
+    {
+      "state": {
+        "pos": 0
+      },
+      "action": {
+        "id": 1,
+        "values": {
+          "move": 1
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 2,
+        "values": {
+          "nextPos": 1
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 1
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -28.800000000000075,
+        "traceEnd": -28.800000000000075,
+        "recomputed": -28.80000000000005,
+        "error": 2.4868995751603507e-14,
+        "mismatch": false
+      },
+      "milliseconds": 48.73009999999999
+    },
+    {
+      "state": {
+        "pos": 1
+      },
+      "action": {
+        "id": 0,
+        "values": {
+          "move": 0
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 5,
+        "values": {
+          "nextPos": 0
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 0
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -51.600000000000136,
+        "traceEnd": -51.600000000000136,
+        "recomputed": -51.6000000000001,
+        "error": 3.552713678800501e-14,
+        "mismatch": false
+      },
+      "milliseconds": 29.189800000000048
+    },
+    {
+      "state": {
+        "pos": 1
+      },
+      "action": {
+        "id": 1,
+        "values": {
+          "move": 1
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 10,
+        "values": {
+          "nextPos": 2
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 2
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -55.20000000000016,
+        "traceEnd": -55.20000000000016,
+        "recomputed": -55.200000000000124,
+        "error": 3.552713678800501e-14,
+        "mismatch": false
+      },
+      "milliseconds": 44.18099999999998
+    },
+    {
+      "state": {
+        "pos": 2
+      },
+      "action": {
+        "id": 0,
+        "values": {
+          "move": 0
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 0,
+        "values": {
+          "nextPos": 1
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 1
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -55.20000000000016,
+        "traceEnd": -55.20000000000016,
+        "recomputed": -55.200000000000124,
+        "error": 3.552713678800501e-14,
+        "mismatch": false
+      },
+      "milliseconds": 39.314700000000016
+    },
+    {
+      "state": {
+        "pos": 2
+      },
+      "action": {
+        "id": 1,
+        "values": {
+          "move": 1
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 4,
+        "values": {
+          "nextPos": 3
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 3
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -55.20000000000016,
+        "traceEnd": -55.20000000000016,
+        "recomputed": -55.200000000000124,
+        "error": 3.552713678800501e-14,
+        "mismatch": false
+      },
+      "milliseconds": 40.49970000000002
+    },
+    {
+      "state": {
+        "pos": 3
+      },
+      "action": {
+        "id": 0,
+        "values": {
+          "move": 0
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 9,
+        "values": {
+          "nextPos": 2
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 2
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -55.20000000000016,
+        "traceEnd": -55.20000000000016,
+        "recomputed": -55.200000000000124,
+        "error": 3.552713678800501e-14,
+        "mismatch": false
+      },
+      "milliseconds": 41.84970000000004
+    },
+    {
+      "state": {
+        "pos": 3
+      },
+      "action": {
+        "id": 1,
+        "values": {
+          "move": 1
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 13,
+        "values": {
+          "nextPos": 4
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 4
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -55.20000000000016,
+        "traceEnd": -55.20000000000016,
+        "recomputed": -55.200000000000124,
+        "error": 3.552713678800501e-14,
+        "mismatch": false
+      },
+      "milliseconds": 34.35329999999993
+    },
+    {
+      "state": {
+        "pos": 4
+      },
+      "action": {
+        "id": 0,
+        "values": {
+          "move": 0
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 6,
+        "values": {
+          "nextPos": 3
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 3
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -55.20000000000016,
+        "traceEnd": -55.20000000000016,
+        "recomputed": -55.200000000000124,
+        "error": 3.552713678800501e-14,
+        "mismatch": false
+      },
+      "milliseconds": 33.83749999999998
+    },
+    {
+      "state": {
+        "pos": 4
+      },
+      "action": {
+        "id": 1,
+        "values": {
+          "move": 1
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 8,
+        "values": {
+          "nextPos": 5
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 5
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -55.20000000000016,
+        "traceEnd": -55.20000000000016,
+        "recomputed": -55.200000000000124,
+        "error": 3.552713678800501e-14,
+        "mismatch": false
+      },
+      "milliseconds": 34.636799999999994
+    },
+    {
+      "state": {
+        "pos": 5
+      },
+      "action": {
+        "id": 0,
+        "values": {
+          "move": 0
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 15,
+        "values": {
+          "nextPos": 4
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 4
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -55.20000000000016,
+        "traceEnd": -55.20000000000016,
+        "recomputed": -55.200000000000124,
+        "error": 3.552713678800501e-14,
+        "mismatch": false
+      },
+      "milliseconds": 35.313699999999926
+    },
+    {
+      "state": {
+        "pos": 5
+      },
+      "action": {
+        "id": 1,
+        "values": {
+          "move": 1
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 11,
+        "values": {
+          "nextPos": 6
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 6
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -55.20000000000016,
+        "traceEnd": -55.20000000000016,
+        "recomputed": -55.200000000000124,
+        "error": 3.552713678800501e-14,
+        "mismatch": false
+      },
+      "milliseconds": 32.09839999999997
+    },
+    {
+      "state": {
+        "pos": 6
+      },
+      "action": {
+        "id": 0,
+        "values": {
+          "move": 0
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 12,
+        "values": {
+          "nextPos": 5
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 5
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -55.20000000000016,
+        "traceEnd": -55.20000000000016,
+        "recomputed": -55.200000000000124,
+        "error": 3.552713678800501e-14,
+        "mismatch": false
+      },
+      "milliseconds": 44.69340000000011
+    },
+    {
+      "state": {
+        "pos": 6
+      },
+      "action": {
+        "id": 1,
+        "values": {
+          "move": 1
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 1,
+        "values": {
+          "nextPos": 7
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 7
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -51.600000000000136,
+        "traceEnd": -51.600000000000136,
+        "recomputed": -51.6000000000001,
+        "error": 3.552713678800501e-14,
+        "mismatch": false
+      },
+      "milliseconds": 34.5095
+    },
+    {
+      "state": {
+        "pos": 7
+      },
+      "action": {
+        "id": 0,
+        "values": {
+          "move": 0
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 3,
+        "values": {
+          "nextPos": 6
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 6
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -28.800000000000075,
+        "traceEnd": -28.800000000000075,
+        "recomputed": -28.80000000000005,
+        "error": 2.4868995751603507e-14,
+        "mismatch": false
+      },
+      "milliseconds": 30.13760000000002
+    },
+    {
+      "state": {
+        "pos": 7
+      },
+      "action": {
+        "id": 1,
+        "values": {
+          "move": 1
+        }
+      },
+      "seed": 100,
+      "observed": true,
+      "snapshot": {
+        "coreIdx": 7,
+        "values": {
+          "nextPos": 7
+        },
+        "generation": 64,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      "ambiguous": [],
+      "next": {
+        "pos": 7
+      },
+      "kind": "usable",
+      "approximate": false,
+      "audit": {
+        "energy": -25.200000000000053,
+        "traceEnd": -25.200000000000053,
+        "recomputed": -25.200000000000028,
+        "error": 2.4868995751603507e-14,
+        "mismatch": false
+      },
+      "milliseconds": 28.80720000000008
+    }
+  ],
+  "failures": [
+    {
+      "start": 0,
+      "goal": 7,
+      "actual": 6,
+      "plan": {
+        "start": {
+          "pos": 0
+        },
+        "goal": {
+          "pos": 7
+        },
+        "status": "found",
+        "steps": [
+          {
+            "state": {
+              "pos": 0
+            },
+            "action": {
+              "id": 1,
+              "values": {
+                "move": 1
+              }
+            },
+            "seed": 19,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 10,
+              "values": {
+                "nextPos": 2
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 2
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -14.39999999999999,
+              "traceEnd": -14.39999999999999,
+              "recomputed": -14.400000000000048,
+              "error": 5.861977570020827e-14,
+              "mismatch": false
+            },
+            "milliseconds": 42.17080000000033
+          },
+          {
+            "state": {
+              "pos": 2
+            },
+            "action": {
+              "id": 1,
+              "values": {
+                "move": 1
+              }
+            },
+            "seed": 21,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 4,
+              "values": {
+                "nextPos": 3
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 3
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 37.72210000000041
+          },
+          {
+            "state": {
+              "pos": 3
+            },
+            "action": {
+              "id": 1,
+              "values": {
+                "move": 1
+              }
+            },
+            "seed": 25,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 13,
+              "values": {
+                "nextPos": 4
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 4
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 39.17159999999967
+          },
+          {
+            "state": {
+              "pos": 4
+            },
+            "action": {
+              "id": 1,
+              "values": {
+                "move": 1
+              }
+            },
+            "seed": 27,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 8,
+              "values": {
+                "nextPos": 5
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 5
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 40.81010000000015
+          },
+          {
+            "state": {
+              "pos": 5
+            },
+            "action": {
+              "id": 1,
+              "values": {
+                "move": 1
+              }
+            },
+            "seed": 29,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 11,
+              "values": {
+                "nextPos": 6
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 6
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 38.0342999999998
+          },
+          {
+            "state": {
+              "pos": 6
+            },
+            "action": {
+              "id": 1,
+              "values": {
+                "move": 1
+              }
+            },
+            "seed": 31,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 1,
+              "values": {
+                "nextPos": 7
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 7
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -51.600000000000136,
+              "traceEnd": -51.600000000000136,
+              "recomputed": -51.6000000000001,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 28.791200000000117
+          }
+        ],
+        "predictions": [
+          {
+            "state": {
+              "pos": 0
+            },
+            "action": {
+              "id": 0,
+              "values": {
+                "move": 0
+              }
+            },
+            "seed": 18,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 14,
+              "values": {
+                "nextPos": 0
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 0
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -25.200000000000053,
+              "traceEnd": -25.200000000000053,
+              "recomputed": -25.200000000000028,
+              "error": 2.4868995751603507e-14,
+              "mismatch": false
+            },
+            "milliseconds": 27.27980000000025
+          },
+          {
+            "state": {
+              "pos": 0
+            },
+            "action": {
+              "id": 1,
+              "values": {
+                "move": 1
+              }
+            },
+            "seed": 19,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 10,
+              "values": {
+                "nextPos": 2
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 2
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -14.39999999999999,
+              "traceEnd": -14.39999999999999,
+              "recomputed": -14.400000000000048,
+              "error": 5.861977570020827e-14,
+              "mismatch": false
+            },
+            "milliseconds": 42.17080000000033
+          },
+          {
+            "state": {
+              "pos": 2
+            },
+            "action": {
+              "id": 0,
+              "values": {
+                "move": 0
+              }
+            },
+            "seed": 20,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 0,
+              "values": {
+                "nextPos": 1
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 1
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 32.22540000000026
+          },
+          {
+            "state": {
+              "pos": 2
+            },
+            "action": {
+              "id": 1,
+              "values": {
+                "move": 1
+              }
+            },
+            "seed": 21,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 4,
+              "values": {
+                "nextPos": 3
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 3
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 37.72210000000041
+          },
+          {
+            "state": {
+              "pos": 1
+            },
+            "action": {
+              "id": 0,
+              "values": {
+                "move": 0
+              }
+            },
+            "seed": 22,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 5,
+              "values": {
+                "nextPos": 0
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 0
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -51.600000000000136,
+              "traceEnd": -51.600000000000136,
+              "recomputed": -51.6000000000001,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 35.75330000000031
+          },
+          {
+            "state": {
+              "pos": 1
+            },
+            "action": {
+              "id": 1,
+              "values": {
+                "move": 1
+              }
+            },
+            "seed": 23,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 10,
+              "values": {
+                "nextPos": 2
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 2
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 45.97499999999991
+          },
+          {
+            "state": {
+              "pos": 3
+            },
+            "action": {
+              "id": 0,
+              "values": {
+                "move": 0
+              }
+            },
+            "seed": 24,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 9,
+              "values": {
+                "nextPos": 2
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 2
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 39.97280000000001
+          },
+          {
+            "state": {
+              "pos": 3
+            },
+            "action": {
+              "id": 1,
+              "values": {
+                "move": 1
+              }
+            },
+            "seed": 25,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 13,
+              "values": {
+                "nextPos": 4
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 4
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 39.17159999999967
+          },
+          {
+            "state": {
+              "pos": 4
+            },
+            "action": {
+              "id": 0,
+              "values": {
+                "move": 0
+              }
+            },
+            "seed": 26,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 6,
+              "values": {
+                "nextPos": 3
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 3
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 37.76920000000018
+          },
+          {
+            "state": {
+              "pos": 4
+            },
+            "action": {
+              "id": 1,
+              "values": {
+                "move": 1
+              }
+            },
+            "seed": 27,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 8,
+              "values": {
+                "nextPos": 5
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 5
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 40.81010000000015
+          },
+          {
+            "state": {
+              "pos": 5
+            },
+            "action": {
+              "id": 0,
+              "values": {
+                "move": 0
+              }
+            },
+            "seed": 28,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 15,
+              "values": {
+                "nextPos": 4
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 4
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 38.85649999999987
+          },
+          {
+            "state": {
+              "pos": 5
+            },
+            "action": {
+              "id": 1,
+              "values": {
+                "move": 1
+              }
+            },
+            "seed": 29,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 11,
+              "values": {
+                "nextPos": 6
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 6
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 38.0342999999998
+          },
+          {
+            "state": {
+              "pos": 6
+            },
+            "action": {
+              "id": 0,
+              "values": {
+                "move": 0
+              }
+            },
+            "seed": 30,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 12,
+              "values": {
+                "nextPos": 5
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 5
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -55.20000000000016,
+              "traceEnd": -55.20000000000016,
+              "recomputed": -55.200000000000124,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 36.50279999999975
+          },
+          {
+            "state": {
+              "pos": 6
+            },
+            "action": {
+              "id": 1,
+              "values": {
+                "move": 1
+              }
+            },
+            "seed": 31,
+            "observed": true,
+            "snapshot": {
+              "coreIdx": 1,
+              "values": {
+                "nextPos": 7
+              },
+              "generation": 64,
+              "converged": true,
+              "terminationReason": "fixed-point"
+            },
+            "ambiguous": [],
+            "next": {
+              "pos": 7
+            },
+            "kind": "usable",
+            "approximate": false,
+            "audit": {
+              "energy": -51.600000000000136,
+              "traceEnd": -51.600000000000136,
+              "recomputed": -51.6000000000001,
+              "error": 3.552713678800501e-14,
+              "mismatch": false
+            },
+            "milliseconds": 28.791200000000117
+          }
+        ],
+        "unknownFrontier": [],
+        "maxDepth": 14,
+        "predictBudget": 28
+      },
+      "observations": [
+        {
+          "pos": 0,
+          "observation": {
+            "nextPos": 1
+          }
+        },
+        {
+          "pos": 1,
+          "observation": {
+            "nextPos": 2
+          }
+        },
+        {
+          "pos": 2,
+          "observation": {
+            "nextPos": 3
+          }
+        },
+        {
+          "pos": 3,
+          "observation": {
+            "nextPos": 4
+          }
+        },
+        {
+          "pos": 4,
+          "observation": {
+            "nextPos": 5
+          }
+        },
+        {
+          "pos": 5,
+          "observation": {
+            "nextPos": 6
+          }
+        }
+      ]
+    }
+  ]
+}

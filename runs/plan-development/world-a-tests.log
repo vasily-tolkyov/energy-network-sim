@@ -1,0 +1,13 @@
+✔ path bench validates before spending and retains endpoint self-loops (5.4007ms)
+✔ PLAN-009 P1/P2: path reach >=90%, median ratio <=1.5; rollout preserves readback (15737.0745ms)
+✔ quiet failure is infeasible; unknown is retained; approximate valued steps remain usable (3.9765ms)
+✔ candidate ranking and cycle detection do not use distance to goal (0.4663ms)
+✔ all output dimensions required, invalid observation cannot mutate evidence (3.5207ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15962.8076
