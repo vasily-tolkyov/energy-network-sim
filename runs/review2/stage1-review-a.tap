@@ -1,0 +1,24 @@
+✔ R04 quiet-only fallback must not return an engaged driver when quiet state was visited (4.2511ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5,1,0.5,3,1.5,1,0.5,3,1.5,1.5],"flipCount":10,"driveWork":-8},"converged":false,"terminationReason":"flip-budget","residualFlips":1,"candidateSet":[0,1,2],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":2,"acceptedUphill":0,"engaged":false,"visitedQuietState":[0],"quietEnergy":1.5}
+✔ R05 self-written guess cannot veto a previously confirmed observation (10.7667ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-3.1999999999999993,"converged":true,"terminationReason":"fixed-point"}
+✔ R06 repeated same-world truth must recover after an erroneous self-written guess (4.3674ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-11.999999999999988,"converged":true,"terminationReason":"fixed-point"}
+✔ R07 field observations within identical receptive-field code cannot erase that code (16.773ms)
+ℹ {"values":{"y":0.505},"distribution":{"y":[{"center":0.5,"count":8}]},"ambiguous":[],"activeNeurons":[4,5,6,7,8,9,10,11,56,57,58,59,60,61,62,63,80,81,82,83],"energy":-15.600000000000012,"winningCores":[0],"converged":true,"terminationReason":"fixed-point"}
+✔ R08 nearby but distinct inputs of a stationary function must retain a readable shared code (19.8817ms)
+ℹ {"rules":1,"a":{"y":0.505},"b":{"y":0.505}}
+✔ R14 R2 unchanged outcomes across variable dimensions and population sizes (11.2759ms)
+ℹ {"checked":12}
+✔ R18 actual observation can correct a prior wrong guess in the supported one-way order (3.023ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-5.399999999999993,"converged":true,"terminationReason":"fixed-point"}
+✔ R19 field R2 outcome change detection must be invariant to pair reversal (20.1632ms)
+ℹ {"forward":{"undecidable":false,"outcomeChanged":true,"outcomeDelta":{"y":0.125},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":7.6000000000000005},"reverse":{"undecidable":false,"outcomeChanged":true,"outcomeDelta":{"y":-0.125},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":7.6000000000000005}}
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 253.4133

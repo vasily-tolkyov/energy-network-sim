@@ -1,0 +1,18 @@
+✔ F1 evidence sequence: truth-guess (35.0386ms)
+✔ F1 evidence sequence: guess-truth (17.237ms)
+✔ F1 evidence sequence: truth-guess-truth (13.9414ms)
+✔ F1 evidence sequence: partial (14.3823ms)
+✔ F1 evidence sequence: truth-change-return (14.1596ms)
+✔ F2 aliases aggregate equally, overlap survives, disjoint correction reverses (96.4359ms)
+✔ F3 joint capture: matching, contradiction, novel result, partial conflict (111.528ms)
+✔ F3 unseen threshold correction uses independent memories for each seed (review N28) (120.6344ms)
+✔ F3 cached value snapshot survives changed core semantics (28.9038ms)
+✔ F4 no legal quiet candidate returns structured failure, symmetric decay conserves Γ (1.2258ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 589.3866

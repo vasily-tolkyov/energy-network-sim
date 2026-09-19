@@ -83,7 +83,7 @@ export interface SettleTrace {
 }
 
 /** 终止原因：无翻转可降 = 固定点；翻转预算耗尽 = 非收敛（回退途中最低能态） */
-export type SettleTermination = "fixed-point" | "flip-budget";
+export type SettleTermination = "fixed-point" | "flip-budget" | "no-quiet-candidate";
 
 export interface SettleResult {
   /** 收敛后的激活神经元集合（含被输入钳制的神经元） */

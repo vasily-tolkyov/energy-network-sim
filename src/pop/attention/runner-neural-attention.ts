@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { pretrainContinuous } from "../concept/pretrain.js";
 import { continuousStream } from "../concept/stream-continuous.js";
-import { captureClassify } from "./capture.js";
+import { captureClassify, type ForecastSnapshot } from "./capture.js";
 import { mismatchField } from "./mismatch.js";
 import { NeuralFocusNet } from "./neural-focus.js";
 import { AttentionController } from "./controller.js";
@@ -52,7 +52,7 @@ out(SEP);
   // （含当时的规则核索引），本帧只比对已存在的缓存预测；修复前是到当前帧
   // 才用当前权重重算旧条件，不构成"变化发生前已完成预测"。
   // ②焦点因果作用——只有焦点对象获得下帧预测（可消融：焦点决定预测谁）。
-  let cachedForecast: { subjectId: string; coreIdx: number | null; originTick: number } | null = null;
+  let cachedForecast: ForecastSnapshot & { subjectId: string; originTick: number } | null = null;
   const acc: string[] = [];
   for (const frame of continuousStream()) {
     // 焦点先择（基于截至上帧的失配场）
@@ -69,7 +69,7 @@ out(SEP);
       // 用缓存的上一帧预测比对（只对焦点对象存在缓存预测）
       const fcCore = cachedForecast && cachedForecast.subjectId === obj.id ? cachedForecast.coreIdx : null;
       // 捕获判定（观察结果 vs 已缓存预测核）
-      const cap = captureClassify(mem, obj.conditions, obj.outcomes, fcCore, frame.tick);
+      const cap = captureClassify(mem, obj.conditions, obj.outcomes, cachedForecast?.subjectId === obj.id ? cachedForecast : null, frame.tick);
       // 失配场 → 写入竞争
       // 失配必须对**预测核**（被违反的期望）测量——捕获核是吻合观察的，失配恒为 0
       focus.setMismatch(obj.id, mismatchField(mem, fcCore, obj.outcomes));
@@ -87,6 +87,10 @@ out(SEP);
         subjectId: winner,
         coreIdx: fc.winningCores.length > 0 ? fc.winningCores[0]! : null,
         originTick: frame.tick,
+        values: { ...fc.values },
+        generation: mem.evidenceGeneration,
+        converged: fc.converged,
+        terminationReason: fc.terminationReason,
       };
     } else {
       cachedForecast = null;

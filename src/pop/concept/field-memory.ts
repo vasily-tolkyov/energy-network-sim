@@ -1,3 +1,5 @@
+import { OutcomeEvidence, sameSupport, compatibleSupports } from "../evidence.js";
+import type { SettleTermination } from "../../types.js";
 import { EnergyNetwork, hebbianLearn } from "../../index.js";
 import type { SensoryEncoder } from "./sensory.js";
 import type { EmergentMap } from "./emergent-map.js";
@@ -48,6 +50,7 @@ export interface FieldPrediction {
   readonly winningCores: readonly number[];
   /** 退火是否以固定点终止（非平衡驱动下如实上报非收敛） */
   readonly converged: boolean;
+  readonly terminationReason: SettleTermination;
 }
 
 export class FieldRuleMemory {
@@ -67,9 +70,40 @@ export class FieldRuleMemory {
   private lastBoost: Record<string, number> = {};
   private lastGammaVeto = 1.2;
   /** 签名 → 最近一次写入的结果值（纠错否决用，与 PopRuleMemory 同一规则） */
-  private readonly lastOutcomeBySig = new Map<string, Record<string, number>>();
+  private readonly evidence = new OutcomeEvidence();
+  get evidenceGeneration(): number { return this.evidence.generation; }
+  get evidenceConflicts() { return this.evidence.conflictLog; }
+  ruleEvidence(index: number) { return this.evidence.snapshot(Math.floor((this.rules[index]!.core[0]! - this.coreBase) / this.coreSize)); }
   /** 每维已观察到的条件值集合（否决源登记——评审 F05：只否决已观察替代值的域） */
   private readonly observedValues = new Map<string, Set<number>>();
+  private readonly contrastVetoes = new Map<string, { from: number; to: number; delta: number }[]>();
+
+  /** Contradictory observed episodes teach local pattern separation: only the
+   * condition members absent from a core may inhibit it. Shared members never
+   * do. This is associative exclusion, not a causal-factor assertion (R2).
+   * Reconcile contributions when evidence changes, including world reversals. */
+  private reconcileContrasts(index: number): void {
+    const a = this.rules[index]!;
+    const ae = this.ruleEvidence(index);
+    this.rules.forEach((b, j) => {
+      if (j === index) return;
+      const key = `${Math.min(index, j)}:${Math.max(index, j)}`;
+      for (const edge of this.contrastVetoes.get(key) ?? []) this.net.setInhibitionContribution(edge.from, edge.to, `contrast:${key}`, 0);
+      const be = this.ruleEvidence(j);
+      const conflict = Object.entries(ae).some(([dim, e]) => be[dim] && !compatibleSupports(e.support, be[dim]!.support));
+      const edges: { from: number; to: number; delta: number }[] = [];
+      if (conflict) for (const [source, target] of [[a, b], [b, a]] as const) {
+        for (const from of source.conditionFields.filter(id => !target.conditionFields.includes(id))) {
+          for (const to of target.core) {
+            const before = this.net.getInhibitoryWeight(from, to);
+            this.net.setInhibitionContribution(from, to, `contrast:${key}`, 3);
+            edges.push({ from, to, delta: this.net.getInhibitoryWeight(from, to) - before });
+          }
+        }
+      }
+      this.contrastVetoes.set(key, edges);
+    });
+  }
 
   constructor(
     readonly encoder: SensoryEncoder,
@@ -220,15 +254,16 @@ export class FieldRuleMemory {
     condFields: readonly number[],
     outcomes: Record<string, number>,
   ): void {
-    const outFields = this.encoder.encode(outcomes);
+    const outFields = Object.values(this.evidence.snapshot(Math.floor((core[0]! - this.coreBase) / this.coreSize))).flatMap(e => e.support);
     const existing = this.sigRegistered.get(sig);
     if (existing === undefined) {
       this.sigRegistered.set(sig, this.rules.length);
       this.rules.push({ core: [...core], conditionFields: [...condFields], outcomeFields: outFields });
     } else {
       const rule = this.rules[existing]!;
-      rule.outcomeFields = [...new Set([...rule.outcomeFields, ...outFields])].sort((a, b) => a - b);
+      rule.outcomeFields = [...outFields];
     }
+    this.reconcileContrasts(this.sigRegistered.get(sig)!);
   }
 
   /**
@@ -257,8 +292,8 @@ export class FieldRuleMemory {
         for (const from of core) this.net.strengthen(from, to, 0.6, 0.6);
       }
     }
+    this.acceptOutcomes(core, outcomes);
     this.registerOrUpdateRule(sig, core, condFields, outcomes);
-    this.vetoSupersededOutcomes(sig, core, outcomes);
     this.registerObservedValues(conditions);
   }
 
@@ -399,6 +434,14 @@ export class FieldRuleMemory {
         ambiguous.push(dim);
       }
     }
+    // Same-code observations carry equal evidence weight. Refine only a neural
+    // readout whose active support exactly matches one winning core's code;
+    // never fill an absent/ambiguous neural answer from metadata.
+    const winners = this.activeCores(result.activeNeurons);
+    if (winners.length === 1) for (const [dim, e] of Object.entries(this.ruleEvidence(winners[0]!))) {
+      const support = this.outcomeDimFields.filter(id => active.has(id) && this.encoder.fieldOf(id)?.dimension === dim);
+      if (values[dim] !== null && e.samples > 1 && sameSupport(support, e.support)) values[dim] = e.value;
+    }
     return {
       values,
       distribution,
@@ -407,6 +450,7 @@ export class FieldRuleMemory {
       energy: result.energy,
       winningCores: this.activeCores(result.activeNeurons),
       converged: result.converged,
+      terminationReason: result.terminationReason,
     };
   }
 
@@ -425,6 +469,7 @@ export class FieldRuleMemory {
   learnExclusion(dimension: string, valueA: number, valueB: number, strength = 3.0): void {
     const a = this.encoder.encodeDimension(dimension, valueA);
     const b = this.encoder.encodeDimension(dimension, valueB);
+    if (compatibleSupports(a, b)) return;
     for (const x of a) {
       for (const y of b) this.net.strengthenInhibitory(x, y, strength);
     }
@@ -438,24 +483,9 @@ export class FieldRuleMemory {
     this.teachExperimentWithCap(conditions, observed, repeats, 0.1, 0.6);
   }
 
-  /**
-   * 纠错否决（评审 B04 的场级版）：同签名再次写入结果时，某结果维的新值
-   * 与上次不同 → 核↔旧值感受野写抑制边。纠正不依赖预先学过的结果互斥。
-   */
-  private vetoSupersededOutcomes(sig: string, core: readonly number[], outcomes: Record<string, number>): void {
-    const last = this.lastOutcomeBySig.get(sig);
-    for (const dim of this.encoder.dimensions) {
-      const v = outcomes[dim.name];
-      if (v === undefined) continue;
-      const prev = last?.[dim.name];
-      if (prev !== undefined && Math.abs(prev - v) > 1e-9) {
-        const oldFields = this.encoder.encodeDimension(dim.name, prev);
-        for (const from of core) {
-          for (const to of oldFields) this.net.strengthenInhibitory(from, to, 3.0);
-        }
-      }
-    }
-    this.lastOutcomeBySig.set(sig, { ...last, ...outcomes });
+  private acceptOutcomes(core: readonly number[], outcomes: Record<string, number>): void {
+    this.evidence.accept(this.net, Math.floor((core[0]! - this.coreBase) / this.coreSize), core,
+      outcomes, "observation", (dim, value) => this.encoder.encodeDimension(dim, value));
   }
 
   private teachExperimentWithCap(
@@ -480,8 +510,8 @@ export class FieldRuleMemory {
     // 生命周期事务（评审 D02 修复 + 早前空白起步修复的完成版）：
     // 观察写入 = 结果证据 → 注册/更新规则。判定以注册表为准——
     // 先侧重（bindInfluence 分配核）后观察的顺序不再漏登记。
+    this.acceptOutcomes(core, outcomes);
     this.registerOrUpdateRule(sig, core, condFields, outcomes);
-    this.vetoSupersededOutcomes(sig, core, outcomes);
     this.registerObservedValues(conditions);
     // 持证：按侧重并集补正/否决（场级，与 bindInfluence 同一规则）
     for (const [dim, delta] of Object.entries(this.lastBoost)) {

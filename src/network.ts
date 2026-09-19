@@ -43,6 +43,7 @@ export class EnergyNetwork {
    * 抬高对方势垒，实现"小球只进一个槽"的互斥概率选择。
    */
   private readonly inhibitory: Float64Array;
+  private readonly inhibitionOwners = new Map<number, { base: number; values: Map<string, number> }>();
   /**
    * 有向抑制矩阵 DI，非对称、非负：DI[from*N+to] 表示 from→to 的前馈抑制。
    * 与 Γ 的本质区别：DI 是**非平衡驱动场**（供能电路，类比材料实现的
@@ -150,9 +151,50 @@ export class EnergyNetwork {
     this.checkEdge(i, j, delta);
     if (i === j || delta <= 0) return;
     const n = this.neuronCount;
+    const owned = this.inhibitionOwners.get(Math.min(i, j) * n + Math.max(i, j));
+    if (owned) {
+      owned.base = Math.min(this.config.maxWeight, owned.base + delta);
+      this.writeOwnedInhibition(i, j, owned);
+      return;
+    }
     const next = Math.min(this.config.maxWeight, (this.inhibitory[i * n + j] ?? 0) + delta);
     this.inhibitory[i * n + j] = next;
     this.inhibitory[j * n + i] = next;
+  }
+
+  /** Reversible plasticity of symmetric Γ; Γ remains a conservative energy term.
+   * Learning changes the landscape between settles, not the energy definition. */
+  decayInhibition(i: number, j: number, delta: number): void {
+    this.checkEdge(i, j, delta);
+    if (delta < 0) throw new Error("inhibition decay must be nonnegative");
+    const owned = this.inhibitionOwners.get(Math.min(i, j) * this.neuronCount + Math.max(i, j));
+    if (owned) {
+      owned.base = Math.max(0, owned.base - delta);
+      this.writeOwnedInhibition(i, j, owned);
+      return;
+    }
+    const next = Math.max(0, this.getInhibitoryWeight(i, j) - delta);
+    this.inhibitory[i * this.neuronCount + j] = next;
+    this.inhibitory[j * this.neuronCount + i] = next;
+  }
+
+  /** Independently retractable learning contributions. Saturation must not
+   * erase ownership: withdrawing one cause cannot withdraw another cause. */
+  setInhibitionContribution(i: number, j: number, owner: string, value: number): void {
+    this.checkEdge(i, j, value);
+    if (value < 0) throw new Error("inhibition contribution must be nonnegative");
+    if (i === j) return;
+    const key = Math.min(i, j) * this.neuronCount + Math.max(i, j);
+    const entry = this.inhibitionOwners.get(key) ?? { base: this.getInhibitoryWeight(i, j), values: new Map<string, number>() };
+    if (value === 0) entry.values.delete(owner); else entry.values.set(owner, value);
+    this.writeOwnedInhibition(i, j, entry);
+    if (entry.values.size) this.inhibitionOwners.set(key, entry); else this.inhibitionOwners.delete(key);
+  }
+
+  private writeOwnedInhibition(i: number, j: number, entry: { base: number; values: Map<string, number> }): void {
+    const value = Math.min(this.config.maxWeight, entry.base + [...entry.values.values()].reduce((a, b) => a + b, 0));
+    this.inhibitory[i * this.neuronCount + j] = value;
+    this.inhibitory[j * this.neuronCount + i] = value;
   }
 
   /** 抑制场 γ_i = Σ_j Γ_ij·s_j：当前激活模式对激活 i 的惩罚 */
@@ -454,7 +496,8 @@ export class EnergyNetwork {
       };
     };
     let currentEnergy = initialEnergy;
-    let bestEnergy = initialEnergy;
+    let hasQuietCandidate = !quietOnly || !this.diDriveEngaged();
+    let bestEnergy = hasQuietCandidate ? initialEnergy : Infinity;
     const bestState = Uint8Array.from(this.state);
     for (let level = 0; level < levels; level++, temperature *= coolingFactor) {
       for (let sweep = 0; sweep < sweepsPerLevel; sweep++) {
@@ -483,13 +526,21 @@ export class EnergyNetwork {
           // fallbackQuietOnly：带池 WTA 电路只认驱动静息期的最低真实能态
           // （多核共存态真实能量更低但破坏单核语义）；默认全访问态（评审 A04 契约）
           if (currentEnergy < bestEnergy && !(quietOnly && this.diDriveEngaged())) {
+            hasQuietCandidate = true;
             bestEnergy = currentEnergy;
             bestState.set(this.state);
           }
         }
       }
     }
-    if (bestEnergy < currentEnergy) this.state.set(bestState);
+    if (!hasQuietCandidate) {
+      // No eligible answer: return no active pattern, never a DI-driven state.
+      this.state.fill(0);
+      return { activeNeurons: [], energy: 0, trace: { energies: [0], flipCount, driveWork },
+        converged: false, terminationReason: "no-quiet-candidate", residualFlips: 0,
+        candidateSet: [...candidate], initialEnergy, annealEndEnergy: 0, proposals, acceptedUphill };
+    }
+    if (quietOnly || bestEnergy < currentEnergy) this.state.set(bestState);
     const annealEndEnergy = this.energy();
 
     // 淬火尾巴：T=0 贪心扫描至无翻转（保守账本随翻转变化；DI 驱动可致上坡）。
@@ -540,6 +591,11 @@ export class EnergyNetwork {
       if (!flipped) break;
     }
 
+    if (quietOnly && this.diDriveEngaged()) {
+      this.state.set(quenchBestState);
+      quenchEnergies.push(quenchBestEnergy);
+      terminated = "flip-budget";
+    }
     const energies = [annealEndEnergy, ...quenchEnergies];
     return {
       activeNeurons: this.activeNeurons(),

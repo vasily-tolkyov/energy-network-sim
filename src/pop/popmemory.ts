@@ -1,3 +1,5 @@
+import { OutcomeEvidence } from "./evidence.js";
+import type { SettleTermination } from "../types.js";
 import { EnergyNetwork, hebbianLearn } from "../index.js";
 import { decodePopulation, PopChannelMap } from "./popmap.js";
 import type { PopDecoded } from "./popmap.js";
@@ -41,7 +43,9 @@ export class PopRuleMemory {
    *  无结果绑定的核——它只能竞争却永远读空；预测候选只收有证据的核） */
   private readonly coreEvidence: boolean[] = [];
   /** 核最近一次写入的结果（纠错否决用：观察覆盖了谁就否决谁） */
-  private readonly coreLastOutcome = new Map<number, Record<string, number>>();
+  private readonly evidence = new OutcomeEvidence();
+  get evidenceGeneration(): number { return this.evidence.generation; }
+  get evidenceConflicts() { return this.evidence.conflictLog; }
   /** 前馈抑制池规模（WTA 电路，自 field-memory 移植） */
   private readonly poolSize = 2;
   /**
@@ -163,29 +167,9 @@ export class PopRuleMemory {
     if (idx >= 0) this.coreEvidence[idx] = true;
   }
 
-  /**
-   * 纠错否决（评审 B04 修复）：同一核再次写入结果时，若某通道新值与上次不同，
-   * 核↔旧结果档写抑制边——替代值互斥的核内版本。修复前纠错只加强新绑定
-   * （0.6>0.4），新旧两结果群体仍可能同时点燃报歧义；纠错不依赖预先学过的
-   * 结果互斥。非平稳反复反转（B06）是声明过的边界：双向否决累积后报歧义。
-   */
-  private vetoSupersededOutcomes(core: readonly number[], outcomes: Outcomes): void {
-    const idx = this.cores.indexOf(core as number[]);
-    if (idx < 0) return;
-    const last = this.coreLastOutcome.get(idx);
-    for (const spec of this.outcomeMap.specs) {
-      const bin = outcomes[spec.name];
-      if (typeof bin !== "number") continue;
-      const prev = last?.[spec.name];
-      if (prev !== undefined && prev !== bin) {
-        for (const from of core) {
-          for (const to of this.outcomeMap.population(spec.name, prev)) {
-            this.net.strengthenInhibitory(from, to + this.conditionMap.neuronCount, 3.0);
-          }
-        }
-      }
-    }
-    this.coreLastOutcome.set(idx, { ...last, ...outcomes } as Record<string, number>);
+  private acceptOutcomes(core: readonly number[], outcomes: Outcomes, source: "observation" | "hypothesis"): Record<string, number> {
+    return this.evidence.accept(this.net, this.cores.indexOf(core as number[]), core, outcomes, source,
+      (dim, value) => this.outcomeMap.population(dim, value).map(id => id + this.conditionMap.neuronCount));
   }
 
   private outcomeIds(exp: Experiment): number[] {
@@ -203,11 +187,13 @@ export class PopRuleMemory {
   teachExperience(exp: Experiment, repeats: number, baseCap = 0.4): void {
     const core = this.coreFor(exp.conditions);
     const condPops = this.conditionMap.encode(exp.conditions);
+    const accepted = this.acceptOutcomes(core, exp.outcomes, "observation");
     hebbianLearn(this.net, [...condPops, ...core], repeats, undefined, baseCap);
     // 结果按通道分别绑定到核：不允许出现 reb↔rs 等跨结果通道边——
     // 否则被驱动的结果档会经"结果→结果"边接力驱动别的档（实测发现的泄漏）。
     for (const spec of this.outcomeMap.specs) {
-      const pops = this.outcomeMap.population(spec.name, exp.outcomes[spec.name]!);
+      if (accepted[spec.name] === undefined) continue;
+      const pops = this.outcomeMap.population(spec.name, accepted[spec.name]!);
       hebbianLearn(
         this.net,
         [...core, ...pops.map((id) => id + this.conditionMap.neuronCount)],
@@ -222,7 +208,7 @@ export class PopRuleMemory {
       this.observedBins.set(ch, seen);
     }
     this.markCoreEvidence(core);
-    this.vetoSupersededOutcomes(core, exp.outcomes as Record<string, number>);
+
   }
 
   /**
@@ -276,7 +262,7 @@ export class PopRuleMemory {
     query: Conditions,
     seed: number,
     anneal?: { levels?: number; sweepsPerLevel?: number },
-  ): { decoded: Record<string, PopDecoded>; activeNeurons: readonly number[]; energy: number; converged: boolean } {
+  ): { decoded: Record<string, PopDecoded>; activeNeurons: readonly number[]; energy: number; converged: boolean; terminationReason: SettleTermination } {
     const input = this.conditionMap.encode(query);
     const outcomeNeurons = Array.from(
       { length: this.outcomeMap.neuronCount },
@@ -327,6 +313,7 @@ export class PopRuleMemory {
       energy: result.energy,
       // 非平衡驱动下不承诺无条件收敛：非收敛如实向上传播（评审 F01 修复附带）
       converged: result.converged,
+      terminationReason: result.terminationReason,
     };
   }
 
@@ -411,19 +398,18 @@ export class PopRuleMemory {
     const effRepeats = this.effectiveRepeats(repeats, 0.05);
     const core = this.coreFor(query);
     const condIds = this.conditionMap.encode(query);
+    const numeric = Object.fromEntries(Object.entries(predicted).filter((entry): entry is [string, number] => typeof entry[1] === "number"));
+    const accepted = this.acceptOutcomes(core, numeric, "hypothesis");
+    if (Object.keys(accepted).length === 0) return;
     hebbianLearn(this.net, [...condIds, ...core], effRepeats, 0.05, 0.4);
     for (const spec of this.outcomeMap.specs) {
-      const bin = predicted[spec.name];
+      const bin = accepted[spec.name];
       if (typeof bin === "number") {
         const pops = this.outcomeMap.population(spec.name, bin);
         hebbianLearn(this.net, [...core, ...pops.map((id) => id + this.conditionMap.neuronCount)], effRepeats, 0.05, 0.4);
       }
     }
     this.markCoreEvidence(core);
-    // 纠错否决同一规则：自写猜测被后续观察/新预测覆盖时同样否决旧结果档
-    const numeric: Record<string, number> = {};
-    for (const [ch, v] of Object.entries(predicted)) if (typeof v === "number") numeric[ch] = v;
-    this.vetoSupersededOutcomes(core, numeric);
     // 持证上岗（与 learnFromObservation 同一规则，化学主题实测补入）：
     // 新核必须带侧重加分边 + 替代档否决边，否则它绕开否决体系——
     // 无否决惩罚的核在任何近似查询上白拿匹配支持，压垮持证核，
@@ -453,19 +439,20 @@ export class PopRuleMemory {
   learnFromObservation(query: Conditions, observed: Outcomes, repeats: number): void {
     const core = this.coreFor(query);
     const condIds = this.conditionMap.encode(query);
-    if (Object.values(observed).some((v) => typeof v === "number")) {
+    const accepted = this.acceptOutcomes(core, observed, "observation");
+    if (Object.values(accepted).some((v) => typeof v === "number")) {
       const effRepeats = this.effectiveRepeats(repeats, 0.1);
       hebbianLearn(this.net, [...condIds, ...core], effRepeats, 0.1, 0.6);
       // 结果按通道分别绑定到核（同 teachExperience，防跨通道接力）
       for (const spec of this.outcomeMap.specs) {
-        const bin = observed[spec.name];
+        const bin = accepted[spec.name];
         if (typeof bin === "number") {
           const pops = this.outcomeMap.population(spec.name, bin);
           hebbianLearn(this.net, [...core, ...pops.map((id) => id + this.conditionMap.neuronCount)], effRepeats, 0.1, 0.6);
         }
       }
       this.markCoreEvidence(core);
-      this.vetoSupersededOutcomes(core, observed);
+
     }
     // 登记观察到的条件档（自主探索路径修复：探索从零起步、不经 teachExperience，
     // 若不在此登记，observedBins 永远为空、否决边永远不会被写入——

@@ -1,16 +1,16 @@
+import { compatibleSupports } from "../evidence.js";
 import type { FieldRuleMemory } from "../concept/field-memory.js";
 import type { CValues } from "../concept/world-continuous.js";
 
-/**
- * 捕获检验（M2）：三类判定从手写分类公式改为纯动力学势阱归属。
- *
- * 检验方式：把对象的条件场与**观察到的结果场**一起钳制，让网络自己
- * 补全——能接收这组"条件+结果"的规则核会被捕获激活：
- * - 预测对应的核被捕获 → 符合（within-envelope）；
- * - 其他已学核被捕获 → 偏差（prediction-violation）；
- * - 无核被捕获 → 未知（unknown-change）。
- * 没有任何"比较逻辑"：判定 = 势阱归属。
- */
+/** Joint capture requires a captured core AND compatible observed output on
+ * every observed dimension. A core fired by conditions alone is insufficient. */
+export interface ForecastSnapshot {
+  coreIdx: number | null;
+  values: Readonly<Record<string, number | null>>;
+  generation: number;
+  converged: boolean;
+  terminationReason: string;
+}
 
 export type CaptureClass = "within-envelope" | "prediction-violation" | "unknown-change";
 
@@ -19,9 +19,11 @@ export function captureClassify(
   mem: FieldRuleMemory,
   conditions: CValues,
   observedOutcomes: CValues,
-  forecastCoreIdx: number | null,
+  forecast: number | null | ForecastSnapshot,
   seed = 1,
-): { class: CaptureClass; capturedCores: number[] } {
+): { class: CaptureClass; capturedCores: number[]; converged: boolean; terminationReason: string } {
+  const forecastCoreIdx = typeof forecast === "object" && forecast !== null ? forecast.coreIdx : forecast;
+  const snapshot = typeof forecast === "object" && forecast !== null ? forecast : null;
   // 钳制：条件场 ∪ 观察结果场（结果维度也是编码器维度，直接编码）
   const input = mem.encoder.encode({ ...conditions, ...observedOutcomes });
   const result = mem.net.settleAnnealed(input, [], {
@@ -32,15 +34,21 @@ export function captureClassify(
     sweepsPerLevel: 8,
   });
   const captured = mem.activeCores(result.activeNeurons);
+  const status = { converged: result.converged, terminationReason: result.terminationReason };
   // 无时间对应的预测时不能报"偏差"（文档三态原则）——一律报未知
   if (forecastCoreIdx === null) {
-    return { class: "unknown-change", capturedCores: captured };
+    return { class: "unknown-change", capturedCores: captured, ...status };
   }
-  if (captured.includes(forecastCoreIdx)) {
-    return { class: "within-envelope", capturedCores: captured };
+  const evidence = mem.ruleEvidence(forecastCoreIdx);
+  const compatible = Object.entries(observedOutcomes).every(([dim, value]) => {
+    const old = snapshot ? snapshot.values[dim] : evidence[dim]?.value;
+    return typeof old === "number" && compatibleSupports(mem.encoder.encodeDimension(dim, old), mem.encoder.encodeDimension(dim, value));
+  });
+  if (captured.includes(forecastCoreIdx) && compatible && result.converged && (snapshot?.converged ?? true)) {
+    return { class: "within-envelope", capturedCores: captured, ...status };
   }
   if (captured.length > 0) {
-    return { class: "prediction-violation", capturedCores: captured };
+    return { class: "prediction-violation", capturedCores: captured, ...status };
   }
-  return { class: "unknown-change", capturedCores: captured };
+  return { class: "unknown-change", capturedCores: captured, ...status };
 }

@@ -152,8 +152,8 @@ export class R2PopLayer {
       };
       const meanA = meanBy(outDiffA);
       const meanB = meanBy(outDiffB);
-      for (const [ch, mb] of meanB) {
-        outcomeDelta[ch] = mb - (meanA.get(ch) ?? 0);
+      for (const ch of new Set([...meanA.keys(), ...meanB.keys()])) {
+        outcomeDelta[ch] = (meanB.get(ch) ?? 0) - (meanA.get(ch) ?? 0);
       }
     } else {
       for (const [ch, bins] of binsA) {
