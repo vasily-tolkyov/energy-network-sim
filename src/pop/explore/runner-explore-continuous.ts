@@ -112,6 +112,10 @@ function runSeed(seed: number): void {
     const b = perKind[kind] ?? { fine: 0, coarse: 0, refused: 0, total: 0, truthLit: 0 };
     fine += b.fine;
     coarse += b.coarse;
+    if (b.total === 0) {
+      out(`    ${kind.padEnd(15)} N/A (n=0; accuracy, refusal and constant baseline undefined)`);
+      continue;
+    }
     const constBase = Math.max(b.truthLit, b.total - b.truthLit) / Math.max(1, b.total);
     out(
       `    ${kind.padEnd(15)} 细粒度 ${b.fine}/${b.total}（${((b.fine / b.total) * 100).toFixed(1)}%）` +

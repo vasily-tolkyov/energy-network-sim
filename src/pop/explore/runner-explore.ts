@@ -110,6 +110,10 @@ function runSeed(seed: number): void {
     fine += b.fine;
     coarse += b.coarse;
     strict += b.strict;
+    if (b.total === 0) {
+      out(`    ${kind.padEnd(15)} N/A (n=0; accuracy, refusal and constant baseline undefined)`);
+      continue;
+    }
     const constBase = Math.max(b.truthLit, b.total - b.truthLit) / Math.max(1, b.total);
     out(
       `    ${kind.padEnd(15)} 门控任务分 ${((b.fine / b.total) * 100).toFixed(1)}%  严格联合 ${((b.strict / b.total) * 100).toFixed(1)}%` +
