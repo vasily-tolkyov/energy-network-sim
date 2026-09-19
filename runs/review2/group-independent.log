@@ -1,0 +1,6 @@
+START independent-discrete-4 2026-09-19T13:40:16.091Z
+{"name":"independent-discrete-4","entry":"../review-artifacts/independent-experiments.mjs","seeds":"1","args":["discrete","4"],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T13:40:16.091Z","finished":"2026-09-19T13:56:25.247Z","exitCode":0,"seconds":969.1529772999999}
+START independent-continuous-4 2026-09-19T13:56:25.248Z
+{"name":"independent-continuous-4","entry":"../review-artifacts/independent-experiments.mjs","seeds":"1","args":["continuous","4"],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T13:56:25.248Z","finished":"2026-09-19T14:31:28.671Z","exitCode":0,"seconds":2103.4223542}
+START independent-continuous-5 2026-09-19T14:31:28.672Z
+{"name":"independent-continuous-5","entry":"../review-artifacts/independent-experiments.mjs","seeds":"1","args":["continuous","5","off-grid-only"],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T14:31:28.672Z","finished":"2026-09-19T14:40:39.036Z","exitCode":0,"seconds":550.3643205}

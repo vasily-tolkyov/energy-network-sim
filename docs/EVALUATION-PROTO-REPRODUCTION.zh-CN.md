@@ -1,3 +1,5 @@
+> 历史评估：以下内容来自 `e732f2b4ef46e0ac482480095a31cb5aa23ec6be`，数字与契约不代表当前实现。当前实测见 [第二轮修复记录](REVIEW2-REMEDIATION.zh-CN.md)。
+
 # 用二态能耗网络复现 R1/R2A/R2B/R3 预测原型：评估与实机结果
 
 日期：2026-09-17。代码：`energy-network-sim/src/prototype/`，运行 `npm run proto`，日志 `runs/proto-v1.log`。

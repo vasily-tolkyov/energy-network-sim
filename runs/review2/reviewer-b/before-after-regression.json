@@ -1,0 +1,86 @@
+[
+  {
+    "rev": "f25fefe",
+    "evidenceOrder": {
+      "before": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "afterGuess": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "afterTruth": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "equivalentContinuous": {
+      "before": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "after": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ]
+    }
+  },
+  {
+    "rev": "e732f2b",
+    "evidenceOrder": {
+      "before": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "afterGuess": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "afterTruth": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "equivalentContinuous": {
+      "before": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "after": [
+        0.2005,
+        0.2005,
+        0.2005,
+        0.2005,
+        0.2005
+      ]
+    }
+  }
+]

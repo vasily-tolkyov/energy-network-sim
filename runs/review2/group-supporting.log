@@ -1,0 +1,12 @@
+START pop 2026-09-19T13:40:12.764Z
+{"name":"pop","entry":"src/pop/runner-pop.js","seeds":"1","args":[],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T13:40:12.764Z","finished":"2026-09-19T13:43:56.545Z","exitCode":0,"seconds":223.7783199}
+START chem 2026-09-19T13:43:56.546Z
+{"name":"chem","entry":"src/topics/runner-chem-pop.js","seeds":"1","args":[],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T13:43:56.546Z","finished":"2026-09-19T13:46:45.799Z","exitCode":0,"seconds":169.2523856}
+START concept 2026-09-19T13:46:45.800Z
+{"name":"concept","entry":"src/pop/concept/runner-formation.js","seeds":"1","args":[],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T13:46:45.800Z","finished":"2026-09-19T13:46:57.943Z","exitCode":0,"seconds":12.143282200000016}
+START neural-attention 2026-09-19T13:46:57.944Z
+{"name":"neural-attention","entry":"src/pop/attention/runner-neural-attention.js","seeds":"1","args":[],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T13:46:57.944Z","finished":"2026-09-19T13:47:19.827Z","exitCode":0,"seconds":21.882726200000032}
+START demo 2026-09-19T13:47:19.828Z
+{"name":"demo","entry":"src/demo.js","seeds":"1","args":[],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T13:47:19.828Z","finished":"2026-09-19T13:47:20.034Z","exitCode":0,"seconds":0.2065806000000448}
+START demo-seq 2026-09-19T13:47:20.036Z
+{"name":"demo-seq","entry":"src/demo-sequence.js","seeds":"1","args":[],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T13:47:20.036Z","finished":"2026-09-19T13:47:20.234Z","exitCode":0,"seconds":0.19826860000001034}

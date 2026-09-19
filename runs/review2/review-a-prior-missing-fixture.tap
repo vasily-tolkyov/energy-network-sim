@@ -1,0 +1,151 @@
+✔ A01 symmetric-only energy accounting and fixed point (positive control) (4.1926ms)
+ℹ {"activeNeurons":[0,1,2,3],"energy":-6,"trace":{"energies":[1.5,1,-1.5,-6],"flipCount":3,"driveWork":0},"converged":true,"terminationReason":"fixed-point","residualFlips":0}
+✔ A02 DI settle trace must equal actual energy (1.7318ms)
+ℹ {"flips":300,"reported":0.5,"actual":0.5,"actualIncrease":false,"active":[0,1,2]}
+✔ A03 bounded DI quench must report nonconvergence or return a fixed point (2.2553ms)
+ℹ {"activeNeurons":[0,1,2],"energy":0.5,"trace":{"energies":[0.5,3,1.5,1,0.5,3,1.5,1,0.5,0.5],"flipCount":14,"driveWork":-12},"converged":false,"terminationReason":"flip-budget","residualFlips":1,"candidateSet":[0,1,2],"initialEnergy":1.5,"annealEndEnergy":0.5,"proposals":8,"acceptedUphill":1,"deltas":[-1.5,0.5]}
+✖ A04 advertised candidate freeze survives default quench (9.8591ms)
+ℹ {"activeNeurons":[0,1,2,3],"energy":0,"trace":{"energies":[1.5,1,0.5,0],"flipCount":3,"driveWork":0},"converged":true,"terminationReason":"fixed-point","residualFlips":0,"candidateSet":[0],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":0,"acceptedUphill":0}
+✔ A05 invalid weight endpoint must be rejected without corrupting symmetry (0.507ms)
+ℹ {"rejected":true,"w01":0,"w10":0}
+✔ A06 nonfinite config and noninteger inputs must be rejected (1.6411ms)
+ℹ {"acceptedInvalid":[]}
+✔ A07 continuous bench rejects NaN without charging experiment (0.4395ms)
+ℹ {"rejected":true,"cost":0}
+✔ A08 FieldRuleMemory enforces declared maxRules before pool overwrite (3.6721ms)
+ℹ {"rejected":true,"ruleCount":1,"neuronCount":86,"cores":[80,81,82,83]}
+✔ A09 influence-first field rule remains visible after later real observation (34.5671ms)
+ℹ {"ruleCount":1,"pred":{"y":0.8},"coverage":25.600000000000012}
+✔ A10 Pop memory all teaching paths preserve two-stage binding (positive) (5.3352ms)
+ℹ {"forbidden":0,"ruleCount":2}
+✔ A11 field teaching preserves star outputs (positive) (2.5093ms)
+ℹ {"forbidden":0,"neuronCount":80}
+✖ A12 concept ablation: swap inhibition does not affect extracted concepts (1.9773ms)
+✔ A13 fine continuous score must reject wildly incorrect brightness even when off (0.3363ms)
+ℹ {"coarse":true,"fine":false}
+✔ A14 R2 should not infer outcome change for a one-factor null intervention (2.637ms)
+ℹ {"undecidable":false,"outcomeChanged":false,"outcomeDelta":{},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":[],"thetaHigh":5.200000000000001}
+✖ A15 WTA focus should activate exactly one marker under actual ignorance drive (2.1632ms)
+ℹ {"chosen":"a","markers":[1,5]}
+✔ A16 field outcome metadata includes newly learned observed fields (3.1097ms)
+ℹ {"metadata":[72,73,74,75,76,77,78,79],"latest":[72,73,74,75,76,77,78,79]}
+✖ A17 claimed G=0 ablation must remove influence veto as well as excitation (1.6614ms)
+ℹ {"gain":0,"veto":1.5}
+✔ A18 concept centers alone cannot identify gate threshold (control) (3.4409ms)
+ℹ {"thresholds":[0.5,0.73],"centersA":[0.1,0.5,0.9],"centersB":[0.1,0.5,0.9]}
+✖ A19 README usage must detect and label its Hebbian clique memories (1.6229ms)
+ℹ {"wellCount":0}
+✖ A20 audit of exact C-minimum claim against exhaustive oracle without DI (1.9493ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 14
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 324.1141
+
+✖ failing tests:
+
+test at review-artifacts\adversarial.test.mjs:57:1
+✖ A04 advertised candidate freeze survives default quench (9.8591ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(r.activeNeurons.every(i=>r.candidateSet.includes(i)))
+  
+      at TestContext.<anonymous> (file:///D:/kimi_kairos/energy-network-sim/review-artifacts/adversarial.test.mjs:60:10)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at review-artifacts\adversarial.test.mjs:126:1
+✖ A12 concept ablation: swap inhibition does not affect extracted concepts (1.9773ms)
+  TypeError: f.presentSwap is not a function
+      at TestContext.<anonymous> (file:///D:/kimi_kairos/energy-network-sim/review-artifacts/adversarial.test.mjs:131:5)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7)
+
+test at review-artifacts\adversarial.test.mjs:149:1
+✖ A15 WTA focus should activate exactly one marker under actual ignorance drive (2.1632ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///D:/kimi_kairos/energy-network-sim/review-artifacts/adversarial.test.mjs:153:41)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at review-artifacts\adversarial.test.mjs:162:1
+✖ A17 claimed G=0 ablation must remove influence veto as well as excitation (1.6614ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1.5 !== 0
+  
+      at TestContext.<anonymous> (file:///D:/kimi_kairos/energy-network-sim/review-artifacts/adversarial.test.mjs:168:38)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1.5,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at review-artifacts\adversarial.test.mjs:183:1
+✖ A19 README usage must detect and label its Hebbian clique memories (1.6229ms)
+  Error: unknown wellId: 0
+      at ReadoutModule.labelWell (file:///D:/kimi_kairos/energy-network-sim/dist/src/readout.js:52:19)
+      at TestContext.<anonymous> (file:///D:/kimi_kairos/energy-network-sim/review-artifacts/adversarial.test.mjs:188:11)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7)
+
+test at review-artifacts\adversarial.test.mjs:192:1
+✖ A20 audit of exact C-minimum claim against exhaustive oracle without DI (1.9493ms)
+  Error: ENOENT: no such file or directory, open 'D:\kimi_kairos\energy-network-sim\review-artifacts\annealing-global-counterexample.json'
+      at Object.readFileSync (node:fs:440:20)
+      at TestContext.<anonymous> (file:///D:/kimi_kairos/energy-network-sim/review-artifacts/adversarial.test.mjs:193:31)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'D:\\kimi_kairos\\energy-network-sim\\review-artifacts\\annealing-global-counterexample.json'
+  }

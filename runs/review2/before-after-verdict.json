@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "b25eb9876f10fa18b9938b91792807a63129e98e",
+  "checks": {
+    "confirmed-control": true,
+    "truth-guess": true,
+    "truth-guess-truth": true,
+    "continuous-equivalent": true
+  },
+  "passed": 4,
+  "total": 4,
+  "note": "Four explicit nonempty readback predicates over the unmodified script output; the original script has no pass counter. Continuous alias reads must lie within the two observed values, not merely a broad accuracy tolerance."
+}

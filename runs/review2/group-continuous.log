@@ -1,0 +1,2 @@
+START continuous 2026-09-19T13:40:05.779Z
+{"name":"continuous","entry":"src/pop/explore/runner-explore-continuous.js","seeds":"1,2,3","args":[],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T13:40:05.779Z","finished":"2026-09-19T14:53:19.746Z","exitCode":0,"seconds":4393.9642853000005}

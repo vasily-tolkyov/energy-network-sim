@@ -1,0 +1,459 @@
+{
+  "id": "C05",
+  "name": "shifted threshold with AND gate",
+  "learnRepeats": 2,
+  "gridSize": 6,
+  "experiments": 6,
+  "rules": 6,
+  "factors": [
+    "gate",
+    "x"
+  ],
+  "expectedFactors": [
+    "gate",
+    "x"
+  ],
+  "correct": 30,
+  "total": 30,
+  "accuracy": 1,
+  "elapsedMs": 515.625,
+  "log": [
+    {
+      "index": 0,
+      "conditions": {
+        "x": 1,
+        "gate": 1
+      },
+      "predicted": {},
+      "converged": null,
+      "terminationReason": "not-predicted",
+      "anyOutputAbstained": true,
+      "observed": {
+        "y": 0
+      },
+      "classification": "unknown-change",
+      "drive": 2,
+      "candidateCount": 0,
+      "rulesFormed": 1,
+      "influentialSoFar": []
+    },
+    {
+      "index": 1,
+      "conditions": {
+        "x": 0,
+        "gate": 1
+      },
+      "predicted": {
+        "y": 0
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 0
+      },
+      "classification": "within-envelope",
+      "drive": 2,
+      "candidateCount": 3,
+      "rulesFormed": 2,
+      "influentialSoFar": []
+    },
+    {
+      "index": 2,
+      "conditions": {
+        "x": 2,
+        "gate": 1
+      },
+      "predicted": {
+        "y": 0
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 1
+      },
+      "classification": "prediction-violation",
+      "drive": 2,
+      "candidateCount": 3,
+      "rulesFormed": 3,
+      "influentialSoFar": [
+        "x"
+      ]
+    },
+    {
+      "index": 3,
+      "conditions": {
+        "x": 2,
+        "gate": 0
+      },
+      "predicted": {
+        "y": 1
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 0
+      },
+      "classification": "prediction-violation",
+      "drive": 2.6,
+      "candidateCount": 3,
+      "rulesFormed": 4,
+      "influentialSoFar": [
+        "gate",
+        "x"
+      ]
+    },
+    {
+      "index": 4,
+      "conditions": {
+        "x": 1,
+        "gate": 0
+      },
+      "predicted": {
+        "y": 0
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 0
+      },
+      "classification": "within-envelope",
+      "drive": 1,
+      "candidateCount": 2,
+      "rulesFormed": 5,
+      "influentialSoFar": [
+        "gate",
+        "x"
+      ]
+    },
+    {
+      "index": 5,
+      "conditions": {
+        "x": 0,
+        "gate": 0
+      },
+      "predicted": {
+        "y": 0
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 0
+      },
+      "classification": "within-envelope",
+      "drive": 0.7,
+      "candidateCount": 1,
+      "rulesFormed": 6,
+      "influentialSoFar": [
+        "gate",
+        "x"
+      ]
+    }
+  ],
+  "predictions": [
+    {
+      "conditions": {
+        "x": 0,
+        "gate": 0
+      },
+      "seed": 1,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "gate": 0
+      },
+      "seed": 2,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "gate": 0
+      },
+      "seed": 3,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "gate": 0
+      },
+      "seed": 4,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "gate": 0
+      },
+      "seed": 5,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "gate": 1
+      },
+      "seed": 1,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "gate": 1
+      },
+      "seed": 2,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "gate": 1
+      },
+      "seed": 3,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "gate": 1
+      },
+      "seed": 4,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "gate": 1
+      },
+      "seed": 5,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "gate": 0
+      },
+      "seed": 1,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "gate": 0
+      },
+      "seed": 2,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "gate": 0
+      },
+      "seed": 3,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "gate": 0
+      },
+      "seed": 4,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "gate": 0
+      },
+      "seed": 5,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "gate": 1
+      },
+      "seed": 1,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "gate": 1
+      },
+      "seed": 2,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "gate": 1
+      },
+      "seed": 3,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "gate": 1
+      },
+      "seed": 4,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "gate": 1
+      },
+      "seed": 5,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 2,
+        "gate": 0
+      },
+      "seed": 1,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 2,
+        "gate": 0
+      },
+      "seed": 2,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 2,
+        "gate": 0
+      },
+      "seed": 3,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 2,
+        "gate": 0
+      },
+      "seed": 4,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 2,
+        "gate": 0
+      },
+      "seed": 5,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 2,
+        "gate": 1
+      },
+      "seed": 1,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 2,
+        "gate": 1
+      },
+      "seed": 2,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 2,
+        "gate": 1
+      },
+      "seed": 3,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 2,
+        "gate": 1
+      },
+      "seed": 4,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 2,
+        "gate": 1
+      },
+      "seed": 5,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    }
+  ]
+}

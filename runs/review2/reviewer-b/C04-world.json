@@ -1,0 +1,310 @@
+{
+  "id": "C04",
+  "name": "identity with an irrelevant distractor",
+  "learnRepeats": 2,
+  "gridSize": 4,
+  "experiments": 4,
+  "rules": 4,
+  "factors": [
+    "x"
+  ],
+  "expectedFactors": [
+    "x"
+  ],
+  "correct": 20,
+  "total": 20,
+  "accuracy": 1,
+  "elapsedMs": 362.0615,
+  "log": [
+    {
+      "index": 0,
+      "conditions": {
+        "x": 1,
+        "d": 1
+      },
+      "predicted": {},
+      "converged": null,
+      "terminationReason": "not-predicted",
+      "anyOutputAbstained": true,
+      "observed": {
+        "y": 1
+      },
+      "classification": "unknown-change",
+      "drive": 2,
+      "candidateCount": 0,
+      "rulesFormed": 1,
+      "influentialSoFar": []
+    },
+    {
+      "index": 1,
+      "conditions": {
+        "x": 0,
+        "d": 1
+      },
+      "predicted": {
+        "y": 1
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 0
+      },
+      "classification": "prediction-violation",
+      "drive": 2,
+      "candidateCount": 2,
+      "rulesFormed": 2,
+      "influentialSoFar": [
+        "x"
+      ]
+    },
+    {
+      "index": 2,
+      "conditions": {
+        "x": 0,
+        "d": 0
+      },
+      "predicted": {
+        "y": 0
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 0
+      },
+      "classification": "within-envelope",
+      "drive": 2.6,
+      "candidateCount": 2,
+      "rulesFormed": 3,
+      "influentialSoFar": [
+        "x"
+      ]
+    },
+    {
+      "index": 3,
+      "conditions": {
+        "x": 1,
+        "d": 0
+      },
+      "predicted": {
+        "y": 1
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 1
+      },
+      "classification": "within-envelope",
+      "drive": 0.4,
+      "candidateCount": 1,
+      "rulesFormed": 4,
+      "influentialSoFar": [
+        "x"
+      ]
+    }
+  ],
+  "predictions": [
+    {
+      "conditions": {
+        "x": 0,
+        "d": 0
+      },
+      "seed": 1,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "d": 0
+      },
+      "seed": 2,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "d": 0
+      },
+      "seed": 3,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "d": 0
+      },
+      "seed": 4,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "d": 0
+      },
+      "seed": 5,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "d": 1
+      },
+      "seed": 1,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "d": 1
+      },
+      "seed": 2,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "d": 1
+      },
+      "seed": 3,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "d": 1
+      },
+      "seed": 4,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0,
+        "d": 1
+      },
+      "seed": 5,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "d": 0
+      },
+      "seed": 1,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "d": 0
+      },
+      "seed": 2,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "d": 0
+      },
+      "seed": 3,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "d": 0
+      },
+      "seed": 4,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "d": 0
+      },
+      "seed": 5,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "d": 1
+      },
+      "seed": 1,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "d": 1
+      },
+      "seed": 2,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "d": 1
+      },
+      "seed": 3,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "d": 1
+      },
+      "seed": 4,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1,
+        "d": 1
+      },
+      "seed": 5,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    }
+  ]
+}

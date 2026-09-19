@@ -1,0 +1,11 @@
+{
+  "name": "neural-attention",
+  "entry": "src/pop/attention/runner-neural-attention.js",
+  "seeds": "1",
+  "args": [],
+  "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+  "started": "2026-09-19T13:46:57.944Z",
+  "finished": "2026-09-19T13:47:19.827Z",
+  "exitCode": 0,
+  "seconds": 21.882726200000032
+}

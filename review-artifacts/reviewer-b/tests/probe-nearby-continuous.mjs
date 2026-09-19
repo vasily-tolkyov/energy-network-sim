@@ -1,0 +1,10 @@
+import {FieldRuleMemory} from '../repo/dist/src/pop/concept/field-memory.js';
+import {SensoryEncoder} from '../repo/dist/src/pop/concept/sensory.js';
+const enc=new SensoryEncoder([{name:'x',min:0,max:1},{name:'y',min:0,max:1}]);
+const mem=new FieldRuleMemory(enc,{}, {maxRules:8});mem.setOutcomeDimensions(['y']);
+const read=()=>Array.from({length:5},(_,i)=>mem.predict({x:.2},i+1).values.y);
+const result={inputsSame:JSON.stringify(enc.encode({x:.2}))===JSON.stringify(enc.encode({x:.201})),outputsSame:JSON.stringify(enc.encode({y:.2}))===JSON.stringify(enc.encode({y:.201}))};
+mem.learnFromObservation({x:.2},{y:.2},6);result.first=read();
+mem.learnFromObservation({x:.201},{y:.201},6);result.second=read();
+for(let i=0;i<10;i++)mem.learnFromObservation({x:.201},{y:.201},6);result.afterTenMore=read();result.rules=mem.ruleCount;
+console.log(JSON.stringify(result,null,2));

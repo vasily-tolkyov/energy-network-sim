@@ -1,0 +1,137 @@
+[
+  {
+    "file": "review-artifacts/adversarial.test.mjs",
+    "sha256": "c6eb6252214084e687003464c729949b6efca9b4f8576b03df50ed0d79966aa1",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/finalize-report.mjs",
+    "sha256": "417ac398c5713c410b57aaaae5d5b7660f7a0c1293d84789884dd6db4c6b561b",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/fresh-experiments.mjs",
+    "sha256": "cb5751573bbaeb96e75156615d1cd7ccb95d31ca61091ac09741aa7ae0fe9138",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/independent-experiments.mjs",
+    "sha256": "4e3ab455fa0ed7ee51520ea9992514027ba7ff842d70b7fde58824947e94404c",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/probe-fixes.mjs",
+    "sha256": "0835f756f1dea3a9136771ca9a6afaa9b9621b8954b693853a638759e829244f",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/revision-tests-against-old.mjs",
+    "sha256": "27657acf4cdd5ba10721716580023abd67078bd24349db91886e9406940ca2ed",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/revision-tests.mjs",
+    "sha256": "de6008ba3f1d5d169daf361dd2f5e093eaeb02e902de9f07ff060f154310d873",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/run-group.mjs",
+    "sha256": "40b209414223819947c35c6666b80849130c5cf424dee79bc197d37cadb864f8",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/seal-evidence.mjs",
+    "sha256": "4a6b77c9e6d2099abd44a09eb1975b1f5cc165e455a5dbbeb3108e5cfed2f0c3",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/summarize-review.mjs",
+    "sha256": "48bcf66bba4a6d897230105347a05c28e28426895ff33166f5cc517e341555f3",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/tests/before-after-regression.mjs",
+    "sha256": "7367603048658879f4471ccb432219c497c5fb77644d2a4e08579f37fe5b0ad8",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/tests/continuous-nearby-world.mjs",
+    "sha256": "15f4a8cd3aa40c0e44861f5f49de79b60791e794847171e2ebb72325359cd2aa",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/tests/new-worlds-verdict.test.mjs",
+    "sha256": "304b28e2eb0d3196c1e005480ecf95c9934022fca1281402db24054067958855",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/tests/new-worlds.mjs",
+    "sha256": "db0e203a00ef74a3d95478ae8237b86d97cbcb7e80cefd5ec881d06fb7ce8265",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/tests/phase-a-independent.mjs",
+    "sha256": "d296f72329b081a1c406bd53f6d31b34886b7bcc51e3ccdf471b51f262e93d13",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/tests/phase-b-independent.mjs",
+    "sha256": "b2e65fa07320d90acd18b0612bf52ec3371eae3f4610d1e2e5b1918165dd42e7",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/tests/probe-anneal-input.mjs",
+    "sha256": "241ec54ea1e2ad379c1d28b4f198a2f16090d66eaa0993d330e160994e23e1a9",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/tests/probe-capture.mjs",
+    "sha256": "cacdfb85cc23d96927fe88fe8c76098a7186a1e43812a7e181d1a59f83d388ea",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/tests/probe-evidence-order.mjs",
+    "sha256": "ac98be2f632cc83f6c15b4f5af4e04fc4b154018a50ad9710d8aac1fc27f2dc6",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/tests/probe-nearby-continuous.mjs",
+    "sha256": "b40f4f7a0b48d3677f521dee81b3981cf694a594579f9b2daa83964571aec458",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/tests/review2-regressions.test.mjs",
+    "sha256": "7717643931faa96c571337209ba22e9a3342d4ee008ad431880f0a44d55347f3",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/prior-tests/continuous-audit.test.mjs",
+    "sha256": "09037fb9c33151b14dc5ee33ed30ca5514aab2d184ab50b1f9918b91a4daf237",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/prior-tests/core-audit.test.mjs",
+    "sha256": "695c673a37c55de99ca34f995ca59952f857d7ae089d3ed119a64c3e0e54816e",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/prior-tests/evaluation-audit.test.mjs",
+    "sha256": "a42a4519fd11bd4be790fe9db3f1c158fd79d25b3720e52a3adcdd27220d67a1",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/prior-tests/exploration-audit.test.mjs",
+    "sha256": "02d367a62790d61dd9a79321b748cb6ec2a149b342a20571750f9aba1938cf69",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/prior-tests/memory-audit.test.mjs",
+    "sha256": "a315d6d463fe7c79dfe85f9abcc88e8f1edcb271bd63207620bdf5ac967753ac",
+    "sameAsUnmodifiedReview": true
+  },
+  {
+    "file": "review-artifacts/reviewer-b/prior-tests/phaseA-benchmark.mjs",
+    "sha256": "eca192e5f0154f8fcb48854ef62604bc617b431157b49ac38e594d8b538213b1",
+    "sameAsUnmodifiedReview": true
+  }
+]

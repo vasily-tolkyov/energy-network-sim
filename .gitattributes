@@ -1,0 +1,4 @@
+# Preserve archived inputs/outputs byte-for-byte, including original whitespace.
+# Source code and maintained documentation retain normal whitespace checks.
+review-artifacts/** -text -whitespace
+runs/review2/** -text -whitespace

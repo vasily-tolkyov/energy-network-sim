@@ -1,0 +1,93 @@
+[
+  {
+    "source": "review-artifacts/reproduction/runs/capacity-v1.log",
+    "output": "runs/capacity-v1.log",
+    "sourceSha256": "30e0207970536ca23568ac1727707524bf3e02c417fddc1f977c259729865253",
+    "correctedEmptyRows": 0,
+    "note": "Numerators, denominators, predictions and all nonempty scores unchanged. Original output retained."
+  },
+  {
+    "source": "review-artifacts/reproduction/runs/chem-pop-v1.log",
+    "output": "runs/chem-pop-v1.log",
+    "sourceSha256": "9c37512c4a49736c5c105982affb3afa01fbe61077fb61100db5c3e0633a7def",
+    "correctedEmptyRows": 0,
+    "note": "Numerators, denominators, predictions and all nonempty scores unchanged. Original output retained."
+  },
+  {
+    "source": "review-artifacts/reproduction/runs/concept-formation-v1.log",
+    "output": "runs/concept-formation-v1.log",
+    "sourceSha256": "b88dfd6e940a9ec9287e9ca6f7a727a2e2c82be8403eaaa289ce62d3a6a30097",
+    "correctedEmptyRows": 0,
+    "note": "Numerators, denominators, predictions and all nonempty scores unchanged. Original output retained."
+  },
+  {
+    "source": "review-artifacts/reproduction/runs/explore-cont-seed1.log",
+    "output": "runs/explore-cont-seed1.log",
+    "sourceSha256": "6542f67331f32c088f3695187d01951f9e108e4e9a194345892cba605f262a5d",
+    "correctedEmptyRows": 0,
+    "note": "Numerators, denominators, predictions and all nonempty scores unchanged. Original output retained."
+  },
+  {
+    "source": "review-artifacts/reproduction/runs/explore-cont-seed2.log",
+    "output": "runs/explore-cont-seed2.log",
+    "sourceSha256": "e6b809b88538a0f419c5162eecc6d343c2c20797e1be5da62a8e6524c69716d9",
+    "correctedEmptyRows": 0,
+    "note": "Numerators, denominators, predictions and all nonempty scores unchanged. Original output retained."
+  },
+  {
+    "source": "review-artifacts/reproduction/runs/explore-cont-seed3.log",
+    "output": "runs/explore-cont-seed3.log",
+    "sourceSha256": "5f9db968d8bf1c189a706419dfa2c09e1e5f71175dde5e86e795f105f7c3de49",
+    "correctedEmptyRows": 0,
+    "note": "Numerators, denominators, predictions and all nonempty scores unchanged. Original output retained."
+  },
+  {
+    "source": "review-artifacts/reproduction/runs/explore-ext-frozen-seed1.log",
+    "output": "runs/explore-ext-frozen-seed1.log",
+    "sourceSha256": "64539ed1542a706955c8676808c22e73e95b1de0a0457c3d14c56b77c9396fd9",
+    "correctedEmptyRows": 0,
+    "note": "Numerators, denominators, predictions and all nonempty scores unchanged. Original output retained."
+  },
+  {
+    "source": "review-artifacts/reproduction/runs/explore-ext-updating-seed1.log",
+    "output": "runs/explore-ext-updating-seed1.log",
+    "sourceSha256": "68f995ac7c3a9b6e58e46cf95afdb63d7361e4e27051f3fb3e315d7bd80a4c7b",
+    "correctedEmptyRows": 0,
+    "note": "Numerators, denominators, predictions and all nonempty scores unchanged. Original output retained."
+  },
+  {
+    "source": "review-artifacts/reproduction/runs/explore-lab-seed1.log",
+    "output": "runs/explore-lab-seed1.log",
+    "sourceSha256": "1f76ef284591a0d4589d05d0124fcd097794006fb2700287934c2752f54c9ee0",
+    "correctedEmptyRows": 2,
+    "note": "Numerators, denominators, predictions and all nonempty scores unchanged. Original output retained."
+  },
+  {
+    "source": "review-artifacts/reproduction/runs/explore-lab-seed2.log",
+    "output": "runs/explore-lab-seed2.log",
+    "sourceSha256": "b20e152f929aea47367ab75297c5640b125e7353575e7ccf2a79a8adda088ad8",
+    "correctedEmptyRows": 2,
+    "note": "Numerators, denominators, predictions and all nonempty scores unchanged. Original output retained."
+  },
+  {
+    "source": "review-artifacts/reproduction/runs/explore-lab-seed3.log",
+    "output": "runs/explore-lab-seed3.log",
+    "sourceSha256": "0d5378ac3c25523e2179259cfac54e33447fcfcaa4912f0dcb7615199f0b8595",
+    "correctedEmptyRows": 2,
+    "note": "Numerators, denominators, predictions and all nonempty scores unchanged. Original output retained."
+  },
+  {
+    "source": "review-artifacts/reproduction/runs/neural-attention-v1.log",
+    "output": "runs/neural-attention-v1.log",
+    "sourceSha256": "3f82541c971544004ec3f39845dd41b972042a6553e641517216bb016c15c0ad",
+    "correctedEmptyRows": 0,
+    "note": "Numerators, denominators, predictions and all nonempty scores unchanged. Original output retained."
+  },
+  {
+    "source": "review-artifacts/reproduction/runs/pop-v1.log",
+    "output": "runs/pop-v1.log",
+    "sourceSha256": "bf0ca5615bb85bb2d34af99800de75c6940299bd82790fb392c873a267fe0063",
+    "correctedEmptyRows": 0,
+    "note": "Numerators, denominators, predictions and all nonempty scores unchanged. Original output retained."
+  }
+]

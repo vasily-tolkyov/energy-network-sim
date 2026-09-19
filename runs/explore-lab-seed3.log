@@ -1,13 +1,13 @@
 
 ── 种子 3 ──
-终止：实验 110 次（穷举基线 288），规则核 110 条，耗时 0.9 分钟；判定：未知 20 / 偏差 23 / 符合 67
+终止：实验 288 次（穷举基线 288），规则核 288 条，耗时 4.2 分钟；判定：未知 165 / 偏差 27 / 符合 96
 R2 发现的影响因素：[resistance,switch,temperature,voltage]（真值：[switch,voltage,resistance,temperature]，干扰 material 应缺席）
   轨迹（前 20 步 + 全部偏差）：
     #  0 [1,2,2,1,1] 预测 {} → 观察 {"lit":1,"brightness":2}  unknown-change（驱动 2.0，候选 0，核 1）
     #  1 [1,0,2,1,1] 预测 {"lit":1,"brightness":2} → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 2.0，候选 11，核 2）
     #  2 [0,0,2,1,1] 预测 {"lit":0,"brightness":0} → 观察 {"lit":0,"brightness":0}  within-envelope（驱动 2.6，候选 18，核 3）
     #  3 [1,3,2,1,1] 预测 {"lit":0,"brightness":0} → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 2.3，候选 26，核 4）
-    #  4 [1,1,2,1,1] 预测 {"lit":1,"brightness":3} → 观察 {"lit":1,"brightness":1}  prediction-violation（驱动 2.8，候选 32，核 5）
+    #  4 [1,1,2,1,1] 预测 {"lit":1,"brightness":2} → 观察 {"lit":1,"brightness":1}  prediction-violation（驱动 2.8，候选 32，核 5）
     #  5 [1,1,0,1,1] 预测 {"lit":1,"brightness":1} → 观察 {"lit":1,"brightness":2}  prediction-violation（驱动 2.6，候选 38，核 6）
     #  6 [1,1,3,1,1] 预测 {"lit":1,"brightness":1} → 观察 {"lit":1,"brightness":0}  prediction-violation（驱动 2.9，候选 42，核 7）
     #  7 [1,1,1,1,1] 预测 {"lit":1,"brightness":1} → 观察 {"lit":1,"brightness":2}  prediction-violation（驱动 3.0，候选 46，核 8）
@@ -39,13 +39,18 @@ R2 发现的影响因素：[resistance,switch,temperature,voltage]（真值：[s
     # 76 [0,3,1,2,0] 预测 {"lit":1,"brightness":3} → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 0.7，候选 188，核 77）
     # 81 [0,2,3,2,0] 预测 {"lit":1,"brightness":2} → 观察 {"lit":0,"brightness":0}  prediction-violation（驱动 0.4，候选 190，核 82）
     # 93 [1,2,2,2,2] 预测 {"lit":1,"brightness":2} → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.4，候选 189，核 94）
+    #112 [1,1,2,0,1] 预测 {"lit":1,"brightness":1} → 观察 {"lit":1,"brightness":0}  prediction-violation（驱动 0.4，候选 174，核 113）
+    #115 [1,2,1,1,1] 预测 {"lit":1,"brightness":2} → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 0.4，候选 171，核 116）
+    #117 [1,2,3,1,1] 预测 {"lit":1,"brightness":2} → 观察 {"lit":1,"brightness":1}  prediction-violation（驱动 0.7，候选 171，核 118）
+    #118 [1,2,0,1,1] 预测 {"lit":1,"brightness":2} → 观察 {"lit":1,"brightness":3}  prediction-violation（驱动 1.1，候选 170，核 119）
     …评分进度 48/288
     …评分进度 96/288
     …评分进度 144/288
     …评分进度 192/288
     …评分进度 240/288
     …评分进度 288/288
-    self-taught     门控任务分 100.0%  严格联合 100.0%  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 60.0%
-    unseen-gate-off 门控任务分 95.6%  严格联合 95.6%  粗粒度亮灭 95.6%  拒答 0.0%  常数基线 100.0%
-    unseen-gate-on  门控任务分 75.0%  严格联合 75.0%  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 100.0%
-    总计             门控任务分 92.7%  严格联合 92.7%  粗粒度 98.3%
+    self-taught     门控任务分 100.0%  严格联合 100.0%  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 62.5%
+    unseen-gate-off N/A (n=0; accuracy, refusal and constant baseline undefined)
+    unseen-gate-on N/A (n=0; accuracy, refusal and constant baseline undefined)
+    总计             门控任务分 100.0%  严格联合 100.0%  粗粒度 100.0%
+动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：{"predictions":575,"nonconverged":433,"anyOutputAbstained":19,"nonconvergedRate":0.7530434782608696,"anyOutputAbstentionRate":0.03304347826086956,"terminationReasons":{"fixed-point":142,"quiet-constraint":433},"confidencePolicy":"converged-required"}

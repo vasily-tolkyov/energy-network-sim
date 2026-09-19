@@ -1,0 +1,17 @@
+TAP version 13
+# Subtest: R19 field R2 outcome change detection must be invariant to pair reversal
+ok 1 - R19 field R2 outcome change detection must be invariant to pair reversal
+  ---
+  duration_ms: 36.2807
+  type: 'test'
+  ...
+# {"forward":{"outcomeChanged":true,"outcomeDelta":{"y":0.024999999999999994},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":27},"reverse":{"outcomeChanged":true,"outcomeDelta":{"y":-0.024999999999999994},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":27}}
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 257.0362

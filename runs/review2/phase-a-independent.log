@@ -1,0 +1,48 @@
+seed=1 training=20
+seed=1 training=40
+seed=1 training=60
+seed=1 training=80
+seed=1 training=100
+seed=1 training=120
+seed=1 training=140
+seed=1 training=160
+seed=1 training=180
+seed=1 training=200
+seed=1 training=220
+seed=1 training=240
+seed=1 training=260
+seed=1 training=280
+seed=1 training done experiments=288 reason=frontier-exhausted ms=286620
+seed=1 scored=96/288
+seed=1 scored=192/288
+seed=1 scored=288/288
+{"seed":1,"experiments":288,"rules":288,"factors":["resistance","switch","temperature","voltage"],"terminationReason":"frontier-exhausted","trainedMs":286620.3331,"totalMs":962675.7387,"all":{"n":288,"strict":288,"coarse":288,"refused":0,"nonconverged":288,"residual":288,"ledgerMismatch":0,"nnStrict":288,"nnCoarse":288,"constantOff":180,"constantOn":108},"seen":{"n":288,"strict":288,"coarse":288,"refused":0,"nonconverged":288,"residual":288,"ledgerMismatch":0,"nnStrict":288,"nnCoarse":288,"constantOff":180,"constantOn":108},"unseen":{"n":0,"strict":0,"coarse":0,"refused":0,"nonconverged":0,"residual":0,"ledgerMismatch":0,"nnStrict":0,"nnCoarse":0,"constantOff":0,"constantOn":0},"unseenOff":{"n":0,"strict":0,"coarse":0,"refused":0,"nonconverged":0,"residual":0,"ledgerMismatch":0,"nnStrict":0,"nnCoarse":0,"constantOff":0,"constantOn":0},"unseenOn":{"n":0,"strict":0,"coarse":0,"refused":0,"nonconverged":0,"residual":0,"ledgerMismatch":0,"nnStrict":0,"nnCoarse":0,"constantOff":0,"constantOn":0},"trainingAudit":{"calls":287,"nonconverged":174,"ledgerMismatch":0}}
+seed=4 training=20
+seed=4 training=40
+seed=4 training=60
+seed=4 training=80
+seed=4 training=100
+seed=4 training=120
+seed=4 training=140
+seed=4 training=160
+seed=4 training=180
+seed=4 training=200
+seed=4 training=220
+seed=4 training=240
+seed=4 training=260
+seed=4 training=280
+seed=4 training done experiments=288 reason=frontier-exhausted ms=233534
+seed=4 scored=96/288
+seed=4 scored=192/288
+seed=4 scored=288/288
+{"seed":4,"experiments":288,"rules":288,"factors":["resistance","switch","temperature","voltage"],"terminationReason":"frontier-exhausted","trainedMs":233533.70530000003,"totalMs":906038.2671999999,"all":{"n":288,"strict":288,"coarse":288,"refused":0,"nonconverged":288,"residual":288,"ledgerMismatch":0,"nnStrict":288,"nnCoarse":288,"constantOff":180,"constantOn":108},"seen":{"n":288,"strict":288,"coarse":288,"refused":0,"nonconverged":288,"residual":288,"ledgerMismatch":0,"nnStrict":288,"nnCoarse":288,"constantOff":180,"constantOn":108},"unseen":{"n":0,"strict":0,"coarse":0,"refused":0,"nonconverged":0,"residual":0,"ledgerMismatch":0,"nnStrict":0,"nnCoarse":0,"constantOff":0,"constantOn":0},"unseenOff":{"n":0,"strict":0,"coarse":0,"refused":0,"nonconverged":0,"residual":0,"ledgerMismatch":0,"nnStrict":0,"nnCoarse":0,"constantOff":0,"constantOn":0},"unseenOn":{"n":0,"strict":0,"coarse":0,"refused":0,"nonconverged":0,"residual":0,"ledgerMismatch":0,"nnStrict":0,"nnCoarse":0,"constantOff":0,"constantOn":0},"trainingAudit":{"calls":287,"nonconverged":189,"ledgerMismatch":0}}
+seed=7 training=20
+seed=7 training=40
+seed=7 training=60
+seed=7 training=80
+seed=7 training=100
+seed=7 training done experiments=100 reason=quorum-met ms=17615
+seed=7 scored=96/288
+seed=7 scored=192/288
+seed=7 scored=288/288
+{"seed":7,"experiments":100,"rules":100,"factors":["resistance","switch","temperature","voltage"],"terminationReason":"quorum-met","trainedMs":17615.4188000001,"totalMs":100719.64060000004,"all":{"n":288,"strict":272,"coarse":284,"refused":0,"nonconverged":73,"residual":73,"ledgerMismatch":0,"nnStrict":258,"nnCoarse":274,"constantOff":180,"constantOn":108},"seen":{"n":100,"strict":100,"coarse":100,"refused":0,"nonconverged":52,"residual":52,"ledgerMismatch":0,"nnStrict":100,"nnCoarse":100,"constantOff":62,"constantOn":38},"unseen":{"n":188,"strict":172,"coarse":184,"refused":0,"nonconverged":21,"residual":21,"ledgerMismatch":0,"nnStrict":158,"nnCoarse":174,"constantOff":118,"constantOn":70},"unseenOff":{"n":118,"strict":115,"coarse":115,"refused":0,"nonconverged":13,"residual":13,"ledgerMismatch":0,"nnStrict":107,"nnCoarse":107,"constantOff":118,"constantOn":0},"unseenOn":{"n":70,"strict":57,"coarse":69,"refused":0,"nonconverged":8,"residual":8,"ledgerMismatch":0,"nnStrict":51,"nnCoarse":67,"constantOff":0,"constantOn":70},"trainingAudit":{"calls":99,"nonconverged":2,"ledgerMismatch":0}}

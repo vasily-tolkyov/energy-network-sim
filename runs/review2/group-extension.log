@@ -1,0 +1,2 @@
+START extension 2026-09-19T13:40:09.846Z
+{"name":"extension","entry":"src/pop/explore/runner-explore-ext.js","seeds":"1","args":[],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T13:40:09.846Z","finished":"2026-09-19T15:35:20.330Z","exitCode":0,"seconds":6910.47978}

@@ -1,0 +1,255 @@
+TAP version 13
+# Subtest: A01 symmetric-only energy accounting and fixed point (positive control)
+ok 1 - A01 symmetric-only energy accounting and fixed point (positive control)
+  ---
+  duration_ms: 5.9938
+  type: 'test'
+  ...
+# {"activeNeurons":[0,1,2,3],"energy":-6,"trace":{"energies":[1.5,1,-1.5,-6],"flipCount":3,"driveWork":0},"converged":true,"terminationReason":"fixed-point","residualFlips":0}
+# Subtest: A02 DI settle trace must equal actual energy
+ok 2 - A02 DI settle trace must equal actual energy
+  ---
+  duration_ms: 2.2561
+  type: 'test'
+  ...
+# {"flips":300,"reported":0.5,"actual":0.5,"actualIncrease":false,"active":[0,1,2]}
+# Subtest: A03 bounded DI quench must report nonconvergence or return a fixed point
+ok 3 - A03 bounded DI quench must report nonconvergence or return a fixed point
+  ---
+  duration_ms: 4.0243
+  type: 'test'
+  ...
+# {"activeNeurons":[0,1,2],"energy":0.5,"trace":{"energies":[0.5,3,1.5,1,0.5,3,1.5,1,0.5,0.5],"flipCount":14,"driveWork":-12},"converged":false,"terminationReason":"flip-budget","residualFlips":1,"candidateSet":[0,1,2],"initialEnergy":1.5,"annealEndEnergy":0.5,"proposals":8,"acceptedUphill":1,"deltas":[-1.5,0.5]}
+# Subtest: A04 advertised candidate freeze survives default quench
+not ok 4 - A04 advertised candidate freeze survives default quench
+  ---
+  duration_ms: 12.741
+  type: 'test'
+  location: 'D:\\kimi_kairos\\energy-network-sim\\review-artifacts\\adversarial.test.mjs:57:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(r.activeNeurons.every(i=>r.candidateSet.includes(i)))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/kimi_kairos/energy-network-sim/review-artifacts/adversarial.test.mjs:60:10)
+    Test.runInAsyncScope (node:async_hooks:228:14)
+    Test.run (node:internal/test_runner/test:1118:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+    Test.postRun (node:internal/test_runner/test:1247:19)
+    Test.run (node:internal/test_runner/test:1175:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:787:7)
+  ...
+# {"activeNeurons":[0,1,2,3],"energy":0,"trace":{"energies":[1.5,1,0.5,0],"flipCount":3,"driveWork":0},"converged":true,"terminationReason":"fixed-point","residualFlips":0,"candidateSet":[0],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":0,"acceptedUphill":0}
+# Subtest: A05 invalid weight endpoint must be rejected without corrupting symmetry
+ok 5 - A05 invalid weight endpoint must be rejected without corrupting symmetry
+  ---
+  duration_ms: 0.7793
+  type: 'test'
+  ...
+# {"rejected":true,"w01":0,"w10":0}
+# Subtest: A06 nonfinite config and noninteger inputs must be rejected
+ok 6 - A06 nonfinite config and noninteger inputs must be rejected
+  ---
+  duration_ms: 3.1721
+  type: 'test'
+  ...
+# {"acceptedInvalid":[]}
+# Subtest: A07 continuous bench rejects NaN without charging experiment
+ok 7 - A07 continuous bench rejects NaN without charging experiment
+  ---
+  duration_ms: 0.9159
+  type: 'test'
+  ...
+# {"rejected":true,"cost":0}
+# Subtest: A08 FieldRuleMemory enforces declared maxRules before pool overwrite
+ok 8 - A08 FieldRuleMemory enforces declared maxRules before pool overwrite
+  ---
+  duration_ms: 6.1756
+  type: 'test'
+  ...
+# {"rejected":true,"ruleCount":1,"neuronCount":86,"cores":[80,81,82,83]}
+# Subtest: A09 influence-first field rule remains visible after later real observation
+ok 9 - A09 influence-first field rule remains visible after later real observation
+  ---
+  duration_ms: 57.9331
+  type: 'test'
+  ...
+# {"ruleCount":1,"pred":{"y":0.8},"coverage":25.600000000000012}
+# Subtest: A10 Pop memory all teaching paths preserve two-stage binding (positive)
+ok 10 - A10 Pop memory all teaching paths preserve two-stage binding (positive)
+  ---
+  duration_ms: 10.2614
+  type: 'test'
+  ...
+# {"forbidden":0,"ruleCount":2}
+# Subtest: A11 field teaching preserves star outputs (positive)
+ok 11 - A11 field teaching preserves star outputs (positive)
+  ---
+  duration_ms: 3.2841
+  type: 'test'
+  ...
+# {"forbidden":0,"neuronCount":80}
+# Subtest: A12 concept ablation: swap inhibition does not affect extracted concepts
+not ok 12 - A12 concept ablation: swap inhibition does not affect extracted concepts
+  ---
+  duration_ms: 2.7946
+  type: 'test'
+  location: 'D:\\kimi_kairos\\energy-network-sim\\review-artifacts\\adversarial.test.mjs:126:1'
+  failureType: 'testCodeFailure'
+  error: 'f.presentSwap is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/kimi_kairos/energy-network-sim/review-artifacts/adversarial.test.mjs:131:5)
+    Test.runInAsyncScope (node:async_hooks:228:14)
+    Test.run (node:internal/test_runner/test:1118:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+    Test.postRun (node:internal/test_runner/test:1247:19)
+    Test.run (node:internal/test_runner/test:1175:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:787:7)
+  ...
+# Subtest: A13 fine continuous score must reject wildly incorrect brightness even when off
+ok 13 - A13 fine continuous score must reject wildly incorrect brightness even when off
+  ---
+  duration_ms: 0.4706
+  type: 'test'
+  ...
+# {"coarse":true,"fine":false}
+# Subtest: A14 R2 should not infer outcome change for a one-factor null intervention
+ok 14 - A14 R2 should not infer outcome change for a one-factor null intervention
+  ---
+  duration_ms: 5.2516
+  type: 'test'
+  ...
+# {"undecidable":false,"outcomeChanged":false,"outcomeDelta":{},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":[],"thetaHigh":5.200000000000001}
+# Subtest: A15 WTA focus should activate exactly one marker under actual ignorance drive
+not ok 15 - A15 WTA focus should activate exactly one marker under actual ignorance drive
+  ---
+  duration_ms: 4.7378
+  type: 'test'
+  location: 'D:\\kimi_kairos\\energy-network-sim\\review-artifacts\\adversarial.test.mjs:149:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    2 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/kimi_kairos/energy-network-sim/review-artifacts/adversarial.test.mjs:153:41)
+    Test.runInAsyncScope (node:async_hooks:228:14)
+    Test.run (node:internal/test_runner/test:1118:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+    Test.postRun (node:internal/test_runner/test:1247:19)
+    Test.run (node:internal/test_runner/test:1175:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:787:7)
+  ...
+# {"chosen":"a","markers":[1,5]}
+# Subtest: A16 field outcome metadata includes newly learned observed fields
+ok 16 - A16 field outcome metadata includes newly learned observed fields
+  ---
+  duration_ms: 2.6565
+  type: 'test'
+  ...
+# {"metadata":[72,73,74,75,76,77,78,79],"latest":[72,73,74,75,76,77,78,79]}
+# Subtest: A17 claimed G=0 ablation must remove influence veto as well as excitation
+not ok 17 - A17 claimed G=0 ablation must remove influence veto as well as excitation
+  ---
+  duration_ms: 1.9769
+  type: 'test'
+  location: 'D:\\kimi_kairos\\energy-network-sim\\review-artifacts\\adversarial.test.mjs:162:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1.5 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1.5
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/kimi_kairos/energy-network-sim/review-artifacts/adversarial.test.mjs:168:38)
+    Test.runInAsyncScope (node:async_hooks:228:14)
+    Test.run (node:internal/test_runner/test:1118:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+    Test.postRun (node:internal/test_runner/test:1247:19)
+    Test.run (node:internal/test_runner/test:1175:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:787:7)
+  ...
+# {"gain":0,"veto":1.5}
+# Subtest: A18 concept centers alone cannot identify gate threshold (control)
+ok 18 - A18 concept centers alone cannot identify gate threshold (control)
+  ---
+  duration_ms: 4.781
+  type: 'test'
+  ...
+# {"thresholds":[0.5,0.73],"centersA":[0.1,0.5,0.9],"centersB":[0.1,0.5,0.9]}
+# Subtest: A19 README usage must detect and label its Hebbian clique memories
+not ok 19 - A19 README usage must detect and label its Hebbian clique memories
+  ---
+  duration_ms: 1.9071
+  type: 'test'
+  location: 'D:\\kimi_kairos\\energy-network-sim\\review-artifacts\\adversarial.test.mjs:183:1'
+  failureType: 'testCodeFailure'
+  error: 'unknown wellId: 0'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    ReadoutModule.labelWell (file:///D:/kimi_kairos/energy-network-sim/dist/src/readout.js:52:19)
+    TestContext.<anonymous> (file:///D:/kimi_kairos/energy-network-sim/review-artifacts/adversarial.test.mjs:188:11)
+    Test.runInAsyncScope (node:async_hooks:228:14)
+    Test.run (node:internal/test_runner/test:1118:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+    Test.postRun (node:internal/test_runner/test:1247:19)
+    Test.run (node:internal/test_runner/test:1175:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:787:7)
+  ...
+# {"wellCount":0}
+# Subtest: A20 audit of exact C-minimum claim against exhaustive oracle without DI
+not ok 20 - A20 audit of exact C-minimum claim against exhaustive oracle without DI
+  ---
+  duration_ms: 24.2212
+  type: 'test'
+  location: 'D:\\kimi_kairos\\energy-network-sim\\review-artifacts\\adversarial.test.mjs:192:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    finite annealing does not guarantee the exact minimum within C
+    
+    -4.5 !== -7.5
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: -7.5
+  actual: -4.5
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/kimi_kairos/energy-network-sim/review-artifacts/adversarial.test.mjs:203:10)
+    Test.runInAsyncScope (node:async_hooks:228:14)
+    Test.run (node:internal/test_runner/test:1118:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+    Test.postRun (node:internal/test_runner/test:1247:19)
+    Test.run (node:internal/test_runner/test:1175:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:787:7)
+  ...
+# {"oracleStates":2048,"best":-7.5,"returned":-4.5,"proposals":6600,"active":[0,1,4,6,11]}
+1..20
+# tests 20
+# suites 0
+# pass 14
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 553.0571

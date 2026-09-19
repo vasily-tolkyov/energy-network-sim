@@ -1,0 +1,13 @@
+{
+  "exitCode": 0,
+  "predictions": 575,
+  "nonconverged": 477,
+  "anyOutputAbstained": 0,
+  "nonconvergedRate": 0.8295652173913044,
+  "anyOutputAbstentionRate": 0,
+  "terminationReasons": {
+    "fixed-point": 98,
+    "quiet-constraint": 477
+  },
+  "confidencePolicy": "converged-required"
+}

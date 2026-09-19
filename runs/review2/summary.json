@@ -1,0 +1,7898 @@
+{
+  "sourceManifest": {
+    "baseline": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+    "sourceCommit": "b25eb9876f10fa18b9938b91792807a63129e98e",
+    "utc": "2026-09-19T14:59:45.630Z",
+    "node": "v24.14.0",
+    "files": {
+      "package-lock.json": "7ba69e164d58fda06a75223771e9f4eb6b273026cd4e1bda790c496f94f839fa",
+      "package.json": "7fd4f6f4bd0da8fc1be2b944435ac604dfdc93fe0c87d304cbf7c780e95fbb67",
+      "src/benchmark.ts": "fd122a945d894c34c4ea20f4631952c954884c8dccba5a2d979bfd193fb81337",
+      "src/demo-sequence.ts": "71f79070ef05a3cb642a45ac42d3302e461777ee0c9226535006edbd02bddaa0",
+      "src/demo.ts": "b454785c05c964819aeb5ff68863dfd2e2d014ba20ed3d1ebda4dfec2ea48c1c",
+      "src/experiment-scale.ts": "383c0e9c150d76833800313b13360b159fd9648cffcb17371d826e6992a165dd",
+      "src/hebbian.ts": "be476345d2f2ce25a829a0891d331555cbdc48ef831e882f352b999c3bef1082",
+      "src/index.ts": "f599685a79e9f573e38a3b19e5f30eb1b8604739e9857852b18a483af98ec228",
+      "src/layers/differential.ts": "3c53c724f65fde58def3fef44e690dcf63cc0950b15c7bfc4525996433960014",
+      "src/layers/r1.ts": "547266b15c82f096e1500c842d292f4cade2314362c9110e44f49ef65798b034",
+      "src/layers/r2.ts": "65281db2c5d3d2ca8e24caba31a6eb0abf6d1d978e0b2e8c68826242690fc4f9",
+      "src/layers/runner-layers.ts": "1e900c8aa1d00e0b80abac0481a2deae27f43206ce68ea9181f1e7b7f2c4c28a",
+      "src/network.ts": "0c624b49bfe541767e39af2d0d0cff7cfe5cab63faa4e46add9c9f16441236a9",
+      "src/pop/attention/capture.ts": "a480d8238071ae98399a2993a4b1406ccd1aebb9e8e4ffbae5a74793a44ec309",
+      "src/pop/attention/controller.ts": "a3dabe29dc0eec38054eeb4c86fb074834ad3077467dfe7eefdd7b2260e97f3c",
+      "src/pop/attention/mismatch.ts": "9991447c1df0530f916d1aee59e0e518e23538c0692f139e246ace3b01e1f63f",
+      "src/pop/attention/monitor.ts": "fc6ec97ea9f747cad7f8be8808bfb3fce3c7148ab35c84c2158bf0a9c71a2489",
+      "src/pop/attention/neural-focus.ts": "0965964ef92021909ea2c4cbde57f458b831af56daff8d830b6db11dca16d576",
+      "src/pop/attention/runner-attention.ts": "bbe4caab4632d80baddba449c0d4739d61d65f5074abb8f92d4dbef70d19d1c2",
+      "src/pop/attention/runner-neural-attention.ts": "ee51016244c98525da6b86ba6fe985bb4edb113fdb1e9e251a419eee7cf8ef56",
+      "src/pop/concept/emergent-channel-adapter.ts": "876787a5f369b1633436dbce1b68ab7f8f98a83ed204ee90e2245aef4fb7c78a",
+      "src/pop/concept/emergent-map.ts": "3a459e991b49769851e7cae6688e4f4628f3b0ab003a84f8e24b70a144d2b986",
+      "src/pop/concept/field-memory.ts": "b2c5a9dfef04d65acb0e79fc38c295a813d1abc5987e8ee17f855ef9a7bd2b10",
+      "src/pop/concept/formation.ts": "ad708e8cb8f34ce8177b022f8f2ab6dbd3364d03b8541eb9afedd3af6dd4bc75",
+      "src/pop/concept/pretrain.ts": "408b4c1fc09cbcf210f66a55cefb2831d156daa31845996d2e99fa4eb0aabd16",
+      "src/pop/concept/runner-formation.ts": "e7f3b520b3f0063d79919cc3d890877ec22c71fb22e3a23bc187e9c648e86e88",
+      "src/pop/concept/sensory.ts": "9692bf38c91877f888a66fa5c4a35b569038d54c7672c322438d2b80eb50f772",
+      "src/pop/concept/stream-continuous.ts": "344081503a135559765bb91c283880735e1e1de3629432554282657ebd0ac4fe",
+      "src/pop/concept/world-continuous.ts": "8083b610835384080dcfde8e507191d0170e9aba71f7963f86ccee1178dc5f0b",
+      "src/pop/evidence.ts": "db0367d3d23e839af93d720c210b104aaee24fac99f5dc8e41a8b38ae13c2ac5",
+      "src/pop/explore/explorer-continuous.ts": "69c4873b431b41fbf3acd9a3381626fca583072f851d57c28fac2336365b4a2c",
+      "src/pop/explore/explorer.ts": "db188bc19ee7c57bf9fba9b7ef35663ae18414447b06c94deeac446e16091754",
+      "src/pop/explore/planner.ts": "57cdd5e99685540192b0d537f9db4249fd4e465c101ed450ae105a71b926242f",
+      "src/pop/explore/runner-explore-continuous.ts": "fa45074d24e0c8685b55bec05582069d98afe1f155b217db62c504cd919ac9e6",
+      "src/pop/explore/runner-explore-ext.ts": "61c4ddbb5bee26f425d96339aaf3983cd5f5fa6b745f9623c5d1d499bb58aa54",
+      "src/pop/explore/runner-explore.ts": "1ab008f926ef56ee00f90c2a5a0e5659b10e95c8bd0d7555a59e97c85618fb64",
+      "src/pop/popmap.ts": "6093e70cb444895b12b0aaceb4b163a6cca36a8822833618f3c71eacf8e58d56",
+      "src/pop/popmemory.ts": "89d5522f3381e3f956bf597f63d1c498dd200d2a85c6499b256b233f5993d43c",
+      "src/pop/prediction-quality.ts": "644623b37bc71dfdd387f8d21a1eae6e9caf4e06ad3dd8fa34c976471ccea58d",
+      "src/pop/r2pop.ts": "2756b53eabfa5a6472d7be85730e60536afceaa762f97b1ab180317c83ed9d49",
+      "src/pop/runner-ablation.ts": "ae4b16b57577052b5b2b06f1260faceed4430c0626523ac68647f972389b5813",
+      "src/pop/runner-pop.ts": "90d35d0f5a86cf7fd9f0437bc20d5a250938142aeb834afce2d313f5724415b7",
+      "src/prng.ts": "e8b4b8e027d30406ec914947a7d10a1911d8a8c8e7696a8a7796c4a505afb6c9",
+      "src/prototype/channels.ts": "ba449606d535d4355bd5c2f45af86b7cb015d761cab3d86ed0139b53ee8b91d4",
+      "src/prototype/demo-walkthrough.ts": "a38ac4de247dc46edf448e4dbea363b8d7a3b30478e951f9437cbd3b3fb8ff61",
+      "src/prototype/r2.ts": "ee3e16d09ded59b2e9fb04f28c4f4b49d62753642f23ba7759a1eb060adda71c",
+      "src/prototype/r3.ts": "6c2102666394115cad3cbbeb06639b21f0e02975549c72452eb31358682cf38b",
+      "src/prototype/runner.ts": "5a87fd000e17d7b54af4859b22ba0480bbc221d6abe812a5dc4724684a45adf8",
+      "src/prototype/world.ts": "2fc6f072a378d7bf084ec1d99c8f74d3baca4908bddae543f1a46274df69fef6",
+      "src/readout.ts": "b6bad85423b5496f652741816774780d5150815bad1cde8d8dd0754fe9f42624",
+      "src/sequence.ts": "8119b294937802382fa481ce1a0e85e6100ea5fcc38731edd065c05242a623de",
+      "src/topics/capacity-world.ts": "38dc4a17a47df1ff762431b3e0f3987920fa2b78a0cba206049cd32693302687",
+      "src/topics/chem-world.ts": "b54e92da6c13705fd79c914cea1e4412dbbc071c20df9d00f46479c07c5dc701",
+      "src/topics/lab-continuous-world.ts": "f6e457884a6f53645ee95b8c2fb3630672a3130563519a506902e1a4f40f2a95",
+      "src/topics/lab-world.ts": "5264bc5d49a9cbe90bc54fbe82846140dc4b165d83dff02e590ce7721dd6bbf9",
+      "src/topics/plant-world.ts": "3cf0bece04290a13aa99e9453614d3962086a7109a5dbbf9fff139f96ea1c955",
+      "src/topics/runner-capacity.ts": "44ffee24996b13ab10e885cc72e9aba5baaeed8002be6f1128e642ebe8f52d34",
+      "src/topics/runner-chem-pop.ts": "8b8f45dac0ba9760a8ca8931d1aadd5cd9d23f27409aff65b7d80e1f89da7a6c",
+      "src/topics/runner-plant.ts": "0be15ab17d0f3df9e531e7c7a2f3855742347deed3c1a11d415b0650da647361",
+      "src/types.ts": "2c4e1f63e1e6b67b423f44e967b445b36b1e0803f666274b5b71bb7f7dc434b1",
+      "src/validate.ts": "dcab057a32f104250d79a708a81e2ea3422751d5dc86b88f939efcdcc48cd75a",
+      "src/wells.ts": "9f15e79e4e194889d9568674c7db014af2316bb0aaf48672660a368cf281dd27",
+      "test/attention.test.ts": "a9304f5b824379ac95be422ba3b73356f7556e9217ac29ceb0ce7d79400856cc",
+      "test/branch-competition.test.ts": "b05e4e6dfb15782aeca2c3ad2ef93b9fe0e565d2de3b9a7933a10a99ac1dacb0",
+      "test/capacity.test.ts": "596f6638e137c869aa8b4154c990cc6f18565d2adc531c017363166858e4ec37",
+      "test/concept-formation.test.ts": "ec7cbdf0276c515affe37af22009c1426e41cde1e93a8636818e2a7a4aedf480",
+      "test/concept-map.test.ts": "5ad22c85dcd77f5c438cd799374aa2fee1b964e0cec08390e28f735d60ee9cd9",
+      "test/concept-runner.test.ts": "08f3e7fe50f70af3fc061207248521ceedf8e520a4f0f831bb9035b535bbd3c1",
+      "test/concept-sensory.test.ts": "c705835bed8e2f1db3c40fb48583f0bfec9cef7663545afa292420f7c63e91a0",
+      "test/energy-accounting.test.ts": "bf0b0878be3692e5760f57643001b2b6f36bda71dd03415c6a85396aef72ddbf",
+      "test/explore-continuous.test.ts": "ac044b06b9f67b16d4e8efba8eaf7aec0b6a19f5f5b2112f882805074da2002e",
+      "test/explore.test.ts": "ca4f1410119851f1288a641c472cf43dc34a574f170004bb3af1f2ed4d47f65a",
+      "test/hebbian-discount.test.ts": "66fd6ea99bfd6bf088db44573b801991955933ee076ea104b9e667977ba78c84",
+      "test/layers-pipeline.test.ts": "841d35225908cd4670b29556385a348d0e9ba66d240c3063519b1bc068af611e",
+      "test/local-annealing.test.ts": "d8cbdad0622e8ab3396ca377f91d718a3523b035ed1c9bb3995a665fbe74698f",
+      "test/neural-attention.test.ts": "1a07cf0dbcc2898264e0565541ef3c6fb60953377fa200b68601a66f850e7c34",
+      "test/pop-memory.test.ts": "0af7fe653e912db929f255cbba5c2b549030cb4d4eb3391318038b8666e5abe6",
+      "test/proto-plant.test.ts": "0facd36ea0b23f220c67038cb12af5811ac24d86f80478993ba6cab438218ff1",
+      "test/proto-prediction.test.ts": "1e9696b16321e4489c244c215be06a5cdafb83fd0c1e8cd4f2b0ae01fc054751",
+      "test/r2b-differential.test.ts": "3c5a411777ea170f12f7c2281cf0a0f7b96a6a8314d939a76094576c2c91316c",
+      "test/r2pop.test.ts": "c9c5c45bb77b3d7711169d75184b13e7d3c719d43715ce33148e07cda272839c",
+      "test/readout-labels.test.ts": "39da0056a853574ab164a9a78ad0005420943af6dd4cf52f469afb6f24258c0b",
+      "test/review-regressions.test.ts": "27379ea0dbe73dff66d503c9a4213fd3b59eb014e76e7c794b6457ac92111a9b",
+      "test/review2-atomicity.test.ts": "cf074d5aa54c41704bd13cf0c0596fdd6383082d95cf89801598c56b2f2a544b",
+      "test/review2-corpus.test.ts": "3a55f7d2fb37b6646a74a9a9057cc3fdef2d0c4c647bbfb465ac4e6c10790655",
+      "test/review2-review-a-contracts.test.ts": "fe9dc91abcba1edcc29a1970f04f8664c86d4f7f4613c5651084c5f8d32e996a",
+      "test/review2-review-a-p1.test.ts": "e8629dff7d0a1650dca0ab63d89b1c976f41c0e65026a1585553e364d8052c8a",
+      "test/review2-review-b-contracts.test.ts": "338a5b15ca3e57263880e717584350ab601a0d4e778b6828f0bcc2c0a4eb2215",
+      "test/review2-review-b-governance.test.ts": "a376057b1f472b35618ae94c6555a546c429934a18f9a4d012d21bc74545f03a",
+      "test/review2-semantics.test.ts": "31da3262c3e207ed91124189211687c73f162c5b4e99553d0869e871163e4228",
+      "test/review2-worlds.test.ts": "60c38d553be5d5e6d1e08511a44a3b473209bd1b2d22f4b53de676c8e97a62e6",
+      "test/scale-smoke.test.ts": "e54d856e355d531339d8fde3942f5c32a45fb6797614b3845f899c5a43fbe964",
+      "test/sequence-channel.test.ts": "d7d9eff21749cb7e2c1982563f455a4486e5a6183bbf32a171d655e0c6a164b0",
+      "test/settle-minimum.test.ts": "3f79152fc425579c7af5b604d1e51ade247d0b754ae1703c877493fda74fa7cd",
+      "test/wells-detection.test.ts": "6db9d2350fd45e4ea9b600de2094ed7e3d753ecaae1fc0c34c37b5da5c885586",
+      "tsconfig.json": "2eef1d56c2409cc65403965e21d9f2974b0736922a36d42c26d4fcc5409dcd6d"
+    },
+    "sourceDigest": "3d1c6b1b244ef6fe9a0d6620057aa16099f7b890131c592d0976a7d3678cb8b4",
+    "sourceDigestFormat": "SHA256 of compact JSON with sorted path keys",
+    "scopeNote": "Final source snapshot; path-world.ts excluded and untouched. Long native runs began with the model semantics committed as c399c11. Later sparse exchange optimization has exact complete-result equivalence checks. Affected attention/label/prototype runners were repeated. Raw audit scripts hard-code the baseline revision. Concurrent elapsed times are not isolated performance measurements."
+  },
+  "generatedAt": "2026-09-19T15:35:30.734Z",
+  "note": "All numbers derive from preserved outputs. Null means unavailable or N/A, never zero. Runtime measurements were concurrent and are not isolated performance benchmarks.",
+  "tests": [
+    {
+      "file": "runs/review2/verify-final.log",
+      "tests": 179,
+      "pass": 179,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "file": "runs/review2/stage4-mechanisms.tap",
+      "tests": 66,
+      "pass": 66,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "file": "runs/review2/review-a-revision.tap",
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "file": "runs/review2/review-a-prior.tap",
+      "tests": 20,
+      "pass": 14,
+      "fail": 6,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "file": "runs/review2/review-b-revision-original.tap",
+      "tests": 29,
+      "pass": 28,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "file": "runs/review2/review-b-revision-isolated.tap",
+      "tests": 29,
+      "pass": 29,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "file": "runs/review2/review-b-prior.tap",
+      "tests": 43,
+      "pass": 40,
+      "fail": 3,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    {
+      "file": "runs/review2/new-worlds-verdict.tap",
+      "tests": 5,
+      "pass": 4,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0
+    }
+  ],
+  "beforeAfter": {
+    "sourceCommit": "b25eb9876f10fa18b9938b91792807a63129e98e",
+    "checks": {
+      "confirmed-control": true,
+      "truth-guess": true,
+      "truth-guess-truth": true,
+      "continuous-equivalent": true
+    },
+    "passed": 4,
+    "total": 4,
+    "note": "Four explicit nonempty readback predicates over the unmodified script output; the original script has no pass counter. Continuous alias reads must lie within the two observed values, not merely a broad accuracy tolerance."
+  },
+  "ablation": {
+    "rows": [
+      {
+        "gain": 0,
+        "veto": false,
+        "matchedW": 0.4,
+        "alternativeGamma": 0
+      },
+      {
+        "gain": 0,
+        "veto": true,
+        "matchedW": 0.4,
+        "alternativeGamma": 1.5
+      },
+      {
+        "gain": 0.2,
+        "veto": false,
+        "matchedW": 1.2,
+        "alternativeGamma": 0
+      },
+      {
+        "gain": 0.2,
+        "veto": true,
+        "matchedW": 1.2,
+        "alternativeGamma": 1.5
+      }
+    ],
+    "distinctConfigurations": 4
+  },
+  "rareWorld": {
+    "explorer": {
+      "id": "W04",
+      "name": "rare three-factor joint condition",
+      "seed": 11,
+      "experiments": 17,
+      "reason": "quorum-met",
+      "n": 64,
+      "correct": 63,
+      "refused": 0,
+      "nonconverged": 0,
+      "expectedFactors": [
+        "a",
+        "b",
+        "c"
+      ],
+      "foundFactors": [],
+      "positiveRecall": {
+        "n": 1,
+        "correct": 0
+      },
+      "ms": 1784.5069000000003,
+      "passesAccuracy": true,
+      "passesFactors": false
+    },
+    "baseline": {
+      "selection": "uniform without replacement, seed 11 fixed before scoring",
+      "budget": 17,
+      "correct": 63,
+      "n": 64,
+      "positiveRecall": {
+        "n": 1,
+        "correct": 0
+      },
+      "foundFactors": [],
+      "nonconverged": 0,
+      "anyOutputAbstained": 0,
+      "hypothesisFamily": "finite 4×4×4 grid; arbitrary conjunctions including rare isolated positives",
+      "coverageRisk": "quorum-met is heuristic; individual-dimension coverage does not certify joint coverage"
+    },
+    "training": [
+      {
+        "conditions": {
+          "a": 1,
+          "b": 2,
+          "c": 2
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 3,
+          "b": 3,
+          "c": 0
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 2,
+          "b": 1,
+          "c": 3
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 3,
+          "b": 2,
+          "c": 2
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 0,
+          "b": 0,
+          "c": 2
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 2,
+          "b": 2,
+          "c": 2
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 2,
+          "b": 1,
+          "c": 0
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 0,
+          "b": 3,
+          "c": 1
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 0,
+          "b": 2,
+          "c": 2
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 2,
+          "b": 3,
+          "c": 2
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 3,
+          "b": 0,
+          "c": 1
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 1,
+          "b": 3,
+          "c": 1
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 0,
+          "b": 1,
+          "c": 2
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 1,
+          "b": 1,
+          "c": 2
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 0,
+          "b": 3,
+          "c": 3
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 1,
+          "b": 0,
+          "c": 3
+        },
+        "outcomes": {
+          "y": 0
+        }
+      },
+      {
+        "conditions": {
+          "a": 3,
+          "b": 1,
+          "c": 2
+        },
+        "outcomes": {
+          "y": 0
+        }
+      }
+    ],
+    "rows": [
+      {
+        "q": {
+          "a": 0,
+          "b": 0,
+          "c": 0
+        },
+        "truth": {
+          "y": 1
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          16,
+          17,
+          18,
+          19,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          72,
+          73,
+          74,
+          75
+        ],
+        "energy": -7.200000000000008,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 0,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          16,
+          17,
+          18,
+          19,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          84,
+          85,
+          86,
+          87
+        ],
+        "energy": -16.80000000000005,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 0,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          16,
+          17,
+          18,
+          19,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          72,
+          73,
+          74,
+          75
+        ],
+        "energy": -26.400000000000084,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 0,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          16,
+          17,
+          18,
+          19,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          116,
+          117,
+          118,
+          119
+        ],
+        "energy": -16.800000000000047,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 1,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          20,
+          21,
+          22,
+          23,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          64,
+          65,
+          66,
+          67
+        ],
+        "energy": -7.200000000000005,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 1,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          20,
+          21,
+          22,
+          23,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          84,
+          85,
+          86,
+          87
+        ],
+        "energy": -12.000000000000023,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 1,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          20,
+          21,
+          22,
+          23,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          72,
+          73,
+          74,
+          75
+        ],
+        "energy": -26.400000000000084,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 1,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          20,
+          21,
+          22,
+          23,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          104,
+          105,
+          106,
+          107
+        ],
+        "energy": -16.80000000000006,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 2,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          24,
+          25,
+          26,
+          27,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          112,
+          113,
+          114,
+          115
+        ],
+        "energy": -2.399999999999991,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 2,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          24,
+          25,
+          26,
+          27,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          84,
+          85,
+          86,
+          87
+        ],
+        "energy": -12.000000000000023,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 2,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          24,
+          25,
+          26,
+          27,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          88,
+          89,
+          90,
+          91
+        ],
+        "energy": -31.200000000000045,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 2,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          24,
+          25,
+          26,
+          27,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          112,
+          113,
+          114,
+          115
+        ],
+        "energy": -12.000000000000023,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 3,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          60,
+          61,
+          62,
+          63
+        ],
+        "energy": -16.800000000000047,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 3,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          28,
+          29,
+          30,
+          31,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          84,
+          85,
+          86,
+          87
+        ],
+        "energy": -31.200000000000045,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 3,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          28,
+          29,
+          30,
+          31,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          72,
+          73,
+          74,
+          75
+        ],
+        "energy": -26.40000000000008,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 0,
+          "b": 3,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          0,
+          1,
+          2,
+          3,
+          28,
+          29,
+          30,
+          31,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          112,
+          113,
+          114,
+          115
+        ],
+        "energy": -26.400000000000084,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 0,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          16,
+          17,
+          18,
+          19,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          116,
+          117,
+          118,
+          119
+        ],
+        "energy": -7.200000000000008,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 0,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          16,
+          17,
+          18,
+          19,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          116,
+          117,
+          118,
+          119
+        ],
+        "energy": -16.80000000000006,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 0,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          16,
+          17,
+          18,
+          19,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          56,
+          57,
+          58,
+          59
+        ],
+        "energy": -21.600000000000072,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 0,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          16,
+          17,
+          18,
+          19,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          116,
+          117,
+          118,
+          119
+        ],
+        "energy": -21.600000000000076,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 1,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          20,
+          21,
+          22,
+          23,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          108,
+          109,
+          110,
+          111
+        ],
+        "energy": -12.000000000000021,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 1,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          20,
+          21,
+          22,
+          23,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          100,
+          101,
+          102,
+          103
+        ],
+        "energy": -12.000000000000023,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 1,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          20,
+          21,
+          22,
+          23,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          108,
+          109,
+          110,
+          111
+        ],
+        "energy": -31.200000000000045,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 1,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          20,
+          21,
+          22,
+          23,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          64,
+          65,
+          66,
+          67
+        ],
+        "energy": -16.800000000000047,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 2,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          24,
+          25,
+          26,
+          27,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          56,
+          57,
+          58,
+          59
+        ],
+        "energy": -7.200000000000008,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 2,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          24,
+          25,
+          26,
+          27,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          100,
+          101,
+          102,
+          103
+        ],
+        "energy": -12.000000000000023,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 2,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          24,
+          25,
+          26,
+          27,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          56,
+          57,
+          58,
+          59
+        ],
+        "energy": -31.200000000000045,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 2,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          24,
+          25,
+          26,
+          27,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          56,
+          57,
+          58,
+          59
+        ],
+        "energy": -12.000000000000023,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 3,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          60,
+          61,
+          62,
+          63
+        ],
+        "energy": -12.000000000000018,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 3,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          28,
+          29,
+          30,
+          31,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          100,
+          101,
+          102,
+          103
+        ],
+        "energy": -26.400000000000084,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 3,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          28,
+          29,
+          30,
+          31,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          56,
+          57,
+          58,
+          59
+        ],
+        "energy": -21.600000000000072,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 1,
+          "b": 3,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          4,
+          5,
+          6,
+          7,
+          28,
+          29,
+          30,
+          31,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          100,
+          101,
+          102,
+          103
+        ],
+        "energy": -16.80000000000006,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 0,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          16,
+          17,
+          18,
+          19,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          76,
+          77,
+          78,
+          79
+        ],
+        "energy": -2.399999999999991,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 0,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          16,
+          17,
+          18,
+          19,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          96,
+          97,
+          98,
+          99
+        ],
+        "energy": -7.199999999999999,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 0,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          16,
+          17,
+          18,
+          19,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          72,
+          73,
+          74,
+          75
+        ],
+        "energy": -16.800000000000047,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 0,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          16,
+          17,
+          18,
+          19,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          116,
+          117,
+          118,
+          119
+        ],
+        "energy": -12.000000000000018,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 1,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          20,
+          21,
+          22,
+          23,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          80,
+          81,
+          82,
+          83
+        ],
+        "energy": -26.400000000000084,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 1,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          20,
+          21,
+          22,
+          23,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          64,
+          65,
+          66,
+          67
+        ],
+        "energy": -12.000000000000014,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 1,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          20,
+          21,
+          22,
+          23,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          92,
+          93,
+          94,
+          95
+        ],
+        "energy": -31.20000000000004,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 1,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          20,
+          21,
+          22,
+          23,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          80,
+          81,
+          82,
+          83
+        ],
+        "energy": -21.600000000000072,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 2,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          24,
+          25,
+          26,
+          27,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          80,
+          81,
+          82,
+          83
+        ],
+        "energy": -12.000000000000023,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 2,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          24,
+          25,
+          26,
+          27,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          64,
+          65,
+          66,
+          67
+        ],
+        "energy": -2.399999999999991,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 2,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          24,
+          25,
+          26,
+          27,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          76,
+          77,
+          78,
+          79
+        ],
+        "energy": -31.200000000000045,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 2,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          24,
+          25,
+          26,
+          27,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          64,
+          65,
+          66,
+          67
+        ],
+        "energy": -12.000000000000023,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 3,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          60,
+          61,
+          62,
+          63
+        ],
+        "energy": -16.800000000000047,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 3,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          28,
+          29,
+          30,
+          31,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          92,
+          93,
+          94,
+          95
+        ],
+        "energy": -16.80000000000004,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 3,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          28,
+          29,
+          30,
+          31,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          92,
+          93,
+          94,
+          95
+        ],
+        "energy": -26.400000000000084,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 2,
+          "b": 3,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          8,
+          9,
+          10,
+          11,
+          28,
+          29,
+          30,
+          31,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          64,
+          65,
+          66,
+          67
+        ],
+        "energy": -16.80000000000005,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 0,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          60,
+          61,
+          62,
+          63
+        ],
+        "energy": -12.000000000000023,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 0,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          96,
+          97,
+          98,
+          99
+        ],
+        "energy": -21.600000000000076,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 0,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          120,
+          121,
+          122,
+          123
+        ],
+        "energy": -21.600000000000072,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 0,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          116,
+          117,
+          118,
+          119
+        ],
+        "energy": -12.000000000000018,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 1,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          20,
+          21,
+          22,
+          23,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          80,
+          81,
+          82,
+          83
+        ],
+        "energy": -16.800000000000047,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 1,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          20,
+          21,
+          22,
+          23,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          120,
+          121,
+          122,
+          123
+        ],
+        "energy": -12.000000000000023,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 1,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          20,
+          21,
+          22,
+          23,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          108,
+          109,
+          110,
+          111
+        ],
+        "energy": -26.400000000000073,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 1,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          20,
+          21,
+          22,
+          23,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          120,
+          121,
+          122,
+          123
+        ],
+        "energy": -12.000000000000021,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 2,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          24,
+          25,
+          26,
+          27,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          60,
+          61,
+          62,
+          63
+        ],
+        "energy": -12.000000000000023,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 2,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          24,
+          25,
+          26,
+          27,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          68,
+          69,
+          70,
+          71
+        ],
+        "energy": -12.000000000000023,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 2,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          24,
+          25,
+          26,
+          27,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          120,
+          121,
+          122,
+          123
+        ],
+        "energy": -26.400000000000084,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 2,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          24,
+          25,
+          26,
+          27,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          60,
+          61,
+          62,
+          63
+        ],
+        "energy": -2.399999999999991,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 3,
+          "c": 0
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          48,
+          49,
+          50,
+          51,
+          60,
+          61,
+          62,
+          63
+        ],
+        "energy": -21.600000000000076,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 3,
+          "c": 1
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          28,
+          29,
+          30,
+          31,
+          36,
+          37,
+          38,
+          39,
+          48,
+          49,
+          50,
+          51,
+          84,
+          85,
+          86,
+          87
+        ],
+        "energy": -21.600000000000055,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 3,
+          "c": 2
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          28,
+          29,
+          30,
+          31,
+          40,
+          41,
+          42,
+          43,
+          48,
+          49,
+          50,
+          51,
+          68,
+          69,
+          70,
+          71
+        ],
+        "energy": -21.600000000000072,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      },
+      {
+        "q": {
+          "a": 3,
+          "b": 3,
+          "c": 3
+        },
+        "truth": {
+          "y": 0
+        },
+        "decoded": {
+          "y": 0
+        },
+        "activeNeurons": [
+          12,
+          13,
+          14,
+          15,
+          28,
+          29,
+          30,
+          31,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          60,
+          61,
+          62,
+          63
+        ],
+        "energy": -12.000000000000021,
+        "converged": true,
+        "terminationReason": "fixed-point"
+      }
+    ]
+  },
+  "official": [
+    {
+      "name": "capacity-v1.log",
+      "file": "runs/capacity-v1.log",
+      "answerMeasurements": [
+        "C1 规则容量：预测准确率 vs 教学规则数 E（annealed 读出，无查询学习）",
+        "   E      taught 准确率     heldout 准确率     单查询ms",
+        "   8           75.0%            7.1%      0.95",
+        "  16           62.5%            7.3%      0.78",
+        "  24           41.7%            0.0%      0.75",
+        "  32           29.7%            0.0%      0.83",
+        "  48           21.9%            0.0%      0.80",
+        "  64           12.5%       N/A (n=0)      0.69",
+        "   E      taught 准确率     heldout 准确率     单查询ms",
+        "   8           50.0%           20.5%      0.82",
+        "  16           56.3%           30.2%      0.75",
+        "  24           50.0%           46.3%      0.68",
+        "  32           60.9%           50.0%      0.76",
+        "  48           56.3%           56.3%      0.70",
+        "  64           56.3%       N/A (n=0)      0.70",
+        "参照 E=32 且 G=0（断侧重，mod-8）：总准确率 0.0%",
+        "     100      100%      100.0%     0.00       596.1  [learn 5ms, detect 182ms] nonconverged=0/100; refusal=N/A (capture completion is reported)",
+        "     200      100%      100.0%     0.00       581.6  [learn 10ms, detect 211ms] nonconverged=0/200; refusal=N/A (capture completion is reported)",
+        "     400      100%      100.0%     0.00       592.0  [learn 43ms, detect 192ms] nonconverged=0/400; refusal=N/A (capture completion is reported)"
+      ],
+      "dynamics": [
+        {
+          "predictions": 1664,
+          "nonconverged": 0,
+          "anyOutputAbstained": 398,
+          "nonconvergedRate": 0,
+          "anyOutputAbstentionRate": 0.23918269230769232,
+          "terminationReasons": {
+            "fixed-point": 1664
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    },
+    {
+      "name": "chem-pop-v1.log",
+      "file": "runs/chem-pop-v1.log",
+      "answerMeasurements": [
+        "    对 vessel: 变化=false 条件差分=[vessel] → 影响因素=[] 结果档差={}",
+        "    对 vessel: 变化=false 条件差分=[vessel] → 影响因素=[] 结果档差={}",
+        "  组 vessel-group         影响因素侧重：{}",
+        "    对 catalyst: 变化=true 条件差分=[catalyst] → 影响因素=[catalyst] 结果档差={\"reacted\":1,\"rate\":1}",
+        "    对 catalyst: 变化=true 条件差分=[catalyst] → 影响因素=[catalyst] 结果档差={\"reacted\":1,\"rate\":2}",
+        "  组 catalyst-group       影响因素侧重：{\"catalyst\":0.169}",
+        "    对 concentration: 变化=true 条件差分=[concentration] → 影响因素=[concentration] 结果档差={\"rate\":1}",
+        "    对 concentration: 变化=true 条件差分=[concentration] → 影响因素=[concentration] 结果档差={\"rate\":2}",
+        "    对 concentration: 变化=true 条件差分=[concentration] → 影响因素=[concentration] 结果档差={\"rate\":1}",
+        "  组 concentration-group  影响因素侧重：{\"concentration\":0.015}",
+        "    对 temperature: 变化=true 条件差分=[temperature] → 影响因素=[temperature] 结果档差={\"rate\":1}",
+        "    对 temperature: 变化=true 条件差分=[temperature] → 影响因素=[temperature] 结果档差={\"reacted\":1,\"rate\":2}",
+        "  组 temperature-group    影响因素侧重：{\"temperature\":0.075}",
+        "    对 stirring: 变化=true 条件差分=[stirring] → 影响因素=[stirring] 结果档差={\"rate\":1}",
+        "  组 stirring-group       影响因素侧重：{\"stirring\":0.008}",
+        "    seen-combo          细粒度  19/24（79.2%）  粗粒度反应判定 87.5%  错 5  歧义 0",
+        "    unseen-vessel       细粒度  23/60（38.3%）  粗粒度反应判定 85.0%  错 37  歧义 0",
+        "    unseen-combo        细粒度   7/36（19.4%）  粗粒度反应判定 91.7%  错 29  歧义 0",
+        "    no-reaction-control 细粒度  63/72（87.5%）  粗粒度反应判定 87.5%  错 9  歧义 0",
+        "    总计：细粒度 112/192（58.3%），粗粒度 87.5%；核 68 条；单次预测均时 85.8ms，平均激活 32 神经元",
+        "    seen-combo          细粒度  23/24（95.8%）  粗粒度反应判定 100.0%  错 1  歧义 0",
+        "    unseen-vessel       细粒度  33/60（55.0%）  粗粒度反应判定 98.3%  错 27  歧义 0",
+        "    unseen-combo        细粒度  11/36（30.6%）  粗粒度反应判定 97.2%  错 25  歧义 0",
+        "    no-reaction-control 细粒度  38/72（52.8%）  粗粒度反应判定 52.8%  错 34  歧义 0",
+        "    总计：细粒度 105/192（54.7%），粗粒度 81.3%；核 68 条；单次预测均时 78.8ms，平均激活 32 神经元",
+        "    seen-combo          细粒度  14/24（58.3%）  粗粒度反应判定 87.5%  错 10  歧义 0",
+        "    unseen-vessel       细粒度  18/60（30.0%）  粗粒度反应判定 80.0%  错 42  歧义 0",
+        "    unseen-combo        细粒度   3/36（8.3%）  粗粒度反应判定 83.3%  错 33  歧义 0",
+        "    no-reaction-control 细粒度  70/72（97.2%）  粗粒度反应判定 97.2%  错 2  歧义 0",
+        "    总计：细粒度 105/192（54.7%），粗粒度 88.0%；核 68 条；单次预测均时 87.9ms，平均激活 32 神经元",
+        "    seen-combo          细粒度  17/24（70.8%）  粗粒度反应判定 91.7%  错 7  歧义 0",
+        "    unseen-vessel       细粒度  31/60（51.7%）  粗粒度反应判定 88.3%  错 29  歧义 0",
+        "    unseen-combo        细粒度  11/36（30.6%）  粗粒度反应判定 97.2%  错 25  歧义 0",
+        "    no-reaction-control 细粒度  47/72（65.3%）  粗粒度反应判定 65.3%  错 25  歧义 0",
+        "    总计：细粒度 106/192（55.2%），粗粒度 81.8%；核 68 条；单次预测均时 86.3ms，平均激活 32 神经元",
+        "    seen-combo          细粒度  19/24（79.2%）  粗粒度反应判定 91.7%  错 5  歧义 0",
+        "    unseen-vessel       细粒度  22/60（36.7%）  粗粒度反应判定 95.0%  错 38  歧义 0",
+        "    unseen-combo        细粒度   6/36（16.7%）  粗粒度反应判定 86.1%  错 30  歧义 0",
+        "    no-reaction-control 细粒度  64/72（88.9%）  粗粒度反应判定 88.9%  错 8  歧义 0",
+        "    总计：细粒度 111/192（57.8%），粗粒度 90.6%；核 14 条；单次预测均时 33.0ms，平均激活 32 神经元",
+        "    seen-combo          细粒度  22/27（81.5%）  粗粒度反应判定 92.6%  错 5  歧义 0",
+        "    unseen-vessel       细粒度  23/60（38.3%）  粗粒度反应判定 83.3%  错 37  歧义 0",
+        "    unseen-combo        细粒度   5/33（15.2%）  粗粒度反应判定 84.8%  错 28  歧义 0",
+        "    no-reaction-control 细粒度  72/72（100.0%）  粗粒度反应判定 100.0%  错 0  歧义 0",
+        "    总计：细粒度 122/192（63.5%），粗粒度 91.1%；核 68 条；单次预测均时 101.7ms，平均激活 32 神经元",
+        "    seen-combo          细粒度  24/27（88.9%）  粗粒度反应判定 92.6%  错 3  歧义 0",
+        "    unseen-vessel       细粒度  31/60（51.7%）  粗粒度反应判定 91.7%  错 29  歧义 0",
+        "    unseen-combo        细粒度  10/33（30.3%）  粗粒度反应判定 93.9%  错 23  歧义 0",
+        "    no-reaction-control 细粒度  71/72（98.6%）  粗粒度反应判定 98.6%  错 1  歧义 0",
+        "    总计：细粒度 136/192（70.8%），粗粒度 94.8%；核 68 条；单次预测均时 84.4ms，平均激活 32 神经元",
+        "    seen-combo          细粒度  19/27（70.4%）  粗粒度反应判定 92.6%  错 8  歧义 0",
+        "    unseen-vessel       细粒度  25/60（41.7%）  粗粒度反应判定 88.3%  错 35  歧义 0",
+        "    unseen-combo        细粒度   8/33（24.2%）  粗粒度反应判定 87.9%  错 25  歧义 0",
+        "    no-reaction-control 细粒度  72/72（100.0%）  粗粒度反应判定 100.0%  错 0  歧义 0",
+        "    总计：细粒度 124/192（64.6%），粗粒度 93.2%；核 68 条；单次预测均时 107.7ms，平均激活 32 神经元",
+        "    seen-combo          细粒度  21/27（77.8%）  粗粒度反应判定 92.6%  错 6  歧义 0",
+        "    unseen-vessel       细粒度  29/60（48.3%）  粗粒度反应判定 81.7%  错 31  歧义 0",
+        "    unseen-combo        细粒度  14/33（42.4%）  粗粒度反应判定 90.9%  错 19  歧义 0",
+        "    no-reaction-control 细粒度  66/72（91.7%）  粗粒度反应判定 91.7%  错 6  歧义 0",
+        "    总计：细粒度 130/192（67.7%），粗粒度 88.5%；核 68 条；单次预测均时 92.3ms，平均激活 32 神经元",
+        "    seen-combo          细粒度  21/27（77.8%）  粗粒度反应判定 92.6%  错 6  歧义 0",
+        "    unseen-vessel       细粒度  30/60（50.0%）  粗粒度反应判定 93.3%  错 30  歧义 0",
+        "    unseen-combo        细粒度   8/33（24.2%）  粗粒度反应判定 93.9%  错 25  歧义 0",
+        "    no-reaction-control 细粒度  72/72（100.0%）  粗粒度反应判定 100.0%  错 0  歧义 0",
+        "    总计：细粒度 131/192（68.2%），粗粒度 95.8%；核 20 条；单次预测均时 50.4ms，平均激活 32 神经元"
+      ],
+      "dynamics": [
+        {
+          "predictions": 1987,
+          "nonconverged": 13,
+          "anyOutputAbstained": 2,
+          "nonconvergedRate": 0.006542526421741319,
+          "anyOutputAbstentionRate": 0.0010065425264217413,
+          "terminationReasons": {
+            "fixed-point": 1974,
+            "quiet-constraint": 13
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    },
+    {
+      "name": "concept-formation-v1.log",
+      "file": "runs/concept-formation-v1.log",
+      "answerMeasurements": [
+        "  全局影响因素=speed(0.029),wallStiffness(0.006),hitWall(0.136)",
+        "  miss-wall     细粒度 30/30（100.0%）  粗粒度 100.0%  歧义 0",
+        "  novel-combo   细粒度 3/7（42.9%）  粗粒度 100.0%  歧义 0",
+        "  novel-value   细粒度 12/15（80.0%）  粗粒度 100.0%  歧义 0",
+        "  seen-region   细粒度 6/8（75.0%）  粗粒度 100.0%  歧义 0",
+        "  总计：细粒度 51/60（85.0%），粗粒度 100.0%，如实歧义 0/60"
+      ],
+      "dynamics": [
+        {
+          "predictions": 60,
+          "nonconverged": 29,
+          "anyOutputAbstained": 0,
+          "nonconvergedRate": 0.48333333333333334,
+          "anyOutputAbstentionRate": 0,
+          "terminationReasons": {
+            "quiet-constraint": 29,
+            "fixed-point": 31
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    },
+    {
+      "name": "explore-cont-seed1.log",
+      "file": "runs/explore-cont-seed1.log",
+      "answerMeasurements": [
+        "终止：实验 300 次（语料相 12 + 全机器相 288；穷举基线 432），规则核 300 条，耗时 7.5 分钟；判定：未知 245 / 偏差 21 / 符合 34",
+        "  R2 发现的影响因素：[resistance,switchPos,temperature,voltage]（真值：[switchPos,voltage,resistance,temperature]，干扰 material 应缺席）",
+        "    self-taught     细粒度 299/300（99.7%）  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 51.0%",
+        "    unseen-gate-off 细粒度 69/69（100.0%）  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 100.0%",
+        "    unseen-gate-on  细粒度 62/63（98.4%）  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 100.0%",
+        "    总计             细粒度 430/432（99.5%）  粗粒度 100.0%"
+      ],
+      "dynamics": [
+        {
+          "predictions": 731,
+          "nonconverged": 657,
+          "anyOutputAbstained": 19,
+          "nonconvergedRate": 0.8987688098495212,
+          "anyOutputAbstentionRate": 0.025991792065663474,
+          "terminationReasons": {
+            "fixed-point": 74,
+            "quiet-constraint": 657
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    },
+    {
+      "name": "explore-cont-seed2.log",
+      "file": "runs/explore-cont-seed2.log",
+      "answerMeasurements": [
+        "终止：实验 300 次（语料相 9 + 全机器相 291；穷举基线 432），规则核 300 条，耗时 7.0 分钟；判定：未知 257 / 偏差 16 / 符合 27",
+        "  R2 发现的影响因素：[resistance,switchPos,temperature,voltage]（真值：[switchPos,voltage,resistance,temperature]，干扰 material 应缺席）",
+        "    self-taught     细粒度 299/300（99.7%）  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 52.3%",
+        "    unseen-gate-off 细粒度 73/73（100.0%）  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 100.0%",
+        "    unseen-gate-on  细粒度 52/59（88.1%）  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 100.0%",
+        "    总计             细粒度 424/432（98.1%）  粗粒度 100.0%"
+      ],
+      "dynamics": [
+        {
+          "predictions": 731,
+          "nonconverged": 671,
+          "anyOutputAbstained": 17,
+          "nonconvergedRate": 0.9179206566347469,
+          "anyOutputAbstentionRate": 0.023255813953488372,
+          "terminationReasons": {
+            "fixed-point": 60,
+            "quiet-constraint": 671
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    },
+    {
+      "name": "explore-cont-seed3.log",
+      "file": "runs/explore-cont-seed3.log",
+      "answerMeasurements": [
+        "终止：实验 300 次（语料相 11 + 全机器相 289；穷举基线 432），规则核 300 条，耗时 5.1 分钟；判定：未知 261 / 偏差 10 / 符合 29",
+        "  R2 发现的影响因素：[resistance,switchPos,temperature,voltage]（真值：[switchPos,voltage,resistance,temperature]，干扰 material 应缺席）",
+        "    self-taught     细粒度 300/300（100.0%）  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 52.0%",
+        "    unseen-gate-off 细粒度 60/60（100.0%）  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 100.0%",
+        "    unseen-gate-on  细粒度 63/72（87.5%）  粗粒度亮灭 98.6%  拒答 0.0%  常数基线 100.0%",
+        "    总计             细粒度 423/432（97.9%）  粗粒度 99.8%"
+      ],
+      "dynamics": [
+        {
+          "predictions": 731,
+          "nonconverged": 668,
+          "anyOutputAbstained": 24,
+          "nonconvergedRate": 0.9138166894664843,
+          "anyOutputAbstentionRate": 0.03283173734610123,
+          "terminationReasons": {
+            "fixed-point": 63,
+            "quiet-constraint": 668
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    },
+    {
+      "name": "explore-ext-frozen-seed1.log",
+      "file": "runs/explore-ext-frozen-seed1.log",
+      "answerMeasurements": [
+        "一阶段终止：实验 200 次，形成 1 次，voltage 归因证据 93 对，因素=[resistance,switchPos,temperature,voltage]",
+        "二阶段终止：实验 +200 次（共 400），形成 1 次，voltage 归因证据 93 → 191 对",
+        "  最终影响因素：[resistance,switchPos,temperature,voltage]",
+        "  扩展区探针（216 个）：细粒度 213（98.6%）  粗粒度 214（99.1%）",
+        "  全网格（648 个）：细粒度 98.6%  粗粒度 99.7%"
+      ],
+      "dynamics": [
+        {
+          "predictions": 1263,
+          "nonconverged": 1174,
+          "anyOutputAbstained": 16,
+          "nonconvergedRate": 0.9295328582739509,
+          "anyOutputAbstentionRate": 0.012668250197941409,
+          "terminationReasons": {
+            "fixed-point": 89,
+            "quiet-constraint": 1174
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    },
+    {
+      "name": "explore-ext-updating-seed1.log",
+      "file": "runs/explore-ext-updating-seed1.log",
+      "answerMeasurements": [
+        "一阶段终止：实验 200 次，形成 9 次，voltage 归因证据 94 对，因素=[resistance,switchPos,temperature,voltage]",
+        "二阶段终止：实验 +200 次（共 400），形成 17 次，voltage 归因证据 94 → 330 对",
+        "  最终影响因素：[resistance,switchPos,temperature,voltage]",
+        "  扩展区探针（216 个）：细粒度 216（100.0%）  粗粒度 216（100.0%）",
+        "  全网格（648 个）：细粒度 99.5%  粗粒度 100.0%"
+      ],
+      "dynamics": [
+        {
+          "predictions": 1263,
+          "nonconverged": 1173,
+          "anyOutputAbstained": 19,
+          "nonconvergedRate": 0.9287410926365796,
+          "anyOutputAbstentionRate": 0.015043547110055424,
+          "terminationReasons": {
+            "fixed-point": 90,
+            "quiet-constraint": 1173
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    },
+    {
+      "name": "explore-lab-seed1.log",
+      "file": "runs/explore-lab-seed1.log",
+      "answerMeasurements": [
+        "终止：实验 288 次（穷举基线 288），规则核 288 条，耗时 4.7 分钟；判定：未知 176 / 偏差 16 / 符合 96",
+        "R2 发现的影响因素：[resistance,switch,temperature,voltage]（真值：[switch,voltage,resistance,temperature]，干扰 material 应缺席）",
+        "    self-taught     门控任务分 100.0%  严格联合 100.0%  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 62.5%",
+        "    unseen-gate-off N/A (n=0; accuracy, refusal and constant baseline undefined)",
+        "    unseen-gate-on N/A (n=0; accuracy, refusal and constant baseline undefined)",
+        "    总计             门控任务分 100.0%  严格联合 100.0%  粗粒度 100.0%"
+      ],
+      "dynamics": [
+        {
+          "predictions": 575,
+          "nonconverged": 462,
+          "anyOutputAbstained": 1,
+          "nonconvergedRate": 0.8034782608695652,
+          "anyOutputAbstentionRate": 0.0017391304347826088,
+          "terminationReasons": {
+            "fixed-point": 113,
+            "quiet-constraint": 462
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    },
+    {
+      "name": "explore-lab-seed2.log",
+      "file": "runs/explore-lab-seed2.log",
+      "answerMeasurements": [
+        "终止：实验 288 次（穷举基线 288），规则核 288 条，耗时 3.7 分钟；判定：未知 143 / 偏差 28 / 符合 117",
+        "R2 发现的影响因素：[resistance,switch,temperature,voltage]（真值：[switch,voltage,resistance,temperature]，干扰 material 应缺席）",
+        "    self-taught     门控任务分 100.0%  严格联合 100.0%  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 62.5%",
+        "    unseen-gate-off N/A (n=0; accuracy, refusal and constant baseline undefined)",
+        "    unseen-gate-on N/A (n=0; accuracy, refusal and constant baseline undefined)",
+        "    总计             门控任务分 100.0%  严格联合 100.0%  粗粒度 100.0%"
+      ],
+      "dynamics": [
+        {
+          "predictions": 575,
+          "nonconverged": 426,
+          "anyOutputAbstained": 4,
+          "nonconvergedRate": 0.7408695652173913,
+          "anyOutputAbstentionRate": 0.006956521739130435,
+          "terminationReasons": {
+            "fixed-point": 149,
+            "quiet-constraint": 426
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    },
+    {
+      "name": "explore-lab-seed3.log",
+      "file": "runs/explore-lab-seed3.log",
+      "answerMeasurements": [
+        "终止：实验 288 次（穷举基线 288），规则核 288 条，耗时 4.2 分钟；判定：未知 165 / 偏差 27 / 符合 96",
+        "R2 发现的影响因素：[resistance,switch,temperature,voltage]（真值：[switch,voltage,resistance,temperature]，干扰 material 应缺席）",
+        "    self-taught     门控任务分 100.0%  严格联合 100.0%  粗粒度亮灭 100.0%  拒答 0.0%  常数基线 62.5%",
+        "    unseen-gate-off N/A (n=0; accuracy, refusal and constant baseline undefined)",
+        "    unseen-gate-on N/A (n=0; accuracy, refusal and constant baseline undefined)",
+        "    总计             门控任务分 100.0%  严格联合 100.0%  粗粒度 100.0%"
+      ],
+      "dynamics": [
+        {
+          "predictions": 575,
+          "nonconverged": 433,
+          "anyOutputAbstained": 19,
+          "nonconvergedRate": 0.7530434782608696,
+          "anyOutputAbstentionRate": 0.03304347826086956,
+          "terminationReasons": {
+            "fixed-point": 142,
+            "quiet-constraint": 433
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    },
+    {
+      "name": "neural-attention-v1.log",
+      "file": "runs/neural-attention-v1.log",
+      "answerMeasurements": [
+        "  t1 A 未知 → 写观察（核 无；forecast=N/A/not-predicted；capture=true/fixed-point；generation=N/A）",
+        "  t1 B 未知 → 写观察（核 无；forecast=N/A/not-predicted；capture=true/fixed-point；generation=N/A）",
+        "  t1 C 未知 → 写观察（核 无；forecast=N/A/not-predicted；capture=true/fixed-point；generation=N/A）",
+        "  门控学习后准确率曲线：t60:95%"
+      ],
+      "dynamics": [
+        {
+          "predictions": 91,
+          "nonconverged": 77,
+          "anyOutputAbstained": 0,
+          "nonconvergedRate": 0.8461538461538461,
+          "anyOutputAbstentionRate": 0,
+          "terminationReasons": {
+            "quiet-constraint": 77,
+            "fixed-point": 14
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    },
+    {
+      "name": "pop-v1.log",
+      "file": "runs/pop-v1.log",
+      "answerMeasurements": [
+        "  完整（G=3+否决，查询参与学习）：细粒度 83.3%，粗粒度 98.6%，错过墙门控 97.2%",
+        "  消融 断侧重（G=0，veto=true）：细粒度 70.8%，粗粒度 83.3%，错过墙门控 66.7%",
+        "  消融 断否决（G=3，veto=false）：细粒度 70.1%，粗粒度 99.3%，错过墙门控 98.6%",
+        "  消融 双断：细粒度 63.9%，粗粒度 84.0%，错过墙门控 68.1%",
+        "  消融 无查询学习：细粒度 81.9%，粗粒度 97.2%，错过墙门控 94.4%",
+        "   E      taught 准确率     heldout 准确率",
+        "   8          100.0%           19.6%",
+        "  16          100.0%           31.3%",
+        "  24          100.0%           45.0%",
+        "  32          100.0%           64.1%",
+        "  48          100.0%           93.8%",
+        "  64          100.0%       N/A (n=0)",
+        "   E      taught 准确率     heldout 准确率",
+        "   8           75.0%           46.4%",
+        "  16          100.0%           50.0%",
+        "  24           93.8%           66.3%",
+        "  32           96.9%           71.9%",
+        "  48           99.0%           96.9%",
+        "  64          100.0%       N/A (n=0)"
+      ],
+      "dynamics": [
+        {
+          "predictions": 2256,
+          "nonconverged": 45,
+          "anyOutputAbstained": 1,
+          "nonconvergedRate": 0.0199468085106383,
+          "anyOutputAbstentionRate": 0.0004432624113475177,
+          "terminationReasons": {
+            "fixed-point": 2211,
+            "quiet-constraint": 45
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    },
+    {
+      "name": "attention-v1.log",
+      "file": "runs/attention-v1.log",
+      "answerMeasurements": [
+        "  预训练基线准确率：83.3%（规则 15 条）",
+        "  滚动准确率：t10:83% → t20:92% → t30:92% → t40:92% → t50:83% → t60:83% → t70:83%",
+        "  预训练基线准确率：83.3%（规则 15 条）",
+        "  滚动准确率：t10:83% → t20:83% → t30:83% → t40:75% → t50:83% → t60:83% → t70:83%",
+        "  预训练基线准确率：83.3%（规则 15 条）",
+        "  滚动准确率：t10:83% → t20:83% → t30:83% → t40:83% → t50:83% → t60:83% → t70:83%"
+      ],
+      "dynamics": [
+        {
+          "predictions": 708,
+          "nonconverged": 173,
+          "anyOutputAbstained": 0,
+          "nonconvergedRate": 0.2443502824858757,
+          "anyOutputAbstentionRate": 0,
+          "terminationReasons": {
+            "fixed-point": 535,
+            "quiet-constraint": 173
+          },
+          "confidencePolicy": "converged-required"
+        }
+      ],
+      "hypothesisFamily": "Declared sensory dimensions, bounded rule cores, supplied candidate grid and local energy interactions.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery.",
+      "rarePositiveRecall": null,
+      "rarePositiveNote": "A designated rare-positive benchmark is reported separately as W04; ordinary accuracy is not rare-positive recall."
+    }
+  ],
+  "worlds": [
+    {
+      "id": "W01",
+      "name": "3-bit parity with distractor",
+      "seed": 11,
+      "experiments": 16,
+      "reason": "frontier-exhausted",
+      "n": 16,
+      "correct": 16,
+      "refused": 0,
+      "nonconverged": 16,
+      "expectedFactors": [
+        "a",
+        "b",
+        "c"
+      ],
+      "foundFactors": [
+        "a",
+        "b",
+        "c"
+      ],
+      "ms": 2819.573,
+      "passesAccuracy": true,
+      "passesFactors": true,
+      "file": "runs/review2/reviewer-b/W01-new-world.json",
+      "nonconvergedRate": 1,
+      "anyOutputAbstentionRate": 0,
+      "rarePositiveRecall": null,
+      "hypothesisFamily": "3-bit parity with distractor",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    },
+    {
+      "id": "W02",
+      "name": "interior disjoint active intervals",
+      "seed": 11,
+      "experiments": 10,
+      "reason": "frontier-exhausted",
+      "n": 10,
+      "correct": 10,
+      "refused": 0,
+      "nonconverged": 3,
+      "expectedFactors": [
+        "x"
+      ],
+      "foundFactors": [
+        "x"
+      ],
+      "ms": 409.00760000000037,
+      "passesAccuracy": true,
+      "passesFactors": true,
+      "file": "runs/review2/reviewer-b/W02-new-world.json",
+      "nonconvergedRate": 0.3,
+      "anyOutputAbstentionRate": 0,
+      "rarePositiveRecall": null,
+      "hypothesisFamily": "interior disjoint active intervals",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    },
+    {
+      "id": "W03",
+      "name": "two correlated output channels",
+      "seed": 11,
+      "experiments": 18,
+      "reason": "frontier-exhausted",
+      "n": 18,
+      "correct": 18,
+      "refused": 0,
+      "nonconverged": 4,
+      "expectedFactors": [
+        "a",
+        "b"
+      ],
+      "foundFactors": [
+        "a",
+        "b"
+      ],
+      "ms": 1642.9870999999998,
+      "passesAccuracy": true,
+      "passesFactors": true,
+      "file": "runs/review2/reviewer-b/W03-new-world.json",
+      "nonconvergedRate": 0.2222222222222222,
+      "anyOutputAbstentionRate": 0,
+      "rarePositiveRecall": null,
+      "hypothesisFamily": "two correlated output channels",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    },
+    {
+      "id": "W04",
+      "name": "rare three-factor joint condition",
+      "seed": 11,
+      "experiments": 17,
+      "reason": "quorum-met",
+      "n": 64,
+      "correct": 63,
+      "refused": 0,
+      "nonconverged": 0,
+      "expectedFactors": [
+        "a",
+        "b",
+        "c"
+      ],
+      "foundFactors": [],
+      "positiveRecall": {
+        "n": 1,
+        "correct": 0
+      },
+      "ms": 1820.0892000000003,
+      "passesAccuracy": true,
+      "passesFactors": false,
+      "file": "runs/review2/reviewer-b/W04-new-world.json",
+      "nonconvergedRate": 0,
+      "anyOutputAbstentionRate": 0,
+      "rarePositiveRecall": {
+        "n": 1,
+        "correct": 0
+      },
+      "hypothesisFamily": "rare three-factor joint condition",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    },
+    {
+      "id": "W05",
+      "name": "nonlinear max with distractor",
+      "seed": 11,
+      "experiments": 18,
+      "reason": "frontier-exhausted",
+      "n": 18,
+      "correct": 18,
+      "refused": 0,
+      "nonconverged": 12,
+      "expectedFactors": [
+        "a",
+        "b"
+      ],
+      "foundFactors": [
+        "a",
+        "b"
+      ],
+      "ms": 1458.507599999999,
+      "passesAccuracy": true,
+      "passesFactors": true,
+      "file": "runs/review2/reviewer-b/W05-new-world.json",
+      "nonconvergedRate": 0.6666666666666666,
+      "anyOutputAbstentionRate": 0,
+      "rarePositiveRecall": null,
+      "hypothesisFamily": "nonlinear max with distractor",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    }
+  ],
+  "independentA": [
+    {
+      "file": "review-artifacts/fresh-continuous-6-results.json",
+      "mode": "continuous",
+      "seed": 6,
+      "probeSeed": 20260920,
+      "terminationReason": "budget-exhausted",
+      "experiments": 300,
+      "cost": 300,
+      "rules": 300,
+      "influential": [
+        "resistance",
+        "switchPos",
+        "temperature",
+        "voltage"
+      ],
+      "seconds": 452.86010480000004,
+      "phase": "full",
+      "formation": [
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 2,
+            "material": 2,
+            "lit": 2,
+            "brightness": 3
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1
+            ],
+            "material": [
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.53,
+              1.42,
+              2.63
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 2,
+            "lit": 2,
+            "brightness": 2
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.86,
+              2.63
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 2
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.86,
+              2.4
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        }
+      ],
+      "allocatedCores": 300,
+      "registeredCores": 300,
+      "dynamics": {
+        "calls": 936,
+        "energyTraceMismatch": 0,
+        "nonFixedReturns": 858,
+        "maxTraceError": 5.115907697472721e-13,
+        "maxQuenchFlips": 2400,
+        "reportedNonConverged": 858,
+        "quietFallbackEngaged": 0,
+        "convergenceFlagMismatch": 0
+      },
+      "elapsedSeconds": 2258.4715177000003,
+      "partitions": {
+        "self-taught": {
+          "n": 300,
+          "model": {
+            "coarse": 300,
+            "strictFine": 300,
+            "officialFine": 300
+          },
+          "nearest": {
+            "coarse": 300,
+            "strictFine": 300,
+            "officialFine": 300
+          }
+        },
+        "unseen-gate-off": {
+          "n": 66,
+          "model": {
+            "coarse": 66,
+            "strictFine": 66,
+            "officialFine": 66
+          },
+          "nearest": {
+            "coarse": 60,
+            "strictFine": 60,
+            "officialFine": 60
+          }
+        },
+        "unseen-gate-on": {
+          "n": 66,
+          "model": {
+            "coarse": 65,
+            "strictFine": 61,
+            "officialFine": 61
+          },
+          "nearest": {
+            "coarse": 59,
+            "strictFine": 30,
+            "officialFine": 30
+          }
+        },
+        "off-grid-uniform": {
+          "n": 128,
+          "model": {
+            "coarse": 102,
+            "strictFine": 98,
+            "officialFine": 98
+          },
+          "nearest": {
+            "coarse": 105,
+            "strictFine": 100,
+            "officialFine": 100
+          }
+        },
+        "gate-boundary": {
+          "n": 77,
+          "model": {
+            "coarse": 24,
+            "strictFine": 24,
+            "officialFine": 24
+          },
+          "nearest": {
+            "coarse": 24,
+            "strictFine": 24,
+            "officialFine": 24
+          }
+        },
+        "all-grid": {
+          "n": 432,
+          "model": {
+            "coarse": 431,
+            "strictFine": 427,
+            "officialFine": 427
+          },
+          "nearest": {
+            "coarse": 419,
+            "strictFine": 390,
+            "officialFine": 390
+          }
+        },
+        "all-unseen-grid": {
+          "n": 132,
+          "model": {
+            "coarse": 131,
+            "strictFine": 127,
+            "officialFine": 127
+          },
+          "nearest": {
+            "coarse": 119,
+            "strictFine": 90,
+            "officialFine": 90
+          }
+        }
+      },
+      "completeDiagnostics": {
+        "predictions": 936,
+        "nonconverged": 858,
+        "nonconvergedRate": 0.9166666666666666,
+        "anyOutputAbstained": 40,
+        "anyOutputAbstentionRate": 0.042735042735042736,
+        "note": "Exact aggregate convergence from original fresh audit; refusal from every original training/evaluation row."
+      },
+      "trainingDiagnostics": {
+        "n": 299,
+        "nonconverged": 226,
+        "nonconvergedRate": 0.7558528428093646,
+        "anyOutputAbstained": 40
+      },
+      "evaluationDiagnostics": {
+        "n": 637,
+        "anyOutputAbstained": 0,
+        "anyOutputAbstentionRate": 0,
+        "reportedNonconvergence": 632,
+        "nonconvergedRate": 0.9921507064364207,
+        "note": "Original A evaluation rows omit convergence. Subtract saved exact training counts from exact complete diagnostics; independent repeats assert identical ordered predictions."
+      },
+      "hypothesisFamily": "Circuit oracle with supplied grid; independent off-grid and gate-boundary probes.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    },
+    {
+      "file": "review-artifacts/fresh-continuous-7-results.json",
+      "mode": "continuous",
+      "seed": 7,
+      "probeSeed": 20260920,
+      "terminationReason": "budget-exhausted",
+      "experiments": 300,
+      "cost": 300,
+      "rules": 300,
+      "influential": [
+        "resistance",
+        "switchPos",
+        "temperature",
+        "voltage"
+      ],
+      "seconds": 307.48252619999994,
+      "phase": "full",
+      "formation": [
+        {
+          "conceptsPerDim": {
+            "switchPos": 2,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 2,
+            "lit": 2,
+            "brightness": 2
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              2.44
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 2,
+            "lit": 2,
+            "brightness": 3
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              1.42,
+              2.44
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 3
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              1.42,
+              2.44
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 2
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              1.88
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 2
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.34,
+              1.88
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 2
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.34,
+              1.88
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 2
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.34,
+              1.88
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        }
+      ],
+      "allocatedCores": 300,
+      "registeredCores": 300,
+      "dynamics": {
+        "calls": 504,
+        "energyTraceMismatch": 0,
+        "nonFixedReturns": 421,
+        "maxTraceError": 5.684341886080801e-13,
+        "maxQuenchFlips": 2418,
+        "reportedNonConverged": 421,
+        "quietFallbackEngaged": 0,
+        "convergenceFlagMismatch": 0
+      },
+      "elapsedSeconds": 653.3783947000001,
+      "partitions": {
+        "off-grid-uniform": {
+          "n": 128,
+          "model": {
+            "coarse": 101,
+            "strictFine": 99,
+            "officialFine": 99
+          },
+          "nearest": {
+            "coarse": 100,
+            "strictFine": 96,
+            "officialFine": 96
+          }
+        },
+        "gate-boundary": {
+          "n": 77,
+          "model": {
+            "coarse": 24,
+            "strictFine": 24,
+            "officialFine": 24
+          },
+          "nearest": {
+            "coarse": 58,
+            "strictFine": 55,
+            "officialFine": 55
+          }
+        },
+        "all-grid": {
+          "n": 0,
+          "model": {
+            "coarse": 0,
+            "strictFine": 0,
+            "officialFine": 0
+          },
+          "nearest": {
+            "coarse": 0,
+            "strictFine": 0,
+            "officialFine": 0
+          }
+        },
+        "all-unseen-grid": {
+          "n": 0,
+          "model": {
+            "coarse": 0,
+            "strictFine": 0,
+            "officialFine": 0
+          },
+          "nearest": {
+            "coarse": 0,
+            "strictFine": 0,
+            "officialFine": 0
+          }
+        }
+      },
+      "completeDiagnostics": {
+        "predictions": 504,
+        "nonconverged": 421,
+        "nonconvergedRate": 0.8353174603174603,
+        "anyOutputAbstained": 18,
+        "anyOutputAbstentionRate": 0.03571428571428571,
+        "note": "Exact aggregate convergence from original fresh audit; refusal from every original training/evaluation row."
+      },
+      "trainingDiagnostics": {
+        "n": 299,
+        "nonconverged": 233,
+        "nonconvergedRate": 0.7792642140468228,
+        "anyOutputAbstained": 18
+      },
+      "evaluationDiagnostics": {
+        "n": 205,
+        "anyOutputAbstained": 0,
+        "anyOutputAbstentionRate": 0,
+        "reportedNonconvergence": 188,
+        "nonconvergedRate": 0.9170731707317074,
+        "note": "Original A evaluation rows omit convergence. Subtract saved exact training counts from exact complete diagnostics; independent repeats assert identical ordered predictions."
+      },
+      "hypothesisFamily": "Circuit oracle with supplied grid; independent off-grid and gate-boundary probes.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    },
+    {
+      "file": "review-artifacts/independent-continuous-4-results.json",
+      "mode": "continuous",
+      "seed": 4,
+      "experiments": 300,
+      "cost": 300,
+      "rules": 300,
+      "influential": [
+        "resistance",
+        "switchPos",
+        "temperature",
+        "voltage"
+      ],
+      "seconds": 370.1284999,
+      "phase": "full",
+      "formation": [
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 2,
+            "temperature": 3,
+            "material": 2,
+            "lit": 2,
+            "brightness": 3
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              1.2,
+              2.1
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              1.42,
+              2.63
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 3,
+            "temperature": 3,
+            "material": 2,
+            "lit": 2,
+            "brightness": 3
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              1.42,
+              2.63
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 3,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 3
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              1.42,
+              2.63
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 3
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              1.65,
+              2.63
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 2
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.09,
+              2.63
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        }
+      ],
+      "allocatedCores": 300,
+      "registeredCores": 300,
+      "dynamics": {
+        "calls": 936,
+        "energyTraceMismatch": 0,
+        "nonFixedReturns": 829,
+        "maxTraceError": 1.1368683772161603e-13,
+        "maxQuenchFlips": 2456
+      },
+      "elapsedSeconds": 2103.2045398,
+      "partitions": {
+        "unseen-gate-off": {
+          "n": 72,
+          "model": {
+            "coarse": 72,
+            "strictFine": 72,
+            "officialFine": 72
+          },
+          "nearest": {
+            "coarse": 59,
+            "strictFine": 59,
+            "officialFine": 59
+          }
+        },
+        "self-taught": {
+          "n": 300,
+          "model": {
+            "coarse": 300,
+            "strictFine": 299,
+            "officialFine": 299
+          },
+          "nearest": {
+            "coarse": 300,
+            "strictFine": 300,
+            "officialFine": 300
+          }
+        },
+        "unseen-gate-on": {
+          "n": 60,
+          "model": {
+            "coarse": 60,
+            "strictFine": 54,
+            "officialFine": 54
+          },
+          "nearest": {
+            "coarse": 48,
+            "strictFine": 21,
+            "officialFine": 21
+          }
+        },
+        "off-grid-uniform": {
+          "n": 128,
+          "model": {
+            "coarse": 107,
+            "strictFine": 103,
+            "officialFine": 103
+          },
+          "nearest": {
+            "coarse": 104,
+            "strictFine": 99,
+            "officialFine": 99
+          }
+        },
+        "gate-boundary": {
+          "n": 77,
+          "model": {
+            "coarse": 24,
+            "strictFine": 24,
+            "officialFine": 24
+          },
+          "nearest": {
+            "coarse": 24,
+            "strictFine": 24,
+            "officialFine": 24
+          }
+        },
+        "all-grid": {
+          "n": 432,
+          "model": {
+            "coarse": 432,
+            "strictFine": 425,
+            "officialFine": 425
+          },
+          "nearest": {
+            "coarse": 407,
+            "strictFine": 380,
+            "officialFine": 380
+          }
+        },
+        "all-unseen-grid": {
+          "n": 132,
+          "model": {
+            "coarse": 132,
+            "strictFine": 126,
+            "officialFine": 126
+          },
+          "nearest": {
+            "coarse": 107,
+            "strictFine": 80,
+            "officialFine": 80
+          }
+        }
+      },
+      "completeDiagnostics": {
+        "exitCode": 0,
+        "predictions": 936,
+        "nonconverged": 829,
+        "anyOutputAbstained": 44,
+        "nonconvergedRate": 0.8856837606837606,
+        "anyOutputAbstentionRate": 0.04700854700854701,
+        "terminationReasons": {
+          "fixed-point": 107,
+          "quiet-constraint": 829
+        },
+        "confidencePolicy": "converged-required",
+        "file": "runs/review2/independent-continuous-4-diagnostics.json",
+        "exactPredictionRepeat": true
+      },
+      "trainingDiagnostics": {
+        "n": 299,
+        "nonconverged": 196,
+        "nonconvergedRate": 0.6555183946488294,
+        "anyOutputAbstained": 44
+      },
+      "evaluationDiagnostics": {
+        "n": 637,
+        "anyOutputAbstained": 0,
+        "anyOutputAbstentionRate": 0,
+        "reportedNonconvergence": 633,
+        "nonconvergedRate": 0.9937205651491365,
+        "note": "Original A evaluation rows omit convergence. Subtract saved exact training counts from exact complete diagnostics; independent repeats assert identical ordered predictions."
+      },
+      "hypothesisFamily": "Circuit oracle with supplied grid; independent off-grid and gate-boundary probes.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    },
+    {
+      "file": "review-artifacts/independent-continuous-5-results.json",
+      "mode": "continuous",
+      "seed": 5,
+      "experiments": 300,
+      "cost": 300,
+      "rules": 300,
+      "influential": [
+        "resistance",
+        "switchPos",
+        "temperature",
+        "voltage"
+      ],
+      "seconds": 249.0725821,
+      "phase": "full",
+      "formation": [
+        {
+          "conceptsPerDim": {
+            "switchPos": 2,
+            "voltage": 4,
+            "resistance": 2,
+            "temperature": 2,
+            "material": 2,
+            "lit": 2,
+            "brightness": 3
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              2.1
+            ],
+            "temperature": [
+              0.3,
+              1
+            ],
+            "material": [
+              0.3,
+              1
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              1.42,
+              2.63
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 2,
+            "voltage": 4,
+            "resistance": 2,
+            "temperature": 2,
+            "material": 3,
+            "lit": 2,
+            "brightness": 3
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              2.1
+            ],
+            "temperature": [
+              0.3,
+              1
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              1.42,
+              2.63
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 2,
+            "voltage": 4,
+            "resistance": 3,
+            "temperature": 2,
+            "material": 3,
+            "lit": 2,
+            "brightness": 4
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              0.75,
+              1.42,
+              2.63
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 2,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 2,
+            "material": 3,
+            "lit": 2,
+            "brightness": 4
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              0.75,
+              1.42,
+              2.4
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 2,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 3
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              0.75,
+              2.06
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 3
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              0.75,
+              2.06
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 2
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              1.72
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 2
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              1.72
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 2
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              1.72
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 2
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              0.15,
+              1.72
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        },
+        {
+          "conceptsPerDim": {
+            "switchPos": 3,
+            "voltage": 4,
+            "resistance": 4,
+            "temperature": 3,
+            "material": 3,
+            "lit": 2,
+            "brightness": 1
+          },
+          "centers": {
+            "switchPos": [
+              0.1,
+              0.5,
+              0.9
+            ],
+            "voltage": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "resistance": [
+              0.3,
+              1.2,
+              2.1,
+              2.85
+            ],
+            "temperature": [
+              0.3,
+              1,
+              1.7
+            ],
+            "material": [
+              0.3,
+              1,
+              1.7
+            ],
+            "lit": [
+              0.05,
+              0.95
+            ],
+            "brightness": [
+              1.5
+            ]
+          }
+        }
+      ],
+      "allocatedCores": 300,
+      "registeredCores": 300,
+      "dynamics": {
+        "calls": 504,
+        "energyTraceMismatch": 0,
+        "nonFixedReturns": 406,
+        "maxTraceError": 0,
+        "maxQuenchFlips": 2414
+      },
+      "elapsedSeconds": 550.1422809000001,
+      "partitions": {
+        "off-grid-uniform": {
+          "n": 128,
+          "model": {
+            "coarse": 107,
+            "strictFine": 103,
+            "officialFine": 103
+          },
+          "nearest": {
+            "coarse": 106,
+            "strictFine": 101,
+            "officialFine": 101
+          }
+        },
+        "gate-boundary": {
+          "n": 77,
+          "model": {
+            "coarse": 24,
+            "strictFine": 24,
+            "officialFine": 24
+          },
+          "nearest": {
+            "coarse": 24,
+            "strictFine": 24,
+            "officialFine": 24
+          }
+        },
+        "all-grid": {
+          "n": 0,
+          "model": {
+            "coarse": 0,
+            "strictFine": 0,
+            "officialFine": 0
+          },
+          "nearest": {
+            "coarse": 0,
+            "strictFine": 0,
+            "officialFine": 0
+          }
+        },
+        "all-unseen-grid": {
+          "n": 0,
+          "model": {
+            "coarse": 0,
+            "strictFine": 0,
+            "officialFine": 0
+          },
+          "nearest": {
+            "coarse": 0,
+            "strictFine": 0,
+            "officialFine": 0
+          }
+        }
+      },
+      "completeDiagnostics": {
+        "exitCode": 0,
+        "predictions": 504,
+        "nonconverged": 406,
+        "anyOutputAbstained": 47,
+        "nonconvergedRate": 0.8055555555555556,
+        "anyOutputAbstentionRate": 0.09325396825396826,
+        "terminationReasons": {
+          "fixed-point": 98,
+          "quiet-constraint": 406
+        },
+        "confidencePolicy": "converged-required",
+        "file": "runs/review2/independent-continuous-5-diagnostics.json",
+        "exactPredictionRepeat": true
+      },
+      "trainingDiagnostics": {
+        "n": 299,
+        "nonconverged": 203,
+        "nonconvergedRate": 0.6789297658862876,
+        "anyOutputAbstained": 47
+      },
+      "evaluationDiagnostics": {
+        "n": 205,
+        "anyOutputAbstained": 0,
+        "anyOutputAbstentionRate": 0,
+        "reportedNonconvergence": 203,
+        "nonconvergedRate": 0.9902439024390244,
+        "note": "Original A evaluation rows omit convergence. Subtract saved exact training counts from exact complete diagnostics; independent repeats assert identical ordered predictions."
+      },
+      "hypothesisFamily": "Circuit oracle with supplied grid; independent off-grid and gate-boundary probes.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    },
+    {
+      "file": "review-artifacts/independent-discrete-4-results.json",
+      "mode": "discrete",
+      "seed": 4,
+      "experiments": 288,
+      "cost": 288,
+      "rules": 288,
+      "influential": [
+        "resistance",
+        "switch",
+        "temperature",
+        "voltage"
+      ],
+      "seconds": 290.0292076,
+      "phase": null,
+      "formation": null,
+      "allocatedCores": 288,
+      "registeredCores": 288,
+      "dynamics": {
+        "calls": 575,
+        "energyTraceMismatch": 0,
+        "nonFixedReturns": 477,
+        "maxTraceError": 2.842170943040401e-14,
+        "maxQuenchFlips": 1104
+      },
+      "elapsedSeconds": 968.9162322999999,
+      "partitions": {
+        "self-taught": {
+          "n": 288,
+          "model": {
+            "coarse": 288,
+            "strictFine": 288,
+            "officialFine": 288
+          },
+          "nearest": {
+            "coarse": 288,
+            "strictFine": 288,
+            "officialFine": 288
+          }
+        },
+        "all-grid": {
+          "n": 288,
+          "model": {
+            "coarse": 288,
+            "strictFine": 288,
+            "officialFine": 288
+          },
+          "nearest": {
+            "coarse": 288,
+            "strictFine": 288,
+            "officialFine": 288
+          }
+        },
+        "all-unseen-grid": {
+          "n": 0,
+          "model": {
+            "coarse": 0,
+            "strictFine": 0,
+            "officialFine": 0
+          },
+          "nearest": {
+            "coarse": 0,
+            "strictFine": 0,
+            "officialFine": 0
+          }
+        }
+      },
+      "completeDiagnostics": {
+        "exitCode": 0,
+        "predictions": 575,
+        "nonconverged": 477,
+        "anyOutputAbstained": 0,
+        "nonconvergedRate": 0.8295652173913044,
+        "anyOutputAbstentionRate": 0,
+        "terminationReasons": {
+          "fixed-point": 98,
+          "quiet-constraint": 477
+        },
+        "confidencePolicy": "converged-required",
+        "file": "runs/review2/independent-discrete-4-diagnostics.json",
+        "exactPredictionRepeat": true
+      },
+      "trainingDiagnostics": {
+        "n": 287,
+        "nonconverged": 189,
+        "nonconvergedRate": 0.6585365853658537,
+        "anyOutputAbstained": 0
+      },
+      "evaluationDiagnostics": {
+        "n": 288,
+        "anyOutputAbstained": 0,
+        "anyOutputAbstentionRate": 0,
+        "reportedNonconvergence": 288,
+        "nonconvergedRate": 1,
+        "note": "Original A evaluation rows omit convergence. Subtract saved exact training counts from exact complete diagnostics; independent repeats assert identical ordered predictions."
+      },
+      "hypothesisFamily": "Circuit oracle with supplied grid; independent off-grid and gate-boundary probes.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    }
+  ],
+  "independentB": [
+    {
+      "file": "runs/review2/reviewer-b/phase-a-seed1.json",
+      "seed": 1,
+      "experiments": 288,
+      "rules": 288,
+      "factors": [
+        "resistance",
+        "switch",
+        "temperature",
+        "voltage"
+      ],
+      "terminationReason": "frontier-exhausted",
+      "trainedMs": 286620.3331,
+      "totalMs": 962675.7387,
+      "all": {
+        "n": 288,
+        "strict": 288,
+        "coarse": 288,
+        "refused": 0,
+        "nonconverged": 288,
+        "residual": 288,
+        "ledgerMismatch": 0,
+        "nnStrict": 288,
+        "nnCoarse": 288,
+        "constantOff": 180,
+        "constantOn": 108
+      },
+      "seen": {
+        "n": 288,
+        "strict": 288,
+        "coarse": 288,
+        "refused": 0,
+        "nonconverged": 288,
+        "residual": 288,
+        "ledgerMismatch": 0,
+        "nnStrict": 288,
+        "nnCoarse": 288,
+        "constantOff": 180,
+        "constantOn": 108
+      },
+      "unseen": {
+        "n": 0,
+        "strict": 0,
+        "coarse": 0,
+        "refused": 0,
+        "nonconverged": 0,
+        "residual": 0,
+        "ledgerMismatch": 0,
+        "nnStrict": 0,
+        "nnCoarse": 0,
+        "constantOff": 0,
+        "constantOn": 0
+      },
+      "unseenOff": {
+        "n": 0,
+        "strict": 0,
+        "coarse": 0,
+        "refused": 0,
+        "nonconverged": 0,
+        "residual": 0,
+        "ledgerMismatch": 0,
+        "nnStrict": 0,
+        "nnCoarse": 0,
+        "constantOff": 0,
+        "constantOn": 0
+      },
+      "unseenOn": {
+        "n": 0,
+        "strict": 0,
+        "coarse": 0,
+        "refused": 0,
+        "nonconverged": 0,
+        "residual": 0,
+        "ledgerMismatch": 0,
+        "nnStrict": 0,
+        "nnCoarse": 0,
+        "constantOff": 0,
+        "constantOn": 0
+      },
+      "trainingAudit": {
+        "calls": 287,
+        "nonconverged": 174,
+        "ledgerMismatch": 0
+      },
+      "metricScopes": {
+        "all": {
+          "n": 288,
+          "strict": 288,
+          "coarse": 288,
+          "refused": 0,
+          "nonconverged": 288,
+          "residual": 288,
+          "ledgerMismatch": 0,
+          "nnStrict": 288,
+          "nnCoarse": 288,
+          "constantOff": 180,
+          "constantOn": 108,
+          "nonconvergedRate": 1,
+          "anyOutputAbstentionRate": 0
+        },
+        "seen": {
+          "n": 288,
+          "strict": 288,
+          "coarse": 288,
+          "refused": 0,
+          "nonconverged": 288,
+          "residual": 288,
+          "ledgerMismatch": 0,
+          "nnStrict": 288,
+          "nnCoarse": 288,
+          "constantOff": 180,
+          "constantOn": 108,
+          "nonconvergedRate": 1,
+          "anyOutputAbstentionRate": 0
+        },
+        "unseen": {
+          "n": 0,
+          "strict": 0,
+          "coarse": 0,
+          "refused": 0,
+          "nonconverged": 0,
+          "residual": 0,
+          "ledgerMismatch": 0,
+          "nnStrict": 0,
+          "nnCoarse": 0,
+          "constantOff": 0,
+          "constantOn": 0,
+          "nonconvergedRate": null,
+          "anyOutputAbstentionRate": null
+        },
+        "unseenOff": {
+          "n": 0,
+          "strict": 0,
+          "coarse": 0,
+          "refused": 0,
+          "nonconverged": 0,
+          "residual": 0,
+          "ledgerMismatch": 0,
+          "nnStrict": 0,
+          "nnCoarse": 0,
+          "constantOff": 0,
+          "constantOn": 0,
+          "nonconvergedRate": null,
+          "anyOutputAbstentionRate": null
+        },
+        "unseenOn": {
+          "n": 0,
+          "strict": 0,
+          "coarse": 0,
+          "refused": 0,
+          "nonconverged": 0,
+          "residual": 0,
+          "ledgerMismatch": 0,
+          "nnStrict": 0,
+          "nnCoarse": 0,
+          "constantOff": 0,
+          "constantOn": 0,
+          "nonconvergedRate": null,
+          "anyOutputAbstentionRate": null
+        }
+      },
+      "completeDiagnostics": {
+        "predictions": 575,
+        "nonconverged": 462,
+        "nonconvergedRate": 0.8034782608695652,
+        "anyOutputAbstained": 1,
+        "anyOutputAbstentionRate": 0.0017391304347826088,
+        "scope": "All recorded training and grid-evaluation predictions"
+      },
+      "hypothesisFamily": "Independent literal circuit oracle; fixed grid or preselected off-grid sample.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    },
+    {
+      "file": "runs/review2/reviewer-b/phase-a-seed4.json",
+      "seed": 4,
+      "experiments": 288,
+      "rules": 288,
+      "factors": [
+        "resistance",
+        "switch",
+        "temperature",
+        "voltage"
+      ],
+      "terminationReason": "frontier-exhausted",
+      "trainedMs": 233533.70530000003,
+      "totalMs": 906038.2671999999,
+      "all": {
+        "n": 288,
+        "strict": 288,
+        "coarse": 288,
+        "refused": 0,
+        "nonconverged": 288,
+        "residual": 288,
+        "ledgerMismatch": 0,
+        "nnStrict": 288,
+        "nnCoarse": 288,
+        "constantOff": 180,
+        "constantOn": 108
+      },
+      "seen": {
+        "n": 288,
+        "strict": 288,
+        "coarse": 288,
+        "refused": 0,
+        "nonconverged": 288,
+        "residual": 288,
+        "ledgerMismatch": 0,
+        "nnStrict": 288,
+        "nnCoarse": 288,
+        "constantOff": 180,
+        "constantOn": 108
+      },
+      "unseen": {
+        "n": 0,
+        "strict": 0,
+        "coarse": 0,
+        "refused": 0,
+        "nonconverged": 0,
+        "residual": 0,
+        "ledgerMismatch": 0,
+        "nnStrict": 0,
+        "nnCoarse": 0,
+        "constantOff": 0,
+        "constantOn": 0
+      },
+      "unseenOff": {
+        "n": 0,
+        "strict": 0,
+        "coarse": 0,
+        "refused": 0,
+        "nonconverged": 0,
+        "residual": 0,
+        "ledgerMismatch": 0,
+        "nnStrict": 0,
+        "nnCoarse": 0,
+        "constantOff": 0,
+        "constantOn": 0
+      },
+      "unseenOn": {
+        "n": 0,
+        "strict": 0,
+        "coarse": 0,
+        "refused": 0,
+        "nonconverged": 0,
+        "residual": 0,
+        "ledgerMismatch": 0,
+        "nnStrict": 0,
+        "nnCoarse": 0,
+        "constantOff": 0,
+        "constantOn": 0
+      },
+      "trainingAudit": {
+        "calls": 287,
+        "nonconverged": 189,
+        "ledgerMismatch": 0
+      },
+      "metricScopes": {
+        "all": {
+          "n": 288,
+          "strict": 288,
+          "coarse": 288,
+          "refused": 0,
+          "nonconverged": 288,
+          "residual": 288,
+          "ledgerMismatch": 0,
+          "nnStrict": 288,
+          "nnCoarse": 288,
+          "constantOff": 180,
+          "constantOn": 108,
+          "nonconvergedRate": 1,
+          "anyOutputAbstentionRate": 0
+        },
+        "seen": {
+          "n": 288,
+          "strict": 288,
+          "coarse": 288,
+          "refused": 0,
+          "nonconverged": 288,
+          "residual": 288,
+          "ledgerMismatch": 0,
+          "nnStrict": 288,
+          "nnCoarse": 288,
+          "constantOff": 180,
+          "constantOn": 108,
+          "nonconvergedRate": 1,
+          "anyOutputAbstentionRate": 0
+        },
+        "unseen": {
+          "n": 0,
+          "strict": 0,
+          "coarse": 0,
+          "refused": 0,
+          "nonconverged": 0,
+          "residual": 0,
+          "ledgerMismatch": 0,
+          "nnStrict": 0,
+          "nnCoarse": 0,
+          "constantOff": 0,
+          "constantOn": 0,
+          "nonconvergedRate": null,
+          "anyOutputAbstentionRate": null
+        },
+        "unseenOff": {
+          "n": 0,
+          "strict": 0,
+          "coarse": 0,
+          "refused": 0,
+          "nonconverged": 0,
+          "residual": 0,
+          "ledgerMismatch": 0,
+          "nnStrict": 0,
+          "nnCoarse": 0,
+          "constantOff": 0,
+          "constantOn": 0,
+          "nonconvergedRate": null,
+          "anyOutputAbstentionRate": null
+        },
+        "unseenOn": {
+          "n": 0,
+          "strict": 0,
+          "coarse": 0,
+          "refused": 0,
+          "nonconverged": 0,
+          "residual": 0,
+          "ledgerMismatch": 0,
+          "nnStrict": 0,
+          "nnCoarse": 0,
+          "constantOff": 0,
+          "constantOn": 0,
+          "nonconvergedRate": null,
+          "anyOutputAbstentionRate": null
+        }
+      },
+      "completeDiagnostics": {
+        "predictions": 575,
+        "nonconverged": 477,
+        "nonconvergedRate": 0.8295652173913044,
+        "anyOutputAbstained": 0,
+        "anyOutputAbstentionRate": 0,
+        "scope": "All recorded training and grid-evaluation predictions"
+      },
+      "hypothesisFamily": "Independent literal circuit oracle; fixed grid or preselected off-grid sample.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    },
+    {
+      "file": "runs/review2/reviewer-b/phase-a-seed7.json",
+      "seed": 7,
+      "experiments": 100,
+      "rules": 100,
+      "factors": [
+        "resistance",
+        "switch",
+        "temperature",
+        "voltage"
+      ],
+      "terminationReason": "quorum-met",
+      "trainedMs": 17615.4188000001,
+      "totalMs": 100719.64060000004,
+      "all": {
+        "n": 288,
+        "strict": 272,
+        "coarse": 284,
+        "refused": 0,
+        "nonconverged": 73,
+        "residual": 73,
+        "ledgerMismatch": 0,
+        "nnStrict": 258,
+        "nnCoarse": 274,
+        "constantOff": 180,
+        "constantOn": 108
+      },
+      "seen": {
+        "n": 100,
+        "strict": 100,
+        "coarse": 100,
+        "refused": 0,
+        "nonconverged": 52,
+        "residual": 52,
+        "ledgerMismatch": 0,
+        "nnStrict": 100,
+        "nnCoarse": 100,
+        "constantOff": 62,
+        "constantOn": 38
+      },
+      "unseen": {
+        "n": 188,
+        "strict": 172,
+        "coarse": 184,
+        "refused": 0,
+        "nonconverged": 21,
+        "residual": 21,
+        "ledgerMismatch": 0,
+        "nnStrict": 158,
+        "nnCoarse": 174,
+        "constantOff": 118,
+        "constantOn": 70
+      },
+      "unseenOff": {
+        "n": 118,
+        "strict": 115,
+        "coarse": 115,
+        "refused": 0,
+        "nonconverged": 13,
+        "residual": 13,
+        "ledgerMismatch": 0,
+        "nnStrict": 107,
+        "nnCoarse": 107,
+        "constantOff": 118,
+        "constantOn": 0
+      },
+      "unseenOn": {
+        "n": 70,
+        "strict": 57,
+        "coarse": 69,
+        "refused": 0,
+        "nonconverged": 8,
+        "residual": 8,
+        "ledgerMismatch": 0,
+        "nnStrict": 51,
+        "nnCoarse": 67,
+        "constantOff": 0,
+        "constantOn": 70
+      },
+      "trainingAudit": {
+        "calls": 99,
+        "nonconverged": 2,
+        "ledgerMismatch": 0
+      },
+      "metricScopes": {
+        "all": {
+          "n": 288,
+          "strict": 272,
+          "coarse": 284,
+          "refused": 0,
+          "nonconverged": 73,
+          "residual": 73,
+          "ledgerMismatch": 0,
+          "nnStrict": 258,
+          "nnCoarse": 274,
+          "constantOff": 180,
+          "constantOn": 108,
+          "nonconvergedRate": 0.2534722222222222,
+          "anyOutputAbstentionRate": 0
+        },
+        "seen": {
+          "n": 100,
+          "strict": 100,
+          "coarse": 100,
+          "refused": 0,
+          "nonconverged": 52,
+          "residual": 52,
+          "ledgerMismatch": 0,
+          "nnStrict": 100,
+          "nnCoarse": 100,
+          "constantOff": 62,
+          "constantOn": 38,
+          "nonconvergedRate": 0.52,
+          "anyOutputAbstentionRate": 0
+        },
+        "unseen": {
+          "n": 188,
+          "strict": 172,
+          "coarse": 184,
+          "refused": 0,
+          "nonconverged": 21,
+          "residual": 21,
+          "ledgerMismatch": 0,
+          "nnStrict": 158,
+          "nnCoarse": 174,
+          "constantOff": 118,
+          "constantOn": 70,
+          "nonconvergedRate": 0.11170212765957446,
+          "anyOutputAbstentionRate": 0
+        },
+        "unseenOff": {
+          "n": 118,
+          "strict": 115,
+          "coarse": 115,
+          "refused": 0,
+          "nonconverged": 13,
+          "residual": 13,
+          "ledgerMismatch": 0,
+          "nnStrict": 107,
+          "nnCoarse": 107,
+          "constantOff": 118,
+          "constantOn": 0,
+          "nonconvergedRate": 0.11016949152542373,
+          "anyOutputAbstentionRate": 0
+        },
+        "unseenOn": {
+          "n": 70,
+          "strict": 57,
+          "coarse": 69,
+          "refused": 0,
+          "nonconverged": 8,
+          "residual": 8,
+          "ledgerMismatch": 0,
+          "nnStrict": 51,
+          "nnCoarse": 67,
+          "constantOff": 0,
+          "constantOn": 70,
+          "nonconvergedRate": 0.11428571428571428,
+          "anyOutputAbstentionRate": 0
+        }
+      },
+      "completeDiagnostics": {
+        "predictions": 387,
+        "nonconverged": 75,
+        "nonconvergedRate": 0.1937984496124031,
+        "anyOutputAbstained": 18,
+        "anyOutputAbstentionRate": 0.046511627906976744,
+        "scope": "All recorded training and grid-evaluation predictions"
+      },
+      "hypothesisFamily": "Independent literal circuit oracle; fixed grid or preselected off-grid sample.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    },
+    {
+      "file": "runs/review2/reviewer-b/phase-b-off-grid.json",
+      "n": 64,
+      "fine": 47,
+      "coarse": 50,
+      "refused": 0,
+      "nonconverged": 62,
+      "residual": 62,
+      "ledgerMismatch": 0,
+      "nnFine": 49,
+      "nnCoarse": 51,
+      "metricScopes": {
+        "all": {
+          "n": 64,
+          "fine": 47,
+          "coarse": 50,
+          "refused": 0,
+          "nonconverged": 62,
+          "residual": 62,
+          "ledgerMismatch": 0,
+          "nnFine": 49,
+          "nnCoarse": 51,
+          "nonconvergedRate": 0.96875,
+          "anyOutputAbstentionRate": 0
+        }
+      },
+      "completeDiagnostics": {
+        "predictions": 64,
+        "nonconverged": 62,
+        "nonconvergedRate": 0.96875,
+        "anyOutputAbstained": 0,
+        "anyOutputAbstentionRate": 0,
+        "scope": "Off-grid evaluation only; training is recorded in the grid report"
+      },
+      "hypothesisFamily": "Independent literal circuit oracle; fixed grid or preselected off-grid sample.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    },
+    {
+      "file": "runs/review2/reviewer-b/phase-b-seed1.json",
+      "seed": 1,
+      "experiments": 300,
+      "rules": 300,
+      "factors": [
+        "resistance",
+        "switchPos",
+        "temperature",
+        "voltage"
+      ],
+      "reason": "budget-exhausted",
+      "formations": 13,
+      "trainedMs": 318951.0694,
+      "totalMs": 1030528.0116000001,
+      "all": {
+        "n": 432,
+        "fine": 430,
+        "coarse": 432,
+        "refused": 0,
+        "nonconverged": 432,
+        "residual": 432,
+        "ledgerMismatch": 0,
+        "nnFine": 388,
+        "nnCoarse": 412
+      },
+      "seen": {
+        "n": 300,
+        "fine": 299,
+        "coarse": 300,
+        "refused": 0,
+        "nonconverged": 300,
+        "residual": 300,
+        "ledgerMismatch": 0,
+        "nnFine": 300,
+        "nnCoarse": 300
+      },
+      "unseen": {
+        "n": 132,
+        "fine": 131,
+        "coarse": 132,
+        "refused": 0,
+        "nonconverged": 132,
+        "residual": 132,
+        "ledgerMismatch": 0,
+        "nnFine": 88,
+        "nnCoarse": 112
+      },
+      "unseenOff": {
+        "n": 69,
+        "fine": 69,
+        "coarse": 69,
+        "refused": 0,
+        "nonconverged": 69,
+        "residual": 69,
+        "ledgerMismatch": 0,
+        "nnFine": 60,
+        "nnCoarse": 60
+      },
+      "unseenOn": {
+        "n": 63,
+        "fine": 62,
+        "coarse": 63,
+        "refused": 0,
+        "nonconverged": 63,
+        "residual": 63,
+        "ledgerMismatch": 0,
+        "nnFine": 28,
+        "nnCoarse": 52
+      },
+      "trainingAudit": {
+        "n": 299,
+        "nonconverged": 225,
+        "ledgerMismatch": 0
+      },
+      "metricScopes": {
+        "all": {
+          "n": 432,
+          "fine": 430,
+          "coarse": 432,
+          "refused": 0,
+          "nonconverged": 432,
+          "residual": 432,
+          "ledgerMismatch": 0,
+          "nnFine": 388,
+          "nnCoarse": 412,
+          "nonconvergedRate": 1,
+          "anyOutputAbstentionRate": 0
+        },
+        "seen": {
+          "n": 300,
+          "fine": 299,
+          "coarse": 300,
+          "refused": 0,
+          "nonconverged": 300,
+          "residual": 300,
+          "ledgerMismatch": 0,
+          "nnFine": 300,
+          "nnCoarse": 300,
+          "nonconvergedRate": 1,
+          "anyOutputAbstentionRate": 0
+        },
+        "unseen": {
+          "n": 132,
+          "fine": 131,
+          "coarse": 132,
+          "refused": 0,
+          "nonconverged": 132,
+          "residual": 132,
+          "ledgerMismatch": 0,
+          "nnFine": 88,
+          "nnCoarse": 112,
+          "nonconvergedRate": 1,
+          "anyOutputAbstentionRate": 0
+        },
+        "unseenOff": {
+          "n": 69,
+          "fine": 69,
+          "coarse": 69,
+          "refused": 0,
+          "nonconverged": 69,
+          "residual": 69,
+          "ledgerMismatch": 0,
+          "nnFine": 60,
+          "nnCoarse": 60,
+          "nonconvergedRate": 1,
+          "anyOutputAbstentionRate": 0
+        },
+        "unseenOn": {
+          "n": 63,
+          "fine": 62,
+          "coarse": 63,
+          "refused": 0,
+          "nonconverged": 63,
+          "residual": 63,
+          "ledgerMismatch": 0,
+          "nnFine": 28,
+          "nnCoarse": 52,
+          "nonconvergedRate": 1,
+          "anyOutputAbstentionRate": 0
+        },
+        "trainingAudit": {
+          "n": 299,
+          "nonconverged": 225,
+          "ledgerMismatch": 0,
+          "nonconvergedRate": 0.7525083612040134,
+          "anyOutputAbstentionRate": null
+        }
+      },
+      "completeDiagnostics": {
+        "predictions": 731,
+        "nonconverged": 657,
+        "nonconvergedRate": 0.8987688098495212,
+        "anyOutputAbstained": 19,
+        "anyOutputAbstentionRate": 0.025991792065663474,
+        "scope": "All recorded training and grid-evaluation predictions"
+      },
+      "hypothesisFamily": "Independent literal circuit oracle; fixed grid or preselected off-grid sample.",
+      "coverageRisk": "Heuristic stopping and marginal coverage do not certify joint coverage or complete factor discovery."
+    }
+  ],
+  "reproductionCommands": [
+    {
+      "name": "discrete",
+      "entry": "src/pop/explore/runner-explore.js",
+      "seeds": "1,2,3",
+      "args": [],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T13:40:03.579Z",
+      "finished": "2026-09-19T14:25:02.155Z",
+      "exitCode": 0,
+      "seconds": 2698.5744362,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    },
+    {
+      "name": "continuous",
+      "entry": "src/pop/explore/runner-explore-continuous.js",
+      "seeds": "1,2,3",
+      "args": [],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T13:40:05.779Z",
+      "finished": "2026-09-19T14:53:19.746Z",
+      "exitCode": 0,
+      "seconds": 4393.9642853000005,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    },
+    {
+      "name": "extension",
+      "entry": "src/pop/explore/runner-explore-ext.js",
+      "seeds": "1",
+      "args": [],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T13:40:09.846Z",
+      "finished": "2026-09-19T15:35:20.330Z",
+      "exitCode": 0,
+      "seconds": 6910.47978,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    },
+    {
+      "name": "pop",
+      "entry": "src/pop/runner-pop.js",
+      "seeds": "1",
+      "args": [],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T13:40:12.764Z",
+      "finished": "2026-09-19T13:43:56.545Z",
+      "exitCode": 0,
+      "seconds": 223.7783199,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    },
+    {
+      "name": "chem",
+      "entry": "src/topics/runner-chem-pop.js",
+      "seeds": "1",
+      "args": [],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T13:43:56.546Z",
+      "finished": "2026-09-19T13:46:45.799Z",
+      "exitCode": 0,
+      "seconds": 169.2523856,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    },
+    {
+      "name": "concept",
+      "entry": "src/pop/concept/runner-formation.js",
+      "seeds": "1",
+      "args": [],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T13:46:45.800Z",
+      "finished": "2026-09-19T13:46:57.943Z",
+      "exitCode": 0,
+      "seconds": 12.143282200000016,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    },
+    {
+      "name": "neural-attention",
+      "entry": "src/pop/attention/runner-neural-attention.js",
+      "seeds": "1",
+      "args": [],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T13:46:57.944Z",
+      "finished": "2026-09-19T13:47:19.827Z",
+      "exitCode": 0,
+      "seconds": 21.882726200000032,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    },
+    {
+      "name": "demo",
+      "entry": "src/demo.js",
+      "seeds": "1",
+      "args": [],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T13:47:19.828Z",
+      "finished": "2026-09-19T13:47:20.034Z",
+      "exitCode": 0,
+      "seconds": 0.2065806000000448,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    },
+    {
+      "name": "demo-seq",
+      "entry": "src/demo-sequence.js",
+      "seeds": "1",
+      "args": [],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T13:47:20.036Z",
+      "finished": "2026-09-19T13:47:20.234Z",
+      "exitCode": 0,
+      "seconds": 0.19826860000001034,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    },
+    {
+      "name": "independent-discrete-4",
+      "entry": "../review-artifacts/independent-experiments.mjs",
+      "seeds": "1",
+      "args": [
+        "discrete",
+        "4"
+      ],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T13:40:16.091Z",
+      "finished": "2026-09-19T13:56:25.247Z",
+      "exitCode": 0,
+      "seconds": 969.1529772999999,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    },
+    {
+      "name": "independent-continuous-4",
+      "entry": "../review-artifacts/independent-experiments.mjs",
+      "seeds": "1",
+      "args": [
+        "continuous",
+        "4"
+      ],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T13:56:25.248Z",
+      "finished": "2026-09-19T14:31:28.671Z",
+      "exitCode": 0,
+      "seconds": 2103.4223542,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    },
+    {
+      "name": "independent-continuous-5",
+      "entry": "../review-artifacts/independent-experiments.mjs",
+      "seeds": "1",
+      "args": [
+        "continuous",
+        "5",
+        "off-grid-only"
+      ],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T14:31:28.672Z",
+      "finished": "2026-09-19T14:40:39.036Z",
+      "exitCode": 0,
+      "seconds": 550.3643205,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    },
+    {
+      "name": "fresh-continuous-6",
+      "entry": "../review-artifacts/fresh-experiments.mjs",
+      "seeds": "1",
+      "args": [
+        "continuous",
+        "6"
+      ],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T13:40:19.278Z",
+      "finished": "2026-09-19T14:17:58.019Z",
+      "exitCode": 0,
+      "seconds": 2258.7384477,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    },
+    {
+      "name": "fresh-continuous-7",
+      "entry": "../review-artifacts/fresh-experiments.mjs",
+      "seeds": "1",
+      "args": [
+        "continuous",
+        "7",
+        "off-grid-only"
+      ],
+      "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+      "started": "2026-09-19T14:17:58.020Z",
+      "finished": "2026-09-19T14:28:51.619Z",
+      "exitCode": 0,
+      "seconds": 653.5996557,
+      "originalHardcodedCommitIsBaseline": true,
+      "actualSourceManifest": "runs/review2/source-manifest.json"
+    }
+  ],
+  "supplementaryCapacity": {
+    "started": "2026-09-19T14:58:45.0651116Z",
+    "freePhysicalKiB": 4112628,
+    "note": "Full C1/C2 retry after other model benchmarks and diagnostic repeats completed; extension remains running.",
+    "command": "node ../../dist/src/topics/runner-capacity.js",
+    "exitCode": 0,
+    "stdout": "runs/review2/capacity-full.log"
+  }
+}

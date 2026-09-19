@@ -1,0 +1,4 @@
+START fresh-continuous-6 2026-09-19T13:40:19.278Z
+{"name":"fresh-continuous-6","entry":"../review-artifacts/fresh-experiments.mjs","seeds":"1","args":["continuous","6"],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T13:40:19.278Z","finished":"2026-09-19T14:17:58.019Z","exitCode":0,"seconds":2258.7384477}
+START fresh-continuous-7 2026-09-19T14:17:58.020Z
+{"name":"fresh-continuous-7","entry":"../review-artifacts/fresh-experiments.mjs","seeds":"1","args":["continuous","7","off-grid-only"],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T14:17:58.020Z","finished":"2026-09-19T14:28:51.619Z","exitCode":0,"seconds":653.5996557}

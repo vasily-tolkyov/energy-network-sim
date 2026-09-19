@@ -1,0 +1,22 @@
+training 20 full
+training 40 full
+training 60 full
+training 80 full
+training 100 full
+training 120 full
+training 140 full
+training 160 full
+training 180 full
+training 200 full
+training 220 full
+training 240 full
+training 260 full
+training 280 full
+training 300 full
+training done 300 [ 'resistance', 'switchPos', 'temperature', 'voltage' ]
+scored 108
+scored 216
+scored 324
+scored 432
+{"seed":1,"experiments":300,"rules":300,"factors":["resistance","switchPos","temperature","voltage"],"reason":"budget-exhausted","formations":13,"trainedMs":318951.0694,"totalMs":1030528.0116000001,"all":{"n":432,"fine":430,"coarse":432,"refused":0,"nonconverged":432,"residual":432,"ledgerMismatch":0,"nnFine":388,"nnCoarse":412},"seen":{"n":300,"fine":299,"coarse":300,"refused":0,"nonconverged":300,"residual":300,"ledgerMismatch":0,"nnFine":300,"nnCoarse":300},"unseen":{"n":132,"fine":131,"coarse":132,"refused":0,"nonconverged":132,"residual":132,"ledgerMismatch":0,"nnFine":88,"nnCoarse":112},"unseenOff":{"n":69,"fine":69,"coarse":69,"refused":0,"nonconverged":69,"residual":69,"ledgerMismatch":0,"nnFine":60,"nnCoarse":60},"unseenOn":{"n":63,"fine":62,"coarse":63,"refused":0,"nonconverged":63,"residual":63,"ledgerMismatch":0,"nnFine":28,"nnCoarse":52},"trainingAudit":{"n":299,"nonconverged":225,"ledgerMismatch":0}}
+off-grid {"n":64,"fine":47,"coarse":50,"refused":0,"nonconverged":62,"residual":62,"ledgerMismatch":0,"nnFine":49,"nnCoarse":51}

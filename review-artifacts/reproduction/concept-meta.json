@@ -1,0 +1,11 @@
+{
+  "name": "concept",
+  "entry": "src/pop/concept/runner-formation.js",
+  "seeds": "1",
+  "args": [],
+  "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+  "started": "2026-09-19T13:46:45.800Z",
+  "finished": "2026-09-19T13:46:57.943Z",
+  "exitCode": 0,
+  "seconds": 12.143282200000016
+}

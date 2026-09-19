@@ -1,0 +1,28 @@
+────────────────────────────────────────────────────────────────
+神经化注意力（捕获判定 + 失配场 WTA 择焦）
+────────────────────────────────────────────────────────────────
+  t1 焦点 ∅ → A
+  t1 A 未知 → 写观察（核 无；forecast=N/A/not-predicted；capture=true/fixed-point；generation=N/A）
+  t1 B 未知 → 写观察（核 无；forecast=N/A/not-predicted；capture=true/fixed-point；generation=N/A）
+  t1 C 未知 → 写观察（核 无；forecast=N/A/not-predicted；capture=true/fixed-point；generation=N/A）
+  t2 焦点 ∅ → A
+  t8 A 未知 → 写观察（核 13；forecast=false/quiet-constraint；capture=true/fixed-point；generation=35）
+  t10 A 偏差 → 写观察（核 13；forecast=false/quiet-constraint；capture=true/fixed-point；generation=36）
+  t20 B 未知 → 写观察（核 无；forecast=false/quiet-constraint；capture=true/fixed-point；generation=37）
+  t21 焦点 A → B
+  t30 A 未知 → 写观察（核 无；forecast=false/quiet-constraint；capture=true/fixed-point；generation=38）
+  t31 焦点 B → A
+  t40 C 未知 → 写观察（核 无；forecast=false/quiet-constraint；capture=true/fixed-point；generation=39）
+  t41 焦点 A → C
+  t55 B 未知 → 写观察（核 无；forecast=false/quiet-constraint；capture=true/fixed-point；generation=40）
+  t56 焦点 C → B
+  门控学习后准确率曲线：t60:95%
+
+────────────────────────────────────────────────────────────────
+公式控制器基线（历史 AttentionController + 容差分类）
+────────────────────────────────────────────────────────────────
+  t1 焦点 → B
+  切换 5 次，抢占 5 次
+动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：{"predictions":91,"nonconverged":77,"anyOutputAbstained":0,"nonconvergedRate":0.8461538461538461,"anyOutputAbstentionRate":0,"terminationReasons":{"quiet-constraint":77,"fixed-point":14},"confidencePolicy":"converged-required"}
+
+日志已写入 runs/neural-attention-v1.log

@@ -1,0 +1,6 @@
+{
+  "started": "2026-09-19T14:58:45.0651116Z",
+  "freePhysicalKiB": 4112628,
+  "note": "Full C1/C2 retry after other model benchmarks and diagnostic repeats completed; extension remains running.",
+  "command": "node ../../dist/src/topics/runner-capacity.js"
+}

@@ -1,0 +1,9575 @@
+{
+  "summary": {
+    "mode": "discrete",
+    "seed": 4,
+    "experiments": 288,
+    "cost": 288,
+    "rules": 288,
+    "influential": [
+      "resistance",
+      "switch",
+      "temperature",
+      "voltage"
+    ],
+    "seconds": 166.6625856,
+    "phase": null,
+    "formation": null,
+    "allocatedCores": 288,
+    "registeredCores": 288,
+    "dynamics": {
+      "calls": 575,
+      "energyTraceMismatch": 0,
+      "nonFixedReturns": 477,
+      "maxTraceError": 2.842170943040401e-14,
+      "maxQuenchFlips": 1104
+    },
+    "elapsedSeconds": 505.12757799999997,
+    "partitions": {
+      "self-taught": {
+        "n": 288,
+        "model": {
+          "coarse": 288,
+          "strictFine": 288,
+          "officialFine": 288
+        },
+        "nearest": {
+          "coarse": 288,
+          "strictFine": 288,
+          "officialFine": 288
+        }
+      },
+      "all-grid": {
+        "n": 288,
+        "model": {
+          "coarse": 288,
+          "strictFine": 288,
+          "officialFine": 288
+        },
+        "nearest": {
+          "coarse": 288,
+          "strictFine": 288,
+          "officialFine": 288
+        }
+      },
+      "all-unseen-grid": {
+        "n": 0,
+        "model": {
+          "coarse": 0,
+          "strictFine": 0,
+          "officialFine": 0
+        },
+        "nearest": {
+          "coarse": 0,
+          "strictFine": 0,
+          "officialFine": 0
+        }
+      }
+    }
+  },
+  "results": [
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 0,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 0,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 0
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 1,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 1
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 2,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 0,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 1,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 2,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 0,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 2
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 1,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 0
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 1
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    },
+    {
+      "conditions": {
+        "switch": 1,
+        "voltage": 3,
+        "resistance": 3,
+        "temperature": 2,
+        "material": 2
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "kind": "self-taught",
+      "seen": true,
+      "pred": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "nn": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "modelScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      },
+      "nnScore": {
+        "coarse": true,
+        "strictFine": true,
+        "officialFine": true
+      }
+    }
+  ]
+}

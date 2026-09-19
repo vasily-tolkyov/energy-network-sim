@@ -1,0 +1,14 @@
+{
+  "name": "independent-discrete-4",
+  "entry": "../review-artifacts/independent-experiments.mjs",
+  "seeds": "1",
+  "args": [
+    "discrete",
+    "4"
+  ],
+  "commit": "e732f2b4ef46e0ac482480095a31cb5aa23ec6be",
+  "started": "2026-09-19T13:40:16.091Z",
+  "finished": "2026-09-19T13:56:25.247Z",
+  "exitCode": 0,
+  "seconds": 969.1529772999999
+}

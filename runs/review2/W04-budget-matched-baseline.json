@@ -1,0 +1,2647 @@
+{
+  "explorer": {
+    "id": "W04",
+    "name": "rare three-factor joint condition",
+    "seed": 11,
+    "experiments": 17,
+    "reason": "quorum-met",
+    "n": 64,
+    "correct": 63,
+    "refused": 0,
+    "nonconverged": 0,
+    "expectedFactors": [
+      "a",
+      "b",
+      "c"
+    ],
+    "foundFactors": [],
+    "positiveRecall": {
+      "n": 1,
+      "correct": 0
+    },
+    "ms": 1784.5069000000003,
+    "passesAccuracy": true,
+    "passesFactors": false
+  },
+  "baseline": {
+    "selection": "uniform without replacement, seed 11 fixed before scoring",
+    "budget": 17,
+    "correct": 63,
+    "n": 64,
+    "positiveRecall": {
+      "n": 1,
+      "correct": 0
+    },
+    "foundFactors": [],
+    "nonconverged": 0,
+    "anyOutputAbstained": 0,
+    "hypothesisFamily": "finite 4×4×4 grid; arbitrary conjunctions including rare isolated positives",
+    "coverageRisk": "quorum-met is heuristic; individual-dimension coverage does not certify joint coverage"
+  },
+  "training": [
+    {
+      "conditions": {
+        "a": 1,
+        "b": 2,
+        "c": 2
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 3,
+        "b": 3,
+        "c": 0
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 2,
+        "b": 1,
+        "c": 3
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 3,
+        "b": 2,
+        "c": 2
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 0,
+        "b": 0,
+        "c": 2
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 2,
+        "b": 2,
+        "c": 2
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 2,
+        "b": 1,
+        "c": 0
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 0,
+        "b": 2,
+        "c": 2
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 2,
+        "b": 3,
+        "c": 2
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 1,
+        "b": 3,
+        "c": 1
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 0,
+        "b": 1,
+        "c": 2
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 1,
+        "b": 1,
+        "c": 2
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 0,
+        "b": 3,
+        "c": 3
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 1,
+        "b": 0,
+        "c": 3
+      },
+      "outcomes": {
+        "y": 0
+      }
+    },
+    {
+      "conditions": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "outcomes": {
+        "y": 0
+      }
+    }
+  ],
+  "rows": [
+    {
+      "q": {
+        "a": 0,
+        "b": 0,
+        "c": 0
+      },
+      "truth": {
+        "y": 1
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        16,
+        17,
+        18,
+        19,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        72,
+        73,
+        74,
+        75
+      ],
+      "energy": -7.200000000000008,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 0,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        16,
+        17,
+        18,
+        19,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        84,
+        85,
+        86,
+        87
+      ],
+      "energy": -16.80000000000005,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 0,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        16,
+        17,
+        18,
+        19,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        72,
+        73,
+        74,
+        75
+      ],
+      "energy": -26.400000000000084,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 0,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        16,
+        17,
+        18,
+        19,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        116,
+        117,
+        118,
+        119
+      ],
+      "energy": -16.800000000000047,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 1,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        20,
+        21,
+        22,
+        23,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        64,
+        65,
+        66,
+        67
+      ],
+      "energy": -7.200000000000005,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 1,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        20,
+        21,
+        22,
+        23,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        84,
+        85,
+        86,
+        87
+      ],
+      "energy": -12.000000000000023,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 1,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        20,
+        21,
+        22,
+        23,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        72,
+        73,
+        74,
+        75
+      ],
+      "energy": -26.400000000000084,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 1,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        20,
+        21,
+        22,
+        23,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        104,
+        105,
+        106,
+        107
+      ],
+      "energy": -16.80000000000006,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 2,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        24,
+        25,
+        26,
+        27,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        112,
+        113,
+        114,
+        115
+      ],
+      "energy": -2.399999999999991,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 2,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        24,
+        25,
+        26,
+        27,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        84,
+        85,
+        86,
+        87
+      ],
+      "energy": -12.000000000000023,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 2,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        24,
+        25,
+        26,
+        27,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        88,
+        89,
+        90,
+        91
+      ],
+      "energy": -31.200000000000045,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 2,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        24,
+        25,
+        26,
+        27,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        112,
+        113,
+        114,
+        115
+      ],
+      "energy": -12.000000000000023,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 3,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        60,
+        61,
+        62,
+        63
+      ],
+      "energy": -16.800000000000047,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 3,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        28,
+        29,
+        30,
+        31,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        84,
+        85,
+        86,
+        87
+      ],
+      "energy": -31.200000000000045,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 3,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        28,
+        29,
+        30,
+        31,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        72,
+        73,
+        74,
+        75
+      ],
+      "energy": -26.40000000000008,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 3,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        0,
+        1,
+        2,
+        3,
+        28,
+        29,
+        30,
+        31,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        112,
+        113,
+        114,
+        115
+      ],
+      "energy": -26.400000000000084,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 0,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        116,
+        117,
+        118,
+        119
+      ],
+      "energy": -7.200000000000008,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 0,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        116,
+        117,
+        118,
+        119
+      ],
+      "energy": -16.80000000000006,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 0,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        56,
+        57,
+        58,
+        59
+      ],
+      "energy": -21.600000000000072,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 0,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        116,
+        117,
+        118,
+        119
+      ],
+      "energy": -21.600000000000076,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 1,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        20,
+        21,
+        22,
+        23,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        108,
+        109,
+        110,
+        111
+      ],
+      "energy": -12.000000000000021,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 1,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        20,
+        21,
+        22,
+        23,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        100,
+        101,
+        102,
+        103
+      ],
+      "energy": -12.000000000000023,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 1,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        20,
+        21,
+        22,
+        23,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        108,
+        109,
+        110,
+        111
+      ],
+      "energy": -31.200000000000045,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 1,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        20,
+        21,
+        22,
+        23,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        64,
+        65,
+        66,
+        67
+      ],
+      "energy": -16.800000000000047,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 2,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        24,
+        25,
+        26,
+        27,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        56,
+        57,
+        58,
+        59
+      ],
+      "energy": -7.200000000000008,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 2,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        24,
+        25,
+        26,
+        27,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        100,
+        101,
+        102,
+        103
+      ],
+      "energy": -12.000000000000023,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 2,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        24,
+        25,
+        26,
+        27,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        56,
+        57,
+        58,
+        59
+      ],
+      "energy": -31.200000000000045,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 2,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        24,
+        25,
+        26,
+        27,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        56,
+        57,
+        58,
+        59
+      ],
+      "energy": -12.000000000000023,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 3,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        60,
+        61,
+        62,
+        63
+      ],
+      "energy": -12.000000000000018,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 3,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        28,
+        29,
+        30,
+        31,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        100,
+        101,
+        102,
+        103
+      ],
+      "energy": -26.400000000000084,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 3,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        28,
+        29,
+        30,
+        31,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        56,
+        57,
+        58,
+        59
+      ],
+      "energy": -21.600000000000072,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 3,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        4,
+        5,
+        6,
+        7,
+        28,
+        29,
+        30,
+        31,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        100,
+        101,
+        102,
+        103
+      ],
+      "energy": -16.80000000000006,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 0,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        16,
+        17,
+        18,
+        19,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        76,
+        77,
+        78,
+        79
+      ],
+      "energy": -2.399999999999991,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 0,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        16,
+        17,
+        18,
+        19,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        96,
+        97,
+        98,
+        99
+      ],
+      "energy": -7.199999999999999,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 0,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        16,
+        17,
+        18,
+        19,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        72,
+        73,
+        74,
+        75
+      ],
+      "energy": -16.800000000000047,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 0,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        16,
+        17,
+        18,
+        19,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        116,
+        117,
+        118,
+        119
+      ],
+      "energy": -12.000000000000018,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 1,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        20,
+        21,
+        22,
+        23,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        80,
+        81,
+        82,
+        83
+      ],
+      "energy": -26.400000000000084,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 1,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        20,
+        21,
+        22,
+        23,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        64,
+        65,
+        66,
+        67
+      ],
+      "energy": -12.000000000000014,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 1,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        20,
+        21,
+        22,
+        23,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        92,
+        93,
+        94,
+        95
+      ],
+      "energy": -31.20000000000004,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 1,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        20,
+        21,
+        22,
+        23,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        80,
+        81,
+        82,
+        83
+      ],
+      "energy": -21.600000000000072,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 2,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        24,
+        25,
+        26,
+        27,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        80,
+        81,
+        82,
+        83
+      ],
+      "energy": -12.000000000000023,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 2,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        24,
+        25,
+        26,
+        27,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        64,
+        65,
+        66,
+        67
+      ],
+      "energy": -2.399999999999991,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 2,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        24,
+        25,
+        26,
+        27,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        76,
+        77,
+        78,
+        79
+      ],
+      "energy": -31.200000000000045,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 2,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        24,
+        25,
+        26,
+        27,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        64,
+        65,
+        66,
+        67
+      ],
+      "energy": -12.000000000000023,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 3,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        60,
+        61,
+        62,
+        63
+      ],
+      "energy": -16.800000000000047,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 3,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        28,
+        29,
+        30,
+        31,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        92,
+        93,
+        94,
+        95
+      ],
+      "energy": -16.80000000000004,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 3,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        28,
+        29,
+        30,
+        31,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        92,
+        93,
+        94,
+        95
+      ],
+      "energy": -26.400000000000084,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 3,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        8,
+        9,
+        10,
+        11,
+        28,
+        29,
+        30,
+        31,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        64,
+        65,
+        66,
+        67
+      ],
+      "energy": -16.80000000000005,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 0,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        60,
+        61,
+        62,
+        63
+      ],
+      "energy": -12.000000000000023,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 0,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        96,
+        97,
+        98,
+        99
+      ],
+      "energy": -21.600000000000076,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 0,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        120,
+        121,
+        122,
+        123
+      ],
+      "energy": -21.600000000000072,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 0,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        116,
+        117,
+        118,
+        119
+      ],
+      "energy": -12.000000000000018,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 1,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        20,
+        21,
+        22,
+        23,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        80,
+        81,
+        82,
+        83
+      ],
+      "energy": -16.800000000000047,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 1,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        20,
+        21,
+        22,
+        23,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        120,
+        121,
+        122,
+        123
+      ],
+      "energy": -12.000000000000023,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 1,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        20,
+        21,
+        22,
+        23,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        108,
+        109,
+        110,
+        111
+      ],
+      "energy": -26.400000000000073,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 1,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        20,
+        21,
+        22,
+        23,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        120,
+        121,
+        122,
+        123
+      ],
+      "energy": -12.000000000000021,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 2,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        24,
+        25,
+        26,
+        27,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        60,
+        61,
+        62,
+        63
+      ],
+      "energy": -12.000000000000023,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 2,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        24,
+        25,
+        26,
+        27,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        68,
+        69,
+        70,
+        71
+      ],
+      "energy": -12.000000000000023,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 2,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        24,
+        25,
+        26,
+        27,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        120,
+        121,
+        122,
+        123
+      ],
+      "energy": -26.400000000000084,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 2,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        24,
+        25,
+        26,
+        27,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        60,
+        61,
+        62,
+        63
+      ],
+      "energy": -2.399999999999991,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 3,
+        "c": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51,
+        60,
+        61,
+        62,
+        63
+      ],
+      "energy": -21.600000000000076,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 3,
+        "c": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        28,
+        29,
+        30,
+        31,
+        36,
+        37,
+        38,
+        39,
+        48,
+        49,
+        50,
+        51,
+        84,
+        85,
+        86,
+        87
+      ],
+      "energy": -21.600000000000055,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 3,
+        "c": 2
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        28,
+        29,
+        30,
+        31,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49,
+        50,
+        51,
+        68,
+        69,
+        70,
+        71
+      ],
+      "energy": -21.600000000000072,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    },
+    {
+      "q": {
+        "a": 3,
+        "b": 3,
+        "c": 3
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "activeNeurons": [
+        12,
+        13,
+        14,
+        15,
+        28,
+        29,
+        30,
+        31,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        60,
+        61,
+        62,
+        63
+      ],
+      "energy": -12.000000000000021,
+      "converged": true,
+      "terminationReason": "fixed-point"
+    }
+  ]
+}

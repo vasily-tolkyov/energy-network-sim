@@ -1,114 +1,73 @@
-# 第三方代码审查与功能测试启动说明
+# 第三方复审与复现指南
 
-> **2026-09-19 更新**：首份评审（f25fefe）已完成并修复，修复记录与重测数字见
-> `docs/EVALUATION-REVIEW-REMEDIATION.zh-CN.md`。本指南中关于 DI 记账、生命周期、
-> 容量、R2 窗口、点火强度、口径设计的已知缺陷均已修复并被回归测试锁定
-> （`test/review-regressions.test.ts`）。
+本轮基线为 `e732f2b4ef46e0ac482480095a31cb5aa23ec6be`。当前验收结论、测试数与完整实测表仅以 [第二轮修复记录](docs/REVIEW2-REMEDIATION.zh-CN.md) 为准；原指南的旧数字和已撤回契约保存在 [基线快照](docs/history/e732f2b-REVIEW-GUIDE.zh-CN.md)。
 
-本说明面向第一次接触本仓库的审查者。目标：在 1-2 小时内能够（a）独立跑通全部
-自动化测试与关键实机实验，（b）按路线图读懂核心代码，（c）对结果的可信度形成判断。
-
-## 1. 这是什么
-
-一个**二态能耗神经元网络**模拟器（TypeScript，无任何 AI 框架依赖）：神经元只有
-静息/激活两态，静息不耗能、激活耗能、共激活的连接变强（赫布）、连接越强模式能耗
-越低。全部"智能"——经验记忆、规则提取、预测、注意力、概念自形成、无教师自主
-科学探索——都从这几条能耗规律中涌现，**全程无大语言模型、无字典、无回归器**。
-最终形态是一个能在陌生场景里自己做控制变量实验、发现因果规则的系统。
-
-## 2. 环境要求
-
-- Node.js ≥ 24（`node -v` 确认）；npm；Windows/macOS/Linux 均可（开发环境为 Windows）。
-- 克隆后 `npm install`（只有 typescript + @types/node 两个 devDependency）。
-- 无 GPU、无网络、无外部服务需求。单核 CPU 即可，耗时见各实验标注。
-
-## 3. 第一步：构建 + 全部自动化测试（约 5-8 分钟）
+## 工具链与永久测试
 
 ```bash
-npm run verify   # = tsc 构建 + node --test 全部 95 项测试
+node --version           # >=24
+npm ci
+npm run verify           # tsc + node --test dist/test/*.test.js
+node --test dist/test/review2-*.test.js
+node dist/src/pop/runner-ablation.js
 ```
 
-预期：`pass 95 / fail 0`。测试断言按实测值锁定并留有注释说明余量（如"实测 68.8%，
-代价如实记录"），不是虚高阈值——审查时可对照注释判断测试的诚实性。
+新增测试包括证据优先级五序列、同编码/重叠支持区、联合捕获和快照、静息资格、R2 正反对称、非法输入/原子写入/生命周期、任一输出拒答、防御性拷贝、点火可行域与五个独立世界。原断言与撤回条目均在复验记录逐项解释，不能把旧脚本失败总数等同当前实现缺陷数。
 
-## 4. 功能测试地图（实机实验，按建议顺序）
+## 原样评审
 
-所有实验确定性可复现（固定种子），日志写入 `runs/`（会覆盖同名旧日志）。
-耗时为本机（普通桌面 CPU）实测，仅供数量级参考。
+评审甲的原始脚本和全局最优反例 fixture 位于仓库根 `review-artifacts/`：
 
-| 命令 | 展示的能力 | 时长 | 参考结果（runs/ 日志） |
-|---|---|---|---|
-| `npm run demo` | 十条基本要求：能耗极小化模式选择、势阱检测、标签读出 | <1 分钟 | demo 直接打印 |
-| `npm run demo:seq` | 势阱间有向通道、噪声推动的链式转移、分支互斥竞争 | <1 分钟 | 直接打印 |
-| `npm run exp:pop` | 预测核心：小球端到端 + 容量（taught 全 E 档 100%） | 15-30 分钟 | `pop-v1.log` |
-| `npm run exp:chem` | 独立第三主题（化学）：R2 排除干扰、析取门控自学 | 5-10 分钟 | `chem-pop-v1.log` |
-| `npm run exp:explore` | **无教师自主探索·离散**（阶段 A 验收） | 15-30 分钟 | `explore-lab-seed*.log` |
-| `npm run exp:explore-cont` | **无教师自主探索·连续，概念自形成**（阶段 B 验收） | 30-60 分钟 | `explore-cont-seed*.log` |
-| `npm run exp:explore-ext` | **概念更新**：量程扩展，冻结 vs 更新对照 | 20-30 分钟 | `explore-ext-*.log` |
-| `npm run exp:concept` | 连续输入概念自形成基准（含注意力门控学习） | 10-20 分钟 | `concept-formation-v1.log` |
-| `npm run exp:layers` / `proto` / `proto:plant` / `exp:attention` / `exp:capacity` / `exp:scale` | 历史里程碑（三层架构/单网原型/植物迁移/注意力移植/容量/大规模） | 各 5-30 分钟 | 对应 `runs/*.log` |
+```bash
+node --test review-artifacts/adversarial.test.mjs
+node --test review-artifacts/revision-tests.mjs
+node review-artifacts/run-group.mjs discrete
+node review-artifacts/run-group.mjs continuous
+node review-artifacts/run-group.mjs extension
+node review-artifacts/run-group.mjs supporting
+node review-artifacts/run-group.mjs independent
+node review-artifacts/run-group.mjs fresh
+```
 
-重点验收（自主探索三件套）的参考数字：
+先创建 `review-artifacts/reproduction/`。这些原脚本的元数据内有写死的基线 SHA；实际受测源码身份以本轮 `runs/review2/source-manifest.json` 为准，不能把旧字段当当前提交。
 
-- **阶段 A（离散电路）**：3 种子均值 79 次实验（穷举 288 的 27%）、R2 找出全部
-  4 个真实因素且干扰项全缺席、heldout 粗粒度 ≥93%、总细粒度 88.3%/粗粒度 93.8%。
-- **阶段 B（连续电路，概念自形成）**：3 种子均值 117 次实验（27%）、因素 4/4×3、
-  门控阈值 0.5 与二值结果自己结晶为概念、gate-off 97.6-100%、总细粒度 84.2%/粗 97.5%。
-- **量程扩展（概念更新）**：更新模式在世界变大后结晶出 3.94 高压概念、归因证据
-  持续增长；冻结对照概念层停滞但借感受野重叠不致盲（边界如实记录）。
+评审乙按其原路径要求，建立隔离目录，将完整 checkout 命名为 `repo`，与原始 `tests/`、`prior-tests/`、`results/` 平级。原脚本副本在 `review-artifacts/reviewer-b/`；可使用目录联接而不复制当前工作区。`before-after-regression.mjs` 还需要同级 `baseline-f25fefe` 的已构建旧版。分别运行本轮报告列出的 revision、before-after、nearby、new-worlds/verdict、phase-a/phase-b 以及 prior-tests；完整 stdout、JSON 和源码哈希保留在本轮证据目录。
 
-运行子集：`SEEDS=1 node dist/src/pop/explore/runner-explore.js`（先 `npm run build`）。
+原 N28 会在已纠错的同一模型上继续断言旧错误预测。永久用例改为每种子独立模型，并增加反馈后读出正确值的断言；原脚本仍原样执行与保留失败，不冒写 29/29。另存 `review2-regressions-isolated.test.mjs`，只将 N28 fixture 移入每个种子并增加纠错后正确性断言；修正框架版实测 29/29，和原版分开记账。
 
-## 5. 代码审查路线图
+在该隔离目录逐项执行（不要把 `before-after` 的打印输出当作它没有提供的断言通过数）：
 
-建议阅读顺序（每步给出"该盯什么"）：
+```bash
+node --test tests/review2-regressions.test.mjs
+node --test tests/review2-regressions-isolated.test.mjs
+node tests/before-after-regression.mjs
+node tests/continuous-nearby-world.mjs
+node tests/new-worlds.mjs
+node --test tests/new-worlds-verdict.test.mjs
+node tests/phase-a-independent.mjs
+node tests/phase-b-independent.mjs
+node --test prior-tests/*.test.mjs
+```
 
-1. **`src/network.ts`（引擎，约 500 行）**：能量函数 `E(s)=(Ea+Em)Σs−ΣW·ss+ΣΓ·ss`、
-   `settle`（贪心翻转，ΔE<0 才执行，W 对称保证收敛，类比连通器）、`settleAnnealed`
-   （局部退火+最优回退+有界淬火）。盯住：四种边（对称 W / 有向 D / 对称抑制 Γ /
-   **有向抑制 DI——非平衡驱动场，只进翻转规律不进 energy()，前馈抑制只能这样存在**）。
-2. **`src/hebbian.ts`（20 行）**：赫布学习对集合内所有两两对写边——正因为它简单，
-   调用点的集合构成就成为本仓库最关键的纪律（见下）。
-3. **`src/pop/popmemory.ts`（预测核心 R3）**：群体编码 + 规则核 + 侧重否决 +
-   前馈抑制池 WTA。**关键不变量：条件↔核、核↔结果按通道分两段绑定，绝不允许
-   条件∪核∪结果同一次绑定（直连/接力泄漏，有实机事故记录在案）；新核必须
-   "持证上岗"（侧重加分+替代档否决）。**
-4. **`src/pop/r2pop.ts`（R2 神经化差分）**：全模式重合场分层，R2A/R2B 同一次动力学
-   双侧读出，双源 AND 判影响因素。
-5. **`src/pop/concept/`（概念自形成）**：`sensory.ts`（感受野，无分档承诺）→
-   `formation.ts`（共现成阱聚类）→ `field-memory.ts`（场级规则，星型绑定防幻影块、
-   抑制池）。注意 `learnFromObservation` 现在会登记新核——这是空白起步学习的命脉。
-6. **`src/pop/explore/`（自主探索，最新）**：`planner.ts`（控制变量法躯体化为
-   动作空间：候选干预=Hamming-1 前沿、自动成对）+ `explorer.ts`/`explorer-continuous.ts`
-   （无知场=纯边权覆盖读出、意外场=偏差邻域增压衰减、WTA 择选干预复用
-   `attention/neural-focus.ts`）。盯住：语料充分性门（每维≥2 观察值才形成概念）、
-   概念更新触发（覆盖缺口/周期刷新 → 全量重放到**全新** ConceptFormation）。
-7. **`src/pop/attention/`**：捕获检验三态（符合/偏差/未知，势阱归属无评分公式）、
-   失配场（纯边权覆盖差）、WTA 择焦、门控观察学习（观察 0.6 > 自写猜测 0.4）。
+旧版源码需在同一 Node 环境执行 `npm ci && npm run build`。评审甲 R19 老版对照另按原脚本路径提供同级 `energy-network-sim-f25fefe`，完整源码可用 `git worktree add` 从 `f25fefe` 建立。
 
-旧目录 `src/prototype/`、`src/layers/` 是**冻结的历史基线**（文档已声明其简化：
-无核架构、直连设计、预置 Γ），用于对照，不是当前机制。
+甲的 `independent-experiments.mjs` 原版缺少正式收敛计数。并排的 `independent-diagnostics.mjs` 仅改变落盘前缀；用 `node --import ./scripts/review2-diagnostics-hook.mjs review-artifacts/independent-diagnostics.mjs continuous 4` 补记退出时的只读计数，环境变量 `REVIEW_DIAGNOSTICS_PATH` 指定 JSON 路径。同样运行 discrete 4、continuous 5 off-grid-only。汇总器断言补跑的全部逐条预测与原样运行完全一致，再合并动力学指标；原样文件不覆盖。
 
-## 6. 如实声明（审查结果可信度时请先看这里）
+## 判读原则
 
-- 教师侧地面真理只用于课程生成/实验台应答/评分，**不进学习核**；
-- 不声称复现任何生物神经组织的材料细节、不声称细粒度连续插值已达标
-  （未见区域 ±1 档是最近匹配的固有边界，人类同款）；
-- 全部"发现的能力"都有对应 `runs/*.log` 实机日志与 `docs/EVALUATION-*.zh-CN.md`
-  评估文档（含失败样例、消融对照、过程中修复的缺陷记录——包括多次崩盘事故）；
-- 测试阈值按实测值锁定并留有余量，重跑数值在 ±2 个百分点内波动属正常。
+1. 能量账本只检验保守项；DI 不能混入 energy。静息可行域下返回答案不等于无约束固定点。
+2. within-envelope 进入置信连续验证必须收敛；评估答案正确率与动力学质量分开。
+3. 覆盖分区是已观察、未观察灭灯、未观察亮灯，后两者并集必须覆盖全部未观察输入；n=0 为 N/A。
+4. `quorum-met` 是启发式停止。标准报告包含假设族、联合覆盖风险与稀有阳性召回；W04 不能用改阈值或专用探针消除。
+5. 原型无 LLM/回归器，不等于无工程先验；编码、动作网格、配对、竞争电路和读出都是具体设计。
+6. 多个实验可能并行，耗时只用于复现诊断，不作为隔离性能或能效证据。
 
-## 7. 已知限制（最新的，评估文档有全表）
+汇总已有输出（不重新学习或改分数）：
 
-- 探索是**单步**干预选择，多步实验规划（含动作的规则+链式模拟）未实现；
-- 概念只在自己的实验史上形成，候选实验值来自分位网格（方法先验躯体化）；
-- 单次退火读出在千级神经元下约 0.2-2 秒（工程性能，非机制问题）；
-- `runs/` 与 `debug-*.mjs` 是实验日志与一次性诊断脚本，非交付代码。
+```bash
+node scripts/review2-source-manifest.mjs
+node scripts/normalize-review2-logs.mjs
+node scripts/summarize-review2.mjs
+```
 
-## 8. 希望得到的反馈
-
-- 代码层：关键不变量（第 5 节粗体处）是否有被违反的路径；能量/收敛论证是否有漏洞。
-- 结果层：参考数字是否可复现；消融对照是否支持结论；评估文档的"未声称的事"
-  是否有越界声明。
-- 设计层：方法先验躯体化（动作空间结构承载控制变量法）的边界是否诚实、
-  是否有隐藏的教师信息泄漏进学习核。
+`runs/review2/summary.json` 为结构化指标索引；汇总器要求 14 个分组条目全部退出 0、冻结日志与完整容量复跑存在，防止把中间状态当完成。原始 stdout 与派生展示之间的变化由 log-rendering-provenance.json 逐文件记录。求解器纯实现优化可用 `node scripts/check-solver-equivalence.mjs <旧 checkout 的 dist/src/network.js>` 重做完整返回值严格比较。早期以 .tap 命名的部分阶段输出实际为 Node spec 格式；本轮原评审和 66 项定向集均明确采用 TAP，完整 verify 保留实际默认日志格式。

@@ -1,0 +1,136 @@
+{
+  "world": "static y=x; nearby but legal intervention values",
+  "experiments": 2,
+  "reason": "frontier-exhausted",
+  "phase": "corpus",
+  "training": [
+    {
+      "index": 0,
+      "phase": "corpus",
+      "conditions": {
+        "x": 0.201
+      },
+      "predictedLit": null,
+      "observed": {
+        "y": 0.201
+      },
+      "converged": null,
+      "terminationReason": "not-predicted",
+      "anyOutputAbstained": true,
+      "classification": "unknown-change",
+      "drive": 2,
+      "candidateCount": 0,
+      "rulesFormed": 1
+    },
+    {
+      "index": 1,
+      "phase": "corpus",
+      "conditions": {
+        "x": 0.2
+      },
+      "predictedLit": null,
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 0.2
+      },
+      "classification": "within-envelope",
+      "drive": 0.4,
+      "candidateCount": 1,
+      "rulesFormed": 1
+    }
+  ],
+  "rows": [
+    {
+      "x": 0.2,
+      "truth": 0.2,
+      "seed": 1,
+      "values": {
+        "y": 0.2005
+      },
+      "converged": true
+    },
+    {
+      "x": 0.2,
+      "truth": 0.2,
+      "seed": 2,
+      "values": {
+        "y": 0.2005
+      },
+      "converged": true
+    },
+    {
+      "x": 0.2,
+      "truth": 0.2,
+      "seed": 3,
+      "values": {
+        "y": 0.2005
+      },
+      "converged": true
+    },
+    {
+      "x": 0.2,
+      "truth": 0.2,
+      "seed": 4,
+      "values": {
+        "y": 0.2005
+      },
+      "converged": true
+    },
+    {
+      "x": 0.2,
+      "truth": 0.2,
+      "seed": 5,
+      "values": {
+        "y": 0.2005
+      },
+      "converged": true
+    },
+    {
+      "x": 0.201,
+      "truth": 0.201,
+      "seed": 1,
+      "values": {
+        "y": 0.2005
+      },
+      "converged": true
+    },
+    {
+      "x": 0.201,
+      "truth": 0.201,
+      "seed": 2,
+      "values": {
+        "y": 0.2005
+      },
+      "converged": true
+    },
+    {
+      "x": 0.201,
+      "truth": 0.201,
+      "seed": 3,
+      "values": {
+        "y": 0.2005
+      },
+      "converged": true
+    },
+    {
+      "x": 0.201,
+      "truth": 0.201,
+      "seed": 4,
+      "values": {
+        "y": 0.2005
+      },
+      "converged": true
+    },
+    {
+      "x": 0.201,
+      "truth": 0.201,
+      "seed": 5,
+      "values": {
+        "y": 0.2005
+      },
+      "converged": true
+    }
+  ]
+}

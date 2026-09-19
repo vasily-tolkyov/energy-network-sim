@@ -1,3 +1,5 @@
+> 历史评估：以下内容来自 `e732f2b4ef46e0ac482480095a31cb5aa23ec6be`，数字与契约不代表当前实现。当前实测见 [第二轮修复记录](REVIEW2-REMEDIATION.zh-CN.md)。
+
 # 自主探索验收（阶段 A）：无教师的陌生场景规则发现
 
 日期：2026-09-18。代码：`src/pop/explore/`（planner + explorer）+ `src/topics/lab-world.ts`，

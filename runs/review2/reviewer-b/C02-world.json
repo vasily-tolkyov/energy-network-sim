@@ -1,0 +1,152 @@
+{
+  "id": "C02",
+  "name": "identity; one causal actuator",
+  "learnRepeats": 2,
+  "gridSize": 2,
+  "experiments": 2,
+  "rules": 2,
+  "factors": [
+    "x"
+  ],
+  "expectedFactors": [
+    "x"
+  ],
+  "correct": 10,
+  "total": 10,
+  "accuracy": 1,
+  "elapsedMs": 229.80450000000002,
+  "log": [
+    {
+      "index": 0,
+      "conditions": {
+        "x": 1
+      },
+      "predicted": {},
+      "converged": null,
+      "terminationReason": "not-predicted",
+      "anyOutputAbstained": true,
+      "observed": {
+        "y": 1
+      },
+      "classification": "unknown-change",
+      "drive": 2,
+      "candidateCount": 0,
+      "rulesFormed": 1,
+      "influentialSoFar": []
+    },
+    {
+      "index": 1,
+      "conditions": {
+        "x": 0
+      },
+      "predicted": {
+        "y": null
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": true,
+      "observed": {
+        "y": 0
+      },
+      "classification": "unknown-change",
+      "drive": 2,
+      "candidateCount": 1,
+      "rulesFormed": 2,
+      "influentialSoFar": [
+        "x"
+      ]
+    }
+  ],
+  "predictions": [
+    {
+      "conditions": {
+        "x": 0
+      },
+      "seed": 1,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0
+      },
+      "seed": 2,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0
+      },
+      "seed": 3,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0
+      },
+      "seed": 4,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 0
+      },
+      "seed": 5,
+      "truth": 0,
+      "predicted": 0,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1
+      },
+      "seed": 1,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1
+      },
+      "seed": 2,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1
+      },
+      "seed": 3,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1
+      },
+      "seed": 4,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    },
+    {
+      "conditions": {
+        "x": 1
+      },
+      "seed": 5,
+      "truth": 1,
+      "predicted": 1,
+      "correct": true
+    }
+  ]
+}

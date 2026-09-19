@@ -1,0 +1,2064 @@
+{
+  "seed": 20260919,
+  "summary": {
+    "n": 64,
+    "fine": 47,
+    "coarse": 50,
+    "refused": 0,
+    "nonconverged": 62,
+    "residual": 62,
+    "ledgerMismatch": 0,
+    "nnFine": 49,
+    "nnCoarse": 51
+  },
+  "rows": [
+    {
+      "q": {
+        "switchPos": 0.843679737765342,
+        "voltage": 1.1723211316857487,
+        "resistance": 0.2734612966887653,
+        "temperature": 1.7282733176834881,
+        "material": 0.05893232440575957
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -486.5362749654067,
+        "traceEnd": -486.5362749654067,
+        "energyError": 0,
+        "converged": false,
+        "residual": 63,
+        "reason": "quiet-constraint",
+        "flipCount": 1179
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.4530746806412935,
+        "voltage": 1.1434627056587487,
+        "resistance": 2.1404151732567698,
+        "temperature": 0.007944963406771421,
+        "material": 0.9298323448747396
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 0.9375
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": false,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -406.72683647807156,
+        "traceEnd": -406.72683647807156,
+        "energyError": 0,
+        "converged": false,
+        "residual": 39,
+        "reason": "quiet-constraint",
+        "flipCount": 1222
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.8842865312471986,
+        "voltage": 1.1899252489674836,
+        "resistance": 0.6704643750563264,
+        "temperature": 1.4957712744362652,
+        "material": 1.5250221309252083
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2.7324439171352424
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -386.1457631898674,
+        "traceEnd": -386.1457631898674,
+        "energyError": 0,
+        "converged": false,
+        "residual": 111,
+        "reason": "quiet-constraint",
+        "flipCount": 1309
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.905702535295859,
+        "voltage": 1.1580452432390302,
+        "resistance": 1.6658444898203015,
+        "temperature": 0.8936916030943394,
+        "material": 1.1617761817760766
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1.6450189882307313
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 1.575
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -409.09725333772656,
+        "traceEnd": -409.09725333772656,
+        "energyError": 0,
+        "converged": false,
+        "residual": 99,
+        "reason": "quiet-constraint",
+        "flipCount": 1355
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.24955057306215167,
+        "voltage": 1.7140374728478491,
+        "resistance": 2.825395579682663,
+        "temperature": 1.6051911562681198,
+        "material": 1.5849070381373167
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -158.01120589465975,
+        "traceEnd": -158.01120589465975,
+        "energyError": 0,
+        "converged": false,
+        "residual": 7,
+        "reason": "quiet-constraint",
+        "flipCount": 1337
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.03728437656536698,
+        "voltage": 2.5137558330316097,
+        "resistance": 0.22513100341893733,
+        "temperature": 1.0847896770574152,
+        "material": 1.410571769811213
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -213.5742377788263,
+        "traceEnd": -213.5742377788263,
+        "energyError": 0,
+        "converged": false,
+        "residual": 15,
+        "reason": "quiet-constraint",
+        "flipCount": 1269
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.9963536781724542,
+        "voltage": 0.9746532628778368,
+        "resistance": 0.07987008104100823,
+        "temperature": 0.7730779745616019,
+        "material": 1.5741480379365385
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": false,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -231.8163758889801,
+        "traceEnd": -231.8163758889801,
+        "energyError": 0,
+        "converged": false,
+        "residual": 23,
+        "reason": "quiet-constraint",
+        "flipCount": 1209
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.19813343766145408,
+        "voltage": 2.208012080518529,
+        "resistance": 2.4805788800586015,
+        "temperature": 0.045701267663389444,
+        "material": 0.562122795265168
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -228.76564470762173,
+        "traceEnd": -228.76564470762173,
+        "energyError": 0,
+        "converged": false,
+        "residual": 91,
+        "reason": "quiet-constraint",
+        "flipCount": 1315
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.407591299386695,
+        "voltage": 1.6002526385709643,
+        "resistance": 2.830743215745315,
+        "temperature": 0.8152512814849615,
+        "material": 0.35501252487301826
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 0.8625
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": false,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -206.79240667539318,
+        "traceEnd": -206.79240667539318,
+        "energyError": 0,
+        "converged": false,
+        "residual": 7,
+        "reason": "quiet-constraint",
+        "flipCount": 1300
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.7740658645052463,
+        "voltage": 2.0235865821596235,
+        "resistance": 0.6722512361593544,
+        "temperature": 0.837619652505964,
+        "material": 0.3857778003439307
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -266.8013127300601,
+        "traceEnd": -266.8013127300601,
+        "energyError": 0,
+        "converged": false,
+        "residual": 55,
+        "reason": "quiet-constraint",
+        "flipCount": 1263
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.52463368489407,
+        "voltage": 2.5949978011194617,
+        "resistance": 0.7017145100980997,
+        "temperature": 0.6277824039570987,
+        "material": 1.7187585453502834
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -220.67135634328136,
+        "traceEnd": -220.67135634328136,
+        "energyError": 0,
+        "converged": false,
+        "residual": 51,
+        "reason": "quiet-constraint",
+        "flipCount": 1231
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.4934437097981572,
+        "voltage": 1.2191524836234748,
+        "resistance": 0.954745857976377,
+        "temperature": 0.5004190187901258,
+        "material": 1.9869567579589784
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 1.6125
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": false,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -399.3410219790129,
+        "traceEnd": -399.3410219790129,
+        "energyError": 0,
+        "converged": false,
+        "residual": 63,
+        "reason": "quiet-constraint",
+        "flipCount": 1234
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.608792191836983,
+        "voltage": 2.9647843732964247,
+        "resistance": 1.6206303297076374,
+        "temperature": 0.2270474499091506,
+        "material": 1.594901846256107
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -226.78998003880565,
+        "traceEnd": -226.78998003880565,
+        "energyError": 0,
+        "converged": false,
+        "residual": 15,
+        "reason": "quiet-constraint",
+        "flipCount": 1209
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.550525585655123,
+        "voltage": 0.684673547744751,
+        "resistance": 1.200678719440475,
+        "temperature": 1.6474610739387572,
+        "material": 0.7562547186389565
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -314.3278781201654,
+        "traceEnd": -314.3278781201654,
+        "energyError": 0,
+        "converged": false,
+        "residual": 11,
+        "reason": "quiet-constraint",
+        "flipCount": 1215
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.08518462581560016,
+        "voltage": 1.9715305992867798,
+        "resistance": 2.229503297014162,
+        "temperature": 0.8789793569594622,
+        "material": 0.9424150506965816
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -465.7139085684154,
+        "traceEnd": -465.7139085684154,
+        "energyError": 0,
+        "converged": false,
+        "residual": 51,
+        "reason": "quiet-constraint",
+        "flipCount": 1335
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.2787581905722618,
+        "voltage": 1.189838144928217,
+        "resistance": 0.8610318079590797,
+        "temperature": 0.6201938060112298,
+        "material": 1.9617908243089914
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 1.6125
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -130.58576342600358,
+        "traceEnd": -130.58576342600358,
+        "energyError": 0,
+        "converged": false,
+        "residual": 31,
+        "reason": "quiet-constraint",
+        "flipCount": 1436
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.5563816139474511,
+        "voltage": 0.7417329896707088,
+        "resistance": 2.2598236589692533,
+        "temperature": 0.4045691192150116,
+        "material": 1.462296116631478
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 0.9375
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": false,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -230.56139306362124,
+        "traceEnd": -230.56139306362124,
+        "energyError": 0,
+        "converged": false,
+        "residual": 7,
+        "reason": "quiet-constraint",
+        "flipCount": 1268
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.14438806171528995,
+        "voltage": 1.4190830374136567,
+        "resistance": 0.4129397361539304,
+        "temperature": 1.1880649756640196,
+        "material": 1.603942266665399
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -301.194840273233,
+        "traceEnd": -301.194840273233,
+        "energyError": 0,
+        "converged": false,
+        "residual": 51,
+        "reason": "quiet-constraint",
+        "flipCount": 1275
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.28039881866425276,
+        "voltage": 0.14078360446728766,
+        "resistance": 2.7888237952720374,
+        "temperature": 1.9704964715056121,
+        "material": 0.23896863171830773
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -183.46032349919804,
+        "traceEnd": -183.46032349919804,
+        "energyError": 0,
+        "converged": false,
+        "residual": 35,
+        "reason": "quiet-constraint",
+        "flipCount": 1277
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.9351058041211218,
+        "voltage": 2.2921792168635875,
+        "resistance": 1.3848370537161827,
+        "temperature": 0.6131721814163029,
+        "material": 0.561715648509562
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -289.69474752955705,
+        "traceEnd": -289.69474752955705,
+        "energyError": 0,
+        "converged": false,
+        "residual": 63,
+        "reason": "quiet-constraint",
+        "flipCount": 1243
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.9237831910140812,
+        "voltage": 1.729439529357478,
+        "resistance": 0.015386614948511124,
+        "temperature": 0.7634228938259184,
+        "material": 0.5040922649204731
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -231.16925865536413,
+        "traceEnd": -231.16925865536413,
+        "energyError": 0,
+        "converged": false,
+        "residual": 63,
+        "reason": "quiet-constraint",
+        "flipCount": 1141
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.21884365170262754,
+        "voltage": 2.2248798350337893,
+        "resistance": 1.183185197878629,
+        "temperature": 1.2619977197609842,
+        "material": 0.10479595605283976
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -260.27309871955634,
+        "traceEnd": -260.27309871955634,
+        "energyError": 0,
+        "converged": false,
+        "residual": 19,
+        "reason": "quiet-constraint",
+        "flipCount": 1221
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.8686041731853038,
+        "voltage": 1.4114843560382724,
+        "resistance": 0.13928272761404514,
+        "temperature": 0.00583134638145566,
+        "material": 1.5226931092329323
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2.6628090725280344
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.325
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -308.1064310178591,
+        "traceEnd": -308.1064310178591,
+        "energyError": 0,
+        "converged": false,
+        "residual": 63,
+        "reason": "quiet-constraint",
+        "flipCount": 1211
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.36621631612069905,
+        "voltage": 0.2873899550177157,
+        "resistance": 2.22323305089958,
+        "temperature": 1.6711327959783375,
+        "material": 1.544313131365925
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -369.46734284432534,
+        "traceEnd": -369.46734284432534,
+        "energyError": 0,
+        "converged": false,
+        "residual": 51,
+        "reason": "quiet-constraint",
+        "flipCount": 1301
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.3742849661502987,
+        "voltage": 2.6399978294502944,
+        "resistance": 0.29963373485952616,
+        "temperature": 0.9937380328774452,
+        "material": 1.3470834074541926
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": false,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -210.0391682600728,
+        "traceEnd": -210.0391682600728,
+        "energyError": 0,
+        "converged": false,
+        "residual": 3,
+        "reason": "quiet-constraint",
+        "flipCount": 1241
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.8898579990491271,
+        "voltage": 2.2707675949204713,
+        "resistance": 0.3421732352580875,
+        "temperature": 0.3973383395932615,
+        "material": 1.9529276108369231
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -439.84536175140715,
+        "traceEnd": -439.84536175140715,
+        "energyError": 0,
+        "converged": false,
+        "residual": 47,
+        "reason": "quiet-constraint",
+        "flipCount": 1285
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.26374692912213504,
+        "voltage": 0.11044572782702744,
+        "resistance": 2.4883294994942844,
+        "temperature": 0.41902330378070474,
+        "material": 0.44812179496511817
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -154.58018173690166,
+        "traceEnd": -154.58018173690166,
+        "energyError": 0,
+        "converged": false,
+        "residual": 23,
+        "reason": "quiet-constraint",
+        "flipCount": 1429
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.08284932794049382,
+        "voltage": 1.5648652743548155,
+        "resistance": 2.4263206177856773,
+        "temperature": 1.3732639108784497,
+        "material": 0.4140914175659418
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -223.3866602297125,
+        "traceEnd": -223.3866602297125,
+        "energyError": 0,
+        "converged": false,
+        "residual": 75,
+        "reason": "quiet-constraint",
+        "flipCount": 1431
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.6806827578693628,
+        "voltage": 1.9001642174553126,
+        "resistance": 1.935492197982967,
+        "temperature": 1.3070117626339197,
+        "material": 1.617500675842166
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2.5770920046488754
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.3625
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -141.2796617328209,
+        "traceEnd": -141.2796617328209,
+        "energyError": 0,
+        "converged": false,
+        "residual": 15,
+        "reason": "quiet-constraint",
+        "flipCount": 1325
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.7838106551207602,
+        "voltage": 1.6200978001579642,
+        "resistance": 1.2874139759223908,
+        "temperature": 0.9925980507396162,
+        "material": 1.58779236394912
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2.5558607936254703
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -240.12868586498843,
+        "traceEnd": -240.12868586498843,
+        "energyError": 0,
+        "converged": false,
+        "residual": 15,
+        "reason": "quiet-constraint",
+        "flipCount": 1287
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.40434936829842627,
+        "voltage": 1.9038942754268646,
+        "resistance": 1.233613665914163,
+        "temperature": 1.791894790250808,
+        "material": 0.39055298268795013
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": false,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -342.5178746802631,
+        "traceEnd": -342.5178746802631,
+        "energyError": 0,
+        "converged": false,
+        "residual": 23,
+        "reason": "quiet-constraint",
+        "flipCount": 1179
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.5607061325572431,
+        "voltage": 1.5247235402930528,
+        "resistance": 1.6510801550466567,
+        "temperature": 0.0709595032967627,
+        "material": 1.058883038815111
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1.7030740607297048
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 0.9375
+      },
+      "coarse": true,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -235.7455983985625,
+        "traceEnd": -235.7455983985625,
+        "energyError": 0,
+        "converged": false,
+        "residual": 31,
+        "reason": "quiet-constraint",
+        "flipCount": 1260
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.5906454760115594,
+        "voltage": 1.3687643478624523,
+        "resistance": 2.750057382741943,
+        "temperature": 1.2858704612590373,
+        "material": 0.927391666918993
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 1.2913476284011267
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 0.8625
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -257.4076425156825,
+        "traceEnd": -257.4076425156825,
+        "energyError": 0,
+        "converged": false,
+        "residual": 23,
+        "reason": "quiet-constraint",
+        "flipCount": 1292
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.3089041307102889,
+        "voltage": 2.338143023662269,
+        "resistance": 0.6988051319494843,
+        "temperature": 1.5174941564910114,
+        "material": 1.2735246713273227
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": false,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -85.68525179130192,
+        "traceEnd": -85.68525179130192,
+        "energyError": 0,
+        "converged": false,
+        "residual": 7,
+        "reason": "quiet-constraint",
+        "flipCount": 1275
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.5003715069033206,
+        "voltage": 1.9176503161434084,
+        "resistance": 1.9250957595650107,
+        "temperature": 0.6980079659260809,
+        "material": 0.777518532704562
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2.302245058468543
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.3625
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -343.27743464951004,
+        "traceEnd": -343.27743464951004,
+        "energyError": 0,
+        "converged": false,
+        "residual": 79,
+        "reason": "quiet-constraint",
+        "flipCount": 1316
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.26160921389237046,
+        "voltage": 2.634478352498263,
+        "resistance": 1.3747896768618375,
+        "temperature": 1.245965511072427,
+        "material": 0.731021233368665
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -99.94815581626054,
+        "traceEnd": -99.94815581626054,
+        "energyError": 0,
+        "converged": true,
+        "residual": 0,
+        "reason": "fixed-point",
+        "flipCount": 1324
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.23822441464290023,
+        "voltage": 0.24276624619960785,
+        "resistance": 0.23485297383740544,
+        "temperature": 0.22040185192599893,
+        "material": 0.025514569133520126
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -290.2570195446025,
+        "traceEnd": -290.2570195446025,
+        "energyError": 0,
+        "converged": false,
+        "residual": 35,
+        "reason": "quiet-constraint",
+        "flipCount": 1237
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.6513380038086325,
+        "voltage": 1.5905819025356323,
+        "resistance": 0.2041179179213941,
+        "temperature": 0.6193145099096,
+        "material": 0.3492186679504812
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.325
+      },
+      "coarse": true,
+      "fine": false,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -143.73485011364974,
+        "traceEnd": -143.73485011364974,
+        "energyError": 0,
+        "converged": true,
+        "residual": 0,
+        "reason": "fixed-point",
+        "flipCount": 1480
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.7161037153564394,
+        "voltage": 1.287697889143601,
+        "resistance": 1.1145069489721209,
+        "temperature": 0.6402616212144494,
+        "material": 1.0830707279965281
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2.0938729603076354
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 1.9124999999999999
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -209.40779154885055,
+        "traceEnd": -209.40779154885055,
+        "energyError": 0,
+        "converged": false,
+        "residual": 47,
+        "reason": "quiet-constraint",
+        "flipCount": 1278
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.008866723394021392,
+        "voltage": 0.47550163697451353,
+        "resistance": 0.7589665304403752,
+        "temperature": 1.7131451233290136,
+        "material": 1.2288437578827143
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -263.6791639793732,
+        "traceEnd": -263.6791639793732,
+        "energyError": 0,
+        "converged": false,
+        "residual": 31,
+        "reason": "quiet-constraint",
+        "flipCount": 1281
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.15147799532860518,
+        "voltage": 0.2838786318898201,
+        "resistance": 1.0583830447867513,
+        "temperature": 0.0162052265368402,
+        "material": 1.3930109874345362
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -328.4469569190351,
+        "traceEnd": -328.4469569190351,
+        "energyError": 0,
+        "converged": false,
+        "residual": 91,
+        "reason": "quiet-constraint",
+        "flipCount": 1485
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.4593706512823701,
+        "voltage": 1.8221823242492974,
+        "resistance": 0.2926568705588579,
+        "temperature": 1.783551957923919,
+        "material": 0.44079217268154025
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": false,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -359.2832517349622,
+        "traceEnd": -359.2832517349622,
+        "energyError": 0,
+        "converged": false,
+        "residual": 39,
+        "reason": "quiet-constraint",
+        "flipCount": 1291
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.5290186500642449,
+        "voltage": 0.48797071049921215,
+        "resistance": 1.3030286317225546,
+        "temperature": 0.9580571022816002,
+        "material": 0.7210587477311492
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -353.8140643043155,
+        "traceEnd": -353.8140643043155,
+        "energyError": 0,
+        "converged": false,
+        "residual": 39,
+        "reason": "quiet-constraint",
+        "flipCount": 1223
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.44469446572475135,
+        "voltage": 2.8487993222661316,
+        "resistance": 0.050619056448340416,
+        "temperature": 0.9467561994679272,
+        "material": 0.23605481814593077
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": false,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -349.8962601588332,
+        "traceEnd": -349.8962601588332,
+        "energyError": 0,
+        "converged": false,
+        "residual": 39,
+        "reason": "quiet-constraint",
+        "flipCount": 1371
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.771283658919856,
+        "voltage": 2.395889682462439,
+        "resistance": 0.7316544475033879,
+        "temperature": 1.472523272037506,
+        "material": 1.6497603147290647
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -145.86040876051095,
+        "traceEnd": -145.86040876051095,
+        "energyError": 0,
+        "converged": false,
+        "residual": 15,
+        "reason": "quiet-constraint",
+        "flipCount": 1293
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.06087565631605685,
+        "voltage": 2.3590739232022315,
+        "resistance": 0.17356465780176222,
+        "temperature": 0.09094603359699249,
+        "material": 0.056387992575764656
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -305.29827331922024,
+        "traceEnd": -305.29827331922024,
+        "energyError": 0,
+        "converged": false,
+        "residual": 59,
+        "reason": "quiet-constraint",
+        "flipCount": 1219
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.8964082265738398,
+        "voltage": 1.6270254696719348,
+        "resistance": 1.1288124360144138,
+        "temperature": 0.6141090127639472,
+        "material": 1.111712547019124
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2.494227016461082
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -285.966853435915,
+        "traceEnd": -285.966853435915,
+        "energyError": 0,
+        "converged": false,
+        "residual": 75,
+        "reason": "quiet-constraint",
+        "flipCount": 1211
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.28382159234024584,
+        "voltage": 2.4374810324516147,
+        "resistance": 1.033588940743357,
+        "temperature": 0.9463481907732785,
+        "material": 0.6974598006345332
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -152.85045220364643,
+        "traceEnd": -152.85045220364643,
+        "energyError": 0,
+        "converged": false,
+        "residual": 3,
+        "reason": "quiet-constraint",
+        "flipCount": 1231
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.9743628657888621,
+        "voltage": 0.5989706309046596,
+        "resistance": 0.9418015975970775,
+        "temperature": 0.3706496609374881,
+        "material": 0.5212401668541133
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -284.1622918723494,
+        "traceEnd": -284.1622918723494,
+        "energyError": 0,
+        "converged": false,
+        "residual": 31,
+        "reason": "quiet-constraint",
+        "flipCount": 1257
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.5689439214766026,
+        "voltage": 2.1713651509489864,
+        "resistance": 0.7185283927246928,
+        "temperature": 0.4767257133498788,
+        "material": 0.9998848270624876
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -331.4553561857411,
+        "traceEnd": -331.4553561857411,
+        "energyError": 0,
+        "converged": false,
+        "residual": 75,
+        "reason": "quiet-constraint",
+        "flipCount": 1249
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.29672712134197354,
+        "voltage": 0.4603712379466742,
+        "resistance": 1.6247054350096732,
+        "temperature": 0.31510774604976177,
+        "material": 0.2638260363601148
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -201.54246671179527,
+        "traceEnd": -201.54246671179527,
+        "energyError": 0,
+        "converged": false,
+        "residual": 27,
+        "reason": "quiet-constraint",
+        "flipCount": 1449
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.5108752422966063,
+        "voltage": 2.1366641668137163,
+        "resistance": 1.2227663327939808,
+        "temperature": 0.9259657901711762,
+        "material": 0.9540843898430467
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -622.3490755591437,
+        "traceEnd": -622.3490755591437,
+        "energyError": 0,
+        "converged": false,
+        "residual": 47,
+        "reason": "quiet-constraint",
+        "flipCount": 1283
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.61752496403642,
+        "voltage": 2.7879166239872575,
+        "resistance": 1.945432137697935,
+        "temperature": 1.8142997240647674,
+        "material": 0.5914905299432576
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 3
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -182.79530923201548,
+        "traceEnd": -182.79530923201548,
+        "energyError": 0,
+        "converged": false,
+        "residual": 3,
+        "reason": "quiet-constraint",
+        "flipCount": 1193
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.6676266163121909,
+        "voltage": 2.16776579269208,
+        "resistance": 1.745941108558327,
+        "temperature": 0.7112014102749527,
+        "material": 1.455791010055691
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2.7558521145838313
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.775
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -110.13592880369362,
+        "traceEnd": -110.13592880369362,
+        "energyError": 0,
+        "converged": false,
+        "residual": 39,
+        "reason": "quiet-constraint",
+        "flipCount": 1417
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.6234718204941601,
+        "voltage": 0.5981911278795451,
+        "resistance": 0.6861765256617218,
+        "temperature": 1.8133293902501464,
+        "material": 1.2328625312075019
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -158.23449489029977,
+        "traceEnd": -158.23449489029977,
+        "energyError": 0,
+        "converged": false,
+        "residual": 19,
+        "reason": "quiet-constraint",
+        "flipCount": 1281
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.43329160823486745,
+        "voltage": 1.8757979236543179,
+        "resistance": 1.1235439300071448,
+        "temperature": 1.9816024210304022,
+        "material": 1.7486211229115725
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 2.85
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": false,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -308.6671591122283,
+        "traceEnd": -308.6671591122283,
+        "energyError": 0,
+        "converged": false,
+        "residual": 27,
+        "reason": "quiet-constraint",
+        "flipCount": 1247
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.7933149810414761,
+        "voltage": 1.6536984499543905,
+        "resistance": 1.0946676288731396,
+        "temperature": 0.35613870481029153,
+        "material": 1.1135259601287544
+      },
+      "truth": {
+        "lit": 1,
+        "brightness": 2.424191693193279
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 1.6125
+      },
+      "coarse": true,
+      "fine": false,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -251.1164420608884,
+        "traceEnd": -251.1164420608884,
+        "energyError": 0,
+        "converged": false,
+        "residual": 15,
+        "reason": "quiet-constraint",
+        "flipCount": 1410
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.4623794127255678,
+        "voltage": 0.9575943185482174,
+        "resistance": 2.6936436246614903,
+        "temperature": 1.0135679082013667,
+        "material": 0.04484680527821183
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 0.8625
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": false,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -336.0619349948248,
+        "traceEnd": -336.0619349948248,
+        "energyError": 0,
+        "converged": false,
+        "residual": 23,
+        "reason": "quiet-constraint",
+        "flipCount": 1178
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.4804648782592267,
+        "voltage": 0.09195476537570357,
+        "resistance": 1.7232118325773627,
+        "temperature": 0.5570990173146129,
+        "material": 0.017442018259316683
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -239.27982399341107,
+        "traceEnd": -239.27982399341107,
+        "energyError": 0,
+        "converged": false,
+        "residual": 95,
+        "reason": "quiet-constraint",
+        "flipCount": 1291
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.5359862290788442,
+        "voltage": 0.4229259991552681,
+        "resistance": 2.433623209130019,
+        "temperature": 0.12648839224129915,
+        "material": 0.23770562233403325
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -385.01375236263675,
+        "traceEnd": -385.01375236263675,
+        "energyError": 0,
+        "converged": false,
+        "residual": 79,
+        "reason": "quiet-constraint",
+        "flipCount": 1313
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.3982876625377685,
+        "voltage": 1.158287952421233,
+        "resistance": 2.6444712651427835,
+        "temperature": 1.5351077946834266,
+        "material": 1.9553877101279795
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.95,
+        "brightness": 0.975
+      },
+      "coarse": false,
+      "fine": false,
+      "refused": false,
+      "nnFine": false,
+      "nnCoarse": false,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -247.1997525246736,
+        "traceEnd": -247.1997525246736,
+        "energyError": 0,
+        "converged": false,
+        "residual": 35,
+        "reason": "quiet-constraint",
+        "flipCount": 1417
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.16616788553074002,
+        "voltage": 0.9631541215348989,
+        "resistance": 0.687543431064114,
+        "temperature": 0.8074518539942801,
+        "material": 0.8959591654129326
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -223.9068181723144,
+        "traceEnd": -223.9068181723144,
+        "energyError": 0,
+        "converged": false,
+        "residual": 47,
+        "reason": "quiet-constraint",
+        "flipCount": 1319
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.1453026495873928,
+        "voltage": 1.7381790394429117,
+        "resistance": 2.4594926561694592,
+        "temperature": 1.3975402829237282,
+        "material": 1.216818240005523
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -152.9210863325482,
+        "traceEnd": -152.9210863325482,
+        "energyError": 0,
+        "converged": false,
+        "residual": 59,
+        "reason": "quiet-constraint",
+        "flipCount": 1459
+      }
+    },
+    {
+      "q": {
+        "switchPos": 0.2502534936647862,
+        "voltage": 2.4022511984221637,
+        "resistance": 1.9327349122613668,
+        "temperature": 1.957282941788435,
+        "material": 0.0928850844502449
+      },
+      "truth": {
+        "lit": 0,
+        "brightness": 0
+      },
+      "values": {
+        "lit": 0.049999999999999996,
+        "brightness": 0.15
+      },
+      "coarse": true,
+      "fine": true,
+      "refused": false,
+      "nnFine": true,
+      "nnCoarse": true,
+      "audit": {
+        "stage": "off-grid",
+        "energy": -147.24993381450466,
+        "traceEnd": -147.24993381450466,
+        "energyError": 0,
+        "converged": false,
+        "residual": 15,
+        "reason": "quiet-constraint",
+        "flipCount": 1351
+      }
+    }
+  ]
+}

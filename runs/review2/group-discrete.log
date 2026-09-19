@@ -1,0 +1,2 @@
+START discrete 2026-09-19T13:40:03.579Z
+{"name":"discrete","entry":"src/pop/explore/runner-explore.js","seeds":"1,2,3","args":[],"commit":"e732f2b4ef46e0ac482480095a31cb5aa23ec6be","started":"2026-09-19T13:40:03.579Z","finished":"2026-09-19T14:25:02.155Z","exitCode":0,"seconds":2698.5744362}

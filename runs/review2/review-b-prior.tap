@@ -1,0 +1,350 @@
+TAP version 13
+# D01 {"thrown":"Error: rule capacity exhausted (maxRules=1)","neuronCount":86,"ruleCount":1,"cores":[[80,81,82,83]]}
+# D02 {"ruleCount":1,"allCoreNeurons":[80,81,82,83],"values":{"y":0.8}}
+# D03 {"actual":[68,69,70,71,72,73,74,75],"latest":[68,69,70,71,72,73,74,75]}
+# D04 {"wellCount":0}
+# D06 {"predictions":[0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8,0.8]}
+# Subtest: D01 FieldRuleMemory must enforce capacity before touching the pool/out-of-range neurons
+ok 1 - D01 FieldRuleMemory must enforce capacity before touching the pool/out-of-range neurons
+  ---
+  duration_ms: 14.6662
+  type: 'test'
+  ...
+# Subtest: D02 influence-first then real observation must register a readable rule
+ok 2 - D02 influence-first then real observation must register a readable rule
+  ---
+  duration_ms: 96.7624
+  type: 'test'
+  ...
+# Subtest: D03 rule outcome metadata must represent newly bound observed fields
+ok 3 - D03 rule outcome metadata must represent newly bound observed fields
+  ---
+  duration_ms: 7.5492
+  type: 'test'
+  ...
+# Subtest: D04 README usage snippet must run without throwing
+not ok 4 - D04 README usage snippet must run without throwing
+  ---
+  duration_ms: 3.8317
+  type: 'test'
+  location: 'D:\\kimi_kairos\\review2-validation\\prior-tests\\continuous-audit.test.mjs:30:1'
+  failureType: 'testCodeFailure'
+  error: 'unknown wellId: 0'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    ReadoutModule.labelWell (file:///D:/kimi_kairos/energy-network-sim/dist/src/readout.js:52:19)
+    TestContext.<anonymous> (file:///D:/kimi_kairos/review2-validation/prior-tests/continuous-audit.test.mjs:35:10)
+    Test.runInAsyncScope (node:async_hooks:228:14)
+    Test.run (node:internal/test_runner/test:1118:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+    Test.postRun (node:internal/test_runner/test:1247:19)
+    Test.run (node:internal/test_runner/test:1175:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:787:7)
+  ...
+# Subtest: D05 boundary characterization: out-of-range values collapse to the sensor boundary
+ok 5 - D05 boundary characterization: out-of-range values collapse to the sensor boundary
+  ---
+  duration_ms: 15.2535
+  type: 'test'
+  ...
+# Subtest: D06 field-memory positive control: fresh observed rule remains readable
+ok 6 - D06 field-memory positive control: fresh observed rule remains readable
+  ---
+  duration_ms: 493.7873
+  type: 'test'
+  ...
+# Subtest: D07 boundary characterization: nearby continuous values can have identical finite encodings
+ok 7 - D07 boundary characterization: nearby continuous values can have identical finite encodings
+  ---
+  duration_ms: 1.1216
+  type: 'test'
+  ...
+# A02 evidence {"activeNeurons":[0,1],"energy":0,"trace":{"energies":[1,0],"flipCount":1,"driveWork":0.5},"converged":true,"terminationReason":"fixed-point","residualFlips":0}
+# A03 evidence {"active":[0,1,2],"energy":-1,"traceEnd":-1,"flips":300,"unstable":[{"i":1,"delta":-2}],"keys":["activeNeurons","energy","trace","converged","terminationReason","residualFlips"]}
+# A04 evidence {"result":{"activeNeurons":[0,1,2],"energy":-1,"trace":{"energies":[1,0,-1,2,-1],"flipCount":3,"driveWork":-5},"converged":false,"terminationReason":"flip-budget","residualFlips":1,"candidateSet":[0],"initialEnergy":1,"annealEndEnergy":1,"proposals":0,"acceptedUphill":0},"visitedMinimum":-1,"unstable":[{"i":1,"delta":-2}]}
+# A05 evidence {"threw":true,"W10":0,"W01":0}
+# A12 evidence {"requestedLimit":1,"reportedFlips":1,"trace":[1,0,0]}
+# Subtest: A01 symmetric W/Gamma: independent energy and fixed-point oracle (40 seeds)
+ok 8 - A01 symmetric W/Gamma: independent energy and fixed-point oracle (40 seeds)
+  ---
+  duration_ms: 15.488
+  type: 'test'
+  ...
+# Subtest: A02 directed inhibition: trace must agree with reported physical energy
+ok 9 - A02 directed inhibition: trace must agree with reported physical energy
+  ---
+  duration_ms: 2.0798
+  type: 'test'
+  ...
+# Subtest: A03 DI oscillator: returned result must be stable or explicitly nonconverged
+ok 10 - A03 DI oscillator: returned result must be stable or explicitly nonconverged
+  ---
+  duration_ms: 1.5254
+  type: 'test'
+  ...
+# Subtest: A04 bounded quench must restore a true minimum-energy visited state
+ok 11 - A04 bounded quench must restore a true minimum-energy visited state
+  ---
+  duration_ms: 3.7602
+  type: 'test'
+  ...
+# Subtest: A05 weight API must reject out-of-range neuron IDs without destroying symmetry
+ok 12 - A05 weight API must reject out-of-range neuron IDs without destroying symmetry
+  ---
+  duration_ms: 0.9657
+  type: 'test'
+  ...
+# Subtest: A06 fractional/NaN clamped inputs must be rejected rather than silently disappear
+ok 13 - A06 fractional/NaN clamped inputs must be rejected rather than silently disappear
+  ---
+  duration_ms: 1.2737
+  type: 'test'
+  ...
+# Subtest: A07 nonfinite learning coefficients must be rejected
+ok 14 - A07 nonfinite learning coefficients must be rejected
+  ---
+  duration_ms: 0.5125
+  type: 'test'
+  ...
+# Subtest: A08 nonfinite edge values must be rejected, not poison dynamics
+ok 15 - A08 nonfinite edge values must be rejected, not poison dynamics
+  ---
+  duration_ms: 0.9823
+  type: 'test'
+  ...
+# Subtest: A09 fixed seed annealing determinism and input clamping (20 seeds)
+ok 16 - A09 fixed seed annealing determinism and input clamping (20 seeds)
+  ---
+  duration_ms: 32.7861
+  type: 'test'
+  ...
+# Subtest: A10 candidate-restricted quench correctly prevents out-of-scope recruitment
+ok 17 - A10 candidate-restricted quench correctly prevents out-of-scope recruitment
+  ---
+  duration_ms: 0.8256
+  type: 'test'
+  ...
+# Subtest: A11 cold symmetric settling is local, not a global-energy optimizer (boundary control)
+ok 18 - A11 cold symmetric settling is local, not a global-energy optimizer (boundary control)
+  ---
+  duration_ms: 0.6166
+  type: 'test'
+  ...
+# Subtest: A12 quench hard flip budget must not be exceeded
+ok 19 - A12 quench hard flip budget must not be exceeded
+  ---
+  duration_ms: 0.8224
+  type: 'test'
+  ...
+# E01 {"probes":288,"heldout":0,"gateOff":0,"heldoutClasses":[],"constantOnHeldoutCoarse":null,"constantOffAllCoarse":0.625}
+# E02 {"grid":[0.1,0.5,0.9],"thresholds":[0.2,0.5],"observations":[[0,1,1],[0,1,1]]}
+# Subtest: E01 measurement: constant-on baseline is perfect on the named heldout coarse stratum
+not ok 20 - E01 measurement: constant-on baseline is perfect on the named heldout coarse stratum
+  ---
+  duration_ms: 38.1476
+  type: 'test'
+  location: 'D:\\kimi_kairos\\review2-validation\\prior-tests\\evaluation-audit.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    NaN !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: NaN
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/kimi_kairos/review2-validation/prior-tests/evaluation-audit.test.mjs:12:9)
+    Test.runInAsyncScope (node:async_hooks:228:14)
+    Test.run (node:internal/test_runner/test:1118:25)
+    Test.start (node:internal/test_runner/test:1015:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17)
+  ...
+# Subtest: E02 identifiability boundary: provided continuous switch grid cannot identify threshold 0.5 exactly
+ok 21 - E02 identifiability boundary: provided continuous switch grid cannot identify threshold 0.5 exactly
+  ---
+  duration_ms: 3.0298
+  type: 'test'
+  ...
+# {"world":"C01","experiments":2,"correct":10,"total":10,"factors":[],"elapsedMs":283.0743}
+# {"world":"C02","experiments":2,"correct":10,"total":10,"factors":["x"],"elapsedMs":229.80450000000002}
+# {"world":"C03","experiments":4,"correct":20,"total":20,"factors":["a","b"],"elapsedMs":425.2585999999999}
+# {"world":"C04","experiments":4,"correct":20,"total":20,"factors":["x"],"elapsedMs":362.0615}
+# {"world":"C05","experiments":6,"correct":30,"total":30,"factors":["gate","x"],"elapsedMs":515.625}
+# {"world":"C06","experiments":2,"correct":10,"total":10,"factors":["x"],"elapsedMs":115.57089999999971}
+# C07 {"undecidable":false,"outcomeChanged":false,"outcomeDelta":{},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":[],"thetaHigh":5.200000000000001}
+# C08 {"chosen":"a","active":[0,1,2,3],"markers":[1,3],"gamma":6}
+# C10 {"history":[{"conditions":{"x":0},"outcomes":{"y":0},"classification":"unknown-change","index":0}],"candidates":[{"x":1}]}
+# C12 {"undecidable":false,"outcomeChanged":true,"outcomeDelta":{"y":1},"conditionCommonNeurons":[8,9,10,11],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":6.800000000000001}
+# Subtest: C01 new-world acceptance: constant response; one irrelevant actuator
+ok 22 - C01 new-world acceptance: constant response; one irrelevant actuator
+  ---
+  duration_ms: 290.7668
+  type: 'test'
+  ...
+# Subtest: C02 new-world acceptance: identity; one causal actuator
+ok 23 - C02 new-world acceptance: identity; one causal actuator
+  ---
+  duration_ms: 232.0153
+  type: 'test'
+  ...
+# Subtest: C03 new-world acceptance: XOR interaction; two causal actuators
+ok 24 - C03 new-world acceptance: XOR interaction; two causal actuators
+  ---
+  duration_ms: 426.9957
+  type: 'test'
+  ...
+# Subtest: C04 new-world acceptance: identity with an irrelevant distractor
+ok 25 - C04 new-world acceptance: identity with an irrelevant distractor
+  ---
+  duration_ms: 364.3422
+  type: 'test'
+  ...
+# Subtest: C05 new-world acceptance: shifted threshold with AND gate
+ok 26 - C05 new-world acceptance: shifted threshold with AND gate
+  ---
+  duration_ms: 517.4864
+  type: 'test'
+  ...
+# Subtest: C06 positive control: identity with six observation repeats
+ok 27 - C06 positive control: identity with six observation repeats
+  ---
+  duration_ms: 118.2244
+  type: 'test'
+  ...
+# Subtest: C07 R2 must not label an unchanged constant outcome as changed
+ok 28 - C07 R2 must not label an unchanged constant outcome as changed
+  ---
+  duration_ms: 1.9421
+  type: 'test'
+  ...
+# Subtest: C08 WTA must produce one active marker at the default exploration drive 2*4
+not ok 29 - C08 WTA must produce one active marker at the default exploration drive 2*4
+  ---
+  duration_ms: 4.4017
+  type: 'test'
+  location: 'D:\\kimi_kairos\\review2-validation\\prior-tests\\exploration-audit.test.mjs:64:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    2 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/kimi_kairos/review2-validation/prior-tests/exploration-audit.test.mjs:68:9)
+    Test.runInAsyncScope (node:async_hooks:228:14)
+    Test.run (node:internal/test_runner/test:1118:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+    Test.postRun (node:internal/test_runner/test:1247:19)
+    Test.run (node:internal/test_runner/test:1175:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:787:7)
+  ...
+# Subtest: C09 planner positive control: frontier and auto-pairs obey Hamming-1
+ok 30 - C09 planner positive control: frontier and auto-pairs obey Hamming-1
+  ---
+  duration_ms: 1.2097
+  type: 'test'
+  ...
+# Subtest: C10 stored experimental history must not mutate through caller-owned objects
+ok 31 - C10 stored experimental history must not mutate through caller-owned objects
+  ---
+  duration_ms: 0.9935
+  type: 'test'
+  ...
+# Subtest: C11 boundary characterization: completed grid cannot be re-experimented
+ok 32 - C11 boundary characterization: completed grid cannot be re-experimented
+  ---
+  duration_ms: 0.5327
+  type: 'test'
+  ...
+# Subtest: C12 R2 common/difference contract must retain unchanged distractor members
+ok 33 - C12 R2 common/difference contract must retain unchanged distractor members
+  ---
+  duration_ms: 1.1837
+  type: 'test'
+  ...
+# B01 evidence {"x":0,"answers":{"0":30}}
+# B01 evidence {"x":1,"answers":{"1":30}}
+# B03 evidence {"ruleCount":0,"prediction":{"y":null}}
+# B04 evidence {"answers":{"1":30}}
+# B05 evidence {"answers":{"1":30}}
+# B06 evidence {"oldObservationRepeats":10,"newObservationRepeats":1000,"answers":{"1":30}}
+# B07 evidence {"gammaCoreRequested":0,"gammaCoreActual":0}
+# B08 evidence {"uniformPatternEnergy":-2,"settled":[0,1,2,3],"detectedWells":0}
+# B09 evidence [{"wellId":1,"label":"A","activationRatio":1}]
+# Subtest: B01 learned two-state identity: taught examples remain retrievable (30 seeds each)
+ok 34 - B01 learned two-state identity: taught examples remain retrievable (30 seeds each)
+  ---
+  duration_ms: 747.3768
+  type: 'test'
+  ...
+# Subtest: B02 all four learning routes preserve condition/outcome and cross-output isolation
+ok 35 - B02 all four learning routes preserve condition/outcome and cross-output isolation
+  ---
+  duration_ms: 10.5362
+  type: 'test'
+  ...
+# Subtest: B03 no numeric prediction must not allocate an empty competing rule
+ok 36 - B03 no numeric prediction must not allocate an empty competing rule
+  ---
+  duration_ms: 5.28
+  type: 'test'
+  ...
+# Subtest: B04 observation stronger than self-prediction should actually correct it without hidden pretraining
+ok 37 - B04 observation stronger than self-prediction should actually correct it without hidden pretraining
+  ---
+  duration_ms: 228.8828
+  type: 'test'
+  ...
+# Subtest: B05 the same correction with an explicit learned exclusion (positive control)
+ok 38 - B05 the same correction with an explicit learned exclusion (positive control)
+  ---
+  duration_ms: 196.3755
+  type: 'test'
+  ...
+# Subtest: B06 observed rule reversal: overwhelming new observations must replace obsolete outcome
+ok 39 - B06 observed rule reversal: overwhelming new observations must replace obsolete outcome
+  ---
+  duration_ms: 229.165
+  type: 'test'
+  ...
+# Subtest: B07 gammaCore=0 must disable the configurable core inhibition
+ok 40 - B07 gammaCore=0 must disable the configurable core inhibition
+  ---
+  duration_ms: 1.3926
+  type: 'test'
+  ...
+# Subtest: B08 uniform Hebbian plateau: an actual energy well is invisible to the strict peak detector (boundary)
+ok 41 - B08 uniform Hebbian plateau: an actual energy well is invisible to the strict peak detector (boundary)
+  ---
+  duration_ms: 3.5632
+  type: 'test'
+  ...
+# Subtest: B09 learning and redetecting wells must not silently swap existing labels
+ok 42 - B09 learning and redetecting wells must not silently swap existing labels
+  ---
+  duration_ms: 1.9958
+  type: 'test'
+  ...
+# Subtest: B10 finite core capacity is an explicit boundary, not open-ended learning
+ok 43 - B10 finite core capacity is an explicit boundary, not open-ended learning
+  ---
+  duration_ms: 1.5219
+  type: 'test'
+  ...
+1..43
+# tests 43
+# suites 0
+# pass 40
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2446.5551

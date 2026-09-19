@@ -1,0 +1,753 @@
+{
+  "summary": {
+    "id": "W05",
+    "name": "nonlinear max with distractor",
+    "seed": 11,
+    "experiments": 18,
+    "reason": "frontier-exhausted",
+    "n": 18,
+    "correct": 18,
+    "refused": 0,
+    "nonconverged": 12,
+    "expectedFactors": [
+      "a",
+      "b"
+    ],
+    "foundFactors": [
+      "a",
+      "b"
+    ],
+    "ms": 1458.507599999999,
+    "passesAccuracy": true,
+    "passesFactors": true
+  },
+  "training": [
+    {
+      "index": 0,
+      "conditions": {
+        "a": 1,
+        "b": 1,
+        "d": 1
+      },
+      "predicted": {},
+      "converged": null,
+      "terminationReason": "not-predicted",
+      "anyOutputAbstained": true,
+      "observed": {
+        "y": 1
+      },
+      "classification": "unknown-change",
+      "drive": 2,
+      "candidateCount": 0,
+      "rulesFormed": 1,
+      "influentialSoFar": []
+    },
+    {
+      "index": 1,
+      "conditions": {
+        "a": 0,
+        "b": 1,
+        "d": 1
+      },
+      "predicted": {
+        "y": 1
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 1
+      },
+      "classification": "within-envelope",
+      "drive": 2,
+      "candidateCount": 5,
+      "rulesFormed": 2,
+      "influentialSoFar": []
+    },
+    {
+      "index": 2,
+      "conditions": {
+        "a": 0,
+        "b": 0,
+        "d": 1
+      },
+      "predicted": {
+        "y": 1
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 0
+      },
+      "classification": "prediction-violation",
+      "drive": 2,
+      "candidateCount": 7,
+      "rulesFormed": 3,
+      "influentialSoFar": [
+        "b"
+      ]
+    },
+    {
+      "index": 3,
+      "conditions": {
+        "a": 0,
+        "b": 2,
+        "d": 1
+      },
+      "predicted": {
+        "y": 0
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 2
+      },
+      "classification": "prediction-violation",
+      "drive": 2.6,
+      "candidateCount": 8,
+      "rulesFormed": 4,
+      "influentialSoFar": [
+        "b"
+      ]
+    },
+    {
+      "index": 4,
+      "conditions": {
+        "a": 2,
+        "b": 2,
+        "d": 1
+      },
+      "predicted": {
+        "y": 2
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 2
+      },
+      "classification": "within-envelope",
+      "drive": 2.6,
+      "candidateCount": 9,
+      "rulesFormed": 5,
+      "influentialSoFar": [
+        "b"
+      ]
+    },
+    {
+      "index": 5,
+      "conditions": {
+        "a": 0,
+        "b": 2,
+        "d": 0
+      },
+      "predicted": {
+        "y": 2
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 2
+      },
+      "classification": "within-envelope",
+      "drive": 2.3,
+      "candidateCount": 9,
+      "rulesFormed": 6,
+      "influentialSoFar": [
+        "b"
+      ]
+    },
+    {
+      "index": 6,
+      "conditions": {
+        "a": 1,
+        "b": 2,
+        "d": 1
+      },
+      "predicted": {
+        "y": 2
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 2
+      },
+      "classification": "within-envelope",
+      "drive": 0.55,
+      "candidateCount": 9,
+      "rulesFormed": 7,
+      "influentialSoFar": [
+        "b"
+      ]
+    },
+    {
+      "index": 7,
+      "conditions": {
+        "a": 2,
+        "b": 0,
+        "d": 1
+      },
+      "predicted": {
+        "y": 0
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 2
+      },
+      "classification": "prediction-violation",
+      "drive": 0.4,
+      "candidateCount": 8,
+      "rulesFormed": 8,
+      "influentialSoFar": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "index": 8,
+      "conditions": {
+        "a": 2,
+        "b": 1,
+        "d": 1
+      },
+      "predicted": {
+        "y": 1
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 2
+      },
+      "classification": "prediction-violation",
+      "drive": 1,
+      "candidateCount": 8,
+      "rulesFormed": 9,
+      "influentialSoFar": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "index": 9,
+      "conditions": {
+        "a": 2,
+        "b": 1,
+        "d": 0
+      },
+      "predicted": {
+        "y": 2
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 2
+      },
+      "classification": "within-envelope",
+      "drive": 1,
+      "candidateCount": 8,
+      "rulesFormed": 10,
+      "influentialSoFar": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "index": 10,
+      "conditions": {
+        "a": 1,
+        "b": 0,
+        "d": 1
+      },
+      "predicted": {
+        "y": 0
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 1
+      },
+      "classification": "prediction-violation",
+      "drive": 0.55,
+      "candidateCount": 7,
+      "rulesFormed": 11,
+      "influentialSoFar": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "index": 11,
+      "conditions": {
+        "a": 1,
+        "b": 0,
+        "d": 0
+      },
+      "predicted": {
+        "y": 1
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 1
+      },
+      "classification": "within-envelope",
+      "drive": 1,
+      "candidateCount": 7,
+      "rulesFormed": 12,
+      "influentialSoFar": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "index": 12,
+      "conditions": {
+        "a": 1,
+        "b": 1,
+        "d": 0
+      },
+      "predicted": {
+        "y": 1
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 1
+      },
+      "classification": "within-envelope",
+      "drive": 0.4,
+      "candidateCount": 6,
+      "rulesFormed": 13,
+      "influentialSoFar": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "index": 13,
+      "conditions": {
+        "a": 1,
+        "b": 2,
+        "d": 0
+      },
+      "predicted": {
+        "y": 2
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 2
+      },
+      "classification": "within-envelope",
+      "drive": 0.4,
+      "candidateCount": 5,
+      "rulesFormed": 14,
+      "influentialSoFar": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "index": 14,
+      "conditions": {
+        "a": 2,
+        "b": 2,
+        "d": 0
+      },
+      "predicted": {
+        "y": 2
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 2
+      },
+      "classification": "within-envelope",
+      "drive": 0.4,
+      "candidateCount": 4,
+      "rulesFormed": 15,
+      "influentialSoFar": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "index": 15,
+      "conditions": {
+        "a": 0,
+        "b": 0,
+        "d": 0
+      },
+      "predicted": {
+        "y": 0
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 0
+      },
+      "classification": "within-envelope",
+      "drive": 0.4,
+      "candidateCount": 3,
+      "rulesFormed": 16,
+      "influentialSoFar": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "index": 16,
+      "conditions": {
+        "a": 2,
+        "b": 0,
+        "d": 0
+      },
+      "predicted": {
+        "y": 2
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 2
+      },
+      "classification": "within-envelope",
+      "drive": 0.4,
+      "candidateCount": 2,
+      "rulesFormed": 17,
+      "influentialSoFar": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "index": 17,
+      "conditions": {
+        "a": 0,
+        "b": 1,
+        "d": 0
+      },
+      "predicted": {
+        "y": 1
+      },
+      "converged": true,
+      "terminationReason": "fixed-point",
+      "anyOutputAbstained": false,
+      "observed": {
+        "y": 1
+      },
+      "classification": "within-envelope",
+      "drive": 0.4,
+      "candidateCount": 1,
+      "rulesFormed": 18,
+      "influentialSoFar": [
+        "a",
+        "b"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "q": {
+        "a": 0,
+        "b": 0,
+        "d": 0
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "converged": false,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 0,
+        "d": 1
+      },
+      "truth": {
+        "y": 0
+      },
+      "decoded": {
+        "y": 0
+      },
+      "converged": false,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 1,
+        "d": 0
+      },
+      "truth": {
+        "y": 1
+      },
+      "decoded": {
+        "y": 1
+      },
+      "converged": true,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 1,
+        "d": 1
+      },
+      "truth": {
+        "y": 1
+      },
+      "decoded": {
+        "y": 1
+      },
+      "converged": false,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 2,
+        "d": 0
+      },
+      "truth": {
+        "y": 2
+      },
+      "decoded": {
+        "y": 2
+      },
+      "converged": true,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 0,
+        "b": 2,
+        "d": 1
+      },
+      "truth": {
+        "y": 2
+      },
+      "decoded": {
+        "y": 2
+      },
+      "converged": true,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 0,
+        "d": 0
+      },
+      "truth": {
+        "y": 1
+      },
+      "decoded": {
+        "y": 1
+      },
+      "converged": false,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 0,
+        "d": 1
+      },
+      "truth": {
+        "y": 1
+      },
+      "decoded": {
+        "y": 1
+      },
+      "converged": false,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 1,
+        "d": 0
+      },
+      "truth": {
+        "y": 1
+      },
+      "decoded": {
+        "y": 1
+      },
+      "converged": false,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 1,
+        "d": 1
+      },
+      "truth": {
+        "y": 1
+      },
+      "decoded": {
+        "y": 1
+      },
+      "converged": false,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 2,
+        "d": 0
+      },
+      "truth": {
+        "y": 2
+      },
+      "decoded": {
+        "y": 2
+      },
+      "converged": true,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 1,
+        "b": 2,
+        "d": 1
+      },
+      "truth": {
+        "y": 2
+      },
+      "decoded": {
+        "y": 2
+      },
+      "converged": true,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 0,
+        "d": 0
+      },
+      "truth": {
+        "y": 2
+      },
+      "decoded": {
+        "y": 2
+      },
+      "converged": false,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 0,
+        "d": 1
+      },
+      "truth": {
+        "y": 2
+      },
+      "decoded": {
+        "y": 2
+      },
+      "converged": false,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 1,
+        "d": 0
+      },
+      "truth": {
+        "y": 2
+      },
+      "decoded": {
+        "y": 2
+      },
+      "converged": false,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 1,
+        "d": 1
+      },
+      "truth": {
+        "y": 2
+      },
+      "decoded": {
+        "y": 2
+      },
+      "converged": false,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 2,
+        "d": 0
+      },
+      "truth": {
+        "y": 2
+      },
+      "decoded": {
+        "y": 2
+      },
+      "converged": false,
+      "correct": true,
+      "refused": false
+    },
+    {
+      "q": {
+        "a": 2,
+        "b": 2,
+        "d": 1
+      },
+      "truth": {
+        "y": 2
+      },
+      "decoded": {
+        "y": 2
+      },
+      "converged": true,
+      "correct": true,
+      "refused": false
+    }
+  ]
+}

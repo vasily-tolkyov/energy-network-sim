@@ -1,0 +1,21 @@
+
+── 模式 gated ──
+  预训练基线准确率：83.3%（规则 15 条）
+  滚动准确率：t10:83% → t20:92% → t30:92% → t40:92% → t50:83% → t60:83% → t70:83%
+  通知（4）：t10 未知@A(预测完成t无)；t20 未知@B(预测完成t无)；t45 未知@C(预测完成t无)；t60 偏差@B(预测完成t59)
+  焦点历史：切换 2 次，抢占 2 次
+
+── 模式 ungated ──
+  预训练基线准确率：83.3%（规则 15 条）
+  滚动准确率：t10:83% → t20:83% → t30:83% → t40:75% → t50:83% → t60:83% → t70:83%
+  通知（0）：无
+  焦点历史：切换 2 次，抢占 2 次
+
+── 模式 none ──
+  预训练基线准确率：83.3%（规则 15 条）
+  滚动准确率：t10:83% → t20:83% → t30:83% → t40:83% → t50:83% → t60:83% → t70:83%
+  通知（0）：无
+  焦点历史：切换 2 次，抢占 2 次
+动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：{"predictions":708,"nonconverged":173,"anyOutputAbstained":0,"nonconvergedRate":0.2443502824858757,"anyOutputAbstentionRate":0,"terminationReasons":{"fixed-point":535,"quiet-constraint":173},"confidencePolicy":"converged-required"}
+
+日志已写入 runs/attention-v1.log

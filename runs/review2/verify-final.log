@@ -1,0 +1,223 @@
+
+> energy-network-sim@0.1.0 verify
+> npm run build && npm test
+
+
+> energy-network-sim@0.1.0 build
+> tsc -p tsconfig.json
+
+
+> energy-network-sim@0.1.0 test
+> node --test dist/test/*.test.js
+
+✔ 控制器：突变强度达阈立即抢占，未达阈不抢占 (5.2979ms)
+✔ 控制器：迟滞边距 + 持续 tick——挑战者须连续占优才换焦 (0.9294ms)
+✔ 控制器：近似平局选择是种子可复现的 (1.9775ms)
+✔ 监测器三类比对：符合 / 偏差 / 未知分开，未知不算预测错误 (0.388ms)
+✔ 监测器时序纪律：迟到预测不与已开始的变化配对 (0.3388ms)
+✔ 等强双通道：每次运行互斥地只进入一个后继，且不偏向任何一方 (215.9314ms)
+✔ 不等强双通道：强通道赢多数，弱通道仍有少数获胜（概率性） (217.9258ms)
+✔ 抑制项进入能量函数：同时激活两个竞争势阱要付出 Γ 惩罚 (0.941ms)
+✔ 容量：E=8 时教学规则高准确率（≥70%），E=64 时显著退化（≤30%），单调劣化 (289.0744ms)
+✔ 容量：mod-8 真理下留出查询不可插值（heldout ≈ 0） (130.8762ms)
+✔ 值区域成阱：速度维上检测出分离的值概念，且中心值覆盖课程值域 (44.846ms)
+✔ 同值区域可被部分线索补全（成阱的动力学证据） (30.2819ms)
+✔ 替代值区域之间的边显著弱于同区域内部边（从不共激活的证据） (12.1858ms)
+✔ 替代值分离来自非共现（评审 A12 后删除死参数 presentSwap）：不同值区域分属不同概念 (13.8126ms)
+✔ 概念索引：按中心值排序、population 接口与 PopChannelMap 同签名 (89.6567ms)
+✔ resolve：课程内的值解析到概念，中间值由合并概念的边缘认领 (24.2969ms)
+✔ 对齐报告：课程参照值全部解析到概念，分离区域的 IoU 高 (18.2944ms)
+✔ 自形成端到端：粗粒度 ≥60%、细粒度 ≥25%、已见区域粗粒度 ≥85%（实测 63.3/46.7/87.5） (13507.5231ms)
+✔ 自形成 R2：影响因素从场级档差提取（速度/刚度/碰墙有，颜色/阻尼/方向无） (193.9253ms)
+✔ 自形成预测实例：错过墙查询反弹 ≈0，细分档或如实歧义但分布含真值簇 (383.6588ms)
+✔ 编码：每个值激活约 6-8 个感受野神经元，量程外夹到边界 (3.9323ms)
+✔ 相似性保持：近值 IoU 显著大于远值，且随距离单调下降 (0.9604ms)
+✔ 整帧编码与反查：fieldOf 返回正确的维度与中心 (3.4209ms)
+✔ 参数扫描：感受野数 20/40/80 均可编码且保持相似性 (0.7865ms)
+✔ 要求1：静息不耗能——全静息能量为 0，静息→静息不计费 (3.5692ms)
+✔ 要求2：从静息到激活耗能恰为 Ea (0.5569ms)
+✔ 要求3：维持激活每步耗能 Em，k 步累计 k·Em (0.6997ms)
+✔ 要求3补充：激活→静息当步不计维持能耗 (0.5623ms)
+✔ 要求4：Ea > Em 强制成立，否则拒绝构造 (1.5375ms)
+✔ 量程扩展：概念更新让新区域结晶为概念，冻结对照概念层停滞 (8676.5881ms)
+✔ 连续实验台：应答即真值、非法条件拒绝、成本计数 (2.2522ms)
+✔ 容差评分：lit 阈值化、亮度 0.5 容差 (0.3595ms)
+✔ 连续探索端到端（种子 1）：语料充分性门 → 概念形成 → 因素发现 (265541.4913ms)
+✔ 实验台：应答即真值、非法条件拒绝、成本计数 (4.8167ms)
+✔ 规划器：候选干预全部 Hamming-1（方法先验结构），配对自动且恰好一维 (5.2453ms)
+✔ 探索闭环（预算 40 步）：自主成对喂 R2，干扰维不被判为影响因素 (5556.1851ms)
+✔ 探索终止与门控自发现（种子 1，允许前沿或预算终止） (150067.8944ms)
+✔ 赫布共激活使固定模式的能量随连接强度单调下降 (4.1277ms)
+✔ 加强连接使被钳制输入招募整个簇，且训练越强收敛能耗越低 (4.199ms)
+✔ R1：每次实验形成条件阱→结果阱的有向通道（单向），部分条件线索补全结果 (10.7555ms)
+✔ R2：神经差分提取正确的影响因素（双源 AND：结果无变化则无影响） (88.4039ms)
+✔ 三层端到端：细粒度 ≥ 80%，粗粒度与错过墙门控 100%（与单网原型同水平） (171.5481ms)
+✔ 三层消融：G=0 断侧重后显著退化 (492.5293ms)
+✔ 贪心被协同势垒挡住：输入 [0] 只激活 {0} (6.3656ms)
+✔ 局部退火翻越协同势垒，收敛到候选集 C 内的全局最小 (23.0036ms)
+✔ 不相干劲阱在任何种子下都不被点燃 (32.6868ms)
+✔ 确定性：相同种子两次运行结果完全一致 (8.8375ms)
+✔ 输入未触及任何势阱时退化为贪心结果 (0.8467ms)
+✔ 淬火相能量轨迹严格单调下降 (2.4172ms)
+✔ WTA 择焦：失配大者胜、惯性持焦（失配随帧衰减）、失配更大者换焦 (13.6497ms)
+✔ WTA 择焦：失配场是事件信号，帧清零后旧失配不再占优 (1.5537ms)
+✔ 捕获判定三态：符合 / 偏差 / 未知（含无预测时报未知不报偏差） (1372.9594ms)
+✔ 失配场：符合≈0，违反大，未知最大 (832.2746ms)
+✔ 群体编码：编码/归属往返一致，部分线索在足够重复后补全群体 (12.9151ms)
+✔ 群体+核端到端：静息合法域实测粗粒度 47/48、门控 23/24，细粒度保留下限 (3948.7902ms)
+✔ 规则核真 2×2：侧重只改变 W，否决只改变 Γ，完整课程四格不同 (124.6439ms)
+✔ 互斥从经验学习：新建网络无预置抑制，换对观察后才出现抑制边 (0.4917ms)
+✔ 侧重否决：记录有限预算门控边界，未见组合保留相似兜底 (2497.3526ms)
+✔ 未见颜色不触发否决（非影响通道无否决边，泛化保留） (64.9703ms)
+✔ 容量：mod-8 E=64 时否决制 taught ≥ 80%（此前 47.7%） (7736.6243ms)
+✔ 新主题影响因素提取：品种/干扰不判影响，光照水量肥料温度判影响，虫害幅度最大 (6.8763ms)
+✔ 新主题端到端：门控（虫害对照）100%，粗粒度存活 100%，细粒度 ≥ 65% (301.0123ms)
+✔ 新主题消融：G=0 时虫害门控显著退化（完整模型 100%，断侧重 ≤70%） (701.9249ms)
+✔ 未见品种 × 已学生长条件仍可预测存活（干扰因素不丢规则适用性） (3.9309ms)
+✔ R2A/R2B：变化标志与变化数值分离，控制变量提取影响因素 (6.0746ms)
+✔ 端到端：教学后粗粒度反弹预测 100%（含未见颜色），错过墙门控 100% (196.8557ms)
+✔ 端到端：细粒度（含反弹速度档）准确率 ≥ 70%，且 G=0 消融显著更差 (340.504ms)
+✔ 读出消融：纯贪心读出产生歧义，退火竞争读出收敛单档 (5.991ms)
+✔ 编码：未见颜色的神经元不参与任何已学连接（规则不因颜色丢失适用性） (4.6765ms)
+✔ 重合场分层：交集驻留为共同项，单侧成员为差分候选 (24.6862ms)
+✔ 阈值窗口：θHigh 过低不分层（全部驻留），过高全熄灭 (8.8793ms)
+✔ 双源 AND 门：影响因素神经元必须同时收到差分信号与结果变化信号才越阈 (1.8429ms)
+✔ R2A 神经化：结果变化标志与带符号档差从动力学读出 (102.1193ms)
+✔ R2A 神经化：退化对（刚度 0↔1 结果档相同）自动判为无变化 (8.3625ms)
+✔ R2 全模式差分：条件共同项与结果共同项都在重合场中驻留 (16.4116ms)
+✔ 输入簇 A 的部分神经元 → 级联招募全簇 → 读出标签 alpha (11.1635ms)
+✔ 输入同时触及两簇 → 读出两个标签并按激活率排序 (1.2775ms)
+✔ 未触及任何势阱的输入 → 无读出 (1.0372ms)
+✔ 模型自身赋标签（无教师）：autoLabel 生成占位标签 (3.0439ms)
+✔ F01-A02：DI 两神经元——轨迹末值恒等于真实能量 (5.3047ms)
+✔ F01-A03：DI 闭环——账本回到同状态必须同值；非收敛如实标记 (1.8171ms)
+✔ F01-A12：quenchMaxFlips=1 严格预算——至多 1 次淬火翻转且如实报 flip-budget (3.4795ms)
+✔ F02/D02：bindInfluence 分配的核在真实观察后必须注册可见 (115.5843ms)
+✔ F03/D01：FieldRuleMemory 超容量显式抛错且不覆盖池区 (2.5365ms)
+✔ F04/C07：恒定结果的对不得报变化、不得报因素 (7.2075ms)
+✔ F04/C12：不变干扰维不进差分集合 (4.7658ms)
+✔ R1.5：恒等小世界两条观察即可读回（点火不等式） (61.2953ms)
+✔ R1.6-A05：越界写边抛错且零部分写入 (0.7611ms)
+✔ R1.6-A06：非有限配置/索引/档位全部拒绝 (1.2184ms)
+✔ R1.6-A07：实验台拒绝 NaN 且不计成本 (1.0486ms)
+✔ B03：全 null/歧义预测不分配核 (1.5061ms)
+✔ B04：错误自猜后被真实观察纠正（无预学互斥） (33.5351ms)
+✔ F05：场级否决不再压灭落在已观察区域附近的输入 (67.3417ms)
+✔ F07：等强候选平局如实上报（不静默兜底）；清晰差距单胜者 (1.9919ms)
+✔ A19/D04：README 使用示例端到端执行（含峰边说明） (2.2272ms)
+✔ F10/E01：unseen-gate-on 桶按构造恒亮——报告必须附常数基线 (2.084ms)
+✔ F14/A20：退火收敛时是候选域内局部固定点（不承诺全局最小） (4.0221ms)
+✔ F7 rejected writes preserve all edges, signatures, evidence and counters (28.2573ms)
+✔ F1 saturated retractable Γ retains other owners and structural inhibition (1.2844ms)
+✔ F12 constructor clusterThresholdRatio actually controls default extraction (1.7818ms)
+✔ 真实语料可形成概念；非收敛预测不能触发置信停止 (297.0432ms)
+✔ R09 invalid observation must not consume a rule slot or write weights (5.2999ms)
+ℹ {"error":"channel y: bin NaN out of range [0, 2)","rules":0,"allocated":0,"conditionCoreWeight":0}
+✔ R10 sensory NaN must be rejected before registration (2.8372ms)
+ℹ {"rejected":true,"rules":0}
+✔ R11 finite integer annealing options must be validated (4.5087ms)
+ℹ {"accepted":[]}
+✔ R12 infinite levels must reject promptly (isolated child with 2.5s hard timeout) (698.8725ms)
+ℹ {"result":"rejected"}
+✔ R13 zero quench budget must reject or perform zero quench flips (2.4574ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5,1.5],"flipCount":0,"driveWork":0},"converged":false,"terminationReason":"flip-budget","residualFlips":1,"candidateSet":[0],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":0,"acceptedUphill":0}
+✔ R15 fractional rule capacity must be rejected at construction (0.5536ms)
+ℹ {"rejected":true}
+✔ R17 allocator rejects ordinary overflow without changing registered state (4.7337ms)
+ℹ {"n":1,"count":1,"after":1}
+✔ R01 DI accounting and reported residuals across 24 fresh random networks (53.5037ms)
+ℹ {"networks":24,"limited":0}
+✔ R02 explicit candidate freeze blocks a connected outside chain (2.6148ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5],"flipCount":0,"driveWork":0},"converged":true,"terminationReason":"fixed-point","residualFlips":0,"candidateSet":[0],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":0,"acceptedUphill":0}
+✔ R03 current documented peak-edge example is executable (4.6187ms)
+ℹ {"wells":2}
+✔ R04 quiet-only fallback must not return an engaged driver when quiet state was visited (1.1532ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5],"flipCount":0,"driveWork":0},"converged":false,"terminationReason":"quiet-constraint","residualFlips":1,"candidateSet":[0,1,2],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":2,"acceptedUphill":0,"engaged":false,"visitedQuietState":[0],"quietEnergy":1.5}
+✔ R05 self-written guess cannot veto a previously confirmed observation (55.6938ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-3.1999999999999993,"converged":true,"terminationReason":"fixed-point"}
+✔ R06 repeated same-world truth must recover after an erroneous self-written guess (22.1021ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-11.999999999999988,"converged":true,"terminationReason":"fixed-point"}
+✔ R07 field observations within identical receptive-field code cannot erase that code (44.7592ms)
+ℹ {"values":{"y":0.505},"distribution":{"y":[{"center":0.5,"count":8}]},"ambiguous":[],"activeNeurons":[4,5,6,7,8,9,10,11,56,57,58,59,60,61,62,63,80,81,82,83],"energy":-15.600000000000012,"winningCores":[0],"converged":true,"terminationReason":"fixed-point"}
+✔ R08 nearby but distinct inputs of a stationary function must retain a readable shared code (77.0171ms)
+ℹ {"rules":1,"a":{"y":0.505},"b":{"y":0.505}}
+✔ R14 R2 unchanged outcomes across variable dimensions and population sizes (21.8868ms)
+ℹ {"checked":12}
+✔ R18 actual observation can correct a prior wrong guess in the supported one-way order (26.2716ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-5.399999999999993,"converged":true,"terminationReason":"fixed-point"}
+✔ R19 field R2 outcome change detection must be invariant to pair reversal (45.9867ms)
+ℹ {"forward":{"undecidable":false,"outcomeChanged":true,"outcomeDelta":{"y":0.125},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":7.6000000000000005},"reverse":{"undecidable":false,"outcomeChanged":true,"outcomeDelta":{"y":-0.125},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":7.6000000000000005}}
+✔ R20 influence allocation and reverse observation order preserve registration identity (112.668ms)
+ℹ {"rules":2,"a":{"y":0.09999999999999999},"b":{"y":0.9},"winning":[[1],[0]]}
+✔ N01 strong observation must not be vetoed by weaker self-written guess (188.8717ms)
+✔ N02 stationary truth can repair one intervening false guess (59.4582ms)
+✔ N03 identical sensory codes in static y=x must not erase each other (466.4642ms)
+✔ N04 repeated identical raw observations preserve continuous recall (147.1177ms)
+✔ N05 invalid Pop condition must not consume capacity (2.8415ms)
+✔ N06 invalid Pop outcome must not partially write a rule (3.2739ms)
+✔ N07 unknown Field outcome must leave memory unchanged on rejection (13.1091ms)
+✔ N08 multiple preallocated Field cores get pairwise exclusion on registration (3.5607ms)
+✔ N09 invalid Hebbian batch is rejected before any edge is changed (1.132ms)
+✔ N10 fractional anneal candidates must be rejected (1.2973ms)
+✔ N11 nonfinite anneal level count must be rejected (0.562ms)
+✔ N12 nonfinite anneal temperature must be rejected (0.7501ms)
+✔ N13 invalid anneal options must not mutate current state (0.762ms)
+✔ N14 zero quench budget cannot execute a flip (or must reject) (0.9444ms)
+✔ N15 negative directed-inhibition cap must not create excitation (0.7539ms)
+✔ N16 sensory NaN cannot silently encode as absent dimension (1.2872ms)
+✔ N17 discrete lab rejects fractional bins before charging cost (0.7105ms)
+✔ N20 incomplete observations cannot allocate evidence-bearing Field rules (1.3521ms)
+✔ N21 updated unseen metric includes both classes and constant baseline is nonperfect (2.5263ms)
+✔ N22 weakened focus contract honestly flags multi-marker readout (1.7869ms)
+✔ N23 valid integer DI networks preserve ledger and residual contract (200 randomized cases) (41.155ms)
+✔ N24 Explorer must not classify an explicitly nonconverged forecast as confident verification (11.1412ms)
+✔ N29 capture correctly accepts a matching forecast (positive control) (46.556ms)
+✔ N18 planner history getter must not expose mutable internal conditions (4.6145ms)
+✔ N19 returned auto-pairs must not mutate historical observations (1.2195ms)
+✔ N25 Field public rule views cannot corrupt internal registration (19.3535ms)
+✔ N26 nominally valid small population configuration recalls learned identity or is rejected (1.027ms)
+✔ N27 claimed excitation-off/veto-on factorial cell retains veto (12.26ms)
+✔ F1 evidence sequence: truth-guess (152.5396ms)
+✔ F1 evidence sequence: guess-truth (54.1508ms)
+✔ F1 evidence sequence: truth-guess-truth (123.4962ms)
+✔ F1 evidence sequence: partial (105.574ms)
+✔ F1 evidence sequence: truth-change-return (92.9044ms)
+✔ F2 aliases aggregate equally, overlap survives, disjoint correction reverses (239.9094ms)
+✔ F3 joint capture: matching, contradiction, novel result, partial conflict (308.2779ms)
+✔ F3 unseen threshold correction uses independent memories for each seed (review N28) (243.3098ms)
+✔ F3 cached value snapshot survives changed core semantics (54.1774ms)
+✔ F4 no legal quiet candidate returns structured failure, symmetric decay conserves Γ (2.8895ms)
+W01 trained 16 factors [ 'a', 'b', 'c' ]
+W02 trained 10 factors [ 'x' ]
+W03 trained 18 factors [ 'a', 'b' ]
+W04 trained 17 factors []
+W05 trained 18 factors [ 'a', 'b' ]
+✔ review2 W01: 3-bit parity with distractor (2191.8794ms)
+✔ review2 W02: interior disjoint active intervals (328.4629ms)
+✔ review2 W03: two correlated output channels (1438.8909ms)
+✔ review2 W04: rare three-factor joint condition (1484.8811ms)
+✔ review2 W05: nonlinear max with distractor (1120.2235ms)
+✔ 中规模：8 个 16 神经元势阱全部检出，25% 线索捕获完成率 ≥ 90% (198.0516ms)
+✔ 中规模：4 节链在噪声+驱动下生成有序转移 (934.2085ms)
+✔ 中规模对照：T=0 与 β=0 均无转移 (425.9503ms)
+✔ 时序学习的有向性：D(A→B)>0 而 D(B→A)=0，且裁剪到 maxDirectedWeight (5.7387ms)
+✔ 噪声+驱动：种子 1..10 中 ≥8 个按序转移 A→B→C，且驱动做功 > 0 (112.9721ms)
+✔ 对照·无噪声（T=0）：驱动不足以点火，无转移，疲劳后归于静息 (6.0982ms)
+✔ 对照·无驱动（β=0）：单个噪声点火无法级联成簇，无转移事件 (30.3349ms)
+✔ 对照·无疲劳（κ=0）：A 不崩塌，新旧势阱共存而非转移 (11.8218ms)
+✔ 回合边界：转移回合结束后 reset 恢复静息，连接记忆保留 (6.8763ms)
+✔ 要求5：无加强连接时，输入只激活被钳制子集，其余保持静息 (5.9749ms)
+✔ 要求7+10：settle 收敛模式 = 满足输入约束的能耗最小模式（枚举仅用于测试侧验证） (16.7527ms)
+✔ 要求10：收敛点没有任何单翻转改进（局部极小），从初始条件纯局部可达 (1.0778ms)
+✔ 要求10：能量轨迹严格单调下降，有限步收敛 (0.916ms)
+✔ 学习后检测出两个不相邻极大值，各自构成一个势阱 (7.3114ms)
+✔ 0.8 邻域规则：低于峰值 80% 的边不纳入势阱 (1.1696ms)
+✔ 未经学习的网络没有势阱 (0.5227ms)
+ℹ tests 179
+ℹ suites 0
+ℹ pass 179
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 274785.9173

@@ -1,0 +1,184 @@
+TAP version 13
+# Subtest: N01 strong observation must not be vetoed by weaker self-written guess
+ok 1 - N01 strong observation must not be vetoed by weaker self-written guess
+  ---
+  duration_ms: 79.9533
+  type: 'test'
+  ...
+# Subtest: N02 stationary truth can repair one intervening false guess
+ok 2 - N02 stationary truth can repair one intervening false guess
+  ---
+  duration_ms: 32.5829
+  type: 'test'
+  ...
+# Subtest: N03 identical sensory codes in static y=x must not erase each other
+ok 3 - N03 identical sensory codes in static y=x must not erase each other
+  ---
+  duration_ms: 154.285
+  type: 'test'
+  ...
+# Subtest: N04 repeated identical raw observations preserve continuous recall
+ok 4 - N04 repeated identical raw observations preserve continuous recall
+  ---
+  duration_ms: 103.9951
+  type: 'test'
+  ...
+# Subtest: N05 invalid Pop condition must not consume capacity
+ok 5 - N05 invalid Pop condition must not consume capacity
+  ---
+  duration_ms: 2.2126
+  type: 'test'
+  ...
+# Subtest: N06 invalid Pop outcome must not partially write a rule
+ok 6 - N06 invalid Pop outcome must not partially write a rule
+  ---
+  duration_ms: 2.1174
+  type: 'test'
+  ...
+# Subtest: N07 unknown Field outcome must leave memory unchanged on rejection
+ok 7 - N07 unknown Field outcome must leave memory unchanged on rejection
+  ---
+  duration_ms: 6.6366
+  type: 'test'
+  ...
+# Subtest: N08 multiple preallocated Field cores get pairwise exclusion on registration
+ok 8 - N08 multiple preallocated Field cores get pairwise exclusion on registration
+  ---
+  duration_ms: 2.2821
+  type: 'test'
+  ...
+# Subtest: N09 invalid Hebbian batch is rejected before any edge is changed
+ok 9 - N09 invalid Hebbian batch is rejected before any edge is changed
+  ---
+  duration_ms: 1.3371
+  type: 'test'
+  ...
+# Subtest: N10 fractional anneal candidates must be rejected
+ok 10 - N10 fractional anneal candidates must be rejected
+  ---
+  duration_ms: 1.3149
+  type: 'test'
+  ...
+# Subtest: N11 nonfinite anneal level count must be rejected
+ok 11 - N11 nonfinite anneal level count must be rejected
+  ---
+  duration_ms: 0.2983
+  type: 'test'
+  ...
+# Subtest: N12 nonfinite anneal temperature must be rejected
+ok 12 - N12 nonfinite anneal temperature must be rejected
+  ---
+  duration_ms: 0.3202
+  type: 'test'
+  ...
+# Subtest: N13 invalid anneal options must not mutate current state
+ok 13 - N13 invalid anneal options must not mutate current state
+  ---
+  duration_ms: 0.9365
+  type: 'test'
+  ...
+# Subtest: N14 zero quench budget cannot execute a flip (or must reject)
+ok 14 - N14 zero quench budget cannot execute a flip (or must reject)
+  ---
+  duration_ms: 1.0683
+  type: 'test'
+  ...
+# Subtest: N15 negative directed-inhibition cap must not create excitation
+ok 15 - N15 negative directed-inhibition cap must not create excitation
+  ---
+  duration_ms: 0.8745
+  type: 'test'
+  ...
+# Subtest: N16 sensory NaN cannot silently encode as absent dimension
+ok 16 - N16 sensory NaN cannot silently encode as absent dimension
+  ---
+  duration_ms: 0.5239
+  type: 'test'
+  ...
+# Subtest: N17 discrete lab rejects fractional bins before charging cost
+ok 17 - N17 discrete lab rejects fractional bins before charging cost
+  ---
+  duration_ms: 0.9533
+  type: 'test'
+  ...
+# Subtest: N18 planner history getter must not expose mutable internal conditions
+ok 18 - N18 planner history getter must not expose mutable internal conditions
+  ---
+  duration_ms: 1.4158
+  type: 'test'
+  ...
+# Subtest: N19 returned auto-pairs must not mutate historical observations
+ok 19 - N19 returned auto-pairs must not mutate historical observations
+  ---
+  duration_ms: 1.0904
+  type: 'test'
+  ...
+# Subtest: N20 incomplete observations cannot allocate evidence-bearing Field rules
+ok 20 - N20 incomplete observations cannot allocate evidence-bearing Field rules
+  ---
+  duration_ms: 8.0612
+  type: 'test'
+  ...
+# Subtest: N21 updated unseen metric includes both classes and constant baseline is nonperfect
+ok 21 - N21 updated unseen metric includes both classes and constant baseline is nonperfect
+  ---
+  duration_ms: 1.823
+  type: 'test'
+  ...
+# Subtest: N22 weakened focus contract honestly flags multi-marker readout
+ok 22 - N22 weakened focus contract honestly flags multi-marker readout
+  ---
+  duration_ms: 2.1456
+  type: 'test'
+  ...
+# Subtest: N23 valid integer DI networks preserve ledger and residual contract (200 randomized cases)
+ok 23 - N23 valid integer DI networks preserve ledger and residual contract (200 randomized cases)
+  ---
+  duration_ms: 25.8189
+  type: 'test'
+  ...
+# Subtest: N24 Explorer must not classify an explicitly nonconverged forecast as confident verification
+ok 24 - N24 Explorer must not classify an explicitly nonconverged forecast as confident verification
+  ---
+  duration_ms: 10.6819
+  type: 'test'
+  ...
+# Subtest: N25 Field public rule views cannot corrupt internal registration
+ok 25 - N25 Field public rule views cannot corrupt internal registration
+  ---
+  duration_ms: 1.5596
+  type: 'test'
+  ...
+# Subtest: N26 nominally valid small population configuration recalls learned identity or is rejected
+ok 26 - N26 nominally valid small population configuration recalls learned identity or is rejected
+  ---
+  duration_ms: 0.3321
+  type: 'test'
+  ...
+# Subtest: N27 claimed excitation-off/veto-on factorial cell retains veto
+ok 27 - N27 claimed excitation-off/veto-on factorial cell retains veto
+  ---
+  duration_ms: 2.9414
+  type: 'test'
+  ...
+# Subtest: N28 capture cannot accept a contradicted forecast in a static unseen threshold region
+ok 28 - N28 capture cannot accept a contradicted forecast in a static unseen threshold region
+  ---
+  duration_ms: 193.9043
+  type: 'test'
+  ...
+# Subtest: N29 capture correctly accepts a matching forecast (positive control)
+ok 29 - N29 capture correctly accepts a matching forecast (positive control)
+  ---
+  duration_ms: 19.4434
+  type: 'test'
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 29
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 947.4683
