@@ -46,7 +46,7 @@ test("量程扩展：概念更新让新区域结晶为概念，冻结对照概�
 
   // 更新模式：扩展后应再次形成，voltage 概念覆盖高压区
   const u = build(true);
-  while (u.ex.step()) {}
+  while (u.ex.log.length < 200 && u.ex.step()) {}
   u.planner.extendValues("voltage", LAB_CONT_EXT_NEW_VALUES.voltage!);
   while (u.ex.step()) {}
   assert.ok(u.ex.formationHistory.length >= 2, `更新模式扩展后应再次形成，实 ${u.ex.formationHistory.length} 次`);
@@ -59,7 +59,7 @@ test("量程扩展：概念更新让新区域结晶为概念，冻结对照概�
 
   // 冻结模式：形成历史恒为 1（概念层停滞），但不崩溃（重叠容忍）
   const f = build(false);
-  while (f.ex.step()) {}
+  while (f.ex.log.length < 200 && f.ex.step()) {}
   f.planner.extendValues("voltage", LAB_CONT_EXT_NEW_VALUES.voltage!);
   while (f.ex.step()) {}
   assert.equal(f.ex.formationHistory.length, 1, "冻结模式扩展后不应再形成");
@@ -114,7 +114,11 @@ test("连续探索端到端（种子 1）：语料充分性门 → 概念形成 
     1,
   );
   while (ex.step()) {}
-  assert.ok(ex.log.length < 300, `应自然终止而非耗尽预算，实做 ${ex.log.length} 次`);
+  assert.ok(ex.log.length <= 300, `不得超过预算，实做 ${ex.log.length} 次`);
+  assert.ok(["quorum-met", "budget-exhausted", "frontier-exhausted"].includes(ex.terminationReason!), "终止原因必须如实报告");
+  if (ex.terminationReason === "quorum-met") {
+    assert.ok(ex.log.slice(-8).every(s => s.converged && s.classification === "within-envelope"), "置信停止须有连续收敛验证");
+  }
   // 种子 2 病理回归：概念形成必须在语料充分（每维 ≥2 值）之后——
   // switchPos 必须形成多概念且被判为影响因素（门控维度不可缺席）
   assert.ok(ex.formationReport !== null, "应经过概念形成间歇期");

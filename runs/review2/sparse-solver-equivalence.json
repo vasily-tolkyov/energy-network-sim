@@ -1,0 +1,1207 @@
+{
+  "comparison": "1b25157 dense summation vs ordered sparse summation; exact entire-result equality",
+  "pass": 200,
+  "fail": 0,
+  "rows": [
+    {
+      "seed": 1,
+      "n": 11,
+      "terminationReason": "fixed-point",
+      "flips": 59
+    },
+    {
+      "seed": 2,
+      "n": 12,
+      "terminationReason": "fixed-point",
+      "flips": 62
+    },
+    {
+      "seed": 3,
+      "n": 13,
+      "terminationReason": "fixed-point",
+      "flips": 66
+    },
+    {
+      "seed": 4,
+      "n": 14,
+      "terminationReason": "fixed-point",
+      "flips": 61
+    },
+    {
+      "seed": 5,
+      "n": 15,
+      "terminationReason": "fixed-point",
+      "flips": 102
+    },
+    {
+      "seed": 6,
+      "n": 16,
+      "terminationReason": "fixed-point",
+      "flips": 112
+    },
+    {
+      "seed": 7,
+      "n": 17,
+      "terminationReason": "fixed-point",
+      "flips": 74
+    },
+    {
+      "seed": 8,
+      "n": 18,
+      "terminationReason": "fixed-point",
+      "flips": 116
+    },
+    {
+      "seed": 9,
+      "n": 19,
+      "terminationReason": "fixed-point",
+      "flips": 150
+    },
+    {
+      "seed": 10,
+      "n": 20,
+      "terminationReason": "fixed-point",
+      "flips": 111
+    },
+    {
+      "seed": 11,
+      "n": 21,
+      "terminationReason": "no-quiet-candidate",
+      "flips": 0
+    },
+    {
+      "seed": 12,
+      "n": 22,
+      "terminationReason": "fixed-point",
+      "flips": 124
+    },
+    {
+      "seed": 13,
+      "n": 23,
+      "terminationReason": "fixed-point",
+      "flips": 199
+    },
+    {
+      "seed": 14,
+      "n": 24,
+      "terminationReason": "no-quiet-candidate",
+      "flips": 0
+    },
+    {
+      "seed": 15,
+      "n": 25,
+      "terminationReason": "fixed-point",
+      "flips": 148
+    },
+    {
+      "seed": 16,
+      "n": 26,
+      "terminationReason": "fixed-point",
+      "flips": 136
+    },
+    {
+      "seed": 17,
+      "n": 27,
+      "terminationReason": "fixed-point",
+      "flips": 144
+    },
+    {
+      "seed": 18,
+      "n": 28,
+      "terminationReason": "fixed-point",
+      "flips": 216
+    },
+    {
+      "seed": 19,
+      "n": 29,
+      "terminationReason": "fixed-point",
+      "flips": 156
+    },
+    {
+      "seed": 20,
+      "n": 30,
+      "terminationReason": "quiet-constraint",
+      "flips": 196
+    },
+    {
+      "seed": 21,
+      "n": 31,
+      "terminationReason": "fixed-point",
+      "flips": 168
+    },
+    {
+      "seed": 22,
+      "n": 32,
+      "terminationReason": "quiet-constraint",
+      "flips": 231
+    },
+    {
+      "seed": 23,
+      "n": 33,
+      "terminationReason": "quiet-constraint",
+      "flips": 113
+    },
+    {
+      "seed": 24,
+      "n": 34,
+      "terminationReason": "fixed-point",
+      "flips": 204
+    },
+    {
+      "seed": 25,
+      "n": 35,
+      "terminationReason": "quiet-constraint",
+      "flips": 174
+    },
+    {
+      "seed": 26,
+      "n": 36,
+      "terminationReason": "quiet-constraint",
+      "flips": 171
+    },
+    {
+      "seed": 27,
+      "n": 37,
+      "terminationReason": "fixed-point",
+      "flips": 233
+    },
+    {
+      "seed": 28,
+      "n": 38,
+      "terminationReason": "quiet-constraint",
+      "flips": 178
+    },
+    {
+      "seed": 29,
+      "n": 39,
+      "terminationReason": "fixed-point",
+      "flips": 183
+    },
+    {
+      "seed": 30,
+      "n": 40,
+      "terminationReason": "fixed-point",
+      "flips": 235
+    },
+    {
+      "seed": 31,
+      "n": 41,
+      "terminationReason": "no-quiet-candidate",
+      "flips": 0
+    },
+    {
+      "seed": 32,
+      "n": 42,
+      "terminationReason": "quiet-constraint",
+      "flips": 198
+    },
+    {
+      "seed": 33,
+      "n": 43,
+      "terminationReason": "fixed-point",
+      "flips": 250
+    },
+    {
+      "seed": 34,
+      "n": 44,
+      "terminationReason": "quiet-constraint",
+      "flips": 162
+    },
+    {
+      "seed": 35,
+      "n": 10,
+      "terminationReason": "fixed-point",
+      "flips": 76
+    },
+    {
+      "seed": 36,
+      "n": 11,
+      "terminationReason": "fixed-point",
+      "flips": 86
+    },
+    {
+      "seed": 37,
+      "n": 12,
+      "terminationReason": "fixed-point",
+      "flips": 41
+    },
+    {
+      "seed": 38,
+      "n": 13,
+      "terminationReason": "no-quiet-candidate",
+      "flips": 0
+    },
+    {
+      "seed": 39,
+      "n": 14,
+      "terminationReason": "fixed-point",
+      "flips": 116
+    },
+    {
+      "seed": 40,
+      "n": 15,
+      "terminationReason": "fixed-point",
+      "flips": 83
+    },
+    {
+      "seed": 41,
+      "n": 16,
+      "terminationReason": "fixed-point",
+      "flips": 58
+    },
+    {
+      "seed": 42,
+      "n": 17,
+      "terminationReason": "flip-budget",
+      "flips": 112
+    },
+    {
+      "seed": 43,
+      "n": 18,
+      "terminationReason": "fixed-point",
+      "flips": 105
+    },
+    {
+      "seed": 44,
+      "n": 19,
+      "terminationReason": "fixed-point",
+      "flips": 112
+    },
+    {
+      "seed": 45,
+      "n": 20,
+      "terminationReason": "fixed-point",
+      "flips": 153
+    },
+    {
+      "seed": 46,
+      "n": 21,
+      "terminationReason": "fixed-point",
+      "flips": 130
+    },
+    {
+      "seed": 47,
+      "n": 22,
+      "terminationReason": "fixed-point",
+      "flips": 174
+    },
+    {
+      "seed": 48,
+      "n": 23,
+      "terminationReason": "fixed-point",
+      "flips": 151
+    },
+    {
+      "seed": 49,
+      "n": 24,
+      "terminationReason": "quiet-constraint",
+      "flips": 109
+    },
+    {
+      "seed": 50,
+      "n": 25,
+      "terminationReason": "fixed-point",
+      "flips": 184
+    },
+    {
+      "seed": 51,
+      "n": 26,
+      "terminationReason": "fixed-point",
+      "flips": 181
+    },
+    {
+      "seed": 52,
+      "n": 27,
+      "terminationReason": "quiet-constraint",
+      "flips": 137
+    },
+    {
+      "seed": 53,
+      "n": 28,
+      "terminationReason": "quiet-constraint",
+      "flips": 152
+    },
+    {
+      "seed": 54,
+      "n": 29,
+      "terminationReason": "fixed-point",
+      "flips": 221
+    },
+    {
+      "seed": 55,
+      "n": 30,
+      "terminationReason": "no-quiet-candidate",
+      "flips": 0
+    },
+    {
+      "seed": 56,
+      "n": 31,
+      "terminationReason": "quiet-constraint",
+      "flips": 189
+    },
+    {
+      "seed": 57,
+      "n": 32,
+      "terminationReason": "fixed-point",
+      "flips": 226
+    },
+    {
+      "seed": 58,
+      "n": 33,
+      "terminationReason": "fixed-point",
+      "flips": 179
+    },
+    {
+      "seed": 59,
+      "n": 34,
+      "terminationReason": "fixed-point",
+      "flips": 148
+    },
+    {
+      "seed": 60,
+      "n": 35,
+      "terminationReason": "fixed-point",
+      "flips": 241
+    },
+    {
+      "seed": 61,
+      "n": 36,
+      "terminationReason": "fixed-point",
+      "flips": 115
+    },
+    {
+      "seed": 62,
+      "n": 37,
+      "terminationReason": "quiet-constraint",
+      "flips": 124
+    },
+    {
+      "seed": 63,
+      "n": 38,
+      "terminationReason": "fixed-point",
+      "flips": 248
+    },
+    {
+      "seed": 64,
+      "n": 39,
+      "terminationReason": "fixed-point",
+      "flips": 156
+    },
+    {
+      "seed": 65,
+      "n": 40,
+      "terminationReason": "quiet-constraint",
+      "flips": 135
+    },
+    {
+      "seed": 66,
+      "n": 41,
+      "terminationReason": "fixed-point",
+      "flips": 221
+    },
+    {
+      "seed": 67,
+      "n": 42,
+      "terminationReason": "quiet-constraint",
+      "flips": 129
+    },
+    {
+      "seed": 68,
+      "n": 43,
+      "terminationReason": "quiet-constraint",
+      "flips": 203
+    },
+    {
+      "seed": 69,
+      "n": 44,
+      "terminationReason": "fixed-point",
+      "flips": 206
+    },
+    {
+      "seed": 70,
+      "n": 10,
+      "terminationReason": "fixed-point",
+      "flips": 60
+    },
+    {
+      "seed": 71,
+      "n": 11,
+      "terminationReason": "fixed-point",
+      "flips": 38
+    },
+    {
+      "seed": 72,
+      "n": 12,
+      "terminationReason": "fixed-point",
+      "flips": 91
+    },
+    {
+      "seed": 73,
+      "n": 13,
+      "terminationReason": "fixed-point",
+      "flips": 54
+    },
+    {
+      "seed": 74,
+      "n": 14,
+      "terminationReason": "no-quiet-candidate",
+      "flips": 0
+    },
+    {
+      "seed": 75,
+      "n": 15,
+      "terminationReason": "fixed-point",
+      "flips": 96
+    },
+    {
+      "seed": 76,
+      "n": 16,
+      "terminationReason": "fixed-point",
+      "flips": 97
+    },
+    {
+      "seed": 77,
+      "n": 17,
+      "terminationReason": "fixed-point",
+      "flips": 122
+    },
+    {
+      "seed": 78,
+      "n": 18,
+      "terminationReason": "fixed-point",
+      "flips": 145
+    },
+    {
+      "seed": 79,
+      "n": 19,
+      "terminationReason": "fixed-point",
+      "flips": 138
+    },
+    {
+      "seed": 80,
+      "n": 20,
+      "terminationReason": "fixed-point",
+      "flips": 112
+    },
+    {
+      "seed": 81,
+      "n": 21,
+      "terminationReason": "flip-budget",
+      "flips": 148
+    },
+    {
+      "seed": 82,
+      "n": 22,
+      "terminationReason": "fixed-point",
+      "flips": 151
+    },
+    {
+      "seed": 83,
+      "n": 23,
+      "terminationReason": "fixed-point",
+      "flips": 186
+    },
+    {
+      "seed": 84,
+      "n": 24,
+      "terminationReason": "fixed-point",
+      "flips": 177
+    },
+    {
+      "seed": 85,
+      "n": 25,
+      "terminationReason": "quiet-constraint",
+      "flips": 178
+    },
+    {
+      "seed": 86,
+      "n": 26,
+      "terminationReason": "no-quiet-candidate",
+      "flips": 0
+    },
+    {
+      "seed": 87,
+      "n": 27,
+      "terminationReason": "fixed-point",
+      "flips": 148
+    },
+    {
+      "seed": 88,
+      "n": 28,
+      "terminationReason": "fixed-point",
+      "flips": 143
+    },
+    {
+      "seed": 89,
+      "n": 29,
+      "terminationReason": "quiet-constraint",
+      "flips": 173
+    },
+    {
+      "seed": 90,
+      "n": 30,
+      "terminationReason": "flip-budget",
+      "flips": 231
+    },
+    {
+      "seed": 91,
+      "n": 31,
+      "terminationReason": "fixed-point",
+      "flips": 138
+    },
+    {
+      "seed": 92,
+      "n": 32,
+      "terminationReason": "no-quiet-candidate",
+      "flips": 0
+    },
+    {
+      "seed": 93,
+      "n": 33,
+      "terminationReason": "fixed-point",
+      "flips": 249
+    },
+    {
+      "seed": 94,
+      "n": 34,
+      "terminationReason": "fixed-point",
+      "flips": 157
+    },
+    {
+      "seed": 95,
+      "n": 35,
+      "terminationReason": "quiet-constraint",
+      "flips": 178
+    },
+    {
+      "seed": 96,
+      "n": 36,
+      "terminationReason": "fixed-point",
+      "flips": 251
+    },
+    {
+      "seed": 97,
+      "n": 37,
+      "terminationReason": "quiet-constraint",
+      "flips": 246
+    },
+    {
+      "seed": 98,
+      "n": 38,
+      "terminationReason": "quiet-constraint",
+      "flips": 156
+    },
+    {
+      "seed": 99,
+      "n": 39,
+      "terminationReason": "fixed-point",
+      "flips": 247
+    },
+    {
+      "seed": 100,
+      "n": 40,
+      "terminationReason": "fixed-point",
+      "flips": 220
+    },
+    {
+      "seed": 101,
+      "n": 41,
+      "terminationReason": "quiet-constraint",
+      "flips": 158
+    },
+    {
+      "seed": 102,
+      "n": 42,
+      "terminationReason": "fixed-point",
+      "flips": 268
+    },
+    {
+      "seed": 103,
+      "n": 43,
+      "terminationReason": "no-quiet-candidate",
+      "flips": 0
+    },
+    {
+      "seed": 104,
+      "n": 44,
+      "terminationReason": "quiet-constraint",
+      "flips": 150
+    },
+    {
+      "seed": 105,
+      "n": 10,
+      "terminationReason": "fixed-point",
+      "flips": 54
+    },
+    {
+      "seed": 106,
+      "n": 11,
+      "terminationReason": "fixed-point",
+      "flips": 66
+    },
+    {
+      "seed": 107,
+      "n": 12,
+      "terminationReason": "fixed-point",
+      "flips": 66
+    },
+    {
+      "seed": 108,
+      "n": 13,
+      "terminationReason": "fixed-point",
+      "flips": 92
+    },
+    {
+      "seed": 109,
+      "n": 14,
+      "terminationReason": "fixed-point",
+      "flips": 54
+    },
+    {
+      "seed": 110,
+      "n": 15,
+      "terminationReason": "fixed-point",
+      "flips": 81
+    },
+    {
+      "seed": 111,
+      "n": 16,
+      "terminationReason": "fixed-point",
+      "flips": 135
+    },
+    {
+      "seed": 112,
+      "n": 17,
+      "terminationReason": "fixed-point",
+      "flips": 140
+    },
+    {
+      "seed": 113,
+      "n": 18,
+      "terminationReason": "fixed-point",
+      "flips": 140
+    },
+    {
+      "seed": 114,
+      "n": 19,
+      "terminationReason": "fixed-point",
+      "flips": 115
+    },
+    {
+      "seed": 115,
+      "n": 20,
+      "terminationReason": "fixed-point",
+      "flips": 140
+    },
+    {
+      "seed": 116,
+      "n": 21,
+      "terminationReason": "no-quiet-candidate",
+      "flips": 0
+    },
+    {
+      "seed": 117,
+      "n": 22,
+      "terminationReason": "fixed-point",
+      "flips": 103
+    },
+    {
+      "seed": 118,
+      "n": 23,
+      "terminationReason": "fixed-point",
+      "flips": 162
+    },
+    {
+      "seed": 119,
+      "n": 24,
+      "terminationReason": "fixed-point",
+      "flips": 188
+    },
+    {
+      "seed": 120,
+      "n": 25,
+      "terminationReason": "fixed-point",
+      "flips": 193
+    },
+    {
+      "seed": 121,
+      "n": 26,
+      "terminationReason": "no-quiet-candidate",
+      "flips": 0
+    },
+    {
+      "seed": 122,
+      "n": 27,
+      "terminationReason": "fixed-point",
+      "flips": 139
+    },
+    {
+      "seed": 123,
+      "n": 28,
+      "terminationReason": "fixed-point",
+      "flips": 197
+    },
+    {
+      "seed": 124,
+      "n": 29,
+      "terminationReason": "quiet-constraint",
+      "flips": 113
+    },
+    {
+      "seed": 125,
+      "n": 30,
+      "terminationReason": "fixed-point",
+      "flips": 244
+    },
+    {
+      "seed": 126,
+      "n": 31,
+      "terminationReason": "fixed-point",
+      "flips": 205
+    },
+    {
+      "seed": 127,
+      "n": 32,
+      "terminationReason": "fixed-point",
+      "flips": 214
+    },
+    {
+      "seed": 128,
+      "n": 33,
+      "terminationReason": "quiet-constraint",
+      "flips": 193
+    },
+    {
+      "seed": 129,
+      "n": 34,
+      "terminationReason": "fixed-point",
+      "flips": 192
+    },
+    {
+      "seed": 130,
+      "n": 35,
+      "terminationReason": "quiet-constraint",
+      "flips": 135
+    },
+    {
+      "seed": 131,
+      "n": 36,
+      "terminationReason": "quiet-constraint",
+      "flips": 168
+    },
+    {
+      "seed": 132,
+      "n": 37,
+      "terminationReason": "fixed-point",
+      "flips": 258
+    },
+    {
+      "seed": 133,
+      "n": 38,
+      "terminationReason": "quiet-constraint",
+      "flips": 178
+    },
+    {
+      "seed": 134,
+      "n": 39,
+      "terminationReason": "quiet-constraint",
+      "flips": 133
+    },
+    {
+      "seed": 135,
+      "n": 40,
+      "terminationReason": "fixed-point",
+      "flips": 257
+    },
+    {
+      "seed": 136,
+      "n": 41,
+      "terminationReason": "quiet-constraint",
+      "flips": 198
+    },
+    {
+      "seed": 137,
+      "n": 42,
+      "terminationReason": "quiet-constraint",
+      "flips": 216
+    },
+    {
+      "seed": 138,
+      "n": 43,
+      "terminationReason": "fixed-point",
+      "flips": 210
+    },
+    {
+      "seed": 139,
+      "n": 44,
+      "terminationReason": "quiet-constraint",
+      "flips": 138
+    },
+    {
+      "seed": 140,
+      "n": 10,
+      "terminationReason": "fixed-point",
+      "flips": 42
+    },
+    {
+      "seed": 141,
+      "n": 11,
+      "terminationReason": "fixed-point",
+      "flips": 69
+    },
+    {
+      "seed": 142,
+      "n": 12,
+      "terminationReason": "fixed-point",
+      "flips": 79
+    },
+    {
+      "seed": 143,
+      "n": 13,
+      "terminationReason": "fixed-point",
+      "flips": 56
+    },
+    {
+      "seed": 144,
+      "n": 14,
+      "terminationReason": "fixed-point",
+      "flips": 130
+    },
+    {
+      "seed": 145,
+      "n": 15,
+      "terminationReason": "fixed-point",
+      "flips": 101
+    },
+    {
+      "seed": 146,
+      "n": 16,
+      "terminationReason": "fixed-point",
+      "flips": 90
+    },
+    {
+      "seed": 147,
+      "n": 17,
+      "terminationReason": "fixed-point",
+      "flips": 148
+    },
+    {
+      "seed": 148,
+      "n": 18,
+      "terminationReason": "fixed-point",
+      "flips": 89
+    },
+    {
+      "seed": 149,
+      "n": 19,
+      "terminationReason": "fixed-point",
+      "flips": 125
+    },
+    {
+      "seed": 150,
+      "n": 20,
+      "terminationReason": "fixed-point",
+      "flips": 125
+    },
+    {
+      "seed": 151,
+      "n": 21,
+      "terminationReason": "quiet-constraint",
+      "flips": 105
+    },
+    {
+      "seed": 152,
+      "n": 22,
+      "terminationReason": "fixed-point",
+      "flips": 123
+    },
+    {
+      "seed": 153,
+      "n": 23,
+      "terminationReason": "fixed-point",
+      "flips": 184
+    },
+    {
+      "seed": 154,
+      "n": 24,
+      "terminationReason": "fixed-point",
+      "flips": 167
+    },
+    {
+      "seed": 155,
+      "n": 25,
+      "terminationReason": "fixed-point",
+      "flips": 171
+    },
+    {
+      "seed": 156,
+      "n": 26,
+      "terminationReason": "fixed-point",
+      "flips": 213
+    },
+    {
+      "seed": 157,
+      "n": 27,
+      "terminationReason": "quiet-constraint",
+      "flips": 163
+    },
+    {
+      "seed": 158,
+      "n": 28,
+      "terminationReason": "quiet-constraint",
+      "flips": 110
+    },
+    {
+      "seed": 159,
+      "n": 29,
+      "terminationReason": "fixed-point",
+      "flips": 190
+    },
+    {
+      "seed": 160,
+      "n": 30,
+      "terminationReason": "quiet-constraint",
+      "flips": 143
+    },
+    {
+      "seed": 161,
+      "n": 31,
+      "terminationReason": "fixed-point",
+      "flips": 106
+    },
+    {
+      "seed": 162,
+      "n": 32,
+      "terminationReason": "flip-budget",
+      "flips": 244
+    },
+    {
+      "seed": 163,
+      "n": 33,
+      "terminationReason": "quiet-constraint",
+      "flips": 103
+    },
+    {
+      "seed": 164,
+      "n": 34,
+      "terminationReason": "quiet-constraint",
+      "flips": 209
+    },
+    {
+      "seed": 165,
+      "n": 35,
+      "terminationReason": "fixed-point",
+      "flips": 213
+    },
+    {
+      "seed": 166,
+      "n": 36,
+      "terminationReason": "quiet-constraint",
+      "flips": 180
+    },
+    {
+      "seed": 167,
+      "n": 37,
+      "terminationReason": "quiet-constraint",
+      "flips": 114
+    },
+    {
+      "seed": 168,
+      "n": 38,
+      "terminationReason": "fixed-point",
+      "flips": 178
+    },
+    {
+      "seed": 169,
+      "n": 39,
+      "terminationReason": "fixed-point",
+      "flips": 239
+    },
+    {
+      "seed": 170,
+      "n": 40,
+      "terminationReason": "fixed-point",
+      "flips": 204
+    },
+    {
+      "seed": 171,
+      "n": 41,
+      "terminationReason": "fixed-point",
+      "flips": 278
+    },
+    {
+      "seed": 172,
+      "n": 42,
+      "terminationReason": "fixed-point",
+      "flips": 150
+    },
+    {
+      "seed": 173,
+      "n": 43,
+      "terminationReason": "quiet-constraint",
+      "flips": 177
+    },
+    {
+      "seed": 174,
+      "n": 44,
+      "terminationReason": "fixed-point",
+      "flips": 212
+    },
+    {
+      "seed": 175,
+      "n": 10,
+      "terminationReason": "fixed-point",
+      "flips": 56
+    },
+    {
+      "seed": 176,
+      "n": 11,
+      "terminationReason": "fixed-point",
+      "flips": 72
+    },
+    {
+      "seed": 177,
+      "n": 12,
+      "terminationReason": "fixed-point",
+      "flips": 100
+    },
+    {
+      "seed": 178,
+      "n": 13,
+      "terminationReason": "fixed-point",
+      "flips": 60
+    },
+    {
+      "seed": 179,
+      "n": 14,
+      "terminationReason": "fixed-point",
+      "flips": 87
+    },
+    {
+      "seed": 180,
+      "n": 15,
+      "terminationReason": "fixed-point",
+      "flips": 104
+    },
+    {
+      "seed": 181,
+      "n": 16,
+      "terminationReason": "fixed-point",
+      "flips": 122
+    },
+    {
+      "seed": 182,
+      "n": 17,
+      "terminationReason": "fixed-point",
+      "flips": 75
+    },
+    {
+      "seed": 183,
+      "n": 18,
+      "terminationReason": "fixed-point",
+      "flips": 129
+    },
+    {
+      "seed": 184,
+      "n": 19,
+      "terminationReason": "fixed-point",
+      "flips": 123
+    },
+    {
+      "seed": 185,
+      "n": 20,
+      "terminationReason": "quiet-constraint",
+      "flips": 140
+    },
+    {
+      "seed": 186,
+      "n": 21,
+      "terminationReason": "fixed-point",
+      "flips": 163
+    },
+    {
+      "seed": 187,
+      "n": 22,
+      "terminationReason": "fixed-point",
+      "flips": 131
+    },
+    {
+      "seed": 188,
+      "n": 23,
+      "terminationReason": "fixed-point",
+      "flips": 157
+    },
+    {
+      "seed": 189,
+      "n": 24,
+      "terminationReason": "fixed-point",
+      "flips": 179
+    },
+    {
+      "seed": 190,
+      "n": 25,
+      "terminationReason": "quiet-constraint",
+      "flips": 201
+    },
+    {
+      "seed": 191,
+      "n": 26,
+      "terminationReason": "fixed-point",
+      "flips": 186
+    },
+    {
+      "seed": 192,
+      "n": 27,
+      "terminationReason": "fixed-point",
+      "flips": 173
+    },
+    {
+      "seed": 193,
+      "n": 28,
+      "terminationReason": "quiet-constraint",
+      "flips": 115
+    },
+    {
+      "seed": 194,
+      "n": 29,
+      "terminationReason": "quiet-constraint",
+      "flips": 147
+    },
+    {
+      "seed": 195,
+      "n": 30,
+      "terminationReason": "fixed-point",
+      "flips": 210
+    },
+    {
+      "seed": 196,
+      "n": 31,
+      "terminationReason": "fixed-point",
+      "flips": 137
+    },
+    {
+      "seed": 197,
+      "n": 32,
+      "terminationReason": "quiet-constraint",
+      "flips": 181
+    },
+    {
+      "seed": 198,
+      "n": 33,
+      "terminationReason": "fixed-point",
+      "flips": 235
+    },
+    {
+      "seed": 199,
+      "n": 34,
+      "terminationReason": "fixed-point",
+      "flips": 178
+    },
+    {
+      "seed": 200,
+      "n": 35,
+      "terminationReason": "flip-budget",
+      "flips": 214
+    }
+  ]
+}

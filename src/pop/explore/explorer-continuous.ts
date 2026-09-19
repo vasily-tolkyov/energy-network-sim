@@ -43,7 +43,7 @@ export interface ContExploreConfig {
   readonly verifyQuorum?: number;
   readonly learnRepeats?: number;
   readonly ignoranceDrive?: number;
-  /** B0 语料阶段的自然终止验证数（默认 4，比 B2 松——语料够用就形成概念） */
+  /** B0 最少真实观察数（默认 4）；形成还须每维至少两个值，与置信停止分开 */
   readonly corpusQuorum?: number;
   readonly fieldsPerDim?: number;
   /** 概念更新开关（默认 true；false = 冻结对照） */
@@ -171,24 +171,19 @@ export class ContinuousExplorer {
       drives.set(id, this.ignoranceOf(c) + this.planner.boostOf(id));
     }
 
-    const quorum = this.phase === "corpus" ? this.cfg.corpusQuorum : this.cfg.verifyQuorum;
+    // Concept formation is a representation update from observations, not a
+    // certificate that predictions have converged. Waiting for confident
+    // predictions here creates a circular dependency on the unformed concepts.
+    if (this.phase === "corpus" && this.planner.experimentCount >= this.cfg.corpusQuorum && this.corpusDiverseEnough()) {
+      this.formConcepts();
+      return true;
+    }
     const anyUnknown = candidates.some(
       (c) => (drives.get(this.planner.candidateId(c)) ?? 0) >= this.cfg.ignoranceDrive - 1e-9,
     );
-    if (!anyUnknown && this.withinStreak >= quorum) {
-      if (this.phase === "corpus") {
-        // 语料充分性门（种子 2 实测病理修复）：每个条件维至少观察过 2 个不同
-        // 取值才允许形成概念——零变异的维只会形成 1 个概念，R2 的差分通道面
-        // 永远看不到这个维 → 影响因素漏判 → 下游级联崩溃。
-        // 不充分时不终止、继续语料相（验证连胜保留，候选驱动会自然带来变异）。
-        if (this.corpusDiverseEnough()) {
-          this.formConcepts();
-          return true; // 间歇期完成，进入 B2
-        }
-      } else {
-        this.terminationReason = "quorum-met";
-        return false; // B2 达标，整体终止
-      }
+    if (this.phase === "full" && !anyUnknown && this.withinStreak >= this.cfg.verifyQuorum) {
+      this.terminationReason = "quorum-met";
+      return false;
     }
 
     const focus = new NeuralFocusNet(candidates.map((c) => this.planner.candidateId(c)), { inertia: 0 });

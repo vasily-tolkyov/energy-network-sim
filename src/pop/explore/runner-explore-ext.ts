@@ -54,8 +54,9 @@ function runMode(mode: "updating" | "frozen", seed: number): void {
     seed,
   );
 
-  // 第一阶段：基础网格探索到自然终止
-  while (explorer.step()) {}
+  // Equal budget per exposure stage, independent of score/convergence.
+  const phaseBudget = 400 / 2;
+  while (explorer.log.length < phaseBudget && explorer.step()) {}
   const phase1Experiments = explorer.log.length;
   const voltageEvidencePhase1 = explorer.magEvidence().voltage ?? 0;
   out(
@@ -118,7 +119,7 @@ out("概念更新验收：量程扩展场景（世界中途变大），冻结 vs
 out("═".repeat(72));
 out(
   `设定：电压量程 [0,4.5] 从起始对编码器可见（感受野覆盖），但候选网格初始只到 3.0；` +
-    `一阶段自然终止后扩展候选值 [${LAB_CONT_EXT_NEW_VALUES.voltage}]。`,
+    `一阶段最多 200 次实验后扩展候选值 [${LAB_CONT_EXT_NEW_VALUES.voltage}]。`,
 );
 out("判据：更新系统应在扩展区结晶新概念并继续归因；冻结系统的概念层停滞、R2 对新对的电压通道失明。");
 

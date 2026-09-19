@@ -1,0 +1,148 @@
+{
+  "status": "interrupted-before-completion",
+  "time": "2026-09-19T21:39:38.8428552+08:00",
+  "reason": "Corpus formation depends circularly on converged predictions; replace with observation sufficiency. Ordered sparse solver separately proved identical in 200 cases. These partial outputs are NOT final results.",
+  "sourceCommit": "1b25157",
+  "processes": [
+    {
+      "ProcessId": 19540,
+      "ParentProcessId": 16596,
+      "CommandLine": "\"C:\\Users\\86139\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nnpm run verify > runs/review2/verify.tap; $resultCode=$LASTEXITCODE; Set-Content runs/review2/verify.exit $resultCode; exit $resultCode\""
+    },
+    {
+      "ProcessId": 25120,
+      "ParentProcessId": 16596,
+      "CommandLine": "\"C:\\Users\\86139\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nnode review-artifacts/run-group.mjs discrete > runs/review2/group-discrete.log; exit $LASTEXITCODE\""
+    },
+    {
+      "ProcessId": 18668,
+      "ParentProcessId": 16596,
+      "CommandLine": "\"C:\\Users\\86139\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nnode review-artifacts/run-group.mjs continuous > runs/review2/group-continuous.log; exit $LASTEXITCODE\""
+    },
+    {
+      "ProcessId": 19316,
+      "ParentProcessId": 16596,
+      "CommandLine": "\"C:\\Users\\86139\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nnode review-artifacts/run-group.mjs extension > runs/review2/group-extension.log; exit $LASTEXITCODE\""
+    },
+    {
+      "ProcessId": 20256,
+      "ParentProcessId": 16596,
+      "CommandLine": "\"C:\\Users\\86139\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nnode review-artifacts/run-group.mjs supporting > runs/review2/group-supporting.log; exit $LASTEXITCODE\""
+    },
+    {
+      "ProcessId": 28824,
+      "ParentProcessId": 25120,
+      "CommandLine": "\"D:\\nodejs\\node.exe\" review-artifacts/run-group.mjs discrete"
+    },
+    {
+      "ProcessId": 15340,
+      "ParentProcessId": 19316,
+      "CommandLine": "\"D:\\nodejs\\node.exe\" review-artifacts/run-group.mjs extension"
+    },
+    {
+      "ProcessId": 19344,
+      "ParentProcessId": 18668,
+      "CommandLine": "\"D:\\nodejs\\node.exe\" review-artifacts/run-group.mjs continuous"
+    },
+    {
+      "ProcessId": 29352,
+      "ParentProcessId": 15340,
+      "CommandLine": "D:\\nodejs\\node.exe D:\\kimi_kairos\\energy-network-sim\\dist\\src\\pop\\explore\\runner-explore-ext.js"
+    },
+    {
+      "ProcessId": 31420,
+      "ParentProcessId": 28824,
+      "CommandLine": "D:\\nodejs\\node.exe D:\\kimi_kairos\\energy-network-sim\\dist\\src\\pop\\explore\\runner-explore.js"
+    },
+    {
+      "ProcessId": 28392,
+      "ParentProcessId": 19344,
+      "CommandLine": "D:\\nodejs\\node.exe D:\\kimi_kairos\\energy-network-sim\\dist\\src\\pop\\explore\\runner-explore-continuous.js"
+    },
+    {
+      "ProcessId": 21856,
+      "ParentProcessId": 19540,
+      "CommandLine": "\"D:\\nodejs\\node.exe\" D:\\nodejs/node_modules/npm/bin/npm-cli.js run verify"
+    },
+    {
+      "ProcessId": 13252,
+      "ParentProcessId": 21856,
+      "CommandLine": "C:\\WINDOWS\\system32\\cmd.exe /d /s /c npm run build && npm test"
+    },
+    {
+      "ProcessId": 31264,
+      "ParentProcessId": 16596,
+      "CommandLine": "\"C:\\Users\\86139\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nnode review-artifacts/run-group.mjs independent > runs/review2/group-independent.log; exit $LASTEXITCODE\""
+    },
+    {
+      "ProcessId": 5040,
+      "ParentProcessId": 20256,
+      "CommandLine": "\"D:\\nodejs\\node.exe\" review-artifacts/run-group.mjs supporting"
+    },
+    {
+      "ProcessId": 24996,
+      "ParentProcessId": 5040,
+      "CommandLine": "D:\\nodejs\\node.exe D:\\kimi_kairos\\energy-network-sim\\dist\\src\\pop\\runner-pop.js"
+    },
+    {
+      "ProcessId": 28456,
+      "ParentProcessId": 16596,
+      "CommandLine": "\"C:\\Users\\86139\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nnode review-artifacts/run-group.mjs fresh > runs/review2/group-fresh.log; exit $LASTEXITCODE\""
+    },
+    {
+      "ProcessId": 20488,
+      "ParentProcessId": 31264,
+      "CommandLine": "\"D:\\nodejs\\node.exe\" review-artifacts/run-group.mjs independent"
+    },
+    {
+      "ProcessId": 19668,
+      "ParentProcessId": 20488,
+      "CommandLine": "D:\\nodejs\\node.exe D:\\kimi_kairos\\energy-network-sim\\review-artifacts\\independent-experiments.mjs discrete 4"
+    },
+    {
+      "ProcessId": 28196,
+      "ParentProcessId": 13252,
+      "CommandLine": "\"D:\\nodejs\\\\node.exe\"  \"D:\\nodejs\\\\node_modules\\npm\\bin\\npm-cli.js\" test"
+    },
+    {
+      "ProcessId": 12660,
+      "ParentProcessId": 28196,
+      "CommandLine": "C:\\WINDOWS\\system32\\cmd.exe /d /s /c node --test dist/test/*.test.js"
+    },
+    {
+      "ProcessId": 10572,
+      "ParentProcessId": 12660,
+      "CommandLine": "node  --test dist/test/*.test.js"
+    },
+    {
+      "ProcessId": 9132,
+      "ParentProcessId": 10572,
+      "CommandLine": "D:\\nodejs\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http dist\\test\\explore-continuous.test.js"
+    },
+    {
+      "ProcessId": 12308,
+      "ParentProcessId": 10572,
+      "CommandLine": "D:\\nodejs\\node.exe --use-largepages=off --trace-event-file-pattern=node_trace.${rotation}.log --v8-pool-size=4 --node-snapshot --cpu-prof-interval=1000 --report-signal=SIGUSR2 --tls-cipher-list=TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA384:ECDHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA256:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA --secure-heap=0 --secure-heap-min=2 --stack-trace-limit=10 --test-isolation=process --network-family-autoselection-attempt-timeout=250 --heapsnapshot-near-heap-limit=0 --heap-prof-interval=524288 --max-http-header-size=16384 --test-concurrency=0 --test-timeout=0 --test-coverage-branches=0 --test-coverage-functions=0 --test-coverage-lines=0 --watch-kill-signal=SIGTERM --inspect-port=127.0.0.1:9229 --inspect-publish-uid=stderr,http dist\\test\\explore.test.js"
+    },
+    {
+      "ProcessId": 30684,
+      "ParentProcessId": 28456,
+      "CommandLine": "\"D:\\nodejs\\node.exe\" review-artifacts/run-group.mjs fresh"
+    },
+    {
+      "ProcessId": 16956,
+      "ParentProcessId": 30684,
+      "CommandLine": "D:\\nodejs\\node.exe D:\\kimi_kairos\\energy-network-sim\\review-artifacts\\fresh-experiments.mjs continuous 6"
+    },
+    {
+      "ProcessId": 13656,
+      "ParentProcessId": 16596,
+      "CommandLine": "\"C:\\Users\\86139\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nnode 'D:\\kimi_kairos\\review2-validation\\tests\\phase-a-independent.mjs' > runs/review2/phase-a-independent.log\n$phaseAResult=$LASTEXITCODE; Set-Content runs/review2/phase-a.exit $phaseAResult\nnode 'D:\\kimi_kairos\\review2-validation\\tests\\phase-b-independent.mjs' > runs/review2/phase-b-independent.log\n$phaseBResult=$LASTEXITCODE; Set-Content runs/review2/phase-b.exit $phaseBResult\nexit ([Math]::Max($phaseAResult,$phaseBResult))\""
+    },
+    {
+      "ProcessId": 4120,
+      "ParentProcessId": 13656,
+      "CommandLine": "\"D:\\nodejs\\node.exe\" D:\\kimi_kairos\\review2-validation\\tests\\phase-a-independent.mjs"
+    }
+  ]
+}

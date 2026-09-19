@@ -1,0 +1,13 @@
+{"stage":"train","experiments":19,"rules":19,"seconds":14.750459600000001}
+{"stage":"train","experiments":39,"rules":39,"seconds":47.3613262}
+{"stage":"train","experiments":59,"rules":59,"seconds":90.46515939999999}
+{"stage":"train","experiments":79,"rules":79,"seconds":145.16980370000002}
+{"stage":"train","experiments":99,"rules":99,"seconds":208.2676716}
+{"stage":"train","experiments":119,"rules":119,"seconds":290.7078456}
+{"stage":"train","experiments":139,"rules":139,"seconds":391.8634555}
+{"stage":"train","experiments":159,"rules":159,"seconds":506.6883249}
+{"stage":"train","experiments":179,"rules":179,"seconds":638.150227}
+{"stage":"train","experiments":199,"rules":199,"seconds":784.9593825}
+{"stage":"train","experiments":219,"rules":219,"seconds":947.8318451}
+{"stage":"train","experiments":239,"rules":239,"seconds":1132.5438114}
+{"stage":"train","experiments":259,"rules":259,"seconds":1325.5389457}

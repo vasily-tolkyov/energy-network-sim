@@ -1,0 +1,19 @@
+✔ 真实语料可形成概念；非收敛预测不能触发置信停止 (154.143ms)
+✔ F1 evidence sequence: truth-guess (93.2328ms)
+✔ F1 evidence sequence: guess-truth (40.2332ms)
+✔ F1 evidence sequence: truth-guess-truth (44.2249ms)
+✔ F1 evidence sequence: partial (32.6746ms)
+✔ F1 evidence sequence: truth-change-return (32.4964ms)
+✔ F2 aliases aggregate equally, overlap survives, disjoint correction reverses (127.8452ms)
+✔ F3 joint capture: matching, contradiction, novel result, partial conflict (177.8165ms)
+✔ F3 unseen threshold correction uses independent memories for each seed (review N28) (202.9367ms)
+✔ F3 cached value snapshot survives changed core semantics (46.4671ms)
+✔ F4 no legal quiet candidate returns structured failure, symmetric decay conserves Γ (2.7819ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1047.8724

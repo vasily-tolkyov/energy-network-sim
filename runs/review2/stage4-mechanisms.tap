@@ -1,0 +1,430 @@
+TAP version 13
+# Subtest: F7 rejected writes preserve all edges, signatures, evidence and counters
+ok 1 - F7 rejected writes preserve all edges, signatures, evidence and counters
+  ---
+  duration_ms: 39.2783
+  type: 'test'
+  ...
+# Subtest: F1 saturated retractable Γ retains other owners and structural inhibition
+ok 2 - F1 saturated retractable Γ retains other owners and structural inhibition
+  ---
+  duration_ms: 1.16
+  type: 'test'
+  ...
+# Subtest: F12 constructor clusterThresholdRatio actually controls default extraction
+ok 3 - F12 constructor clusterThresholdRatio actually controls default extraction
+  ---
+  duration_ms: 2.0846
+  type: 'test'
+  ...
+# Subtest: 真实语料可形成概念；非收敛预测不能触发置信停止
+ok 4 - 真实语料可形成概念；非收敛预测不能触发置信停止
+  ---
+  duration_ms: 234.3114
+  type: 'test'
+  ...
+# Subtest: R09 invalid observation must not consume a rule slot or write weights
+ok 5 - R09 invalid observation must not consume a rule slot or write weights
+  ---
+  duration_ms: 5.6634
+  type: 'test'
+  ...
+# {"error":"channel y: bin NaN out of range [0, 2)","rules":0,"allocated":0,"conditionCoreWeight":0}
+# Subtest: R10 sensory NaN must be rejected before registration
+ok 6 - R10 sensory NaN must be rejected before registration
+  ---
+  duration_ms: 3.1381
+  type: 'test'
+  ...
+# {"rejected":true,"rules":0}
+# Subtest: R11 finite integer annealing options must be validated
+ok 7 - R11 finite integer annealing options must be validated
+  ---
+  duration_ms: 4.9383
+  type: 'test'
+  ...
+# {"accepted":[]}
+# Subtest: R12 infinite levels must reject promptly (isolated child with 2.5s hard timeout)
+ok 8 - R12 infinite levels must reject promptly (isolated child with 2.5s hard timeout)
+  ---
+  duration_ms: 419.9091
+  type: 'test'
+  ...
+# {"result":"rejected"}
+# Subtest: R13 zero quench budget must reject or perform zero quench flips
+ok 9 - R13 zero quench budget must reject or perform zero quench flips
+  ---
+  duration_ms: 2.2212
+  type: 'test'
+  ...
+# {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5,1.5],"flipCount":0,"driveWork":0},"converged":false,"terminationReason":"flip-budget","residualFlips":1,"candidateSet":[0],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":0,"acceptedUphill":0}
+# Subtest: R15 fractional rule capacity must be rejected at construction
+ok 10 - R15 fractional rule capacity must be rejected at construction
+  ---
+  duration_ms: 0.5856
+  type: 'test'
+  ...
+# {"rejected":true}
+# Subtest: R17 allocator rejects ordinary overflow without changing registered state
+ok 11 - R17 allocator rejects ordinary overflow without changing registered state
+  ---
+  duration_ms: 5.5584
+  type: 'test'
+  ...
+# {"n":1,"count":1,"after":1}
+# Subtest: R01 DI accounting and reported residuals across 24 fresh random networks
+ok 12 - R01 DI accounting and reported residuals across 24 fresh random networks
+  ---
+  duration_ms: 31.6392
+  type: 'test'
+  ...
+# {"networks":24,"limited":0}
+# Subtest: R02 explicit candidate freeze blocks a connected outside chain
+ok 13 - R02 explicit candidate freeze blocks a connected outside chain
+  ---
+  duration_ms: 2.5467
+  type: 'test'
+  ...
+# {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5],"flipCount":0,"driveWork":0},"converged":true,"terminationReason":"fixed-point","residualFlips":0,"candidateSet":[0],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":0,"acceptedUphill":0}
+# Subtest: R03 current documented peak-edge example is executable
+ok 14 - R03 current documented peak-edge example is executable
+  ---
+  duration_ms: 3.4464
+  type: 'test'
+  ...
+# {"wells":2}
+# Subtest: R04 quiet-only fallback must not return an engaged driver when quiet state was visited
+ok 15 - R04 quiet-only fallback must not return an engaged driver when quiet state was visited
+  ---
+  duration_ms: 1.3846
+  type: 'test'
+  ...
+# {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5],"flipCount":0,"driveWork":0},"converged":false,"terminationReason":"quiet-constraint","residualFlips":1,"candidateSet":[0,1,2],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":2,"acceptedUphill":0,"engaged":false,"visitedQuietState":[0],"quietEnergy":1.5}
+# Subtest: R05 self-written guess cannot veto a previously confirmed observation
+ok 16 - R05 self-written guess cannot veto a previously confirmed observation
+  ---
+  duration_ms: 41.0478
+  type: 'test'
+  ...
+# {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-3.1999999999999993,"converged":true,"terminationReason":"fixed-point"}
+# Subtest: R06 repeated same-world truth must recover after an erroneous self-written guess
+ok 17 - R06 repeated same-world truth must recover after an erroneous self-written guess
+  ---
+  duration_ms: 23.2578
+  type: 'test'
+  ...
+# {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-11.999999999999988,"converged":true,"terminationReason":"fixed-point"}
+# Subtest: R07 field observations within identical receptive-field code cannot erase that code
+ok 18 - R07 field observations within identical receptive-field code cannot erase that code
+  ---
+  duration_ms: 45.9172
+  type: 'test'
+  ...
+# {"values":{"y":0.505},"distribution":{"y":[{"center":0.5,"count":8}]},"ambiguous":[],"activeNeurons":[4,5,6,7,8,9,10,11,56,57,58,59,60,61,62,63,80,81,82,83],"energy":-15.600000000000012,"winningCores":[0],"converged":true,"terminationReason":"fixed-point"}
+# Subtest: R08 nearby but distinct inputs of a stationary function must retain a readable shared code
+ok 19 - R08 nearby but distinct inputs of a stationary function must retain a readable shared code
+  ---
+  duration_ms: 79.378
+  type: 'test'
+  ...
+# {"rules":1,"a":{"y":0.505},"b":{"y":0.505}}
+# Subtest: R14 R2 unchanged outcomes across variable dimensions and population sizes
+ok 20 - R14 R2 unchanged outcomes across variable dimensions and population sizes
+  ---
+  duration_ms: 35.5998
+  type: 'test'
+  ...
+# {"checked":12}
+# Subtest: R18 actual observation can correct a prior wrong guess in the supported one-way order
+ok 21 - R18 actual observation can correct a prior wrong guess in the supported one-way order
+  ---
+  duration_ms: 15.2023
+  type: 'test'
+  ...
+# {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-5.399999999999993,"converged":true,"terminationReason":"fixed-point"}
+# Subtest: R19 field R2 outcome change detection must be invariant to pair reversal
+ok 22 - R19 field R2 outcome change detection must be invariant to pair reversal
+  ---
+  duration_ms: 49.3348
+  type: 'test'
+  ...
+# {"forward":{"undecidable":false,"outcomeChanged":true,"outcomeDelta":{"y":0.125},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":7.6000000000000005},"reverse":{"undecidable":false,"outcomeChanged":true,"outcomeDelta":{"y":-0.125},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":7.6000000000000005}}
+# Subtest: R20 influence allocation and reverse observation order preserve registration identity
+ok 23 - R20 influence allocation and reverse observation order preserve registration identity
+  ---
+  duration_ms: 89.4543
+  type: 'test'
+  ...
+# {"rules":2,"a":{"y":0.09999999999999999},"b":{"y":0.9},"winning":[[1],[0]]}
+# Subtest: N01 strong observation must not be vetoed by weaker self-written guess
+ok 24 - N01 strong observation must not be vetoed by weaker self-written guess
+  ---
+  duration_ms: 140.9926
+  type: 'test'
+  ...
+# Subtest: N02 stationary truth can repair one intervening false guess
+ok 25 - N02 stationary truth can repair one intervening false guess
+  ---
+  duration_ms: 47.4647
+  type: 'test'
+  ...
+# Subtest: N03 identical sensory codes in static y=x must not erase each other
+ok 26 - N03 identical sensory codes in static y=x must not erase each other
+  ---
+  duration_ms: 313.6574
+  type: 'test'
+  ...
+# Subtest: N04 repeated identical raw observations preserve continuous recall
+ok 27 - N04 repeated identical raw observations preserve continuous recall
+  ---
+  duration_ms: 150.6624
+  type: 'test'
+  ...
+# Subtest: N05 invalid Pop condition must not consume capacity
+ok 28 - N05 invalid Pop condition must not consume capacity
+  ---
+  duration_ms: 3.0139
+  type: 'test'
+  ...
+# Subtest: N06 invalid Pop outcome must not partially write a rule
+ok 29 - N06 invalid Pop outcome must not partially write a rule
+  ---
+  duration_ms: 3.3236
+  type: 'test'
+  ...
+# Subtest: N07 unknown Field outcome must leave memory unchanged on rejection
+ok 30 - N07 unknown Field outcome must leave memory unchanged on rejection
+  ---
+  duration_ms: 13.7274
+  type: 'test'
+  ...
+# Subtest: N08 multiple preallocated Field cores get pairwise exclusion on registration
+ok 31 - N08 multiple preallocated Field cores get pairwise exclusion on registration
+  ---
+  duration_ms: 3.6258
+  type: 'test'
+  ...
+# Subtest: N09 invalid Hebbian batch is rejected before any edge is changed
+ok 32 - N09 invalid Hebbian batch is rejected before any edge is changed
+  ---
+  duration_ms: 0.7945
+  type: 'test'
+  ...
+# Subtest: N10 fractional anneal candidates must be rejected
+ok 33 - N10 fractional anneal candidates must be rejected
+  ---
+  duration_ms: 1.0704
+  type: 'test'
+  ...
+# Subtest: N11 nonfinite anneal level count must be rejected
+ok 34 - N11 nonfinite anneal level count must be rejected
+  ---
+  duration_ms: 0.5885
+  type: 'test'
+  ...
+# Subtest: N12 nonfinite anneal temperature must be rejected
+ok 35 - N12 nonfinite anneal temperature must be rejected
+  ---
+  duration_ms: 0.5385
+  type: 'test'
+  ...
+# Subtest: N13 invalid anneal options must not mutate current state
+ok 36 - N13 invalid anneal options must not mutate current state
+  ---
+  duration_ms: 0.7489
+  type: 'test'
+  ...
+# Subtest: N14 zero quench budget cannot execute a flip (or must reject)
+ok 37 - N14 zero quench budget cannot execute a flip (or must reject)
+  ---
+  duration_ms: 0.9556
+  type: 'test'
+  ...
+# Subtest: N15 negative directed-inhibition cap must not create excitation
+ok 38 - N15 negative directed-inhibition cap must not create excitation
+  ---
+  duration_ms: 1.1291
+  type: 'test'
+  ...
+# Subtest: N16 sensory NaN cannot silently encode as absent dimension
+ok 39 - N16 sensory NaN cannot silently encode as absent dimension
+  ---
+  duration_ms: 1.022
+  type: 'test'
+  ...
+# Subtest: N17 discrete lab rejects fractional bins before charging cost
+ok 40 - N17 discrete lab rejects fractional bins before charging cost
+  ---
+  duration_ms: 0.6555
+  type: 'test'
+  ...
+# Subtest: N20 incomplete observations cannot allocate evidence-bearing Field rules
+ok 41 - N20 incomplete observations cannot allocate evidence-bearing Field rules
+  ---
+  duration_ms: 1.2887
+  type: 'test'
+  ...
+# Subtest: N21 updated unseen metric includes both classes and constant baseline is nonperfect
+ok 42 - N21 updated unseen metric includes both classes and constant baseline is nonperfect
+  ---
+  duration_ms: 2.0655
+  type: 'test'
+  ...
+# Subtest: N22 weakened focus contract honestly flags multi-marker readout
+ok 43 - N22 weakened focus contract honestly flags multi-marker readout
+  ---
+  duration_ms: 1.6036
+  type: 'test'
+  ...
+# Subtest: N23 valid integer DI networks preserve ledger and residual contract (200 randomized cases)
+ok 44 - N23 valid integer DI networks preserve ledger and residual contract (200 randomized cases)
+  ---
+  duration_ms: 37.1549
+  type: 'test'
+  ...
+# Subtest: N24 Explorer must not classify an explicitly nonconverged forecast as confident verification
+ok 45 - N24 Explorer must not classify an explicitly nonconverged forecast as confident verification
+  ---
+  duration_ms: 34.0804
+  type: 'test'
+  ...
+# Subtest: N29 capture correctly accepts a matching forecast (positive control)
+ok 46 - N29 capture correctly accepts a matching forecast (positive control)
+  ---
+  duration_ms: 73.9281
+  type: 'test'
+  ...
+# Subtest: N18 planner history getter must not expose mutable internal conditions
+ok 47 - N18 planner history getter must not expose mutable internal conditions
+  ---
+  duration_ms: 3.2685
+  type: 'test'
+  ...
+# Subtest: N19 returned auto-pairs must not mutate historical observations
+ok 48 - N19 returned auto-pairs must not mutate historical observations
+  ---
+  duration_ms: 0.8489
+  type: 'test'
+  ...
+# Subtest: N25 Field public rule views cannot corrupt internal registration
+ok 49 - N25 Field public rule views cannot corrupt internal registration
+  ---
+  duration_ms: 23.1881
+  type: 'test'
+  ...
+# Subtest: N26 nominally valid small population configuration recalls learned identity or is rejected
+ok 50 - N26 nominally valid small population configuration recalls learned identity or is rejected
+  ---
+  duration_ms: 1.2649
+  type: 'test'
+  ...
+# Subtest: N27 claimed excitation-off/veto-on factorial cell retains veto
+ok 51 - N27 claimed excitation-off/veto-on factorial cell retains veto
+  ---
+  duration_ms: 10.6781
+  type: 'test'
+  ...
+# Subtest: F1 evidence sequence: truth-guess
+ok 52 - F1 evidence sequence: truth-guess
+  ---
+  duration_ms: 153.9616
+  type: 'test'
+  ...
+# Subtest: F1 evidence sequence: guess-truth
+ok 53 - F1 evidence sequence: guess-truth
+  ---
+  duration_ms: 83.402
+  type: 'test'
+  ...
+# Subtest: F1 evidence sequence: truth-guess-truth
+ok 54 - F1 evidence sequence: truth-guess-truth
+  ---
+  duration_ms: 92.0018
+  type: 'test'
+  ...
+# Subtest: F1 evidence sequence: partial
+ok 55 - F1 evidence sequence: partial
+  ---
+  duration_ms: 58.4238
+  type: 'test'
+  ...
+# Subtest: F1 evidence sequence: truth-change-return
+ok 56 - F1 evidence sequence: truth-change-return
+  ---
+  duration_ms: 56.9686
+  type: 'test'
+  ...
+# Subtest: F2 aliases aggregate equally, overlap survives, disjoint correction reverses
+ok 57 - F2 aliases aggregate equally, overlap survives, disjoint correction reverses
+  ---
+  duration_ms: 207.5646
+  type: 'test'
+  ...
+# Subtest: F3 joint capture: matching, contradiction, novel result, partial conflict
+ok 58 - F3 joint capture: matching, contradiction, novel result, partial conflict
+  ---
+  duration_ms: 340.7989
+  type: 'test'
+  ...
+# Subtest: F3 unseen threshold correction uses independent memories for each seed (review N28)
+ok 59 - F3 unseen threshold correction uses independent memories for each seed (review N28)
+  ---
+  duration_ms: 270.2881
+  type: 'test'
+  ...
+# Subtest: F3 cached value snapshot survives changed core semantics
+ok 60 - F3 cached value snapshot survives changed core semantics
+  ---
+  duration_ms: 52.4211
+  type: 'test'
+  ...
+# Subtest: F4 no legal quiet candidate returns structured failure, symmetric decay conserves Γ
+ok 61 - F4 no legal quiet candidate returns structured failure, symmetric decay conserves Γ
+  ---
+  duration_ms: 2.8403
+  type: 'test'
+  ...
+# W01 trained 16 factors [ 'a', 'b', 'c' ]
+# W02 trained 10 factors [ 'x' ]
+# W03 trained 18 factors [ 'a', 'b' ]
+# W04 trained 17 factors []
+# W05 trained 18 factors [ 'a', 'b' ]
+# Subtest: review2 W01: 3-bit parity with distractor
+ok 62 - review2 W01: 3-bit parity with distractor
+  ---
+  duration_ms: 2009.1325
+  type: 'test'
+  ...
+# Subtest: review2 W02: interior disjoint active intervals
+ok 63 - review2 W02: interior disjoint active intervals
+  ---
+  duration_ms: 325.6448
+  type: 'test'
+  ...
+# Subtest: review2 W03: two correlated output channels
+ok 64 - review2 W03: two correlated output channels
+  ---
+  duration_ms: 1395.9964
+  type: 'test'
+  ...
+# Subtest: review2 W04: rare three-factor joint condition
+ok 65 - review2 W04: rare three-factor joint condition
+  ---
+  duration_ms: 1574.9701
+  type: 'test'
+  ...
+# Subtest: review2 W05: nonlinear max with distractor
+ok 66 - review2 W05: nonlinear max with distractor
+  ---
+  duration_ms: 2079.0056
+  type: 'test'
+  ...
+1..66
+# tests 66
+# suites 0
+# pass 66
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8007.917

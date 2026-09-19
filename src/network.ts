@@ -418,18 +418,12 @@ export class EnergyNetwork {
   /**
    * 局部退火模式选择（语义：只在"输入所及的范围"内求能耗极小）。
    *
-   * 单一温度曲线，无独立贪心相（贪心只是本规律的 T=0 特例）：
-   *   1. 从静息 + 钳制输入出发；
-   *   2. 构造候选集 C = 输入 ∪ { 与输入有公共成员的势阱 }，C 之外的
-   *      神经元结构性冻结在静息——不相干劲阱不是"大概率不被点燃"，
-   *      而是根本没有翻转它的路径，读出选择性是硬保证；
-   *   3. Metropolis 退火：T 从 initialTemperature 几何降温，仅翻转
-   *      C\I 中的神经元，钳制神经元不动；带最优状态记忆（跟踪全程
-   *      访问过的最低能状态，退火末恢复），消除冷却时停在浅盆地的
-   *      运气成分；退火只用于翻越 C 内的协同势垒（单翻上坡、联合下坡）；
-   *   4. 淬火尾巴：T=0 的全网贪心扫描至无翻转——既保证返回模式是
-   *      局部极小，又顺手招募 C 外被场强直接推过阈值的普通连接神经元
-   *      （无势垒），能量在此段重新严格单调下降。
+   * Metropolis 温度曲线跨越单点点火势垒，随后进行有限预算淬火。
+   * 候选集为输入、被触及势阱和显式 extraCandidates 的并集。
+   * 默认允许 DI 参与翻转规律，但最优态与轨迹只使用保守能量。
+   * fallbackQuietOnly 时热提议与淬火均限制在 DI 静息可行域，允许
+   * 单点/交换局部移动；无合法候选结构化失败，有残余无约束翻转则
+   * 报 quiet-constraint，不能把受约束极小误报为全动力学固定点。
    */
   settleAnnealed(
     inputNeurons: Iterable<number>,
@@ -463,6 +457,36 @@ export class EnergyNetwork {
     this.state.fill(0);
     for (const i of clamped) this.state[i] = 1;
     const initialEnergy = this.energy();
+    // Ordered sparse state view. Summation retains the original ascending id
+    // order (including floating-point rounding); only zero terms are skipped.
+    // The dense state remains authoritative and every local move updates both.
+    let activeIds = this.activeNeurons();
+    const flip = (id: number): void => {
+      if (this.state[id] === 1) {
+        this.state[id] = 0;
+        activeIds.splice(activeIds.indexOf(id), 1);
+      } else {
+        this.state[id] = 1;
+        const at = activeIds.findIndex(j => j > id);
+        activeIds.splice(at < 0 ? activeIds.length : at, 0, id);
+      }
+    };
+    const restore = (snapshot: Uint8Array): void => {
+      this.state.set(snapshot); activeIds = this.activeNeurons();
+    };
+    const fields = (i: number): { cons: number; di: number } => {
+      let w = 0, g = 0, di = 0;
+      for (const j of activeIds) {
+        w += this.weights[i * n + j]!;
+        g += this.inhibitory[i * n + j]!;
+        di += this.directedInhibitory[j * n + i]!;
+      }
+      return { cons: w - g, di };
+    };
+    // Populate the unchanged DI-source cache before using its sparse view.
+    this.diDriveEngaged();
+    const quietNow = (): boolean => this.diSourceCache!.every(j =>
+      this.state[j] === 0 && fields(j).cons <= this.threshold);
 
     // 候选集 C = I ∪ 被触及势阱
     const candidate = new Set<number>(clamped);
@@ -488,8 +512,7 @@ export class EnergyNetwork {
     // F01 修复（同 settle）：决策场含 DI（动力学不变），账本只记保守部分
     // （≡ energy() 的差分），DI 部分独立累计为 driveWork。最优状态按真实能量。
     const deltas = (i: number): { decision: number; cons: number } => {
-      const hCons = this.localField(i, this.state) - this.inhibitoryField(i, this.state);
-      const di = this.directedInhibitoryField(i, this.state);
+      const { cons: hCons, di } = fields(i);
       const active = this.state[i] === 1;
       return {
         decision: active ? -(theta - (hCons - di)) : theta - (hCons - di),
@@ -497,7 +520,7 @@ export class EnergyNetwork {
       };
     };
     let currentEnergy = initialEnergy;
-    let hasQuietCandidate = !quietOnly || !this.diDriveEngaged();
+    let hasQuietCandidate = !quietOnly || quietNow();
     let bestEnergy = hasQuietCandidate ? initialEnergy : Infinity;
     const bestState = Uint8Array.from(this.state);
     for (let level = 0; level < levels; level++, temperature *= coolingFactor) {
@@ -521,9 +544,9 @@ export class EnergyNetwork {
             // recruit DI, propose an exchange with an active free member. This
             // samples cooperative output ignition while keeping legal states;
             // no learned core ids, labels, truth or exact-match lookup is used.
-            this.state[i] = this.state[i] === 0 ? 1 : 0;
-            const legal = !this.diDriveEngaged();
-            this.state[i] = this.state[i] === 0 ? 1 : 0;
+            flip(i);
+            const legal = quietNow();
+            flip(i);
             if (!legal) {
               if (this.state[i] === 1) continue;
               const activeFree = freeCandidates.filter(j => this.state[j] === 1);
@@ -531,22 +554,22 @@ export class EnergyNetwork {
               const j = activeFree[Math.floor(rand() * activeFree.length)]!;
               conservativeDelta += deltas(j).cons + this.getWeight(i, j) - this.getInhibitoryWeight(i, j);
               decisionDelta = conservativeDelta;
-              this.state[i] = 1; this.state[j] = 0;
-              const exchangeLegal = !this.diDriveEngaged();
-              this.state[i] = 0; this.state[j] = 1;
+              flip(i); flip(j);
+              const exchangeLegal = quietNow();
+              flip(i); flip(j);
               if (!exchangeLegal) continue;
               move = [j, i];
             }
           }
           if (decisionDelta >= 0 && rand() >= Math.exp(-decisionDelta / temperature)) continue;
           if (decisionDelta >= 0) acceptedUphill++;
-          for (const id of move) this.state[id] = this.state[id] === 0 ? 1 : 0;
+          for (const id of move) flip(id);
           flipCount += move.length;
           currentEnergy += conservativeDelta;
           driveWork += decisionDelta - conservativeDelta;
           // fallbackQuietOnly：带池 WTA 电路只认驱动静息期的最低真实能态
           // （多核共存态真实能量更低但破坏单核语义）；默认全访问态（评审 A04 契约）
-          if (currentEnergy < bestEnergy && !(quietOnly && this.diDriveEngaged())) {
+          if (currentEnergy < bestEnergy && !(quietOnly && !quietNow())) {
             hasQuietCandidate = true;
             bestEnergy = currentEnergy;
             bestState.set(this.state);
@@ -561,7 +584,7 @@ export class EnergyNetwork {
         converged: false, terminationReason: "no-quiet-candidate", residualFlips: 0,
         candidateSet: [...candidate], initialEnergy, annealEndEnergy: 0, proposals, acceptedUphill };
     }
-    if (quietOnly || bestEnergy < currentEnergy) this.state.set(bestState);
+    if (quietOnly || bestEnergy < currentEnergy) restore(bestState);
     const annealEndEnergy = this.energy();
 
     // 淬火尾巴：T=0 贪心扫描至无翻转（保守账本随翻转变化；DI 驱动可致上坡）。
@@ -590,9 +613,9 @@ export class EnergyNetwork {
       // consulted. Every actual flip consumes the unchanged quench budget.
       for (;;) {
         const quietAfter = (ids: readonly number[]) => {
-          for (const id of ids) this.state[id] = this.state[id] === 0 ? 1 : 0;
-          const legal = !this.diDriveEngaged();
-          for (const id of ids) this.state[id] = this.state[id] === 0 ? 1 : 0;
+          for (const id of ids) flip(id);
+          const legal = quietNow();
+          for (const id of ids) flip(id);
           return legal;
         };
         const proposals = quenchScope.filter(i => !clamped.has(i)).map(i => ({ i, delta: deltas(i).cons }));
@@ -616,7 +639,7 @@ export class EnergyNetwork {
         if (quenchFlips + move.length > maxFlips) { terminated = "flip-budget"; break; }
         for (const i of move) {
           const { decision, cons } = deltas(i);
-          this.state[i] = this.state[i] === 0 ? 1 : 0;
+          flip(i);
           flipCount++; quenchFlips++;
           quenchEnergy += cons; driveWork += decision - cons;
           quenchEnergies.push(quenchEnergy);
@@ -633,17 +656,17 @@ export class EnergyNetwork {
         if (decision < -EPS) {
           if (quenchFlips >= maxFlips) {
             terminated = "flip-budget";
-            this.state.set(quenchBestState);
+            restore(quenchBestState);
             quenchEnergies.push(quenchBestEnergy);
             break outer;
           }
-          this.state[i] = this.state[i] === 0 ? 1 : 0;
+          flip(i);
           flipCount++;
           quenchFlips++;
           quenchEnergy += cons;
           driveWork += decision - cons;
           quenchEnergies.push(quenchEnergy);
-          if (quenchEnergy < quenchBestEnergy && !(quietOnly && this.diDriveEngaged())) {
+          if (quenchEnergy < quenchBestEnergy && !(quietOnly && !quietNow())) {
             quenchBestEnergy = quenchEnergy;
             quenchBestState.set(this.state);
           }
@@ -652,7 +675,7 @@ export class EnergyNetwork {
           // 回退写入轨迹但不计为翻转（评审 A12 反例）
           if (quenchFlips >= maxFlips) {
             terminated = "flip-budget";
-            this.state.set(quenchBestState);
+            restore(quenchBestState);
             quenchEnergies.push(quenchBestEnergy);
             break outer;
           }
@@ -662,8 +685,8 @@ export class EnergyNetwork {
     }
     }
 
-    if (quietOnly && this.diDriveEngaged()) {
-      this.state.set(quenchBestState);
+    if (quietOnly && !quietNow()) {
+      restore(quenchBestState);
       quenchEnergies.push(quenchBestEnergy);
       terminated = "flip-budget";
     }
