@@ -1,0 +1,18 @@
+✔ chain bench is forward-only, validates inputs and charges only valid experiments (3.1876ms)
+✔ chain seed 1: ordered route and no reverse door (457.3027ms)
+✔ chain seed 1: gate closure triggers replanning and an honest stop at C (284.5525ms)
+✔ chain seed 1: displaced B→D replans from D and preserves the old snapshot (292.0848ms)
+✔ chain seed 2: ordered route and no reverse door (312.8806ms)
+✔ chain seed 2: gate closure triggers replanning and an honest stop at C (285.1607ms)
+✔ chain seed 2: displaced B→D replans from D and preserves the old snapshot (270.0082ms)
+✔ chain seed 3: ordered route and no reverse door (326.3343ms)
+✔ chain seed 3: gate closure triggers replanning and an honest stop at C (270.1769ms)
+✔ chain seed 3: displaced B→D replans from D and preserves the old snapshot (238.9358ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2948.3028
