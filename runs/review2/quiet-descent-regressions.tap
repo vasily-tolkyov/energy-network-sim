@@ -1,0 +1,102 @@
+✔ F01-A02：DI 两神经元——轨迹末值恒等于真实能量 (2.5383ms)
+✔ F01-A03：DI 闭环——账本回到同状态必须同值；非收敛如实标记 (1.0994ms)
+✔ F01-A12：quenchMaxFlips=1 严格预算——至多 1 次淬火翻转且如实报 flip-budget (1.325ms)
+✔ F02/D02：bindInfluence 分配的核在真实观察后必须注册可见 (61.4893ms)
+✔ F03/D01：FieldRuleMemory 超容量显式抛错且不覆盖池区 (2.7988ms)
+✔ F04/C07：恒定结果的对不得报变化、不得报因素 (5.318ms)
+✔ F04/C12：不变干扰维不进差分集合 (2.7688ms)
+✔ R1.5：恒等小世界两条观察即可读回（点火不等式） (35.1812ms)
+✔ R1.6-A05：越界写边抛错且零部分写入 (0.7082ms)
+✔ R1.6-A06：非有限配置/索引/档位全部拒绝 (1.0108ms)
+✔ R1.6-A07：实验台拒绝 NaN 且不计成本 (0.8577ms)
+✔ B03：全 null/歧义预测不分配核 (1.1127ms)
+✔ B04：错误自猜后被真实观察纠正（无预学互斥） (15.3859ms)
+✔ F05：场级否决不再压灭落在已观察区域附近的输入 (62.3726ms)
+✔ F07：等强候选平局如实上报（不静默兜底）；清晰差距单胜者 (1.081ms)
+✔ A19/D04：README 使用示例端到端执行（含峰边说明） (1.2362ms)
+✔ F10/E01：unseen-gate-on 桶按构造恒亮——报告必须附常数基线 (1.1959ms)
+✔ F14/A20：退火收敛时是候选域内局部固定点（不承诺全局最小） (1.0796ms)
+✔ R09 invalid observation must not consume a rule slot or write weights (2.783ms)
+ℹ {"error":"channel y: bin NaN out of range [0, 2)","rules":0,"allocated":0,"conditionCoreWeight":0}
+✔ R10 sensory NaN must be rejected before registration (1.6232ms)
+ℹ {"rejected":true,"rules":0}
+✔ R11 finite integer annealing options must be validated (2.1964ms)
+ℹ {"accepted":[]}
+✔ R12 infinite levels must reject promptly (isolated child with 2.5s hard timeout) (163.9209ms)
+ℹ {"result":"rejected"}
+✔ R13 zero quench budget must reject or perform zero quench flips (1.0641ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5,1.5],"flipCount":0,"driveWork":0},"converged":false,"terminationReason":"flip-budget","residualFlips":1,"candidateSet":[0],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":0,"acceptedUphill":0}
+✔ R15 fractional rule capacity must be rejected at construction (0.3018ms)
+ℹ {"rejected":true}
+✔ R17 allocator rejects ordinary overflow without changing registered state (3.2312ms)
+ℹ {"n":1,"count":1,"after":1}
+✔ R01 DI accounting and reported residuals across 24 fresh random networks (8.9304ms)
+ℹ {"networks":24,"limited":0}
+✔ R02 explicit candidate freeze blocks a connected outside chain (1.3896ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5],"flipCount":0,"driveWork":0},"converged":true,"terminationReason":"fixed-point","residualFlips":0,"candidateSet":[0],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":0,"acceptedUphill":0}
+✔ R03 current documented peak-edge example is executable (2.0232ms)
+ℹ {"wells":2}
+✔ R04 quiet-only fallback must not return an engaged driver when quiet state was visited (0.9333ms)
+ℹ {"activeNeurons":[0],"energy":1.5,"trace":{"energies":[1.5],"flipCount":0,"driveWork":0},"converged":false,"terminationReason":"quiet-constraint","residualFlips":1,"candidateSet":[0,1,2],"initialEnergy":1.5,"annealEndEnergy":1.5,"proposals":2,"acceptedUphill":0,"engaged":false,"visitedQuietState":[0],"quietEnergy":1.5}
+✔ R05 self-written guess cannot veto a previously confirmed observation (32.5733ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-3.1999999999999993,"converged":true,"terminationReason":"fixed-point"}
+✔ R06 repeated same-world truth must recover after an erroneous self-written guess (14.665ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-11.999999999999988,"converged":true,"terminationReason":"fixed-point"}
+✔ R07 field observations within identical receptive-field code cannot erase that code (44.6007ms)
+ℹ {"values":{"y":0.505},"distribution":{"y":[{"center":0.5,"count":8}]},"ambiguous":[],"activeNeurons":[4,5,6,7,8,9,10,11,56,57,58,59,60,61,62,63,80,81,82,83],"energy":-15.600000000000012,"winningCores":[0],"converged":true,"terminationReason":"fixed-point"}
+✔ R08 nearby but distinct inputs of a stationary function must retain a readable shared code (59.867ms)
+ℹ {"rules":1,"a":{"y":0.505},"b":{"y":0.505}}
+✔ R14 R2 unchanged outcomes across variable dimensions and population sizes (14.6585ms)
+ℹ {"checked":12}
+✔ R18 actual observation can correct a prior wrong guess in the supported one-way order (9.0936ms)
+ℹ {"decoded":{"y":0},"activeNeurons":[0,1,2,3,8,9,10,11,16,17,18,19],"energy":-5.399999999999993,"converged":true,"terminationReason":"fixed-point"}
+✔ R19 field R2 outcome change detection must be invariant to pair reversal (23.3058ms)
+ℹ {"forward":{"undecidable":false,"outcomeChanged":true,"outcomeDelta":{"y":0.125},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":7.6000000000000005},"reverse":{"undecidable":false,"outcomeChanged":true,"outcomeDelta":{"y":-0.125},"conditionCommonNeurons":[],"diffChannels":["x"],"influentialChannels":["x"],"thetaHigh":7.6000000000000005}}
+✔ R20 influence allocation and reverse observation order preserve registration identity (53.6155ms)
+ℹ {"rules":2,"a":{"y":0.09999999999999999},"b":{"y":0.9},"winning":[[1],[0]]}
+✔ N01 strong observation must not be vetoed by weaker self-written guess (102.362ms)
+✔ N02 stationary truth can repair one intervening false guess (40.2576ms)
+✔ N03 identical sensory codes in static y=x must not erase each other (250.4888ms)
+✔ N04 repeated identical raw observations preserve continuous recall (111.7888ms)
+✔ N05 invalid Pop condition must not consume capacity (1.4844ms)
+✔ N06 invalid Pop outcome must not partially write a rule (1.2666ms)
+✔ N07 unknown Field outcome must leave memory unchanged on rejection (5.6279ms)
+✔ N08 multiple preallocated Field cores get pairwise exclusion on registration (1.2954ms)
+✔ N09 invalid Hebbian batch is rejected before any edge is changed (0.5313ms)
+✔ N10 fractional anneal candidates must be rejected (0.4718ms)
+✔ N11 nonfinite anneal level count must be rejected (0.2608ms)
+✔ N12 nonfinite anneal temperature must be rejected (0.2407ms)
+✔ N13 invalid anneal options must not mutate current state (0.3508ms)
+✔ N14 zero quench budget cannot execute a flip (or must reject) (0.3714ms)
+✔ N15 negative directed-inhibition cap must not create excitation (0.2146ms)
+✔ N16 sensory NaN cannot silently encode as absent dimension (0.4483ms)
+✔ N17 discrete lab rejects fractional bins before charging cost (0.2404ms)
+✔ N20 incomplete observations cannot allocate evidence-bearing Field rules (0.598ms)
+✔ N21 updated unseen metric includes both classes and constant baseline is nonperfect (0.8884ms)
+✔ N22 weakened focus contract honestly flags multi-marker readout (0.6297ms)
+✔ N23 valid integer DI networks preserve ledger and residual contract (200 randomized cases) (13.4129ms)
+✔ N24 Explorer must not classify an explicitly nonconverged forecast as confident verification (7.2661ms)
+✔ N29 capture correctly accepts a matching forecast (positive control) (26.658ms)
+✔ N18 planner history getter must not expose mutable internal conditions (2.025ms)
+✔ N19 returned auto-pairs must not mutate historical observations (0.4742ms)
+✔ N25 Field public rule views cannot corrupt internal registration (5.5537ms)
+✔ N26 nominally valid small population configuration recalls learned identity or is rejected (0.9087ms)
+✔ N27 claimed excitation-off/veto-on factorial cell retains veto (6.4754ms)
+✔ F1 evidence sequence: truth-guess (86.0013ms)
+✔ F1 evidence sequence: guess-truth (57.8398ms)
+✔ F1 evidence sequence: truth-guess-truth (33.6673ms)
+✔ F1 evidence sequence: partial (36.4145ms)
+✔ F1 evidence sequence: truth-change-return (32.0458ms)
+✔ F2 aliases aggregate equally, overlap survives, disjoint correction reverses (166.3578ms)
+✔ F3 joint capture: matching, contradiction, novel result, partial conflict (213.8726ms)
+✔ F3 unseen threshold correction uses independent memories for each seed (review N28) (176.0535ms)
+✔ F3 cached value snapshot survives changed core semantics (47.5839ms)
+✔ F4 no legal quiet candidate returns structured failure, symmetric decay conserves Γ (1.3299ms)
+ℹ tests 75
+ℹ suites 0
+ℹ pass 75
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1085.8928

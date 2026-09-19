@@ -1,0 +1,1 @@
+Interrupted after W01 legal-fallback fragmentation; continuous/extension capacity errors retained. Not a completed final verify.

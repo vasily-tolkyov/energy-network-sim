@@ -1,0 +1,18 @@
+W01 trained 16 factors [ 'a', 'b', 'c' ]
+W02 trained 10 factors [ 'x' ]
+W03 trained 18 factors [ 'a', 'b' ]
+W04 trained 17 factors []
+W05 trained 18 factors [ 'a', 'b' ]
+✔ review2 W01: 3-bit parity with distractor (6385.4197ms)
+✔ review2 W02: interior disjoint active intervals (1993.8728ms)
+✔ review2 W03: two correlated output channels (8573.2199ms)
+✔ review2 W04: rare three-factor joint condition (19397.4949ms)
+✔ review2 W05: nonlinear max with distractor (18010.2752ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 54496.6309

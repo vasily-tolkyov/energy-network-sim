@@ -513,17 +513,37 @@ export class EnergyNetwork {
         for (const i of freeCandidates) {
           const { decision, cons } = deltas(i);
           proposals++;
-          if (decision < 0) {
+          let move = [i];
+          let decisionDelta = decision;
+          let conservativeDelta = cons;
+          if (quietOnly) {
+            // Metropolis on the eligible domain. If a single activation would
+            // recruit DI, propose an exchange with an active free member. This
+            // samples cooperative output ignition while keeping legal states;
+            // no learned core ids, labels, truth or exact-match lookup is used.
             this.state[i] = this.state[i] === 0 ? 1 : 0;
-          } else if (rand() < Math.exp(-decision / temperature)) {
+            const legal = !this.diDriveEngaged();
             this.state[i] = this.state[i] === 0 ? 1 : 0;
-            acceptedUphill++;
-          } else {
-            continue;
+            if (!legal) {
+              if (this.state[i] === 1) continue;
+              const activeFree = freeCandidates.filter(j => this.state[j] === 1);
+              if (!activeFree.length) continue;
+              const j = activeFree[Math.floor(rand() * activeFree.length)]!;
+              conservativeDelta += deltas(j).cons + this.getWeight(i, j) - this.getInhibitoryWeight(i, j);
+              decisionDelta = conservativeDelta;
+              this.state[i] = 1; this.state[j] = 0;
+              const exchangeLegal = !this.diDriveEngaged();
+              this.state[i] = 0; this.state[j] = 1;
+              if (!exchangeLegal) continue;
+              move = [j, i];
+            }
           }
-          flipCount++;
-          currentEnergy += cons;
-          driveWork += decision - cons;
+          if (decisionDelta >= 0 && rand() >= Math.exp(-decisionDelta / temperature)) continue;
+          if (decisionDelta >= 0) acceptedUphill++;
+          for (const id of move) this.state[id] = this.state[id] === 0 ? 1 : 0;
+          flipCount += move.length;
+          currentEnergy += conservativeDelta;
+          driveWork += decisionDelta - conservativeDelta;
           // fallbackQuietOnly：带池 WTA 电路只认驱动静息期的最低真实能态
           // （多核共存态真实能量更低但破坏单核语义）；默认全访问态（评审 A04 契约）
           if (currentEnergy < bestEnergy && !(quietOnly && this.diDriveEngaged())) {
@@ -562,6 +582,49 @@ export class EnergyNetwork {
     const EPS = 1e-4; // 能量分辨率下限：近平局的尘埃翻转既慢又无意义（实测 >1e5 步仍不收敛）
     let terminated: SettleTermination = "fixed-point";
     let quenchFlips = 0; // 预算只管淬火尾巴（退火相按温度层数自然结束）
+    if (quietOnly) {
+      // Optimize within the same legal fallback domain, rather than repeatedly
+      // leaving it under DI and returning a fragmented annealing snapshot.
+      // Single-neuron descent plus 1-for-1 local exchanges cross the cardinality
+      // boundary imposed by a quiet recruitment pool. No rule/core metadata is
+      // consulted. Every actual flip consumes the unchanged quench budget.
+      for (;;) {
+        const quietAfter = (ids: readonly number[]) => {
+          for (const id of ids) this.state[id] = this.state[id] === 0 ? 1 : 0;
+          const legal = !this.diDriveEngaged();
+          for (const id of ids) this.state[id] = this.state[id] === 0 ? 1 : 0;
+          return legal;
+        };
+        const proposals = quenchScope.filter(i => !clamped.has(i)).map(i => ({ i, delta: deltas(i).cons }));
+        let move: number[] = [];
+        let improvement = -EPS;
+        for (const { i, delta } of proposals) if (delta < improvement && quietAfter([i])) {
+          move = [i]; improvement = delta;
+        }
+        if (!move.length) {
+          const on = proposals.filter(p => this.state[p.i] === 1);
+          const off = proposals.filter(p => this.state[p.i] === 0);
+          for (const x of on) for (const y of off) {
+            const delta = x.delta + y.delta + this.getWeight(x.i, y.i) - this.getInhibitoryWeight(x.i, y.i);
+            if (delta < improvement && quietAfter([x.i, y.i])) { move = [x.i, y.i]; improvement = delta; }
+          }
+        }
+        if (!move.length) {
+          terminated = this.countResidualFlips(i => clamped.has(i), quenchScopeSet, EPS) ? "quiet-constraint" : "fixed-point";
+          break;
+        }
+        if (quenchFlips + move.length > maxFlips) { terminated = "flip-budget"; break; }
+        for (const i of move) {
+          const { decision, cons } = deltas(i);
+          this.state[i] = this.state[i] === 0 ? 1 : 0;
+          flipCount++; quenchFlips++;
+          quenchEnergy += cons; driveWork += decision - cons;
+          quenchEnergies.push(quenchEnergy);
+        }
+        quenchBestEnergy = quenchEnergy;
+        quenchBestState.set(this.state);
+      }
+    } else {
     outer: for (;;) {
       let flipped = false;
       for (const i of quenchScope) {
@@ -596,6 +659,7 @@ export class EnergyNetwork {
         }
       }
       if (!flipped) break;
+    }
     }
 
     if (quietOnly && this.diDriveEngaged()) {

@@ -1,0 +1,42 @@
+{
+  q: { a: 0, b: 0, c: 0, d: 0 },
+  p: {
+    decoded: { y: null },
+    activeNeurons: [
+       0,  1,  2,  3,  8,  9, 10,
+      11, 16, 17, 18, 19, 24, 25,
+      26, 27, 52, 54, 56, 65, 66
+    ],
+    energy: -153.29999999999973,
+    converged: false,
+    terminationReason: 'flip-budget'
+  },
+  cores: [
+    { i: 4, conds: 'a=0;b=0;c=0;d=0', field: 148.79999999999995 },
+    { i: 3, conds: 'a=0;b=0;c=0;d=1', field: 144 },
+    { i: 6, conds: 'a=0;b=1;c=0;d=0', field: 52.80000000000001 },
+    { i: 11, conds: 'a=1;b=0;c=0;d=0', field: 52.80000000000001 },
+    { i: 12, conds: 'a=0;b=0;c=1;d=0', field: 52.80000000000001 }
+  ]
+}
+{
+  q: { a: 1, b: 1, c: 1, d: 1 },
+  p: {
+    decoded: { y: 0 },
+    activeNeurons: [
+       4,  5,  6,  7, 12,  13,  14, 15,
+      20, 21, 22, 23, 28,  29,  30, 31,
+      33, 35, 44, 46, 47, 101, 103
+    ],
+    energy: -132.29999999999995,
+    converged: false,
+    terminationReason: 'flip-budget'
+  },
+  cores: [
+    { i: 0, conds: 'a=1;b=1;c=1;d=1', field: 148.79999999999995 },
+    { i: 15, conds: 'a=1;b=1;c=1;d=0', field: 144 },
+    { i: 7, conds: 'a=1;b=1;c=0;d=1', field: 52.80000000000001 },
+    { i: 9, conds: 'a=1;b=0;c=1;d=1', field: 52.80000000000001 },
+    { i: 1, conds: 'a=0;b=1;c=1;d=1', field: 48.000000000000014 }
+  ]
+}

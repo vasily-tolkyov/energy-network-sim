@@ -92,7 +92,12 @@ export class FieldRuleMemory {
       const key = `${Math.min(index, j)}:${Math.max(index, j)}`;
       for (const edge of this.contrastVetoes.get(key) ?? []) this.net.setInhibitionContribution(edge.from, edge.to, `contrast:${key}`, 0);
       const be = this.ruleEvidence(j);
-      const conflict = Object.entries(ae).some(([dim, e]) => be[dim] && !compatibleSupports(e.support, be[dim]!.support));
+      const overlappingConditions = this.encoder.dimensions.filter(d => !this.outcomeDims.includes(d.name)).every(d => {
+        const af = a.conditionFields.filter(id => this.encoder.fieldOf(id)?.dimension === d.name);
+        const bf = b.conditionFields.filter(id => this.encoder.fieldOf(id)?.dimension === d.name);
+        return af.length === 0 || bf.length === 0 || compatibleSupports(af, bf);
+      });
+      const conflict = overlappingConditions && Object.entries(ae).some(([dim, e]) => be[dim] && !compatibleSupports(e.support, be[dim]!.support));
       const edges: { from: number; to: number; delta: number }[] = [];
       if (conflict) for (const [source, target] of [[a, b], [b, a]] as const) {
         for (const from of source.conditionFields.filter(id => !target.conditionFields.includes(id))) {

@@ -1,0 +1,49 @@
+✖ W01: independent world has >=90% recall and all true factors (1.8163ms)
+✔ W02: independent world has >=90% recall and all true factors (0.2644ms)
+✔ W03: independent world has >=90% recall and all true factors (0.1535ms)
+✖ W04: independent world has >=90% recall and all true factors (0.2385ms)
+✔ W05: independent world has >=90% recall and all true factors (0.1733ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 163.9675
+
+✖ failing tests:
+
+test at ..\review2-validation\tests\new-worlds-verdict.test.mjs:3:166
+✖ W01: independent world has >=90% recall and all true factors (1.8163ms)
+  AssertionError [ERR_ASSERTION]: {"id":"W01","name":"3-bit parity with distractor","seed":11,"experiments":16,"reason":"frontier-exhausted","n":16,"correct":0,"refused":15,"nonconverged":16,"expectedFactors":["a","b","c"],"foundFactors":["a","b","c"],"ms":3994.9784999999997,"passesAccuracy":false,"passesFactors":true}
+      at TestContext.<anonymous> (file:///D:/kimi_kairos/review2-validation/tests/new-worlds-verdict.test.mjs:3:248)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.start (node:internal/test_runner/test:1015:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at ..\review2-validation\tests\new-worlds-verdict.test.mjs:3:166
+✖ W04: independent world has >=90% recall and all true factors (0.2385ms)
+  AssertionError [ERR_ASSERTION]: {"id":"W04","name":"rare three-factor joint condition","seed":11,"experiments":17,"reason":"quorum-met","n":64,"correct":63,"refused":0,"nonconverged":0,"expectedFactors":["a","b","c"],"foundFactors":[],"positiveRecall":{"n":1,"correct":0},"ms":8200.1326,"passesAccuracy":true,"passesFactors":false}
+      at TestContext.<anonymous> (file:///D:/kimi_kairos/review2-validation/tests/new-worlds-verdict.test.mjs:3:294)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

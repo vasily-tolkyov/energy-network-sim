@@ -1,0 +1,23 @@
+════════════════════════════════════════════════════════════════════════
+阶段 B 验收：连续电路场景，零规则起步，概念自形成 + 自主控制变量探索
+════════════════════════════════════════════════════════════════════════
+编码：6 维（5 条件 + 2 结果中 lit/brightness 2 结果维）× 40 感受野；候选值 = 分位网格；B0 语料相 → 概念形成间歇期 → B2 全机器相
+真值影响因素：[switchPos,voltage,resistance,temperature]；干扰因素：material；门控：亮 = 开关度≥0.5 AND 电压≥1（合取，连续版）
+
+── 种子 1 ──
+file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/concept/field-memory.js:176
+            throw new Error(`rule capacity exhausted (maxRules=${this.maxRules})`);
+                  ^
+
+Error: rule capacity exhausted (maxRules=192)
+    at FieldRuleMemory.planWrite (file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/concept/field-memory.js:176:19)
+    at FieldRuleMemory.teachExperimentWithCap (file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/concept/field-memory.js:463:14)
+    at FieldRuleMemory.learnFromObservation (file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/concept/field-memory.js:457:14)
+    at ContinuousExplorer.step (file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/explore/explorer-continuous.js:156:18)
+    at runSeed (file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/explore/runner-explore-continuous.js:32:21)
+    at file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/explore/runner-explore-continuous.js:106:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.14.0

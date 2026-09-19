@@ -1,0 +1,23 @@
+════════════════════════════════════════════════════════════════════════
+概念更新验收：量程扩展场景（世界中途变大），冻结 vs 更新 对照
+════════════════════════════════════════════════════════════════════════
+设定：电压量程 [0,4.5] 从起始对编码器可见（感受野覆盖），但候选网格初始只到 3.0；一阶段自然终止后扩展候选值 [3.9,4.5]。
+判据：更新系统应在扩展区结晶新概念并继续归因；冻结系统的概念层停滞、R2 对新对的电压通道失明。
+
+── 模式 概念更新，种子 1 ──
+file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/concept/field-memory.js:176
+            throw new Error(`rule capacity exhausted (maxRules=${this.maxRules})`);
+                  ^
+
+Error: rule capacity exhausted (maxRules=192)
+    at FieldRuleMemory.planWrite (file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/concept/field-memory.js:176:19)
+    at FieldRuleMemory.teachExperimentWithCap (file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/concept/field-memory.js:463:14)
+    at FieldRuleMemory.learnFromObservation (file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/concept/field-memory.js:457:14)
+    at ContinuousExplorer.step (file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/explore/explorer-continuous.js:156:18)
+    at runMode (file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/explore/runner-explore-ext.js:35:21)
+    at file:///D:/kimi_kairos/energy-network-sim/dist/src/pop/explore/runner-explore-ext.js:92:9
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.14.0

@@ -1,0 +1,10 @@
+W01 trained 16 factors [ 'a', 'b', 'c' ]
+{"id":"W01","name":"3-bit parity with distractor","seed":11,"experiments":16,"reason":"frontier-exhausted","n":16,"correct":3,"refused":12,"nonconverged":16,"expectedFactors":["a","b","c"],"foundFactors":["a","b","c"],"ms":2390.3145999999997,"passesAccuracy":false,"passesFactors":true}
+W02 trained 10 factors [ 'x' ]
+{"id":"W02","name":"interior disjoint active intervals","seed":11,"experiments":10,"reason":"frontier-exhausted","n":10,"correct":10,"refused":0,"nonconverged":0,"expectedFactors":["x"],"foundFactors":["x"],"ms":731.7498,"passesAccuracy":true,"passesFactors":true}
+W03 trained 18 factors [ 'a', 'b' ]
+{"id":"W03","name":"two correlated output channels","seed":11,"experiments":18,"reason":"frontier-exhausted","n":18,"correct":18,"refused":0,"nonconverged":4,"expectedFactors":["a","b"],"foundFactors":["a","b"],"ms":4102.9542,"passesAccuracy":true,"passesFactors":true}
+W04 trained 17 factors []
+{"id":"W04","name":"rare three-factor joint condition","seed":11,"experiments":17,"reason":"quorum-met","n":64,"correct":63,"refused":0,"nonconverged":0,"expectedFactors":["a","b","c"],"foundFactors":[],"positiveRecall":{"n":1,"correct":0},"ms":7414.6137,"passesAccuracy":true,"passesFactors":false}
+W05 trained 18 factors [ 'a', 'b' ]
+{"id":"W05","name":"nonlinear max with distractor","seed":11,"experiments":18,"reason":"frontier-exhausted","n":18,"correct":18,"refused":0,"nonconverged":12,"expectedFactors":["a","b"],"foundFactors":["a","b"],"ms":4019.5476000000017,"passesAccuracy":true,"passesFactors":true}

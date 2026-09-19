@@ -94,7 +94,7 @@ export class ContinuousExplorer {
     this.enc = new SensoryEncoder([...condDims, ...outcomeDims], config.fieldsPerDim ?? 40);
     this.formation = new ConceptFormation(this.enc);
     // FieldRuleMemory 内部不使用 emergent（仅持有引用）——B0 传空图，间歇期后 R2 有自己的图
-    this.mem = new FieldRuleMemory(this.enc, new EmergentMap([], this.enc), { maxRules: 192 });
+    this.mem = new FieldRuleMemory(this.enc, new EmergentMap([], this.enc), { maxRules: config.budget ?? 300 });
     this.mem.setOutcomeDimensions(outcomeDims.map((d) => d.name));
     this.planner = planner;
     this.bench = bench;

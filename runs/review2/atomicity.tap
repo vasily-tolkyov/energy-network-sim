@@ -1,0 +1,11 @@
+✔ F7 rejected writes preserve all edges, signatures, evidence and counters (22.4518ms)
+✔ F1 saturated retractable Γ retains other owners and structural inhibition (0.9074ms)
+✔ F12 constructor clusterThresholdRatio actually controls default extraction (1.306ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 237.8679

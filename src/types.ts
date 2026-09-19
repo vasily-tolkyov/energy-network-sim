@@ -83,7 +83,7 @@ export interface SettleTrace {
 }
 
 /** 终止原因：无翻转可降 = 固定点；翻转预算耗尽 = 非收敛（回退途中最低能态） */
-export type SettleTermination = "fixed-point" | "flip-budget" | "no-quiet-candidate";
+export type SettleTermination = "fixed-point" | "flip-budget" | "no-quiet-candidate" | "quiet-constraint";
 
 export interface SettleResult {
   /** 收敛后的激活神经元集合（含被输入钳制的神经元） */
@@ -144,10 +144,12 @@ export interface AnnealOptions {
   readonly quenchMaxFlips?: number;
   /**
    * 最优回退的选择域（默认 false = 全部访问态，保守系统/无 DI 的正确契约）：
-   * true = 只在驱动静息态（无 DI 源活跃或将点燃）中选最低真实能态——
+   * true = 搜索也限制在静息可行域（单点/交换 Metropolis 与有界淬火），
+   * 并只在驱动静息态（无 DI 源活跃或将点燃）中选最低真实能态——
    * 带前馈抑制池的 WTA 电路必须开：多核共存态的真实能量反而更低
    * （耦合更多），普适回退会破坏池的单核语义（第三方评审 F01 修复
    * 引入的显式开关，池使用者（两个规则记忆）传 true）。
+   * 可行域内局部停止仍可能有域外残余翻转，此时 quiet-constraint、converged=false。
    */
   readonly fallbackQuietOnly?: boolean;
 }
