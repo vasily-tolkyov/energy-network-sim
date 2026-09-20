@@ -2,32 +2,32 @@
   {
     "bins": 17,
     "neurons": 393,
-    "buildMs": 3.3,
-    "learnMs": 771,
+    "buildMs": 1.2,
+    "learnMs": 290,
     "heapMB": 4,
-    "predictMsMedian": 757.8,
+    "predictMsMedian": 38.8,
     "planStatus": "found",
     "planSteps": 16,
-    "planMs": 21213
+    "planMs": 970
   },
   {
     "bins": 33,
     "neurons": 761,
-    "buildMs": 0.5,
-    "learnMs": 2157,
+    "buildMs": 0.2,
+    "learnMs": 1316,
     "heapMB": 9.2,
-    "predictMsMedian": 4585.1,
+    "predictMsMedian": 410.1,
     "planStatus": "found",
     "planSteps": 32,
-    "planMs": 233807
+    "planMs": 26929
   },
   {
     "bins": 65,
     "neurons": 1497,
-    "buildMs": 1.2,
-    "learnMs": 11217,
+    "buildMs": 0.6,
+    "learnMs": 8832,
     "heapMB": 35.1,
-    "predictMsMedian": 22873.5,
+    "predictMsMedian": 1113.6,
     "planStatus": "skipped",
     "planSteps": 0,
     "planMs": 0
@@ -35,10 +35,10 @@
   {
     "bins": 129,
     "neurons": 2969,
-    "buildMs": 1.1,
-    "learnMs": 98419,
-    "heapMB": 138.8,
-    "predictMsMedian": 155671.6,
+    "buildMs": 0.3,
+    "learnMs": 90979,
+    "heapMB": 138.7,
+    "predictMsMedian": 3696.3,
     "planStatus": "skipped",
     "planSteps": 0,
     "planMs": 0

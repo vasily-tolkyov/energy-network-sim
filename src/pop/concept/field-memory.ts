@@ -490,19 +490,28 @@ export class FieldRuleMemory {
   predict(query: Record<string, number>, seed: number,
     anneal?: { levels?: number; sweepsPerLevel?: number }): FieldPrediction {
     const input = this.encoder.encode(query);
-    // 核候选过滤（与 PopRuleMemory 同一修复，自主探索大核数实测同病：
-    // 全核候选 + 淬火长尾爬降把单次读出拖到十秒级）：对钳制输入的
-    // W 支持 ≤ θ/2 的核从静息无点火路径，结构性冻结；退火上坡点火理论上
-    // 存在，实测对结果无影响。纯边权读出，不涉及任何语义判定。
+    // 核候选过滤：裸 W 支持 ≤ θ/2 的核从静息无点火路径，结构性冻结
+    // （门槛用裸 W——点火可行性只看兴奋场；F05 回归：被否决压制的核
+    // 必须留在候选池里，由退火内的 Γ 竞争定胜负）。
+    // #4 时间墙优化：候选超过 32 个时按**净支持**（W−Γ）排序只留前 32 名——
+    // 否决已建立的核净支持自然靠后，不被误留（量程扩展场景实测回归）；
+    // 共享条件维会让几十上百个核越过门槛，净支持悬殊时落后核无胜出路径。
+    // 小世界（≤32 个入围核）行为与之前逐位一致。
     const minSupport = this.net.threshold / 2;
-    const supportedCores: number[] = [];
+    const ranked: { s: number; core: readonly number[] }[] = [];
     for (const rule of this.rules) {
-      let s = 0;
+      let w = 0;
+      let net = 0;
       for (const from of input) {
-        for (const to of rule.core) s += this.net.getWeight(from, to);
+        for (const to of rule.core) {
+          w += this.net.getWeight(from, to);
+          net += this.net.getWeight(from, to) - this.net.getInhibitoryWeight(from, to);
+        }
       }
-      if (s > minSupport) supportedCores.push(...rule.core);
+      if (w > minSupport) ranked.push({ s: net, core: rule.core });
     }
+    ranked.sort((a, b) => b.s - a.s);
+    const supportedCores = ranked.slice(0, 32).flatMap(r => [...r.core]);
     const result = this.net.settleAnnealed(input, [], {
       seed,
       extraCandidates: [

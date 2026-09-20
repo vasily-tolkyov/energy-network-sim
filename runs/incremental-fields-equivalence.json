@@ -1,0 +1,9 @@
+{
+  "comparison": "incremental fields vs dense recompute; answers+termination identical, energy within 1e-6",
+  "answerMismatch": 0,
+  "reasonMismatch": 0,
+  "ledgerMismatch": 0,
+  "worstEnergyAbsDiff": 0,
+  "tolerance": 0.000001,
+  "seeds": 200
+}

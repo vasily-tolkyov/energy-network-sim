@@ -471,32 +471,61 @@ export class EnergyNetwork {
     // order (including floating-point rounding); only zero terms are skipped.
     // The dense state remains authoritative and every local move updates both.
     let activeIds = this.activeNeurons();
+    // 增量场（#4 时间墙优化）：cons = Σ_active(W−Γ)、di = Σ_active DI，
+    // 随每次翻转只写被翻神经元的稀疏邻居，不再按提议重扫整个活跃集。
+    // 与从头重算存在浮点尾差（加法路径不同），语义不变：等价性按
+    // "答案/终止一致 + 能量尾差容差"论证，不再要求逐位一致。
+    const consF = new Float64Array(n);
+    const diF = new Float64Array(n);
+    const recomputeFields = (): void => {
+      consF.fill(0);
+      diF.fill(0);
+      for (const j of activeIds) {
+        for (const [k, w] of this.weights.rowEntries(j)) consF[k]! += w;
+        for (const [k, g] of this.inhibitory.rowEntries(j)) consF[k]! -= g;
+        for (const [k, d] of this.directedInhibitory.rowEntries(j)) diF[k]! += d;
+      }
+    };
+    recomputeFields();
     const flip = (id: number): void => {
-      if (this.state[id] === 1) {
-        this.state[id] = 0;
-        activeIds.splice(activeIds.indexOf(id), 1);
-      } else {
+      const sign = this.state[id] === 1 ? -1 : 1;
+      for (const [k, w] of this.weights.rowEntries(id)) consF[k]! += sign * w;
+      for (const [k, g] of this.inhibitory.rowEntries(id)) consF[k]! -= sign * g;
+      for (const [k, d] of this.directedInhibitory.rowEntries(id)) diF[k]! += sign * d;
+      if (sign === 1) {
         this.state[id] = 1;
         const at = activeIds.findIndex(j => j > id);
         activeIds.splice(at < 0 ? activeIds.length : at, 0, id);
+      } else {
+        this.state[id] = 0;
+        activeIds.splice(activeIds.indexOf(id), 1);
       }
     };
     const restore = (snapshot: Uint8Array): void => {
       this.state.set(snapshot); activeIds = this.activeNeurons();
+      recomputeFields();
     };
-    const fields = (i: number): { cons: number; di: number } => {
-      let w = 0, g = 0, di = 0;
-      for (const j of activeIds) {
-        w += this.weights.get(i, j);
-        g += this.inhibitory.get(i, j);
-        di += this.directedInhibitory.get(j, i);
-      }
-      return { cons: w - g, di };
-    };
+    const fields = (i: number): { cons: number; di: number } => ({ cons: consF[i]!, di: diF[i]! });
     // Populate the unchanged DI-source cache before using its sparse view.
     this.diDriveEngaged();
     const quietNow = (): boolean => this.diSourceCache!.every(j =>
       this.state[j] === 0 && fields(j).cons <= this.threshold);
+    // 假想合法性检查（不突变状态/增量场）：逐 DI 源计算假想翻转后的状态与
+    // 保守场。探针零漂移、零邻居写入——高互斥度网络下探针成本从 O(度) 降为
+    // O(|DI源|×|翻转数|)（E=64 容量测试因此从 >120s 超时恢复为秒级）。
+    const quietAfterMoves = (ids: readonly number[]): boolean => {
+      for (const j of this.diSourceCache!) {
+        let active = this.state[j] === 1;
+        let cons = consF[j]!;
+        for (const x of ids) {
+          const sign = this.state[x] === 1 ? -1 : 1;
+          cons += sign * (this.weights.get(x, j) - this.inhibitory.get(x, j));
+          if (x === j) active = !active;
+        }
+        if (active || cons > this.threshold) return false;
+      }
+      return true;
+    };
 
     // 候选集 C = I ∪ 被触及势阱
     const candidate = new Set<number>(clamped);
@@ -558,9 +587,7 @@ export class EnergyNetwork {
             // recruit DI, propose an exchange with an active free member. This
             // samples cooperative output ignition while keeping legal states;
             // no learned core ids, labels, truth or exact-match lookup is used.
-            flip(i);
-            const legal = quietNow();
-            flip(i);
+            const legal = quietAfterMoves([i]);
             if (!legal) {
               if (this.state[i] === 1) continue;
               const activeFree = activeIds.filter(j => freeRank[j]! >= 0).sort((a, b) => freeRank[a]! - freeRank[b]!);
@@ -568,9 +595,7 @@ export class EnergyNetwork {
               const j = activeFree[Math.floor(rand() * activeFree.length)]!;
               conservativeDelta += deltas(j).cons + this.getWeight(i, j) - this.getInhibitoryWeight(i, j);
               decisionDelta = conservativeDelta;
-              flip(i); flip(j);
-              const exchangeLegal = quietNow();
-              flip(i); flip(j);
+              const exchangeLegal = quietAfterMoves([i, j]);
               if (!exchangeLegal) continue;
               move = [j, i];
             }
@@ -626,12 +651,7 @@ export class EnergyNetwork {
       // boundary imposed by a quiet recruitment pool. No rule/core metadata is
       // consulted. Every actual flip consumes the unchanged quench budget.
       for (;;) {
-        const quietAfter = (ids: readonly number[]) => {
-          for (const id of ids) flip(id);
-          const legal = quietNow();
-          for (const id of ids) flip(id);
-          return legal;
-        };
+        const quietAfter = quietAfterMoves; // 纯假想检查：不突变、零漂移
         const proposals = quenchScope.filter(i => !clamped.has(i)).map(i => ({ i, delta: deltas(i).cons }));
         let move: number[] = [];
         let improvement = -EPS;

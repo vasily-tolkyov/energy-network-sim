@@ -38,6 +38,12 @@ export class SparseMatrix {
     for (const r of this.rows.values()) r.delete(id);
   }
 
+  /** 某神经元的全部出边（增量场维护用；顺序不保证，调用方按需要排序） */
+  *rowEntries(i: number): Generator<[j: number, w: number]> {
+    const r = this.rows.get(i);
+    if (r) for (const [j, w] of r) yield [j, w];
+  }
+
   /** 非零边迭代（顺序不保证——只用于与顺序无关的扫描，如 DI 源枚举） */
   *entries(): Generator<[i: number, j: number, w: number]> {
     for (const [i, r] of this.rows) {

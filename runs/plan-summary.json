@@ -81,15 +81,15 @@
         "statusMissing": 0,
         "milliseconds": {
           "n": 1131,
-          "min": 9.432600000000093,
-          "median": 23.5625,
-          "p90": 27.378600000000006,
-          "max": 100.58910000000014,
-          "mean": 24.249947126436755
+          "min": 3.5029000000013184,
+          "median": 7.0187000000005355,
+          "p90": 7.818000000000211,
+          "max": 24.125,
+          "mean": 6.7346817860300625
         }
       },
       "selectedFixedPointFraction": 1,
-      "totalMilliseconds": 29314.6346
+      "totalMilliseconds": 9897.1493
     },
     "acceptance": {
       "P1": true,
@@ -184,15 +184,15 @@
         "statusMissing": 0,
         "milliseconds": {
           "n": 1131,
-          "min": 10.384399999995367,
-          "median": 22.915500000002794,
-          "p90": 26.615399999998772,
-          "max": 88.94200000000274,
-          "mean": 22.712402298850574
+          "min": 3.2762999999977183,
+          "median": 6.765300000000934,
+          "p90": 7.561299999999392,
+          "max": 35.20899999999892,
+          "mean": 7.0405425287356715
         }
       },
       "selectedFixedPointFraction": 1,
-      "totalMilliseconds": 27274.761700000003
+      "totalMilliseconds": 10462.076800000003
     },
     "acceptance": {
       "P1": true,
@@ -287,15 +287,15 @@
         "statusMissing": 0,
         "milliseconds": {
           "n": 1131,
-          "min": 10.236199999999371,
-          "median": 22.892500000001746,
-          "p90": 26.52479999999923,
-          "max": 49.74850000000151,
-          "mean": 22.481195048629452
+          "min": 3.6886999999987893,
+          "median": 6.9891999999999825,
+          "p90": 7.723100000002887,
+          "max": 10.28689999999915,
+          "mean": 6.603273828470348
         }
       },
       "selectedFixedPointFraction": 1,
-      "totalMilliseconds": 26892.405000000006
+      "totalMilliseconds": 9477.7647
     },
     "acceptance": {
       "P1": true,
