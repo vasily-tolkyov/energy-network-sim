@@ -1,0 +1,14 @@
+══ U1 稀有合取世界（y=1 当且仅当 a=b=c=0；预算 32；128 组合） ══
+seed 1: uncertainty 阳性观察 0 次/读出 0（budget-exhausted，未覆盖 69）| balanced 0 次/读出 0.049999999999999996（quorum-met）| 随机 1 次
+seed 2: uncertainty 阳性观察 0 次/读出 0（budget-exhausted，未覆盖 75）| balanced 0 次/读出 0.049999999999999996（quorum-met）| 随机 0 次
+seed 3: uncertainty 阳性观察 0 次/读出 0（budget-exhausted，未覆盖 75）| balanced 0 次/读出 0.049999999999999996（quorum-met）| 随机 0 次
+══ U3/U4 陌生场景：多阈值耦合世界（预算 120；256 组合） ══
+seed 1: uncertainty 实验 120（budget-exhausted）因素 [alpha,beta,gamma] 网格粗 217/256 未观察粗 153/187
+         balanced   实验 120（budget-exhausted）因素 [alpha,beta,gamma] 网格粗 234/256 未观察粗 115/136
+seed 2: uncertainty 实验 120（budget-exhausted）因素 [alpha,beta,gamma] 网格粗 208/256 未观察粗 148/196
+         balanced   实验 120（budget-exhausted）因素 [alpha,beta,gamma] 网格粗 241/256 未观察粗 124/136
+seed 3: uncertainty 实验 120（budget-exhausted）因素 [alpha,beta,gamma] 网格粗 228/256 未观察粗 152/178
+         balanced   实验 120（budget-exhausted）因素 [alpha,beta,gamma] 网格粗 233/256 未观察粗 114/136
+══ U2 电路回归对照（同预算 150，seed 1） ══
+uncertainty: 粗 422/432（budget-exhausted）因素 [resistance,switchPos,temperature,voltage]
+balanced:    粗 429/432（budget-exhausted）因素 [resistance,switchPos,temperature,voltage]

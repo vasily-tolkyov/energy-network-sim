@@ -1,0 +1,405 @@
+{
+  "schema": "PLAN-010/v1",
+  "seeds": [
+    1,
+    2,
+    3
+  ],
+  "parts": {
+    "U1": {
+      "uncertainty": [
+        {
+          "policy": "uncertainty",
+          "seed": 1,
+          "experiments": 32,
+          "terminationReason": "budget-exhausted",
+          "positiveObserved": 0,
+          "positiveRead": 0,
+          "factors": [],
+          "coverage": {
+            "experiments": 32,
+            "unvisited": 69,
+            "reverifyPending": 0,
+            "contested": 0
+          }
+        },
+        {
+          "policy": "uncertainty",
+          "seed": 2,
+          "experiments": 32,
+          "terminationReason": "budget-exhausted",
+          "positiveObserved": 0,
+          "positiveRead": 0,
+          "factors": [],
+          "coverage": {
+            "experiments": 32,
+            "unvisited": 75,
+            "reverifyPending": 0,
+            "contested": 0
+          }
+        },
+        {
+          "policy": "uncertainty",
+          "seed": 3,
+          "experiments": 32,
+          "terminationReason": "budget-exhausted",
+          "positiveObserved": 0,
+          "positiveRead": 0,
+          "factors": [],
+          "coverage": {
+            "experiments": 32,
+            "unvisited": 75,
+            "reverifyPending": 0,
+            "contested": 0
+          }
+        }
+      ],
+      "balanced": [
+        {
+          "policy": "balanced",
+          "seed": 1,
+          "experiments": 11,
+          "terminationReason": "quorum-met",
+          "positiveObserved": 0,
+          "positiveRead": 0.049999999999999996,
+          "factors": [],
+          "coverage": {
+            "experiments": 11,
+            "unvisited": 55,
+            "reverifyPending": 0,
+            "contested": 0
+          }
+        },
+        {
+          "policy": "balanced",
+          "seed": 2,
+          "experiments": 11,
+          "terminationReason": "quorum-met",
+          "positiveObserved": 0,
+          "positiveRead": 0.049999999999999996,
+          "factors": [],
+          "coverage": {
+            "experiments": 11,
+            "unvisited": 52,
+            "reverifyPending": 0,
+            "contested": 0
+          }
+        },
+        {
+          "policy": "balanced",
+          "seed": 3,
+          "experiments": 11,
+          "terminationReason": "quorum-met",
+          "positiveObserved": 0,
+          "positiveRead": 0.049999999999999996,
+          "factors": [],
+          "coverage": {
+            "experiments": 11,
+            "unvisited": 54,
+            "reverifyPending": 0,
+            "contested": 0
+          }
+        }
+      ],
+      "random": [
+        {
+          "seed": 1,
+          "experiments": 32,
+          "positiveObserved": 1
+        },
+        {
+          "seed": 2,
+          "experiments": 32,
+          "positiveObserved": 0
+        },
+        {
+          "seed": 3,
+          "experiments": 32,
+          "positiveObserved": 0
+        }
+      ]
+    },
+    "U3": {
+      "uncertainty": [
+        {
+          "policy": "uncertainty",
+          "seed": 1,
+          "experiments": 120,
+          "terminationReason": "budget-exhausted",
+          "factors": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "coverage": {
+            "experiments": 120,
+            "unvisited": 178,
+            "reverifyPending": 0,
+            "contested": 0
+          },
+          "grid": {
+            "n": 256,
+            "coarse": 217,
+            "fine": 207
+          },
+          "unseen": {
+            "n": 187,
+            "coarse": 153,
+            "fine": 144
+          },
+          "quality": {
+            "predictions": 504,
+            "nonconverged": 324,
+            "anyOutputAbstained": 8,
+            "nonconvergedRate": 0.6428571428571429,
+            "anyOutputAbstentionRate": 0.015873015873015872,
+            "terminationReasons": {
+              "fixed-point": 180,
+              "quiet-constraint": 324
+            },
+            "confidencePolicy": "converged-required"
+          }
+        },
+        {
+          "policy": "uncertainty",
+          "seed": 2,
+          "experiments": 120,
+          "terminationReason": "budget-exhausted",
+          "factors": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "coverage": {
+            "experiments": 120,
+            "unvisited": 175,
+            "reverifyPending": 0,
+            "contested": 0
+          },
+          "grid": {
+            "n": 256,
+            "coarse": 208,
+            "fine": 194
+          },
+          "unseen": {
+            "n": 196,
+            "coarse": 148,
+            "fine": 136
+          },
+          "quality": {
+            "predictions": 375,
+            "nonconverged": 335,
+            "anyOutputAbstained": 0,
+            "nonconvergedRate": 0.8933333333333333,
+            "anyOutputAbstentionRate": 0,
+            "terminationReasons": {
+              "fixed-point": 40,
+              "quiet-constraint": 335
+            },
+            "confidencePolicy": "converged-required"
+          }
+        },
+        {
+          "policy": "uncertainty",
+          "seed": 3,
+          "experiments": 120,
+          "terminationReason": "budget-exhausted",
+          "factors": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "coverage": {
+            "experiments": 120,
+            "unvisited": 170,
+            "reverifyPending": 0,
+            "contested": 0
+          },
+          "grid": {
+            "n": 256,
+            "coarse": 228,
+            "fine": 192
+          },
+          "unseen": {
+            "n": 178,
+            "coarse": 152,
+            "fine": 117
+          },
+          "quality": {
+            "predictions": 375,
+            "nonconverged": 328,
+            "anyOutputAbstained": 0,
+            "nonconvergedRate": 0.8746666666666667,
+            "anyOutputAbstentionRate": 0,
+            "terminationReasons": {
+              "fixed-point": 47,
+              "quiet-constraint": 328
+            },
+            "confidencePolicy": "converged-required"
+          }
+        }
+      ],
+      "balanced": [
+        {
+          "policy": "balanced",
+          "seed": 1,
+          "experiments": 120,
+          "terminationReason": "budget-exhausted",
+          "factors": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "coverage": {
+            "experiments": 120,
+            "unvisited": 136,
+            "reverifyPending": 0,
+            "contested": 0
+          },
+          "grid": {
+            "n": 256,
+            "coarse": 234,
+            "fine": 233
+          },
+          "unseen": {
+            "n": 136,
+            "coarse": 115,
+            "fine": 114
+          },
+          "quality": {
+            "predictions": 879,
+            "nonconverged": 662,
+            "anyOutputAbstained": 19,
+            "nonconvergedRate": 0.7531285551763367,
+            "anyOutputAbstentionRate": 0.02161547212741752,
+            "terminationReasons": {
+              "fixed-point": 217,
+              "quiet-constraint": 662
+            },
+            "confidencePolicy": "converged-required"
+          }
+        },
+        {
+          "policy": "balanced",
+          "seed": 2,
+          "experiments": 120,
+          "terminationReason": "budget-exhausted",
+          "factors": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "coverage": {
+            "experiments": 120,
+            "unvisited": 136,
+            "reverifyPending": 0,
+            "contested": 0
+          },
+          "grid": {
+            "n": 256,
+            "coarse": 241,
+            "fine": 232
+          },
+          "unseen": {
+            "n": 136,
+            "coarse": 124,
+            "fine": 115
+          },
+          "quality": {
+            "predictions": 750,
+            "nonconverged": 675,
+            "anyOutputAbstained": 6,
+            "nonconvergedRate": 0.9,
+            "anyOutputAbstentionRate": 0.008,
+            "terminationReasons": {
+              "fixed-point": 75,
+              "quiet-constraint": 675
+            },
+            "confidencePolicy": "converged-required"
+          }
+        },
+        {
+          "policy": "balanced",
+          "seed": 3,
+          "experiments": 120,
+          "terminationReason": "budget-exhausted",
+          "factors": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "coverage": {
+            "experiments": 120,
+            "unvisited": 136,
+            "reverifyPending": 0,
+            "contested": 0
+          },
+          "grid": {
+            "n": 256,
+            "coarse": 233,
+            "fine": 229
+          },
+          "unseen": {
+            "n": 136,
+            "coarse": 114,
+            "fine": 110
+          },
+          "quality": {
+            "predictions": 750,
+            "nonconverged": 659,
+            "anyOutputAbstained": 5,
+            "nonconvergedRate": 0.8786666666666667,
+            "anyOutputAbstentionRate": 0.006666666666666667,
+            "terminationReasons": {
+              "fixed-point": 91,
+              "quiet-constraint": 659
+            },
+            "confidencePolicy": "converged-required"
+          }
+        }
+      ]
+    },
+    "U2": {
+      "uncertainty": {
+        "policy": "uncertainty",
+        "seed": 1,
+        "experiments": 150,
+        "terminationReason": "budget-exhausted",
+        "factors": [
+          "resistance",
+          "switchPos",
+          "temperature",
+          "voltage"
+        ],
+        "coverage": {
+          "experiments": 150,
+          "unvisited": 272,
+          "reverifyPending": 0,
+          "contested": 0
+        },
+        "gridCoarse": 422,
+        "gridN": 432
+      },
+      "balanced": {
+        "policy": "balanced",
+        "seed": 1,
+        "experiments": 150,
+        "terminationReason": "budget-exhausted",
+        "factors": [
+          "resistance",
+          "switchPos",
+          "temperature",
+          "voltage"
+        ],
+        "coverage": {
+          "experiments": 150,
+          "unvisited": 272,
+          "reverifyPending": 0,
+          "contested": 0
+        },
+        "gridCoarse": 429,
+        "gridN": 432
+      }
+    }
+  }
+}

@@ -51,7 +51,7 @@
         "closedGate": true,
         "displacement": true,
         "replanPredictIncrements": [
-          2,
+          1,
           2
         ],
         "noReplanClosedGateReached": false,
@@ -67,9 +67,9 @@
         "chainAllUnchanged": true
       },
       "predictions": {
-        "calls": 1132,
+        "calls": 1131,
         "reasons": {
-          "fixed-point": 1132
+          "fixed-point": 1131
         },
         "noQuietCandidate": 0,
         "nonconverged": 0,
@@ -77,19 +77,19 @@
         "anyOutputRefusalRate": 0,
         "unknownDecodedRate": 0,
         "ledgerMismatches": 0,
-        "maxLedgerError": 3.552713678800501e-14,
+        "maxLedgerError": 4.263256414560601e-13,
         "statusMissing": 0,
         "milliseconds": {
-          "n": 1132,
-          "min": 11.21730000000025,
-          "median": 19.97699999999986,
-          "p90": 23.67413000000106,
-          "max": 40.091599999999744,
-          "mean": 19.81596651943463
+          "n": 1131,
+          "min": 9.432600000000093,
+          "median": 23.5625,
+          "p90": 27.378600000000006,
+          "max": 100.58910000000014,
+          "mean": 24.249947126436755
         }
       },
       "selectedFixedPointFraction": 1,
-      "totalMilliseconds": 24160.3503
+      "totalMilliseconds": 29314.6346
     },
     "acceptance": {
       "P1": true,
@@ -108,10 +108,10 @@
       "seed": 2,
       "path": {
         "n": 56,
-        "reached": 55,
-        "reachRate": 0.9821428571428571,
+        "reached": 56,
+        "reachRate": 1,
         "successfulStepRatio": {
-          "n": 55,
+          "n": 56,
           "min": 1,
           "median": 1,
           "p90": 1,
@@ -123,8 +123,8 @@
           "min": 1,
           "median": 1,
           "p90": 1,
-          "max": 2,
-          "mean": 1.0178571428571428
+          "max": 1,
+          "mean": 1
         },
         "predictCalls": {
           "n": 56,
@@ -142,10 +142,10 @@
           "min": 1,
           "median": 1,
           "p90": 1,
-          "max": 3,
-          "mean": 1.0357142857142858
+          "max": 1,
+          "mean": 1
         },
-        "replans": 1,
+        "replans": 0,
         "selectedFixedPointFraction": 1
       },
       "chain": {
@@ -154,7 +154,7 @@
         "closedGate": true,
         "displacement": true,
         "replanPredictIncrements": [
-          2,
+          1,
           2
         ],
         "noReplanClosedGateReached": false,
@@ -170,9 +170,9 @@
         "chainAllUnchanged": true
       },
       "predictions": {
-        "calls": 1136,
+        "calls": 1131,
         "reasons": {
-          "fixed-point": 1136
+          "fixed-point": 1131
         },
         "noQuietCandidate": 0,
         "nonconverged": 0,
@@ -180,19 +180,19 @@
         "anyOutputRefusalRate": 0,
         "unknownDecodedRate": 0,
         "ledgerMismatches": 0,
-        "maxLedgerError": 5.861977570020827e-14,
+        "maxLedgerError": 4.263256414560601e-13,
         "statusMissing": 0,
         "milliseconds": {
-          "n": 1136,
-          "min": 11.035400000000664,
-          "median": 19.771850000000995,
-          "p90": 23.020950000003722,
-          "max": 81.52030000000013,
-          "mean": 20.281416549295688
+          "n": 1131,
+          "min": 10.384399999995367,
+          "median": 22.915500000002794,
+          "p90": 26.615399999998772,
+          "max": 88.94200000000274,
+          "mean": 22.712402298850574
         }
       },
       "selectedFixedPointFraction": 1,
-      "totalMilliseconds": 24420.4299
+      "totalMilliseconds": 27274.761700000003
     },
     "acceptance": {
       "P1": true,
@@ -257,7 +257,7 @@
         "closedGate": true,
         "displacement": true,
         "replanPredictIncrements": [
-          2,
+          1,
           2
         ],
         "noReplanClosedGateReached": false,
@@ -273,9 +273,9 @@
         "chainAllUnchanged": true
       },
       "predictions": {
-        "calls": 1132,
+        "calls": 1131,
         "reasons": {
-          "fixed-point": 1132
+          "fixed-point": 1131
         },
         "noQuietCandidate": 0,
         "nonconverged": 0,
@@ -283,19 +283,19 @@
         "anyOutputRefusalRate": 0,
         "unknownDecodedRate": 0,
         "ledgerMismatches": 0,
-        "maxLedgerError": 3.552713678800501e-14,
+        "maxLedgerError": 4.263256414560601e-13,
         "statusMissing": 0,
         "milliseconds": {
-          "n": 1132,
-          "min": 11.081500000000233,
-          "median": 19.7612500000032,
-          "p90": 23.362050000007727,
-          "max": 85.67740000000049,
-          "mean": 20.416898409894074
+          "n": 1131,
+          "min": 10.236199999999371,
+          "median": 22.892500000001746,
+          "p90": 26.52479999999923,
+          "max": 49.74850000000151,
+          "mean": 22.481195048629452
         }
       },
       "selectedFixedPointFraction": 1,
-      "totalMilliseconds": 24453.899899999997
+      "totalMilliseconds": 26892.405000000006
     },
     "acceptance": {
       "P1": true,

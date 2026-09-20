@@ -16,8 +16,11 @@ export function candidateTier(p: StepPrediction, visited: ReadonlySet<string>): 
 
 /** Bounded forward depth-first rollout with backtracking; no distance heuristic,
  * inverse transitions, bench access or BFS. Cache exists for this plan only.
- * Backtracking consumes the SAME global prediction budget (2×diameter×actions). */
-export function planGoal(model: TransitionReader, start: Frame, goal: Frame, seed: number): GoalPlan {
+ * Backtracking consumes the SAME global prediction budget (2×diameter×actions).
+ * options.avoid：本次执行中已被捕获判为失配的条件签名（可疑转移）——
+ * 行为层的即时回避，不消耗预测预算，不修改记忆中的规则（规则改判走计票）。 */
+export function planGoal(model: TransitionReader, start: Frame, goal: Frame, seed: number,
+  options: { avoid?: ReadonlySet<string> } = {}): GoalPlan {
   validateFrame(start, model.space.states); validateFrame(goal, model.space.states);
   const maxDepth = 2 * model.space.diameter;
   const predictBudget = maxDepth * model.actions.length;
@@ -34,6 +37,7 @@ export function planGoal(model: TransitionReader, start: Frame, goal: Frame, see
     if (!candidates) {
       candidates = [];
       for (const action of [...model.actions].sort((a, b) => a.id - b.id)) {
+        if (options.avoid?.has(model.conditionKey ? model.conditionKey(state, action) : signature({ ...state, ...action.values }))) continue;
         if (predictions.length >= predictBudget) { budgetLimited = true; break; }
         const p = model.predict(state, action, (seed + predictions.length) >>> 0);
         predictions.push(p); candidates.push(p);

@@ -1,0 +1,11 @@
+
+── 模式 冻结（对照），种子 3 ──
+一阶段终止：实验 200 次，形成 1 次，voltage 归因证据 102 对，因素=[resistance,switchPos,temperature,voltage]
+  ◄── 量程扩展：voltage 新候选值 [3.9,4.5]
+二阶段终止：实验 +200 次（共 400），形成 1 次，voltage 归因证据 102 → 220 对
+  概念形成历史（voltage 概念中心）：
+    第 1 次形成（实验后 #200）：[0.39, 1.24, 2.14, 3.04]
+  最终影响因素：[resistance,switchPos,temperature,voltage]
+  扩展区探针（216 个）：细粒度 212（98.1%）  粗粒度 215（99.5%）
+  全网格（648 个）：细粒度 98.9%  粗粒度 99.8%
+动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：{"predictions":1263,"nonconverged":1173,"anyOutputAbstained":21,"nonconvergedRate":0.9287410926365796,"anyOutputAbstentionRate":0.0166270783847981,"terminationReasons":{"fixed-point":90,"quiet-constraint":1173},"confidencePolicy":"converged-required"}

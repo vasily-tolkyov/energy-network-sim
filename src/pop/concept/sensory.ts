@@ -14,6 +14,8 @@ export interface DimensionSpec {
   readonly name: string;
   readonly min: number;
   readonly max: number;
+  /** 可选：显式感受野宽度（默认 range/20）。离散世界按档间距标定分辨率用 */
+  readonly sigma?: number;
 }
 
 export interface FieldEncoding {
@@ -46,7 +48,11 @@ export class SensoryEncoder {
         centers[k] = dim.min + ((k + 0.5) / fieldsPerDim) * range;
       }
       this.centers.set(dim.name, centers);
-      this.sigmas.set(dim.name, range / 20);
+      if (dim.sigma !== undefined) {
+        finite(dim.sigma, `${dim.name}.sigma`);
+        if (dim.sigma <= 0) throw new Error(`${dim.name}.sigma must be positive`);
+      }
+      this.sigmas.set(dim.name, dim.sigma ?? range / 20);
       offset += fieldsPerDim;
     }
     this.neuronCount = offset;

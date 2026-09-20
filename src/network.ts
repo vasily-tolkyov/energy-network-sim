@@ -198,6 +198,33 @@ export class EnergyNetwork {
     this.inhibitory[j * this.neuronCount + i] = value;
   }
 
+  /** 结构性回收（遗忘的物理层）：把若干神经元的全部突触（W/Γ/D/DI 四矩阵的
+   * 行与列）清零，并丢弃涉及它们的抑制归属账。用于规则核槽位回收再利用。
+   * 只在两次求解之间调用（与赫布学习同属"求解间改地形"，不进能量账本）。
+   * 调用方负责重建被清神经元所需的结构边（如池接线、核间互斥）。 */
+  clearSynapses(ids: Iterable<number>): void {
+    const list = [...ids];
+    for (const id of list) neuronId(id, this.neuronCount);
+    const n = this.neuronCount;
+    for (const id of list) {
+      for (let j = 0; j < n; j++) {
+        this.weights[id * n + j] = 0;
+        this.weights[j * n + id] = 0;
+        this.directed[id * n + j] = 0;
+        this.directed[j * n + id] = 0;
+        this.inhibitory[id * n + j] = 0;
+        this.inhibitory[j * n + id] = 0;
+        this.directedInhibitory[id * n + j] = 0;
+        this.directedInhibitory[j * n + id] = 0;
+      }
+    }
+    for (const key of [...this.inhibitionOwners.keys()]) {
+      const i = Math.floor(key / n), j = key % n;
+      if (list.includes(i) || list.includes(j)) this.inhibitionOwners.delete(key);
+    }
+    this.diSourceCache = null; // DI 源缓存失效
+  }
+
   /** 抑制场 γ_i = Σ_j Γ_ij·s_j：当前激活模式对激活 i 的惩罚 */
   inhibitoryField(i: number, pattern: Uint8Array): number {
     const n = this.neuronCount;

@@ -20,6 +20,8 @@ export interface TransitionReader {
   readonly space: TransitionSpace;
   readonly actions: readonly Action[];
   predict(state: Frame, action: Action, seed: number): StepPrediction;
+  /** 条件签名（可疑转移回避用）；缺省时规划器自行拼装 */
+  conditionKey?(state: Frame, action: Action): string;
 }
 
 export class TransitionMemory implements TransitionReader {
@@ -33,10 +35,19 @@ export class TransitionMemory implements TransitionReader {
     validateSpace(space);
     this.space = structuredClone(space);
     this.actions = actionsOf(space);
-    const dimensions = [...space.states.map(d => ({ name: d.name, min: 0, max: d.bins - 1 })),
-      ...space.actions.map(d => ({ name: d.name, min: 0, max: d.bins - 1 })),
-      ...space.states.map(d => ({ name: d.outcome, min: 0, max: d.bins - 1 }))];
-    const encoder = new SensoryEncoder(dimensions);
+    // 离散世界的编码分辨率跟着档位数走（长链渗色修复）：
+    // - σ = 0.225、激活半径 2σ = 0.45 < 半档距——相邻档感受野**不相交**：
+    //   离散档是符号而非连续量，相邻档必须是可判别的不同答案（重叠会让编码
+    //   等价关系把不同结果误判为"同一感知类"，对比否决随之失效——实测教训）；
+    // - 量程向两侧各外扩半档：边缘档与中间档拿到同样多的感受野（修复前
+    //   端点档只剩 2 个感受野，支持场比共享动作维的对手核还弱，实测跳读）；
+    // - 场密度按每档约 5 个活跃感受野配（点火不等式的群体下限）。
+    const maxBins = Math.max(...[...space.states, ...space.actions].map(d => d.bins));
+    const pad = (bins: number) => ({ min: -0.5, max: bins - 0.5, sigma: 0.225 });
+    const dimensions = [...space.states.map(d => ({ name: d.name, ...pad(d.bins) })),
+      ...space.actions.map(d => ({ name: d.name, ...pad(d.bins) })),
+      ...space.states.map(d => ({ name: d.outcome, ...pad(d.bins) }))];
+    const encoder = new SensoryEncoder(dimensions, Math.max(2, 5 * maxBins));
     const maxRules = [...space.states, ...space.actions].reduce((n, d) => n * d.bins, 1);
     this.mem = new FieldRuleMemory(encoder, new EmergentMap([], encoder), { maxRules });
     this.mem.setOutcomeDimensions(space.states.map(d => d.outcome));
@@ -52,6 +63,9 @@ export class TransitionMemory implements TransitionReader {
     const canonical = this.actions.find(a => a.id === action.id);
     if (!canonical || signature(canonical.values) !== signature(action.values)) throw new Error("invalid action");
     return { ...state, ...action.values };
+  }
+  conditionKey(state: Frame, action: Action): string {
+    return signature(this.conditions(state, action));
   }
   /** All output dimensions are required; aliases cannot be forced to one state. */
   decode(values: Readonly<Record<string, number | null>>): Frame | null {

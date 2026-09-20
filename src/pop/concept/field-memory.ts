@@ -69,27 +69,43 @@ export class FieldRuleMemory {
   private readonly poolSize = 2;
   /** 池→核抑制强度：两核联盟时弱者净场 < θ 而胜者存活（按本模块核支持 ~20-27 标定） */
   private readonly poolGamma = 20;
-  private lastBoost: Record<string, number> = {};
+  private readonly lastBoost: Record<string, number> = {};
   private lastGammaVeto = 1.2;
   /** 签名 → 最近一次写入的结果值（纠错否决用，与 PopRuleMemory 同一规则） */
   private readonly evidence = new OutcomeEvidence();
   get evidenceGeneration(): number { return this.evidence.generation; }
   get evidenceConflicts() { return this.evidence.conflictLog; }
-  ruleEvidence(index: number) { return this.evidence.snapshot(Math.floor((this.rules[index]!.core[0]! - this.coreBase) / this.coreSize)); }
+  /** 改判定额（探索器复验队列上限用） */
+  get switchQuorum(): number { return this.evidence.switchQuorum; }
+  private slotOf(core: readonly number[]): number { return Math.floor((core[0]! - this.coreBase) / this.coreSize); }
+  ruleEvidence(index: number) { return this.evidence.snapshot(this.slotOf(this.rules[index]!.core)); }
   /** 每维已观察到的条件值集合（否决源登记——评审 F05：只否决已观察替代值的域） */
   private readonly observedValues = new Map<string, Set<number>>();
   private readonly contrastVetoes = new Map<string, { from: number; to: number; delta: number }[]>();
-
+  /** 容量策略：throw（默认，评审契约）= 耗尽显式抛错；lru = 回收最久未用核槽 */
+  private readonly eviction: "throw" | "lru";
+  /** 使用跟踪：rules 下标 → 单调 tick（写入与预测获胜都算使用） */
+  private tick = 0;
+  private readonly lastTouch = new Map<number, number>();
+  /** 已清空待复用的核槽位（槽序号，非 rules 下标） */
+  private readonly freeSlots: number[] = [];
   /** Contradictory observed episodes teach local pattern separation: only the
    * condition members absent from a core may inhibit it. Shared members never
    * do. This is associative exclusion, not a causal-factor assertion (R2).
    * Reconcile contributions when evidence changes, including world reversals. */
+  /** Contradictory observed episodes teach local pattern separation: only the
+   * condition members absent from a core may inhibit it. Shared members never
+   * do. This is associative exclusion, not a causal-factor assertion (R2).
+   * Reconcile contributions when evidence changes, including world reversals.
+   * 键用核槽位（神经元不移动），不用 rules 下标（淘汰 swap-remove 会改键）。 */
   private reconcileContrasts(index: number): void {
     const a = this.rules[index]!;
+    const slotA = this.slotOf(a.core);
     const ae = this.ruleEvidence(index);
     this.rules.forEach((b, j) => {
       if (j === index) return;
-      const key = `${Math.min(index, j)}:${Math.max(index, j)}`;
+      const slotB = this.slotOf(b.core);
+      const key = `${Math.min(slotA, slotB)}:${Math.max(slotA, slotB)}`;
       for (const edge of this.contrastVetoes.get(key) ?? []) this.net.setInhibitionContribution(edge.from, edge.to, `contrast:${key}`, 0);
       const be = this.ruleEvidence(j);
       const overlappingConditions = this.encoder.dimensions.filter(d => !this.outcomeDims.includes(d.name)).every(d => {
@@ -115,11 +131,13 @@ export class FieldRuleMemory {
   constructor(
     readonly encoder: SensoryEncoder,
     readonly emergent: EmergentMap,
-    config: { coreSize?: number; maxRules?: number; activationEnergy?: number; maintenanceEnergy?: number; learningRate?: number; maxWeight?: number } = {},
+    config: { coreSize?: number; maxRules?: number; activationEnergy?: number; maintenanceEnergy?: number; learningRate?: number; maxWeight?: number; eviction?: "throw" | "lru" } = {},
   ) {
     this.coreSize = config.coreSize ?? 4;
     this.maxRules = config.maxRules ?? 128;
     integer(this.coreSize, "coreSize", 1); integer(this.maxRules, "maxRules", 1);
+    this.eviction = config.eviction ?? "throw";
+    if (this.eviction !== "throw" && this.eviction !== "lru") throw new Error(`unknown eviction: ${this.eviction}`);
     this.coreBase = encoder.neuronCount;
     this.poolBase = encoder.neuronCount + this.maxRules * this.coreSize;
     this.net = new EnergyNetwork({
@@ -201,6 +219,23 @@ export class FieldRuleMemory {
     return best;
   }
 
+  /** 证据竞争（纯边权+元数据读出，不确定性地图用）：该查询最佳支持核的
+   * 结果维中，存在 ≥2 个观察候选且前两名票差 < switchQuorum 的维度。
+   * 无核覆盖返回空表——那是"未知"，不是"竞争"。 */
+  contestedDims(query: Record<string, number>): string[] {
+    const fields = this.encoder.encode(query);
+    let best = 0;
+    let bestIdx = -1;
+    this.rules.forEach((rule, idx) => {
+      let s = 0;
+      for (const from of fields) for (const to of rule.core) s += this.net.getWeight(from, to) - this.net.getInhibitoryWeight(from, to);
+      if (s > best) { best = s; bestIdx = idx; }
+    });
+    if (bestIdx < 0 || best < this.net.threshold) return [];
+    const counts = this.evidence.candidateCounts(this.slotOf(this.rules[bestIdx]!.core));
+    return Object.entries(counts).filter(([, c]) => c.length >= 2 && c[0]! - c[1]! < this.evidence.switchQuorum).map(([dim]) => dim);
+  }
+
   /** 某条规则核的成员神经元 */
   ruleCore(index: number): readonly number[] {
     return [...this.rules[index]!.core];
@@ -223,7 +258,7 @@ export class FieldRuleMemory {
       for (const dim of Object.keys(outcomes)) if (!this.outcomeDims.includes(dim)) throw new Error(`unknown outcome dimension: ${dim}`);
       this.encoder.encode(outcomes);
     }
-    if (!this.signatureToCore.has(this.signatureOf(condFields)) && this.coreCursor >= this.maxRules)
+    if (!this.signatureToCore.has(this.signatureOf(condFields)) && this.eviction === "throw" && this.coreCursor >= this.maxRules)
       throw new Error(`rule capacity exhausted (maxRules=${this.maxRules})`);
   }
 
@@ -235,21 +270,30 @@ export class FieldRuleMemory {
     const sig = this.signatureOf(condFields);
     const existing = this.signatureToCore.get(sig);
     if (existing) return existing;
-    // 容量边界（评审 D01/F03 修复）：分配前检查，越界显式抛错——
-    // 修复前第二核会静默覆盖抑制池神经元并产生超出 N 的索引
-    // （TypedArray 越界写不报错，池区被别名污染）。
-    if (this.coreCursor >= this.maxRules) {
-      throw new Error(`rule capacity exhausted (maxRules=${this.maxRules})`);
+    // 容量边界（评审 D01/F03 修复）：分配前检查；默认显式抛错——
+    // 修复前第二核会静默覆盖抑制池神经元并产生超出 N 的索引。
+    // eviction="lru" 时改为回收最久未用核槽（遗忘，见 evictForAllocation）。
+    if (this.coreCursor - this.freeSlots.length >= this.maxRules) {
+      if (this.eviction === "throw") {
+        throw new Error(`rule capacity exhausted (maxRules=${this.maxRules})`);
+      }
+      this.evictForAllocation();
     }
-    const base = this.coreBase + this.coreCursor * this.coreSize;
-    const core = Array.from({ length: this.coreSize }, (_, k) => base + k);
-    this.coreCursor++;
+    const slot = this.freeSlots.pop() ?? this.coreCursor++;
+    const core = Array.from({ length: this.coreSize }, (_, k) => this.coreBase + slot * this.coreSize + k);
+    this.wireNewCore(core);
+    this.signatureToCore.set(sig, core);
+    return core;
+  }
+
+  /** 新核结构接线：核间互斥 + 全局抑制池（WTA 电路，前馈抑制版）。
+   * 新槽与回收槽共用——回收槽的全部突触已被 clearSynapses 清零。 */
+  private wireNewCore(core: readonly number[]): void {
     for (const other of this.signatureToCore.values()) {
       for (const x of core) {
         for (const y of other) this.net.strengthenInhibitory(x, y, 3.0);
       }
     }
-    // 全局抑制池接线（WTA 电路，前馈抑制版）：
     // 核神经元 → 池神经元 k：权重 1/(k+1)——池按核活动总量分级招募；
     // 池神经元 → 核神经元：γ_pool 前馈抑制（DI，非平衡驱动）——
     // 池压制核而不被反向压制，联盟越大压制越强，逐个淘汰至单核胜出。
@@ -260,8 +304,53 @@ export class FieldRuleMemory {
         this.net.strengthenDirectedInhibitory(this.poolBase + k, x, this.poolGamma, this.poolGamma);
       }
     }
-    this.signatureToCore.set(sig, core);
-    return core;
+  }
+
+  /** 遗忘 = 突触修剪：回收一个核槽给新经验。受害者顺序：
+   * 1) 已分配但未登记的空槽（无经验，零代价）；
+   * 2) 已登记规则中 lastTouch 最久远的（最久未被写入或预测获胜）。
+   * 清除受害者自己的 supersede/contrast 否决贡献、证据登记、签名映射与
+   * 全部突触，其他核的证据与边不受影响。swap-remove 保持 rules 紧致。 */
+  private evictForAllocation(): void {
+    for (const [sig, core] of this.signatureToCore) {
+      if (!this.sigRegistered.has(sig)) {
+        this.signatureToCore.delete(sig);
+        this.net.clearSynapses(core);
+        this.freeSlots.push(this.slotOf(core));
+        return;
+      }
+    }
+    let victimIdx = -1;
+    let oldest = Infinity;
+    for (let i = 0; i < this.rules.length; i++) {
+      const t = this.lastTouch.get(i) ?? 0;
+      if (t < oldest) { oldest = t; victimIdx = i; }
+    }
+    if (victimIdx < 0) throw new Error(`rule capacity exhausted (maxRules=${this.maxRules})`);
+    const victim = this.rules[victimIdx]!;
+    const victimSlot = this.slotOf(victim.core);
+    this.evidence.remove(this.net, victimSlot);
+    for (const key of [...this.contrastVetoes.keys()]) {
+      const [a, b] = key.split(":").map(Number);
+      if (a === victimSlot || b === victimSlot) {
+        for (const e of this.contrastVetoes.get(key)!) this.net.setInhibitionContribution(e.from, e.to, `contrast:${key}`, 0);
+        this.contrastVetoes.delete(key);
+      }
+    }
+    for (const [sig, idx] of this.sigRegistered) {
+      if (idx === victimIdx) { this.sigRegistered.delete(sig); this.signatureToCore.delete(sig); }
+    }
+    this.net.clearSynapses(victim.core);
+    this.freeSlots.push(victimSlot);
+    const last = this.rules.length - 1;
+    if (victimIdx !== last) {
+      this.rules[victimIdx] = this.rules[last]!;
+      for (const [sig, idx] of this.sigRegistered) if (idx === last) this.sigRegistered.set(sig, victimIdx);
+      const t = this.lastTouch.get(last);
+      if (t === undefined) this.lastTouch.delete(victimIdx); else this.lastTouch.set(victimIdx, t);
+    }
+    this.rules.pop();
+    this.lastTouch.delete(last);
   }
 
   /**
@@ -320,6 +409,7 @@ export class FieldRuleMemory {
     this.acceptOutcomes(core, outcomes);
     this.registerOrUpdateRule(sig, core, condFields, outcomes);
     this.registerObservedValues(conditions);
+    this.lastTouch.set(this.sigRegistered.get(sig)!, ++this.tick);
   }
 
   /**
@@ -397,7 +487,8 @@ export class FieldRuleMemory {
    * 预测：钳制查询的感受野，候选集 = 全部核 ∪ 全部结果感受野，
    * 局部退火选出获胜核，结果场中心值质心读出；双峰如实报歧义。
    */
-  predict(query: Record<string, number>, seed: number): FieldPrediction {
+  predict(query: Record<string, number>, seed: number,
+    anneal?: { levels?: number; sweepsPerLevel?: number }): FieldPrediction {
     const input = this.encoder.encode(query);
     // 核候选过滤（与 PopRuleMemory 同一修复，自主探索大核数实测同病：
     // 全核候选 + 淬火长尾爬降把单次读出拖到十秒级）：对钳制输入的
@@ -425,8 +516,11 @@ export class FieldRuleMemory {
       // 池电路专属：最优回退只在驱动静息态中选（多核共存态真实能量更低但
       // 破坏 WTA 单核语义；评审 F01 修复引入的显式开关）
       fallbackQuietOnly: true,
-      levels: 12,
-      sweepsPerLevel: 20,
+      levels: anneal?.levels ?? 12,
+      // 退火扫描数随候选域规模走（大网络选错核的实测修复）：小世界保持 20 不变；
+      // 候选域每大 8 个神经元加 1 次扫描——33 节点链的错读案例实测 20 次不够。
+      sweepsPerLevel: anneal?.sweepsPerLevel ?? Math.max(20,
+        Math.ceil((supportedCores.length + this.outcomeDimFields.length + this.poolSize) / 8)),
     });
     const active = new Set(result.activeNeurons);
     const values: Record<string, number | null> = {};
@@ -470,6 +564,7 @@ export class FieldRuleMemory {
     // readout whose active support exactly matches one winning core's code;
     // never fill an absent/ambiguous neural answer from metadata.
     const winners = this.activeCores(result.activeNeurons);
+    for (const w of winners) this.lastTouch.set(w, ++this.tick);
     if (winners.length === 1) for (const [dim, e] of Object.entries(this.ruleEvidence(winners[0]!))) {
       const support = this.outcomeDimFields.filter(id => active.has(id) && this.encoder.fieldOf(id)?.dimension === dim);
       if (values[dim] !== null && e.samples > 1 && sameSupport(support, e.support)) values[dim] = e.value;
@@ -562,5 +657,6 @@ export class FieldRuleMemory {
         for (const to of core) this.net.strengthenInhibitory(from, to, this.lastGammaVeto);
       }
     }
+    this.lastTouch.set(this.sigRegistered.get(sig)!, ++this.tick);
   }
 }

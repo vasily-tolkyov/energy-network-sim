@@ -50,6 +50,9 @@ export interface ContExploreConfig {
   readonly conceptUpdate?: boolean;
   /** 概念更新的周期触发（每 N 次实验刷新一次，含细分检查），默认 25 */
   readonly reformPeriod?: number;
+  /** 采样策略：balanced（默认，既有基准口径）| uncertainty（不确定性驱动：
+   * 失配/低置信组合进入复验队列优先重做；quorum-met 停用，停止只看前沿清空） */
+  readonly policy?: "balanced" | "uncertainty";
 }
 
 export class ContinuousExplorer {
@@ -94,7 +97,9 @@ export class ContinuousExplorer {
     this.enc = new SensoryEncoder([...condDims, ...outcomeDims], config.fieldsPerDim ?? 40);
     this.formation = new ConceptFormation(this.enc);
     // FieldRuleMemory 内部不使用 emergent（仅持有引用）——B0 传空图，间歇期后 R2 有自己的图
-    this.mem = new FieldRuleMemory(this.enc, new EmergentMap([], this.enc), { maxRules: config.budget ?? 300 });
+    // eviction="lru"：容量满时回收最久未用核槽（遗忘=突触修剪），而不是撞墙抛错——
+    // 终身探索的经验量随预算增长，固定容量墙会把长程学习卡死。
+    this.mem = new FieldRuleMemory(this.enc, new EmergentMap([], this.enc), { maxRules: config.budget ?? 300, eviction: "lru" });
     this.mem.setOutcomeDimensions(outcomeDims.map((d) => d.name));
     this.planner = planner;
     this.bench = bench;
@@ -109,9 +114,22 @@ export class ContinuousExplorer {
       fieldsPerDim: config.fieldsPerDim ?? 40,
       conceptUpdate: config.conceptUpdate ?? true,
       reformPeriod: config.reformPeriod ?? 25,
+      policy: config.policy ?? "balanced",
     };
     this.stepSeed = seed;
   }
+
+  /** 复验队列（uncertainty 策略）：失配/低置信组合的签名 → 剩余复验次数。
+   * 单次异常只吸引注意（进队列复验）；规则改判走记忆层的观察计票。 */
+  private readonly reverify = new Map<string, number>();
+  /** 规律性复检队列（uncertainty 策略）：最久未复检组合的签名 → 剩余次数。
+   * 与异常复验分开管理，但清空它也是前沿清空停止的必要条件。 */
+  private readonly healthcheck = new Map<string, number>();
+  /** 各组合最近一次复检时的实验序号（轮扫进度） */
+  private readonly healthChecked = new Map<string, number>();
+  private healthSweepFrom = 0;
+  /** 最后一次前沿推进（新组合首访）时的实验数——轮扫要赶上它才算扫完 */
+  private lastFrontierAdvance = 0;
 
   get currentPhase(): "corpus" | "full" {
     return this.phase;
@@ -132,6 +150,26 @@ export class ContinuousExplorer {
     const unknown =
       this.mem.coreFieldCoverage(c) < this.mem.net.threshold || this.mem.uncoveredDims(c).length > 0;
     return unknown ? this.cfg.ignoranceDrive : 0.4;
+  }
+
+  /** 当前轮扫是否已赶上探索进度（全部已访组合在末次前沿推进后复检过） */
+  private sweepComplete(): boolean {
+    return this.planner.allEpisodes.every(
+      ep => (this.healthChecked.get(this.planner.candidateId(ep.conditions)) ?? -1) >= this.lastFrontierAdvance);
+  }
+
+  /** 注入 2 个最久未复检的组合（轮扫制注入点；一轮扫完才开新一轮） */
+  private injectHealthSweep(): void {
+    const lastSeen = new Map<string, number>();
+    for (const ep of this.planner.allEpisodes) lastSeen.set(this.planner.candidateId(ep.conditions), ep.index);
+    const stale = [...lastSeen.entries()].filter(([id]) => !this.reverify.has(id) && !this.healthcheck.has(id));
+    if (stale.every(([id]) => (this.healthChecked.get(id) ?? -1) >= this.healthSweepFrom)) {
+      this.healthSweepFrom = this.planner.experimentCount; // 本轮扫完，开新一轮
+    }
+    for (const [id] of stale.filter(([id]) => (this.healthChecked.get(id) ?? -1) < this.healthSweepFrom)
+      .sort((x, y) => (this.healthChecked.get(x[0]) ?? -1) - (this.healthChecked.get(y[0]) ?? -1)).slice(0, 2)) {
+      this.healthcheck.set(id, 1);
+    }
   }
 
   /** 推进一步。返回 false 表示该阶段结束（B0 达标或整体终止）。 */
@@ -159,16 +197,41 @@ export class ContinuousExplorer {
       return true;
     }
 
-    const candidates = this.planner.candidates();
-    if (candidates.length === 0) {
-      this.terminationReason = "frontier-exhausted";
-      return false;
+    const frontier = this.planner.candidates();
+    if (frontier.length === 0 && this.reverify.size === 0 && this.healthcheck.size === 0) {
+      // 前沿清空还要求"当前轮扫赶上探索进度"：所有已访组合都在最后一次
+      // 前沿推进之后复检存活过。否则继续注入复检，而不是在扫尾途中停止。
+      if (this.cfg.policy !== "uncertainty" || this.sweepComplete()) {
+        this.terminationReason = "frontier-exhausted";
+        return false;
+      }
+      this.injectHealthSweep();
+      if (this.healthcheck.size === 0) {
+        this.terminationReason = "frontier-exhausted";
+        return false;
+      }
     }
 
     const drives = new Map<string, number>();
-    for (const c of candidates) {
+    for (const c of frontier) {
       const id = this.planner.candidateId(c);
       drives.set(id, this.ignoranceOf(c) + this.planner.boostOf(id));
+    }
+    // 队列优先级：异常复验 > 规律复检 > 前沿扩展（不确定性驱动的核心通道）
+    const pool: Conditions[] = [...frontier];
+    if (this.cfg.policy === "uncertainty") {
+      for (const [queue, drive] of [[this.healthcheck, this.cfg.ignoranceDrive + 0.5],
+        [this.reverify, this.cfg.ignoranceDrive * 2 + 1]] as const) {
+        for (const [id, remaining] of queue) {
+          const original = this.planner.allEpisodes.findLast(e => this.planner.candidateId(e.conditions) === id);
+          if (!original || remaining <= 0) { queue.delete(id); continue; }
+          pool.unshift(original.conditions);
+          drives.set(id, drive);
+        }
+      }
+    } else {
+      this.reverify.clear();
+      this.healthcheck.clear();
     }
 
     // Concept formation is a representation update from observations, not a
@@ -178,22 +241,25 @@ export class ContinuousExplorer {
       this.formConcepts();
       return true;
     }
-    const anyUnknown = candidates.some(
+    const anyUnknown = frontier.some(
       (c) => (drives.get(this.planner.candidateId(c)) ?? 0) >= this.cfg.ignoranceDrive - 1e-9,
     );
-    if (this.phase === "full" && !anyUnknown && this.withinStreak >= this.cfg.verifyQuorum) {
+    // quorum-met 只在 balanced 策略下启用（启发式辅助）；uncertainty 策略
+    // 的停止只看前沿清空 + 复验清空——停止判据必须包含未覆盖风险。
+    if (this.cfg.policy === "balanced" && this.phase === "full" && !anyUnknown && this.withinStreak >= this.cfg.verifyQuorum) {
       this.terminationReason = "quorum-met";
       return false;
     }
 
-    const focus = new NeuralFocusNet(candidates.map((c) => this.planner.candidateId(c)), { inertia: 0 });
+    const focus = new NeuralFocusNet(pool.map((c) => this.planner.candidateId(c)), { inertia: 0 });
     focus.beginFrame();
-    for (const c of candidates) {
+    for (const c of pool) {
       const id = this.planner.candidateId(c);
       focus.setMismatch(id, (drives.get(id) ?? 0) * 4);
     }
     const chosenId = focus.select(this.stepSeed);
-    const chosen = candidates.find((c) => this.planner.candidateId(c) === chosenId)!;
+    const chosen = pool.find((c) => this.planner.candidateId(c) === chosenId)!;
+    const chosenFromFrontier = frontier.some((c) => this.planner.candidateId(c) === chosenId);
 
     const predicted = this.mem.predict(chosen, this.stepSeed);
     const observed = this.bench.conduct(chosen);
@@ -221,6 +287,7 @@ export class ContinuousExplorer {
     this.withinStreak = classification === "within-envelope" ? this.withinStreak + 1 : 0;
 
     const { pairs, newBins } = this.planner.register({ conditions: chosen, outcomes: observed, classification });
+    if (chosenFromFrontier) this.lastFrontierAdvance = this.planner.experimentCount;
     if (this.phase === "full") {
       this.sinceFormation++;
       // 概念更新：覆盖缺口（新值无任何概念）或周期到达 → 先重形成再差分，
@@ -236,6 +303,31 @@ export class ContinuousExplorer {
     if (classification === "prediction-violation") this.planner.boostNeighbors(chosen, 1.2);
     this.planner.decayBoosts();
 
+    // 队列维护（uncertainty 策略）：失配/低置信 → 异常复验（上限 2×定额）；
+    // 恢复置信 → 出队；例行复检发现失配 → 升级为完整复验。
+    if (this.cfg.policy === "uncertainty") {
+      const id = this.planner.candidateId(chosen);
+      const anomalous = this.reverify.get(id);
+      const routine = this.healthcheck.get(id);
+      if (anomalous !== undefined) {
+        if (classification === "within-envelope") this.reverify.delete(id);
+        else if (anomalous <= 1) this.reverify.delete(id); // 耗尽：改判与否交给记忆层计票
+        else this.reverify.set(id, anomalous - 1);
+      } else if (routine !== undefined) {
+        this.healthcheck.delete(id);
+        this.healthChecked.set(id, this.planner.experimentCount - 1);
+        // 例行复检只有"确信但被证伪"才升级为完整复验；非收敛/歧义不是异常证据
+        if (classification === "prediction-violation") this.reverify.set(id, 2 * this.mem.switchQuorum);
+      } else if (classification === "prediction-violation"
+        || (classification === "unknown-change" && this.mem.contestedDims(chosen).length > 0)) {
+        // 只有"确信的预测被证伪"或"确有候选在竞争"才复验——
+        // 首次到访的低置信是正常学习起点，重复同一观察不增加信息。
+        this.reverify.set(id, 2 * this.mem.switchQuorum);
+      }
+      // 规律性复检（轮扫制）：每 10 次实验注入一次；一轮扫完才开新一轮。
+      if (this.planner.experimentCount % 10 === 0) this.injectHealthSweep();
+    }
+
     this.log.push({
       index: this.planner.experimentCount - 1,
       phase: this.phase,
@@ -245,10 +337,25 @@ export class ContinuousExplorer {
       observed,
       classification,
       drive: drives.get(chosenId) ?? 0,
-      candidateCount: candidates.length,
+      candidateCount: pool.length,
       rulesFormed: this.mem.ruleCount,
     });
     return true;
+  }
+
+  /** 覆盖风险报告（不确定性地图快照）：停止时必须随日志输出——
+   * "没发现"要说清"哪里没覆盖"，不许用总体准确率掩盖。 */
+  coverageReport(): { experiments: number; unvisited: number; reverifyPending: number; contested: number } {
+    let contested = 0;
+    for (const ep of this.planner.allEpisodes) {
+      if (ep.conditions && this.mem.contestedDims(ep.conditions).length > 0) contested++;
+    }
+    return {
+      experiments: this.planner.experimentCount,
+      unvisited: this.planner.candidates().length,
+      reverifyPending: this.reverify.size,
+      contested,
+    };
   }
 
   /** 语料充分性：每个条件维至少观察过 2 个不同取值（概念形成需要变异） */
