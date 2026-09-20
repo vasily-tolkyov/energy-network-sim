@@ -1,5 +1,6 @@
 import { integer, positive, nonnegative, neuronId } from "./validate.js";
 import { mulberry32 } from "./prng.js";
+import { SparseMatrix } from "./sparse.js";
 import { resolveConfig } from "./types.js";
 import type {
   AnnealOptions,
@@ -26,16 +27,16 @@ import type {
  */
 export class EnergyNetwork {
   readonly config: NetworkConfig;
-  /** 对称权重矩阵，行优先展开，长度 N*N，对角线恒为 0 */
-  private readonly weights: Float64Array;
+  /** 对称权重矩阵（稀疏行邻接；缺失键 ≡ 0，对角线恒为 0） */
+  private readonly weights: SparseMatrix;
   /**
-   * 有向通道矩阵 D，行优先展开，D[from*N+to] 表示 from→to 的有向强度。
+   * 有向通道矩阵 D，D[from][to] 表示 from→to 的有向强度。
    * 与对称 W 是两种机制：W 由共激活（赫布）建立、承载关联与势阱；
    * D 由时间先后（前模式→后模式）建立、承载势阱间的转移通道。
    * D 不参与 settle 的能量函数——捕获保持对称动力学；
    * D 只在转移相作为非平衡驱动出现（类比材料实现的供能端口）。
    */
-  private readonly directed: Float64Array;
+  private readonly directed: SparseMatrix;
   /**
    * 抑制矩阵 Γ，对称、非负，Γ_ij 越大神经元 i、j 越难同时激活。
    * 能量函数中的抑制项为 +Σ_{i<j} Γ_ij·s_i·s_j（同时激活付出额外能耗），
@@ -43,16 +44,16 @@ export class EnergyNetwork {
    * 用途：竞争——同一前驱的候选后继之间互相抑制，噪声下先点燃者
    * 抬高对方势垒，实现"小球只进一个槽"的互斥概率选择。
    */
-  private readonly inhibitory: Float64Array;
+  private readonly inhibitory: SparseMatrix;
   private readonly inhibitionOwners = new Map<number, { base: number; values: Map<string, number> }>();
   /**
-   * 有向抑制矩阵 DI，非对称、非负：DI[from*N+to] 表示 from→to 的前馈抑制。
+   * 有向抑制矩阵 DI，非对称、非负：DI[from][to] 表示 from→to 的前馈抑制。
    * 与 Γ 的本质区别：DI 是**非平衡驱动场**（供能电路，类比材料实现的
    * 供能比较器与生理前馈抑制），只进翻转规律的场、不进 energy()——
    * 静态能量耦合项必然对称惩罚两端，前馈抑制只能以驱动形式存在。
    * 用途：全局抑制池等广播电路——池压制核，而不被核反向压制。
    */
-  private readonly directedInhibitory: Float64Array;
+  private readonly directedInhibitory: SparseMatrix;
   /** 当前状态：0=静息，1=激活 */
   private readonly state: Uint8Array;
   private ledgerActivationCost = 0;
@@ -62,10 +63,12 @@ export class EnergyNetwork {
   constructor(configInput: NetworkConfigInput) {
     this.config = resolveConfig(configInput);
     const n = this.config.neuronCount;
-    this.weights = new Float64Array(n * n);
-    this.directed = new Float64Array(n * n);
-    this.inhibitory = new Float64Array(n * n);
-    this.directedInhibitory = new Float64Array(n * n);
+    // 稀疏边存储（#4）：不再分配 4 个 N×N 稠密矩阵——规模墙从 32N² 字节
+    // 降为 O(边数)。语义不变：缺失键读作 0，写 0 即删除。
+    this.weights = new SparseMatrix();
+    this.directed = new SparseMatrix();
+    this.inhibitory = new SparseMatrix();
+    this.directedInhibitory = new SparseMatrix();
     this.state = new Uint8Array(n);
   }
 
@@ -79,8 +82,7 @@ export class EnergyNetwork {
   }
 
   getWeight(i: number, j: number): number {
-    const n = this.neuronCount;
-    return this.weights[i * n + j] ?? 0;
+    return this.weights.get(i, j);
   }
 
   /** 评审 A05/A06 修复：公开写边入口统一校验——非 [0,N) 整数索引/非有限权值
@@ -99,37 +101,32 @@ export class EnergyNetwork {
     this.checkEdge(i, j, delta);
     if (cap !== undefined) nonnegative(cap, "cap");
     if (i === j || delta <= 0) return;
-    const n = this.neuronCount;
     const limit = cap ?? this.config.maxWeight;
-    const cur = this.weights[i * n + j] ?? 0;
+    const cur = this.weights.get(i, j);
     if (cur >= limit) return;
     const next = Math.min(limit, cur + delta);
-    this.weights[i * n + j] = next;
-    this.weights[j * n + i] = next;
+    this.weights.set(i, j, next);
+    this.weights.set(j, i, next);
   }
 
   /** 绝对写入连接强度（对称）：用于需要"改写"而非"累加"的场（如失配场、惯性场） */
   setWeight(i: number, j: number, value: number): void {
     this.checkEdge(i, j, value);
     if (i === j) return;
-    const n = this.neuronCount;
     const v = Math.max(0, Math.min(this.config.maxWeight, value));
-    this.weights[i * n + j] = v;
-    this.weights[j * n + i] = v;
+    this.weights.set(i, j, v);
+    this.weights.set(j, i, v);
   }
 
   getDirectedWeight(from: number, to: number): number {
-    const n = this.neuronCount;
-    return this.directed[from * n + to] ?? 0;
+    return this.directed.get(from, to);
   }
 
   /** 单向地增加有向通道强度并裁剪到 [0, maxDirectedWeight]（时序学习用） */
   strengthenDirected(from: number, to: number, delta: number): void {
     this.checkEdge(from, to, delta);
     if (from === to || delta <= 0) return;
-    const n = this.neuronCount;
-    const idx = from * n + to;
-    this.directed[idx] = Math.min(this.config.maxDirectedWeight, (this.directed[idx] ?? 0) + delta);
+    this.directed.set(from, to, Math.min(this.config.maxDirectedWeight, this.directed.get(from, to) + delta));
   }
 
   /** 有向场 g_i = Σ_j D_{j→i}·s_j：当前激活模式经由有向通道对 i 的驱动 */
@@ -137,14 +134,13 @@ export class EnergyNetwork {
     const n = this.neuronCount;
     let g = 0;
     for (let j = 0; j < n; j++) {
-      if (pattern[j] === 1) g += this.directed[j * n + i] ?? 0;
+      if (pattern[j] === 1) g += this.directed.get(j, i);
     }
     return g;
   }
 
   getInhibitoryWeight(i: number, j: number): number {
-    const n = this.neuronCount;
-    return this.inhibitory[i * n + j] ?? 0;
+    return this.inhibitory.get(i, j);
   }
 
   /** 对称地增加抑制强度并裁剪到 [0, maxWeight]（竞争学习用） */
@@ -158,9 +154,9 @@ export class EnergyNetwork {
       this.writeOwnedInhibition(i, j, owned);
       return;
     }
-    const next = Math.min(this.config.maxWeight, (this.inhibitory[i * n + j] ?? 0) + delta);
-    this.inhibitory[i * n + j] = next;
-    this.inhibitory[j * n + i] = next;
+    const next = Math.min(this.config.maxWeight, this.inhibitory.get(i, j) + delta);
+    this.inhibitory.set(i, j, next);
+    this.inhibitory.set(j, i, next);
   }
 
   /** Reversible plasticity of symmetric Γ; Γ remains a conservative energy term.
@@ -175,8 +171,8 @@ export class EnergyNetwork {
       return;
     }
     const next = Math.max(0, this.getInhibitoryWeight(i, j) - delta);
-    this.inhibitory[i * this.neuronCount + j] = next;
-    this.inhibitory[j * this.neuronCount + i] = next;
+    this.inhibitory.set(i, j, next);
+    this.inhibitory.set(j, i, next);
   }
 
   /** Independently retractable learning contributions. Saturation must not
@@ -194,8 +190,8 @@ export class EnergyNetwork {
 
   private writeOwnedInhibition(i: number, j: number, entry: { base: number; values: Map<string, number> }): void {
     const value = Math.min(this.config.maxWeight, entry.base + [...entry.values.values()].reduce((a, b) => a + b, 0));
-    this.inhibitory[i * this.neuronCount + j] = value;
-    this.inhibitory[j * this.neuronCount + i] = value;
+    this.inhibitory.set(i, j, value);
+    this.inhibitory.set(j, i, value);
   }
 
   /** 结构性回收（遗忘的物理层）：把若干神经元的全部突触（W/Γ/D/DI 四矩阵的
@@ -207,16 +203,10 @@ export class EnergyNetwork {
     for (const id of list) neuronId(id, this.neuronCount);
     const n = this.neuronCount;
     for (const id of list) {
-      for (let j = 0; j < n; j++) {
-        this.weights[id * n + j] = 0;
-        this.weights[j * n + id] = 0;
-        this.directed[id * n + j] = 0;
-        this.directed[j * n + id] = 0;
-        this.inhibitory[id * n + j] = 0;
-        this.inhibitory[j * n + id] = 0;
-        this.directedInhibitory[id * n + j] = 0;
-        this.directedInhibitory[j * n + id] = 0;
-      }
+      this.weights.clearNeuron(id);
+      this.directed.clearNeuron(id);
+      this.inhibitory.clearNeuron(id);
+      this.directedInhibitory.clearNeuron(id);
     }
     for (const key of [...this.inhibitionOwners.keys()]) {
       const i = Math.floor(key / n), j = key % n;
@@ -230,14 +220,13 @@ export class EnergyNetwork {
     const n = this.neuronCount;
     let g = 0;
     for (let j = 0; j < n; j++) {
-      if (pattern[j] === 1) g += this.inhibitory[i * n + j] ?? 0;
+      if (pattern[j] === 1) g += this.inhibitory.get(i, j);
     }
     return g;
   }
 
   getDirectedInhibitoryWeight(from: number, to: number): number {
-    const n = this.neuronCount;
-    return this.directedInhibitory[from * n + to] ?? 0;
+    return this.directedInhibitory.get(from, to);
   }
 
   /** 单向地增加前馈抑制强度并裁剪到 [0, cap]（默认 maxDirectedWeight） */
@@ -246,10 +235,8 @@ export class EnergyNetwork {
     if (cap !== undefined) nonnegative(cap, "cap");
     if (from === to || delta <= 0) return;
     this.diSourceCache = null; // DI 源缓存失效
-    const n = this.neuronCount;
-    const idx = from * n + to;
     const limit = cap ?? this.config.maxDirectedWeight;
-    this.directedInhibitory[idx] = Math.min(limit, (this.directedInhibitory[idx] ?? 0) + delta);
+    this.directedInhibitory.set(from, to, Math.min(limit, this.directedInhibitory.get(from, to) + delta));
   }
 
   /** 前馈抑制场：Σ_j DI_{j→i}·s_j——非平衡驱动，广播端不被反向压制 */
@@ -257,7 +244,7 @@ export class EnergyNetwork {
     const n = this.neuronCount;
     let g = 0;
     for (let j = 0; j < n; j++) {
-      if (pattern[j] === 1) g += this.directedInhibitory[j * n + i] ?? 0;
+      if (pattern[j] === 1) g += this.directedInhibitory.get(j, i);
     }
     return g;
   }
@@ -269,16 +256,12 @@ export class EnergyNetwork {
    *  （修复瞬时快照漏洞：2 核共存+池恰熄灭的中瞬态曾被误记为最优态） */
   private diDriveEngaged(): boolean {
     if (this.diSourceCache === null) {
-      const n = this.neuronCount;
       const src: number[] = [];
-      for (let from = 0; from < n; from++) {
-        for (let to = 0; to < n; to++) {
-          if ((this.directedInhibitory[from * n + to] ?? 0) > 0) {
-            src.push(from);
-            break;
-          }
-        }
+      // entries() 顺序不保证，源集合去重后升序排序——与稠密版按 from 升序枚举一致
+      for (const [from] of this.directedInhibitory.entries()) {
+        if (src.length === 0 || src[src.length - 1] !== from) src.push(from);
       }
+      src.sort((a, b) => a - b);
       this.diSourceCache = src;
     }
     if (this.diSourceCache.length === 0) return false;
@@ -323,7 +306,7 @@ export class EnergyNetwork {
     const n = this.neuronCount;
     let h = 0;
     for (let j = 0; j < n; j++) {
-      if (pattern[j] === 1) h += this.weights[i * n + j] ?? 0;
+      if (pattern[j] === 1) h += this.weights.get(i, j);
     }
     return h;
   }
@@ -339,8 +322,8 @@ export class EnergyNetwork {
       e += theta;
       for (let j = i + 1; j < n; j++) {
         if (s[j] === 1) {
-          e -= this.weights[i * n + j] ?? 0;
-          e += this.inhibitory[i * n + j] ?? 0;
+          e -= this.weights.get(i, j);
+          e += this.inhibitory.get(i, j);
         }
       }
     }
@@ -504,9 +487,9 @@ export class EnergyNetwork {
     const fields = (i: number): { cons: number; di: number } => {
       let w = 0, g = 0, di = 0;
       for (const j of activeIds) {
-        w += this.weights[i * n + j]!;
-        g += this.inhibitory[i * n + j]!;
-        di += this.directedInhibitory[j * n + i]!;
+        w += this.weights.get(i, j);
+        g += this.inhibitory.get(i, j);
+        di += this.directedInhibitory.get(j, i);
       }
       return { cons: w - g, di };
     };
