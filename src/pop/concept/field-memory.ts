@@ -493,13 +493,41 @@ export class FieldRuleMemory {
     // 核候选过滤：裸 W 支持 ≤ θ/2 的核从静息无点火路径，结构性冻结
     // （门槛用裸 W——点火可行性只看兴奋场；F05 回归：被否决压制的核
     // 必须留在候选池里，由退火内的 Γ 竞争定胜负）。
-    // #4 时间墙优化：候选超过 32 个时按**净支持**（W−Γ）排序只留前 32 名——
-    // 否决已建立的核净支持自然靠后，不被误留（量程扩展场景实测回归）；
-    // 共享条件维会让几十上百个核越过门槛，净支持悬殊时落后核无胜出路径。
+    // 逐维点火可行性门（大规则数竞速混乱的根因修复）：核必须在查询的
+    // 每个条件维上都有兴奋支持（>0）才入围——前提有一部分缺席的规则
+    // 没有点火资格。共享其余维的近平局竞速者（实测 169/192 核近平局
+    // 致正确核零胜出）在结构上被排除，竞争回到个位数。
+    // #4 时间墙优化：候选超过 32 个时按**净支持**（W−Γ）排序只留前 32 名。
     // 小世界（≤32 个入围核）行为与之前逐位一致。
     const minSupport = this.net.threshold / 2;
+    const dimFields = new Map<string, number[]>();
+    for (const f of input) {
+      const info = this.encoder.fieldOf(f);
+      if (!info) continue;
+      const arr = dimFields.get(info.dimension) ?? [];
+      arr.push(f);
+      dimFields.set(info.dimension, arr);
+    }
     const ranked: { s: number; core: readonly number[] }[] = [];
+    const ungated: { s: number; core: readonly number[] }[] = [];
     for (const rule of this.rules) {
+      let feasible = true;
+      for (const fields of dimFields.values()) {
+        let has = false;
+        for (const from of fields) {
+          for (const to of rule.core) {
+            if (this.net.getWeight(from, to) > 0) { has = true; break; }
+          }
+          if (has) break;
+        }
+        if (!has) { feasible = false; break; }
+      }
+      {
+        let w0 = 0;
+        for (const from of input) for (const to of rule.core) w0 += this.net.getWeight(from, to);
+        if (w0 > minSupport) ungated.push({ s: 0, core: rule.core });
+      }
+      if (!feasible) continue;
       let w = 0;
       let net = 0;
       for (const from of input) {
@@ -510,8 +538,12 @@ export class FieldRuleMemory {
       }
       if (w > minSupport) ranked.push({ s: net, core: rule.core });
     }
-    ranked.sort((a, b) => b.s - a.s);
-    const supportedCores = ranked.slice(0, 32).flatMap(r => [...r.core]);
+    // 稀疏区回退：逐维门把全部核挡在门外 = 该区域从未被学习过——放松为
+    // 旧的全局过滤，让最近的经验做近似回答（如实"未知近邻"，不读空冒充
+    // 无知）；只要有核过门，竞速排除机制严格生效。
+    const pool = ranked.length > 0 ? ranked : ungated.map(u => ({ s: 0, core: u.core }));
+    pool.sort((a, b) => b.s - a.s);
+    const supportedCores = pool.slice(0, 32).flatMap(r => [...r.core]);
     const result = this.net.settleAnnealed(input, [], {
       seed,
       extraCandidates: [

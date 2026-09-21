@@ -1,0 +1,189 @@
+{
+  "schema": "complex-worlds/v1",
+  "seeds": [
+    1,
+    2
+  ],
+  "w6w8": [
+    {
+      "world": "factory",
+      "seed": 1,
+      "neurons": 1661,
+      "heapMB": 101.8,
+      "collectExperiments": 672,
+      "collectMs": 10623,
+      "factors": [
+        "act",
+        "energy",
+        "made",
+        "ore",
+        "pos"
+      ],
+      "readback": {
+        "wrong": 0,
+        "total": 336,
+        "ledgerMismatches": 0,
+        "predictMsMedian": 322.1
+      },
+      "tasks": [
+        {
+          "planStatus": "found",
+          "planSteps": 9,
+          "planMs": 15499,
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 14289
+        },
+        {
+          "planStatus": "no-known-route",
+          "planSteps": 0,
+          "planMs": 7211,
+          "reached": false,
+          "terminationReason": "no-known-route",
+          "replans": 0,
+          "execMs": 6293
+        }
+      ],
+      "totalMs": 178522
+    },
+    {
+      "world": "two-gates",
+      "seed": 1,
+      "neurons": 1610,
+      "heapMB": 84.9,
+      "collectExperiments": 384,
+      "collectMs": 12772,
+      "factors": [
+        "k1",
+        "k2",
+        "move",
+        "pos"
+      ],
+      "readback": {
+        "wrong": 0,
+        "total": 128,
+        "ledgerMismatches": 0,
+        "predictMsMedian": 814.9
+      },
+      "tasks": [
+        {
+          "planStatus": "found",
+          "planSteps": 23,
+          "planMs": 83784,
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 76302
+        }
+      ],
+      "totalMs": 283239
+    },
+    {
+      "world": "factory",
+      "seed": 2,
+      "neurons": 1661,
+      "heapMB": 100.8,
+      "collectExperiments": 672,
+      "collectMs": 7744,
+      "factors": [
+        "act",
+        "energy",
+        "made",
+        "ore",
+        "pos"
+      ],
+      "readback": {
+        "wrong": 0,
+        "total": 336,
+        "ledgerMismatches": 0,
+        "predictMsMedian": 226.6
+      },
+      "tasks": [
+        {
+          "planStatus": "found",
+          "planSteps": 9,
+          "planMs": 8031,
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 9815
+        },
+        {
+          "planStatus": "no-known-route",
+          "planSteps": 0,
+          "planMs": 3945,
+          "reached": false,
+          "terminationReason": "no-known-route",
+          "replans": 0,
+          "execMs": 3870
+        }
+      ],
+      "totalMs": 113588
+    },
+    {
+      "world": "two-gates",
+      "seed": 2,
+      "neurons": 1610,
+      "heapMB": 85.2,
+      "collectExperiments": 384,
+      "collectMs": 7296,
+      "factors": [
+        "k1",
+        "k2",
+        "move",
+        "pos"
+      ],
+      "readback": {
+        "wrong": 0,
+        "total": 122,
+        "ledgerMismatches": 0,
+        "predictMsMedian": 760.2
+      },
+      "tasks": [
+        {
+          "planStatus": "found",
+          "planSteps": 23,
+          "planMs": 76404,
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 64393
+        }
+      ],
+      "totalMs": 248799
+    }
+  ],
+  "w7": [
+    {
+      "seed": 1,
+      "initialPlan": "found",
+      "detected": true,
+      "reachedViaDetour": true,
+      "replans": 1,
+      "blockedReads4": {
+        "pos": 4
+      },
+      "shortcutReads2": {
+        "pos": 7
+      },
+      "noShortcutReached": false,
+      "noShortcutLastPlan": "no-known-route"
+    },
+    {
+      "seed": 2,
+      "initialPlan": "found",
+      "detected": true,
+      "reachedViaDetour": true,
+      "replans": 1,
+      "blockedReads4": {
+        "pos": 4
+      },
+      "shortcutReads2": {
+        "pos": 7
+      },
+      "noShortcutReached": false,
+      "noShortcutLastPlan": "no-known-route"
+    }
+  ]
+}

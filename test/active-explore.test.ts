@@ -30,17 +30,34 @@ test("uncertainty 策略：前沿清空后停止，覆盖报告无遗留", () =>
 });
 
 test("U5 一次性异常：规则不改判，复验队列触发并排空", () => {
+  // 异常注入按"该组合第 3 次实验"触发（前 2 次为真值观察，规则已确立）——
+  // 与采样路径无关的确定性场景；count=1 的临时规则不在本测试范围（另有专测）。
+  const seen = new Map<string, number>();
+  let anomalyAt = -1;
   let calls = 0;
-  const bench = { conduct: (c: Conditions) => { calls++; return calls === 12 ? { y: 1 - truth(c).y! } : truth(c); } };
+  const bench = { conduct: (c: Conditions) => {
+    calls++;
+    const key = JSON.stringify(c);
+    const n = (seen.get(key) ?? 0) + 1;
+    seen.set(key, n);
+    if (n === 3 && anomalyAt < 0) {
+      anomalyAt = calls;
+      return { y: 1 - truth(c).y! };
+    }
+    return truth(c);
+  } };
   const e = explorer("uncertainty", bench, 40);
-  while (e.step() && calls < 12) {}
-  const atAnomaly = e.log[11]!;
+  let atAnomaly: (typeof e.log)[number] | null = null;
+  while (e.step() && !atAnomaly) {
+    if (e.log.length && e.log.at(-1)!.classification === "prediction-violation") atAnomaly = e.log.at(-1)!;
+  }
+  assert.ok(atAnomaly, "应发生异常观察");
   const before = e.mem.predict(atAnomaly.conditions, 1).values.y;
   while (e.step()) {}
   const after = e.mem.predict(atAnomaly.conditions, 1).values.y;
   assert.equal(before, truth(atAnomaly.conditions).y, "异常前读数应为真值");
-  assert.equal(after, truth(atAnomaly.conditions).y, "单次异常不得改判");
-  assert.ok(calls > 12, "复验队列应触发额外实验");
+  assert.equal(after, truth(atAnomaly.conditions).y, "单次异常不得改判已确立规则");
+  assert.ok(e.log.length > anomalyAt, "复验队列应触发额外实验");
   assert.equal(e.coverageReport().reverifyPending, 0, "复验队列最终排空");
 });
 
