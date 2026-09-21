@@ -87,7 +87,18 @@ export class MockBackend implements DecisionBackend {
   constructor(private readonly hitConfidence = 0.9, private readonly missConfidence = 0.2) {}
   ask(state: string, question: DecisionQuestion): Promise<DecisionAnswer> {
     if (question.kind === "choice") {
-      const hits = question.options.map(o => (typeof o === "string" ? o : o.label)).filter(o => state.includes(o)).sort((a, b) => b.length - a.length);
+      // 语义桩：标签本体或 desc 里的 "|" 分隔同义关键词命中即视为该档
+      // 语义桩评分：desc 关键词命中（语义）优先于裸标签命中；同分取标签较长者
+      const score = (o: string | { label: string; desc: string }): number => {
+        const label = typeof o === "string" ? o : o.label;
+        const desc = typeof o === "string" ? "" : o.desc;
+        let s2 = state.includes(label) ? 1 : 0;
+        if (desc.split("|").some(k => k && state.includes(k))) s2 += 2;
+        return s2;
+      };
+      const hits = question.options.map(o => ({ o, s: score(o) })).filter(h => h.s > 0)
+        .sort((a, b) => b.s - a.s || ((typeof b.o === "string" ? b.o : b.o.label).length - (typeof a.o === "string" ? a.o : a.o.label).length))
+        .map(h => (typeof h.o === "string" ? h.o : h.o.label));
       if (hits.length) {
         return Promise.resolve({ kind: "choice", value: hits[0]!, confidence: this.hitConfidence });
       }
