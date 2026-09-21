@@ -21,6 +21,11 @@ export interface PerceptionSpec {
   readonly dims: readonly PerceptionDimSpec[];
   /** 维度置信的最低门槛（默认 0.6）；低于它进 unknownDims，不进帧 */
   readonly confidenceThreshold?: number;
+  /** 可选清晰度门：对场景描述的确定性单独提 Noul 问题——
+   * "场景对 X 的描述是否明确无歧义？"。Jev 对含糊文本会过度承诺
+   * （实测："可能 A 也可能 B"仍给 0.87 置信），单靠 choice 置信不够；
+   * 回答为"不明确"且达到门槛时，该维如实进 unknownDims。 */
+  readonly clarityAsk?: (dim: string) => string;
 }
 
 export interface PerceivedFrame {
@@ -54,8 +59,14 @@ export class SceneParser {
       if (answer.kind !== "choice") throw new Error(`backend returned ${answer.kind} for a choice question`);
       const hit = dim.values.find(v => v.label === answer.value);
       if (!hit) throw new Error(`backend returned a label outside the candidate set: ${answer.value}`);
+      let clear = true;
+      if (spec.clarityAsk) {
+        const clarity = await this.backend.ask(sceneText, { kind: "noul", text: spec.clarityAsk(dim.name) });
+        if (clarity.kind !== "noul") throw new Error(`backend returned ${clarity.kind} for a noul question`);
+        if (!clarity.value && clarity.confidence >= threshold) clear = false;
+      }
       details[dim.name] = { label: hit.label, confidence: answer.confidence };
-      if (answer.confidence >= threshold) frame[dim.name] = hit.value;
+      if (clear && answer.confidence >= threshold) frame[dim.name] = hit.value;
       else unknownDims.push(dim.name);
     }
     return { frame, details, unknownDims };

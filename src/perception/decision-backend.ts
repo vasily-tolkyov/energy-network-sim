@@ -35,40 +35,49 @@ export type DecisionQuestion =
   | { kind: "choice"; text: string; options: readonly string[] }
   | { kind: "score"; text: string };
 
-/** Jev API 后端（HTTP 桩）：URL 与 key 由构造注入；无 key 时响亮抛错，
- * 绝不静默降级为本地启发式——感知链路要么真实，要么明确不可用。 */
+/** Jev API 后端（官方 HTTP 形状：POST https://api.typesafe.ai/v1/systemone，
+ * Authorization: Bearer；body = { model, state, questions: { id: { type, instructions, criteria? } } }）。
+ * URL 与 key 由构造注入；无 key 时响亮抛错，绝不静默降级为本地启发式。
+ * 映射注记：Jev 的 Noul 直接返回"命题为真"的概率 p（无独立置信字段），
+ * 这里映射为 value = p ≥ 0.5、confidence = |2p − 1|（距 0.5 的校准距离）。 */
 export class JevApiBackend implements DecisionBackend {
   constructor(
     private readonly endpoint: string | null,
     private readonly apiKey: string | null,
-    private readonly model = "typesafe/jev-latest",
+    private readonly model = "jev-latest",
   ) {}
   async ask(state: string, question: DecisionQuestion): Promise<DecisionAnswer> {
     if (!this.endpoint || !this.apiKey) {
       throw new Error("JevApiBackend 未配置 endpoint/apiKey——感知后端不可用（禁止静默降级）");
     }
-    const body = {
-      model: this.model,
-      state,
-      questions: [
-        question.kind === "noul"
-          ? { type: "noul", text: question.text }
-          : question.kind === "choice"
-            ? { type: "choice", text: question.text, options: question.options }
-            : { type: "score", text: question.text },
-      ],
-    };
+    const q: Record<string, unknown> = question.kind === "choice"
+      ? {
+          type: "choice",
+          instructions: question.text,
+          criteria: Object.fromEntries(question.options.map(o => [o, o])),
+        }
+      : { type: question.kind, instructions: question.text };
     const res = await fetch(this.endpoint, {
       method: "POST",
       headers: { "content-type": "application/json", authorization: `Bearer ${this.apiKey}` },
-      body: JSON.stringify(body),
+      body: JSON.stringify({ model: this.model, state, questions: { q0: q } }),
     });
     if (!res.ok) throw new Error(`Jev API ${res.status}: ${await res.text()}`);
-    const data = (await res.json()) as { answers: { type: string; value: unknown; confidence: number }[] };
-    const a = data.answers[0]!;
-    if (a.type === "noul") return { kind: "noul", value: Boolean(a.value), confidence: a.confidence };
-    if (a.type === "choice") return { kind: "choice", value: String(a.value), confidence: a.confidence };
-    return { kind: "score", value: Number(a.value), confidence: a.confidence };
+    const data = (await res.json()) as Record<string, unknown>;
+    if (process.env.JEV_DEBUG) console.error("[jev raw]", JSON.stringify(data).slice(0, 800));
+    const answers = (data.answers ?? data.questions ?? data) as Record<string, Record<string, unknown>>;
+    const a = answers.q0 ?? Object.values(answers)[0];
+    if (!a) throw new Error(`Jev API 响应缺少 answers.q0：${JSON.stringify(data).slice(0, 300)}`);
+    if (question.kind === "noul") {
+      const p = Number(a.noul ?? a.probability);
+      if (!Number.isFinite(p)) throw new Error(`Jev noul 响应缺少概率字段：${JSON.stringify(a)}`);
+      return { kind: "noul", value: p >= 0.5, confidence: Math.abs(2 * p - 1) };
+    }
+    if (question.kind === "choice") {
+      const winner = String(a.choice ?? a.value ?? a.answer);
+      return { kind: "choice", value: winner, confidence: Number(a.confidence ?? 0.5) };
+    }
+    return { kind: "score", value: Number(a.score ?? a.value ?? a.answer), confidence: Number(a.confidence ?? 0.5) };
   }
 }
 
