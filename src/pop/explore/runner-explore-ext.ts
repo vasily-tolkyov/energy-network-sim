@@ -39,7 +39,7 @@ const SPECS = LAB_CONT_CONDITION_DIMS_EXT.map((d) => ({
   values: BASE_GRID[d.name]!,
 }));
 
-function runMode(mode: "updating" | "frozen", seed: number): void {
+async function runMode(mode: "updating" | "frozen", seed: number): Promise<void> {
   out(`\n── 模式 ${mode === "updating" ? "概念更新" : "冻结（对照）"}，种子 ${seed} ──`);
   const bench = new LabContBench(LAB_CONT_CONDITION_DIMS_EXT);
   const planner = new ExperimentPlanner(SPECS);
@@ -56,7 +56,7 @@ function runMode(mode: "updating" | "frozen", seed: number): void {
 
   // Equal budget per exposure stage, independent of score/convergence.
   const phaseBudget = 400 / 2;
-  while (explorer.log.length < phaseBudget && explorer.step()) {}
+  while (explorer.log.length < phaseBudget && await explorer.step()) {}
   const phase1Experiments = explorer.log.length;
   const voltageEvidencePhase1 = explorer.magEvidence().voltage ?? 0;
   out(
@@ -67,7 +67,7 @@ function runMode(mode: "updating" | "frozen", seed: number): void {
   // 量程扩展：世界展示比假设更大的范围
   planner.extendValues("voltage", LAB_CONT_EXT_NEW_VALUES.voltage!);
   out(`  ◄── 量程扩展：voltage 新候选值 [${LAB_CONT_EXT_NEW_VALUES.voltage}]`);
-  while (explorer.step()) {}
+  while (await explorer.step()) {}
   const phase2Experiments = explorer.log.length - phase1Experiments;
   const voltageEvidencePhase2 = explorer.magEvidence().voltage ?? 0;
   out(
@@ -127,7 +127,7 @@ const seeds = (process.env.SEEDS ?? "1").split(",").map((s) => parseInt(s.trim()
 for (const seed of seeds) {
   for (const mode of ["updating", "frozen"] as const) {
     const mark = lines.length;
-    runMode(mode, seed);
+    await runMode(mode, seed);
     mkdirSync("runs", { recursive: true });
     out(`动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：${JSON.stringify(predictionQuality.snapshot())}`);
     writeFileSync(`runs/explore-ext-${mode}-seed${seed}.log`, lines.slice(mark).join("\n") + "\n");

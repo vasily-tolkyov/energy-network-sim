@@ -32,7 +32,7 @@ export interface DecisionBackend {
 
 export type DecisionQuestion =
   | { kind: "noul"; text: string }
-  | { kind: "choice"; text: string; options: readonly string[] }
+  | { kind: "choice"; text: string; options: readonly (string | { label: string; desc: string })[] }
   | { kind: "score"; text: string };
 
 /** Jev API 后端（官方 HTTP 形状：POST https://api.typesafe.ai/v1/systemone，
@@ -54,7 +54,7 @@ export class JevApiBackend implements DecisionBackend {
       ? {
           type: "choice",
           instructions: question.text,
-          criteria: Object.fromEntries(question.options.map(o => [o, o])),
+          criteria: Object.fromEntries(question.options.map(o => typeof o === "string" ? [o, o] : [o.label, o.desc])),
         }
       : { type: question.kind, instructions: question.text };
     const res = await fetch(this.endpoint, {
@@ -87,11 +87,11 @@ export class MockBackend implements DecisionBackend {
   constructor(private readonly hitConfidence = 0.9, private readonly missConfidence = 0.2) {}
   ask(state: string, question: DecisionQuestion): Promise<DecisionAnswer> {
     if (question.kind === "choice") {
-      const hits = question.options.filter(o => state.includes(o)).sort((a, b) => b.length - a.length);
+      const hits = question.options.map(o => (typeof o === "string" ? o : o.label)).filter(o => state.includes(o)).sort((a, b) => b.length - a.length);
       if (hits.length) {
         return Promise.resolve({ kind: "choice", value: hits[0]!, confidence: this.hitConfidence });
       }
-      return Promise.resolve({ kind: "choice", value: question.options[0]!, confidence: this.missConfidence });
+      const first = question.options[0]!; return Promise.resolve({ kind: "choice", value: typeof first === "string" ? first : first.label, confidence: this.missConfidence });
     }
     if (question.kind === "noul") {
       const hit = question.text.replace(/[？?]/g, "").split(/，|。/).some(seg => seg && state.includes(seg));

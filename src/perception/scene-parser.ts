@@ -12,7 +12,7 @@ export interface PerceptionDimSpec {
   /** 条件维名（与 TransitionSpace/记忆的条件维一致） */
   readonly name: string;
   /** 候选值：数值档 → 该档的自然语言标签（用于提问与文本命中） */
-  readonly values: readonly { value: number; label: string }[];
+  readonly values: readonly { value: number; label: string; desc?: string }[];
   /** 提问模板（可选）：如 "开关现在是什么状态？"；缺省按维名生成 */
   readonly ask?: string;
 }
@@ -54,7 +54,7 @@ export class SceneParser {
       const answer = await this.backend.ask(sceneText, {
         kind: "choice",
         text,
-        options: dim.values.map(v => v.label),
+        options: dim.values.map(v => (v.desc !== undefined ? { label: v.label, desc: v.desc } : v.label)),
       });
       if (answer.kind !== "choice") throw new Error(`backend returned ${answer.kind} for a choice question`);
       const hit = dim.values.find(v => v.label === answer.value);

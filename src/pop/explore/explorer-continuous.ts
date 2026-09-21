@@ -65,7 +65,7 @@ export class ContinuousExplorer {
   private em: EmergentMap | null = null;
   private r2: R2PopLayer | null = null;
   private readonly planner: ExperimentPlanner;
-  private readonly bench: { conduct(c: Conditions): Outcomes };
+  private readonly bench: { conduct(c: Conditions): Outcomes | Promise<Outcomes> };
   private readonly condDimNames: readonly string[];
   private readonly outcomeSpan: Readonly<Record<string, number>>;
   private readonly cfg: Required<ContExploreConfig>;
@@ -89,7 +89,7 @@ export class ContinuousExplorer {
     outcomeDims: readonly { name: string; min: number; max: number }[],
     planner: ExperimentPlanner,
     private readonly specs: readonly { name: string; bins: number; values?: readonly number[] }[],
-    bench: { conduct(c: Conditions): Outcomes },
+    bench: { conduct(c: Conditions): Outcomes | Promise<Outcomes> },
     outcomeSpan: Readonly<Record<string, number>>,
     config: ContExploreConfig = {},
     seed = 1,
@@ -173,7 +173,8 @@ export class ContinuousExplorer {
   }
 
   /** 推进一步。返回 false 表示该阶段结束（B0 达标或整体终止）。 */
-  step(): boolean {
+  /** 异步步进（支持文字观察由决策后端解析的感知 bench） */
+  async step(): Promise<boolean> {
     if (this.planner.experimentCount >= this.cfg.budget) {
       this.terminationReason = "budget-exhausted";
       return false;
@@ -186,7 +187,7 @@ export class ContinuousExplorer {
         const vals = s.values!;
         c[s.name] = vals[Math.floor(vals.length / 2)]!;
       }
-      const observed = this.bench.conduct(c);
+      const observed = await this.bench.conduct(c);
       this.mem.learnFromObservation(c, observed, this.cfg.learnRepeats);
       this.planner.register({ conditions: c, outcomes: observed, classification: "unknown-change" });
       this.log.push({
@@ -262,7 +263,7 @@ export class ContinuousExplorer {
     const chosenFromFrontier = frontier.some((c) => this.planner.candidateId(c) === chosenId);
 
     const predicted = this.mem.predict(chosen, this.stepSeed);
-    const observed = this.bench.conduct(chosen);
+    const observed = await this.bench.conduct(chosen);
     const predLit = predicted.values.lit ?? null;
     const anyOutputAbstained = Object.values(predicted.values).some((v) => v === null) || predicted.ambiguous.length > 0;
     const unconfident = !predicted.converged || anyOutputAbstained;

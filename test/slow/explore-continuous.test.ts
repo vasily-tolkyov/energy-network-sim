@@ -16,7 +16,7 @@ import {
 
 // 阶段 B（连续自主探索）锁定测试
 
-test("量程扩展：概念更新让新区域结晶为概念，冻结对照概念层停滞", { timeout: 900_000 }, () => {
+test("量程扩展：概念更新让新区域结晶为概念，冻结对照概念层停滞", { timeout: 900_000 }, async () => {
   const DIMS = LAB_CONT_CONDITION_DIMS_EXT;
   const FULL: Record<string, readonly number[]> = {
     ...LAB_CONT_GRID_EXT_BASE,
@@ -48,10 +48,10 @@ test("量程扩展：概念更新让新区域结晶为概念，冻结对照概�
   const u = build(true);
   // The full 200+200 experiment remains in runner-explore-ext. This test
   // advances to representation milestones, not to a prediction score target.
-  while (u.ex.currentPhase === "corpus" && u.ex.step()) {}
+  while (u.ex.currentPhase === "corpus" && await u.ex.step()) {}
   assert.equal(u.ex.currentPhase, "full");
   u.planner.extendValues("voltage", LAB_CONT_EXT_NEW_VALUES.voltage!);
-  while (!(u.ex.formationReport?.centers.voltage ?? []).some(c => c > 3.5) && u.ex.step()) {}
+  while (!(u.ex.formationReport?.centers.voltage ?? []).some(c => c > 3.5) && await u.ex.step()) {}
   assert.ok(u.ex.formationHistory.length >= 2, `更新模式扩展后应再次形成，实 ${u.ex.formationHistory.length} 次`);
   const lastCenters = u.ex.formationReport!.centers.voltage ?? [];
   assert.ok(
@@ -62,12 +62,12 @@ test("量程扩展：概念更新让新区域结晶为概念，冻结对照概�
 
   // 冻结模式：形成历史恒为 1（概念层停滞），但不崩溃（重叠容忍）
   const f = build(false);
-  while (f.ex.currentPhase === "corpus" && f.ex.step()) {}
+  while (f.ex.currentPhase === "corpus" && await f.ex.step()) {}
   f.planner.extendValues("voltage", LAB_CONT_EXT_NEW_VALUES.voltage!);
   // Wait for actual extended-range exposure and a voltage contrast as well;
   // a tiny corpus containing only gate-off outcomes cannot prove attribution.
   while ((f.ex.log.length < u.ex.log.length || !(f.ex.magEvidence().voltage ?? 0) ||
-    !f.ex.log.some(s => LAB_CONT_EXT_NEW_VALUES.voltage!.includes(s.conditions.voltage!))) && f.ex.step()) {}
+    !f.ex.log.some(s => LAB_CONT_EXT_NEW_VALUES.voltage!.includes(s.conditions.voltage!))) && await f.ex.step()) {}
   assert.equal(f.ex.formationHistory.length, 1, "冻结模式扩展后不应再形成");
   assert.ok((f.ex.magEvidence().voltage ?? 0) > 0, "冻结模式仍能归因（重叠容忍，如实记录）");
 });
@@ -106,7 +106,7 @@ test("容差评分：lit 阈值化、亮度 0.5 容差", () => {
   });
 });
 
-test("连续探索端到端（种子 1）：语料充分性门 → 概念形成 → 因素发现", { timeout: 600_000 }, () => {
+test("连续探索端到端（种子 1）：语料充分性门 → 概念形成 → 因素发现", { timeout: 600_000 }, async () => {
   const bench = new LabContBench();
   const planner = new ExperimentPlanner(SPECS);
   const ex = new ContinuousExplorer(
@@ -119,7 +119,7 @@ test("连续探索端到端（种子 1）：语料充分性门 → 概念形成 
     {},
     1,
   );
-  while (ex.step()) {}
+  while (await ex.step()) {}
   assert.ok(ex.log.length <= 300, `不得超过预算，实做 ${ex.log.length} 次`);
   assert.ok(["quorum-met", "budget-exhausted", "frontier-exhausted"].includes(ex.terminationReason!), "终止原因必须如实报告");
   if (ex.terminationReason === "quorum-met") {

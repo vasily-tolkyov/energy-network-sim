@@ -35,7 +35,7 @@ const OUTCOME_SPAN: Record<string, number> = { lit: 1, brightness: 3 };
 const TRUTH_INFLUENTIAL = ["switchPos", "voltage", "resistance", "temperature"];
 const EXHAUSTIVE = 3 * 4 * 4 * 3 * 3; // 432：穷举基线
 
-function runSeed(seed: number): void {
+async function runSeed(seed: number): Promise<void> {
   out(`\n── 种子 ${seed} ──`);
   const bench = new LabContBench();
   const planner = new ExperimentPlanner(SPECS);
@@ -51,7 +51,7 @@ function runSeed(seed: number): void {
   );
 
   const t0 = performance.now();
-  while (explorer.step()) {
+  while (await explorer.step()) {
     /* 推进到终止（含 B0→间歇期→B2 全程） */
   }
   const minutes = ((performance.now() - t0) / 60000).toFixed(1);
@@ -141,7 +141,7 @@ out(`真值影响因素：[${TRUTH_INFLUENTIAL}]；干扰因素：material；门
 const seeds = (process.env.SEEDS ?? "1,2,3").split(",").map((s) => parseInt(s.trim(), 10));
 for (const seed of seeds) {
   const mark = lines.length;
-  runSeed(seed);
+  await runSeed(seed);
   mkdirSync("runs", { recursive: true });
   out(`动力学质量与任一输出拒答（本日志全部 predict 调用，含训练期；答案质量另列）：${JSON.stringify(predictionQuality.snapshot())}`);
   writeFileSync(`runs/explore-cont-seed${seed}.log`, lines.slice(mark).join("\n") + "\n");
