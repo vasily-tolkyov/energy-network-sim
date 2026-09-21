@@ -81,15 +81,15 @@
         "statusMissing": 0,
         "milliseconds": {
           "n": 1131,
-          "min": 2.6180999999996857,
-          "median": 5.105999999999767,
-          "p90": 5.9909999999999854,
-          "max": 21.454600000000028,
-          "mean": 4.997419893899216
+          "min": 3.124199999998382,
+          "median": 5.684900000000198,
+          "p90": 7.475400000000263,
+          "max": 47.96100000000024,
+          "mean": 6.238682139699383
         }
       },
       "selectedFixedPointFraction": 1,
-      "totalMilliseconds": 8100.9241999999995
+      "totalMilliseconds": 10603.2957
     },
     "acceptance": {
       "P1": true,
@@ -184,15 +184,15 @@
         "statusMissing": 0,
         "milliseconds": {
           "n": 1131,
-          "min": 2.6582999999991443,
-          "median": 4.800900000000183,
-          "p90": 5.506999999999607,
-          "max": 24.555900000001202,
-          "mean": 5.227423430592417
+          "min": 3.0951999999997497,
+          "median": 5.368500000000495,
+          "p90": 6.227199999999357,
+          "max": 41.05199999999968,
+          "mean": 5.335683023872669
         }
       },
       "selectedFixedPointFraction": 1,
-      "totalMilliseconds": 8564.7997
+      "totalMilliseconds": 8632.4715
     },
     "acceptance": {
       "P1": true,
@@ -287,15 +287,15 @@
         "statusMissing": 0,
         "milliseconds": {
           "n": 1131,
-          "min": 2.6605000000017753,
-          "median": 4.883200000000215,
-          "p90": 5.371099999996659,
-          "max": 6.946999999996478,
-          "mean": 4.687839522546353
+          "min": 2.974100000003091,
+          "median": 5.486899999999878,
+          "p90": 6.449099999997998,
+          "max": 48.27860000000146,
+          "mean": 5.9073914235190665
         }
       },
       "selectedFixedPointFraction": 1,
-      "totalMilliseconds": 7471.536700000001
+      "totalMilliseconds": 9862.4879
     },
     "acceptance": {
       "P1": true,

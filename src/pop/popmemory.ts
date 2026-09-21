@@ -158,16 +158,9 @@ export class PopRuleMemory {
     const base = this.coreBase() + this.coreCursor * this.coreSize;
     const core = Array.from({ length: this.coreSize }, (_, k) => base + k);
     this.coreCursor++;
-    // 与既有核互斥（Γ_core，强度可配置——评审 B07：写死参数曾让消融配置表面变化）。
-    // 默认 3.0 的由来：历史值 1.5 压不住强支持核（1-失配核净场可达 +2~+8 > θ−6），
-    // 会在胜者两两抑制下复燃，与池构成"压制-熄火-复燃"弛豫振荡，淬火被迫跑满
-    // maxFlips（实测单次预测均时 1.2s、最慢 4s）。3.0（联盟代价 4×3=12）
-    // 使任何 1-失配核在胜者存活时净场 < 0，单核态成为稳定不动点。
-    for (const other of this.cores) {
-      for (const x of core) {
-        for (const y of other) this.net.strengthenInhibitory(x, y, this.gammaCore);
-      }
-    }
+    // 核间互斥全图已移除（方案 A：池电路 + 候选过滤承担单核胜出，消融实测
+    // 无差异）。历史注记：互斥 Γ=3.0 曾在池电路引入前承担"1-失配核不复燃"，
+    // 现由池的联盟规模压制与候选过滤共同覆盖——R² 条边与 O(R) 核度消失。
     // 全局抑制池接线（WTA 电路，前馈抑制版，自 field-memory 移植）：
     // 核 → 池分级招募（0.3/0.15）：单核活跃（4×0.3=1.2<θ=1.5）池沉睡；
     // ≥2 核共存（8×0.3=2.4>θ）池点燃，DI 前馈抑制压回所有核——

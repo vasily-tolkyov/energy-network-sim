@@ -286,14 +286,12 @@ export class FieldRuleMemory {
     return core;
   }
 
-  /** 新核结构接线：核间互斥 + 全局抑制池（WTA 电路，前馈抑制版）。
-   * 新槽与回收槽共用——回收槽的全部突触已被 clearSynapses 清零。 */
+  /** 新核结构接线：全局抑制池（WTA 电路，前馈抑制版）。
+   * 新槽与回收槽共用——回收槽的全部突触已被 clearSynapses 清零。
+   * 核间互斥全图已移除（方案 A，消融实测无差异）：单核胜出由
+   * 池电路（联盟越大压制越强）+ 逐维点火可行性门（条件缺席的核
+   * 无参赛资格）承担，R² 条边与 O(R) 核度随之消失。 */
   private wireNewCore(core: readonly number[]): void {
-    for (const other of this.signatureToCore.values()) {
-      for (const x of core) {
-        for (const y of other) this.net.strengthenInhibitory(x, y, 3.0);
-      }
-    }
     // 核神经元 → 池神经元 k：权重 1/(k+1)——池按核活动总量分级招募；
     // 池神经元 → 核神经元：γ_pool 前馈抑制（DI，非平衡驱动）——
     // 池压制核而不被反向压制，联盟越大压制越强，逐个淘汰至单核胜出。
