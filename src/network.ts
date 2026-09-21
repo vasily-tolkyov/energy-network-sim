@@ -565,6 +565,26 @@ export class EnergyNetwork {
     let hasQuietCandidate = !quietOnly || quietNow();
     let bestEnergy = hasQuietCandidate ? initialEnergy : Infinity;
     const bestState = Uint8Array.from(this.state);
+    // 逐轮状态（重退火时重置）；淬火范围保持**退火洗牌后**的顺序——
+    // 在循环内按轮重建，维持与单轮版逐位一致的扫描顺序。
+    const maxFlips = options.quenchMaxFlips ?? 100 * n;
+    const EPS = 1e-4; // 能量分辨率下限：近平局的尘埃翻转既慢又无意义（实测 >1e5 步仍不收敛）
+    let quenchScopeSet: Set<number> = new Set();
+    const quenchEnergies: number[] = [];
+    let quenchEnergy = initialEnergy;
+    let quenchBestEnergy = initialEnergy;
+    const quenchBestState = Uint8Array.from(this.state);
+    let terminated: SettleTermination = "fixed-point";
+    let annealEndEnergy = initialEnergy;
+    // 重退火循环：quiet-constraint（域内停住但域外仍有残余改进）= 搜索没站稳
+    // ——从已见最优静息态重置温度再来一轮，上限 3 轮；仍不站稳如实上报。
+    // fixed-point 一轮即出，小世界成本不变。
+    for (let cycle = 0; ; cycle++) {
+      if (cycle > 0) {
+        temperature = options.initialTemperature ?? theta;
+        restore(bestState);
+        currentEnergy = this.energy();
+      }
     for (let level = 0; level < levels; level++, temperature *= coolingFactor) {
       for (let sweep = 0; sweep < sweepsPerLevel; sweep++) {
         // 每轮洗牌提议顺序（可复现种子）：打破固定下标顺序的点火偏置，
@@ -624,7 +644,7 @@ export class EnergyNetwork {
         candidateSet: [...candidate], initialEnergy, annealEndEnergy: 0, proposals, acceptedUphill };
     }
     if (quietOnly || bestEnergy < currentEnergy) restore(bestState);
-    const annealEndEnergy = this.energy();
+    annealEndEnergy = this.energy();
 
     // 淬火尾巴：T=0 贪心扫描至无翻转（保守账本随翻转变化；DI 驱动可致上坡）。
     // 范围默认全网（招募无势垒的普通连接神经元）；读出场景限制在候选集内，
@@ -632,18 +652,14 @@ export class EnergyNetwork {
     // 非平衡驱动（DI 前馈抑制）可能出现弛豫振荡（压制-熄火-复燃循环），
     // 因此淬火是有界迭代 + 最优回退（按真实能量），并如实报告终止原因与
     // 残余可翻转数——非平衡驱动下不再承诺无条件收敛。
-    const quenchEnergies: number[] = [];
-    let quenchEnergy = annealEndEnergy;
-    let quenchBestEnergy = annealEndEnergy;
-    const quenchBestState = Uint8Array.from(this.state);
+    quenchEnergy = annealEndEnergy;
+    quenchBestEnergy = annealEndEnergy;
+    quenchBestState.set(this.state);
     const quenchScope = options.quenchCandidatesOnly
       ? freeCandidates
       : Array.from({ length: n }, (_, i) => i);
-    const quenchScopeSet = new Set(quenchScope);
-    const maxFlips = options.quenchMaxFlips ?? 100 * n;
-    const EPS = 1e-4; // 能量分辨率下限：近平局的尘埃翻转既慢又无意义（实测 >1e5 步仍不收敛）
-    let terminated: SettleTermination = "fixed-point";
-    let quenchFlips = 0; // 预算只管淬火尾巴（退火相按温度层数自然结束）
+    quenchScopeSet = new Set(quenchScope);
+    let quenchFlips = 0; // 每轮淬火的预算独立（重退火的尾巴各算各的）
     if (quietOnly) {
       // Optimize within the same legal fallback domain, rather than repeatedly
       // leaving it under DI and returning a fragmented annealing snapshot.
@@ -718,11 +734,23 @@ export class EnergyNetwork {
       if (!flipped) break;
     }
     }
+    // 本轮淬火结束后：把本轮最终态并入全局最优（只在合法静息态中比较）；
+    // 末轮返回的是**全局最优静息态**，不是最后一轮淬火的末尾态——
+    // 重退火的轮次只许改善答案，不许恶化（实测教训）。
+    const cycleEndEnergy = this.energy();
+    if (quietOnly && quietNow() && cycleEndEnergy < bestEnergy) {
+      bestEnergy = cycleEndEnergy;
+      bestState.set(this.state);
+    }
+    // 本轮仍 quiet-constraint 且未达轮数上限 → 重退火再来一轮；否则收工
+    if (!(quietOnly && terminated === "quiet-constraint" && cycle < 2)) break;
+    }
 
-    if (quietOnly && !quietNow()) {
-      restore(quenchBestState);
-      quenchEnergies.push(quenchBestEnergy);
-      terminated = "flip-budget";
+    if (quietOnly) {
+      // 返回全局最优静息态（重退火各轮与首轮淬火的合并结果）；
+      // 轨迹以返回态能量收尾（账本不变量：轨迹末值 ≡ 返回能量）
+      restore(bestState);
+      quenchEnergies.push(this.energy());
     }
     const energies = [annealEndEnergy, ...quenchEnergies];
     return {

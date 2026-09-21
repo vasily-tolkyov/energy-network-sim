@@ -1,9 +1,12 @@
 {
-  "comparison": "incremental fields vs dense recompute; answers+termination identical, energy within 1e-6",
+  "comparison": "incremental fields + reheat vs dense: identical outside quiet-constraint; reheat may only deepen quiet minima",
   "answerMismatch": 0,
   "reasonMismatch": 0,
   "ledgerMismatch": 0,
-  "worstEnergyAbsDiff": 0,
+  "energyDiff": 0,
+  "changedQuiet": 17,
+  "worseQuiet": 0,
+  "worstEnergyAbsDiff": 2.601238310802728,
   "tolerance": 0.000001,
   "seeds": 200
 }
