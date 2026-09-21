@@ -1,9 +1,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { TransitionMemory } from "../src/planning/transition-memory.js";
-import { collectTransitions } from "../src/planning/collect.js";
-import { planGoal } from "../src/planning/planner.js";
-import { validateFrame, type Frame, type TransitionSpace } from "../src/planning/space.js";
+import { TransitionMemory } from "../../src/planning/transition-memory.js";
+import { collectTransitions } from "../../src/planning/collect.js";
+import { planGoal } from "../../src/planning/planner.js";
+import { validateFrame, type Frame, type TransitionSpace } from "../../src/planning/space.js";
 
 /** 长链回归（感受野渗色修复）：相邻档只共享边缘感受野，转移经验不得在
  * 编码层互相渗色——修复前 16 节点起出现跳读与自闭环死点（no-known-route）。

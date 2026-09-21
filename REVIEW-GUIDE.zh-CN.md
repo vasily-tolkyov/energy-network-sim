@@ -9,7 +9,7 @@
 ```bash
 node --version           # >=24
 npm ci
-npm run verify           # tsc + node --test dist/test/*.test.js
+npm run verify           # tsc + 快层回归 dist/test/*.test.js（秒级）；verify:full 另含慢层 dist/test/slow（分钟级）
 node --test dist/test/review2-*.test.js
 node dist/src/pop/runner-ablation.js
 ```

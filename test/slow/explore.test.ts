@@ -1,14 +1,14 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { PopChannelMap } from "../src/pop/popmap.js";
-import { ExperimentPlanner } from "../src/pop/explore/planner.js";
-import { Explorer } from "../src/pop/explore/explorer.js";
+import { PopChannelMap } from "../../src/pop/popmap.js";
+import { ExperimentPlanner } from "../../src/pop/explore/planner.js";
+import { Explorer } from "../../src/pop/explore/explorer.js";
 import {
   LAB_CONDITION_SPECS,
   LAB_OUTCOME_SPECS,
   LabBench,
   labTruth,
-} from "../src/topics/lab-world.js";
+} from "../../src/topics/lab-world.js";
 
 // 自主探索（M1/M2/M3 阶段 A）锁定测试
 

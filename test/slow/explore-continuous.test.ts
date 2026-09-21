@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { ExperimentPlanner } from "../src/pop/explore/planner.js";
-import { ContinuousExplorer } from "../src/pop/explore/explorer-continuous.js";
+import { ExperimentPlanner } from "../../src/pop/explore/planner.js";
+import { ContinuousExplorer } from "../../src/pop/explore/explorer-continuous.js";
 import {
   LAB_CONT_CONDITION_DIMS,
   LAB_CONT_CONDITION_DIMS_EXT,
@@ -12,7 +12,7 @@ import {
   LabContBench,
   labContTruth,
   lcScore,
-} from "../src/topics/lab-continuous-world.js";
+} from "../../src/topics/lab-continuous-world.js";
 
 // 阶段 B（连续自主探索）锁定测试
 

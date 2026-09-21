@@ -1,14 +1,14 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { PopChannelMap } from "../src/pop/popmap.js";
-import { PopRuleMemory } from "../src/pop/popmemory.js";
-import { R2PopLayer } from "../src/pop/r2pop.js";
+import { PopChannelMap } from "../../src/pop/popmap.js";
+import { PopRuleMemory } from "../../src/pop/popmemory.js";
+import { R2PopLayer } from "../../src/pop/r2pop.js";
 import {
   CONDITION_SPECS,
   OUTCOME_SPECS,
   curriculum,
   queries,
-} from "../src/prototype/world.js";
+} from "../../src/prototype/world.js";
 import {
   CAP_CONDITION_SPECS,
   CAP_OUTCOME_SPECS,
@@ -16,7 +16,7 @@ import {
   capQueries,
   capTruth,
   sampleCombos,
-} from "../src/topics/capacity-world.js";
+} from "../../src/topics/capacity-world.js";
 
 // 群体编码 + 规则核版本锁定测试
 
