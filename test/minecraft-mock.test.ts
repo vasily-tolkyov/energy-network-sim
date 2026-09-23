@@ -44,13 +44,13 @@ test("minecraft-mock：文字状态流 → 感知帧 → 学习 → 规划 → �
     const n = mcTruth(s, a);
     return Object.fromEntries(MC_SPACE.states.map(d => [d.outcome, n[d.name]!]));
   } };
-  collectTransitions(m, bench, 48, 1);
+  await collectTransitions(m, bench, 48, 1);
 
   // 规划：白天出发活到 pos5——黑夜在野外会死，必须在白天冲刺或等待
   const plan = planGoal(m, { pos: 0, time: 0, alive: 1 }, { pos: 5, time: 0, alive: 1 }, 1);
   assert.equal(plan.status, "found");
   // 执行：任何一步死亡都算失败
-  const exec = executeGoal(m, bench, { pos: 0, time: 0, alive: 1 }, { pos: 5, time: 0, alive: 1 }, 1);
+  const exec = await executeGoal(m, bench, { pos: 0, time: 0, alive: 1 }, { pos: 5, time: 0, alive: 1 }, 1);
   assert.ok(exec.steps.every(s => s.actual.alive === 1), "全程存活");
   assert.equal(exec.finalState.pos, 5);
 

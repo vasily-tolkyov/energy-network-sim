@@ -15,9 +15,9 @@ test("evaluation uses BFS only on bench side and reports empty denominators as N
   assert.equal(predictionMetrics([]).nonconvergedRate, null);
 });
 
-test("rollout preserves all synapses; source observations change evidence; snapshot stays immutable", () => {
+test("rollout preserves all synapses; source observations change evidence; snapshot stays immutable", async () => {
   const model = new TransitionMemory(PATH_SPACE);
-  collectTransitions(model, new PathBench(), 64, 2);
+  await collectTransitions(model, new PathBench(), 64, 2);
   const before = learningFingerprint(model);
   const forecast = model.predict({ pos: 0 }, model.actions[1]!, 1);
   assert.equal(learningFingerprint(model), before);
@@ -28,11 +28,11 @@ test("rollout preserves all synapses; source observations change evidence; snaps
   assert.equal(JSON.stringify(forecast.snapshot), old);
 });
 
-test("no-replanning control executes old chain and can succeed after displacement without detection credit", () => {
+test("no-replanning control executes old chain and can succeed after displacement without detection credit", async () => {
   const model = new TransitionMemory(CHAIN_SPACE);
-  collectTransitions(model, new OrderedChainBench(), 40, 1);
+  await collectTransitions(model, new OrderedChainBench(), 40, 1);
   const bench = new OrderedChainBench(); let injected = false;
-  const execution = executeGoal(model, { conduct(state, action) {
+  const execution = await executeGoal(model, { conduct(state, action) {
     const out = bench.conduct(state, action);
     if (!injected && out.nextNode === 1) { injected = true; return { nextNode: 3 }; }
     return out;

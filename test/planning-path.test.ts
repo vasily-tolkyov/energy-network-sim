@@ -14,9 +14,9 @@ test("path bench validates before spending and retains endpoint self-loops", () 
   assert.deepEqual(b.conduct({ pos: 7 }, { move: 1 }), { nextPos: 7 });
 });
 
-test("PLAN-009 P1/P2: path reach >=90%, median ratio <=1.5; rollout preserves readback", () => {
+test("PLAN-009 P1/P2: path reach >=90%, median ratio <=1.5; rollout preserves readback", async () => {
   const model = new TransitionMemory(PATH_SPACE);
-  const training = collectTransitions(model, new PathBench(), 64, 1);
+  const training = await collectTransitions(model, new PathBench(), 64, 1);
   assert.equal(training.distinctQueries, 16);
   assert.deepEqual(training.factors, ["move", "pos"]);
   const readback = () => Array.from({ length: 8 }, (_, pos) => model.actions.map(action => model.predict({ pos }, action, 100)));

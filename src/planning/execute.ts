@@ -15,21 +15,27 @@ export interface ReplanEvent {
 }
 export interface GoalExecution {
   start: Frame; goal: Frame; reached: boolean; finalState: Frame;
-  terminationReason: "goal-reached" | "no-known-route" | "unexplored" | "depth-limit" | "prediction-budget" | "execution-budget" | "chain-ended";
+  terminationReason: "goal-reached" | "no-known-route" | "unexplored" | "depth-limit" | "prediction-budget" | "interrupted" | "execution-budget" | "chain-ended";
   executionBudget: number; replanningEnabled: boolean;
   plans: GoalPlan[]; steps: ExecutionStep[]; replans: ReplanEvent[];
 }
 
+type PlanFn = (model: TransitionMemory, start: Frame, goal: Frame, seed: number,
+  options?: { avoid?: ReadonlySet<string> }) => GoalPlan | Promise<GoalPlan>;
+
 /** Only real bench responses reach observe(). A returned plan is read-only;
  * cache values and generations are never rewritten by subsequent learning.
  * 捕获失配/状态漂移的转移进入 suspects：本次执行内重规划时回避（行为层
- * 即时响应）；记忆层的规则改判仍按观察计票，单次异常不改规则。 */
-export function executeGoal(model: TransitionMemory, bench: TransitionBench, start: Frame, goal: Frame,
-  seed: number, options: { replan?: boolean; executionBudget?: number } = {}): GoalExecution {
+ * 即时响应）；记忆层的规则改判仍按观察计票，单次异常不改规则。
+ * options.planFn：默认同步 planGoal；实体宿主（如 MC agent，事件循环被堵
+ * 会被服务器踢下线）应传入 planGoalAsync 以周期性让出事件循环。 */
+export async function executeGoal(model: TransitionMemory, bench: TransitionBench, start: Frame, goal: Frame,
+  seed: number, options: { replan?: boolean; executionBudget?: number; planFn?: PlanFn } = {}): Promise<GoalExecution> {
+  const planFn: PlanFn = options.planFn ?? planGoal;
   const executionBudget = options.executionBudget ?? 2 * model.space.diameter;
   integer(executionBudget, "execution budget");
   const replanningEnabled = options.replan ?? true;
-  const plans = [planGoal(model, start, goal, seed)];
+  const plans = [await planFn(model, start, goal, seed)];
   const steps: ExecutionStep[] = [], replans: ReplanEvent[] = [];
   const suspects = new Set<string>();
   let state: Frame = { ...start }, current = plans[0]!, index = 0;
@@ -41,7 +47,7 @@ export function executeGoal(model: TransitionMemory, bench: TransitionBench, sta
     if (current.status !== "found") { terminationReason = current.status; break; }
     const forecast = current.steps[index++];
     if (!forecast) { terminationReason = atGoal() ? "goal-reached" : "chain-ended"; break; }
-    const observation = bench.conduct(state, forecast.action.values);
+    const observation = await bench.conduct(state, forecast.action.values);
     const actual = observedState(model.space, observation);
     const conditions = model.conditions(state, forecast.action);
     // Compare against the old value snapshot BEFORE updating the evidence.
@@ -55,7 +61,7 @@ export function executeGoal(model: TransitionMemory, bench: TransitionBench, sta
     state = actual;
     if (replanningEnabled && (capture.class !== "within-envelope" || discreteStateDrift)) {
       suspects.add(model.conditionKey(steps[steps.length - 1]!.state, forecast.action));
-      current = planGoal(model, state, goal, (seed + plans.length * 1000) >>> 0, { avoid: suspects });
+      current = await planFn(model, state, goal, (seed + plans.length * 1000) >>> 0, { avoid: suspects });
       plans.push(current); index = 0;
       replans.push({ afterStep: steps.length, from: { ...state }, cause: capture.class !== "within-envelope" ? "capture" : "state-drift",
         predictIncrement: current.predictions.length, planIndex: plans.length - 1 });

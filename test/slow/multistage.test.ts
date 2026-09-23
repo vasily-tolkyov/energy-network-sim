@@ -14,10 +14,10 @@ const collectBudget = (w: MultistageWorld) =>
   [...w.space.states, ...w.space.actions].reduce((n, d) => n * d.bins, 1) * 2;
 
 for (const world of MULTISTAGE_WORLDS) {
-  test(`${world.name}：学习读回全网格精确，因素归因正确，干扰维缺席`, () => {
+  test(`${world.name}：学习读回全网格精确，因素归因正确，干扰维缺席`, async () => {
     for (const seed of [1, 2]) {
       const m = new TransitionMemory(world.space);
-      const collection = collectTransitions(m, new MultistageBench(world), collectBudget(world), seed);
+      const collection = await collectTransitions(m, new MultistageBench(world), collectBudget(world), seed);
       let wrong = 0;
       let audits = 0;
       for (const state of frames(world.space.states)) {
@@ -37,13 +37,13 @@ for (const world of MULTISTAGE_WORLDS) {
     }
   });
 
-  test(`${world.name}：全部任务执行到达；负对照如实报无路线`, () => {
+  test(`${world.name}：全部任务执行到达；负对照如实报无路线`, async () => {
     for (const seed of [1, 2]) {
       const m = new TransitionMemory(world.space);
       const bench = new MultistageBench(world);
-      collectTransitions(m, bench, collectBudget(world), seed);
+      await collectTransitions(m, bench, collectBudget(world), seed);
       for (const task of world.tasks) {
-        const exec = executeGoal(m, bench, task.start, task.goal, seed);
+        const exec = await executeGoal(m, bench, task.start, task.goal, seed);
         assert.ok(exec.reached, `${world.name} seed${seed} ${JSON.stringify(task.start)}→${JSON.stringify(task.goal)}: ${exec.terminationReason}`);
         assert.equal(exec.finalState ? signature(exec.finalState) : null, signature(task.goal));
       }

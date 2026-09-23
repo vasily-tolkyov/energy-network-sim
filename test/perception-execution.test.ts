@@ -40,7 +40,7 @@ test("场景解析：过门槛维度进帧，低置信维度如实报 unknown", 
 
 test("JevApiBackend 未配置 key 时响亮抛错（禁止静默降级）", async () => {
   const api = new JevApiBackend(null, null);
-  await assert.rejects(() => api.ask("状态", { kind: "noul", text: "灯亮着吗？" }), /未配置/);
+  await assert.rejects(async () => api.ask("状态", { kind: "noul", text: "灯亮着吗？" }), /未配置/);
 });
 
 test("动作执行映射：命令渲染、状态代入、可行性失败如实上报", async () => {
@@ -67,7 +67,7 @@ test("端到端：文字场景 → 起始帧 → 学习 → 规划 → 逐步执
   assert.deepEqual(perceived.frame, { node: 1 });
   // 学习转移（与感知前端无关的既有链路）
   const model = new TransitionMemory(CHAIN_SPACE);
-  collectTransitions(model, new OrderedChainBench(), 40, 1);
+  await collectTransitions(model, new OrderedChainBench(), 40, 1);
   const plan = planGoal(model, perceived.frame, { node: 4 }, 1);
   assert.equal(plan.status, "found");
   assert.deepEqual(plan.steps.map(s => s.next?.node), [2, 3, 4]);

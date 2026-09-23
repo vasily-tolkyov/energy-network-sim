@@ -45,8 +45,9 @@ export class BoxAgent {
   }
 
   /** 自由探索：语料式覆盖全部状态×动作（方法先验），把转移规律学进网络 */
-  explore(seed = 1): void {
-    collectTransitions(this.mem, this.bench, this.collectBudget, seed);
+  /** 自由探索（异步：bench 可以是物理世界） */
+  async explore(seed = 1): Promise<void> {
+    await collectTransitions(this.mem, this.bench, this.collectBudget, seed);
     for (const s of frames(BOX_SPACE.states)) {
       // 记录"去过哪些状态"：以读回能给出确定答案为准
       if (this.mem.mem.coreFieldCoverage(s) >= this.mem.mem.net.threshold) this.visited.add(signature(s));
@@ -80,7 +81,7 @@ export class BoxAgent {
         note: `没有已知路线（${plan.status}）——需要先探索`,
       };
     }
-    const exec = executeGoal(this.mem, this.bench, BOX_START, goal, seed);
+    const exec = await executeGoal(this.mem, this.bench, BOX_START, goal, seed);
     const commands = await this.executor.mapChain(
       exec.steps.map(s => s.forecast.action.values),
       i => `在 ${JSON.stringify(exec.steps[i]?.state ?? BOX_START)}`,
@@ -120,7 +121,7 @@ export class BoxAgent {
         note: `自设目标 ${JSON.stringify(goal)} 暂无已知路线`,
       };
     }
-    const exec = executeGoal(this.mem, this.bench, BOX_START, goal, seed);
+    const exec = await executeGoal(this.mem, this.bench, BOX_START, goal, seed);
     this.visited.add(signature(exec.finalState));
     return {
       kind: "idle", goal, planStatus: plan.status,

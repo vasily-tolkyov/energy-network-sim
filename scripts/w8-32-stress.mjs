@@ -29,7 +29,7 @@ const world = { name: "w8-32", space, truth, tasks: [], factors: [], distractors
 
 const t0 = performance.now();
 const m = new TransitionMemory(space);
-collectTransitions(m, new MultistageBench(world), 1024, 1);
+await collectTransitions(m, new MultistageBench(world), 1024, 1);
 console.log(`学习 1024 次：${((performance.now() - t0) / 1000).toFixed(1)}s（方案 A 前：67s+ 且含 210 万条互斥边写入）`);
 console.log(`N=${m.mem.net.neuronCount} 规则=${m.mem.ruleCount}`);
 for (const s of [1, 2, 3]) {

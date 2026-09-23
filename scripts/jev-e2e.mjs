@@ -39,7 +39,7 @@ async function run(scene, label) {
     return;
   }
   const model = new TransitionMemory(CHAIN_SPACE);
-  collectTransitions(model, new OrderedChainBench(), 40, 1);
+  await collectTransitions(model, new OrderedChainBench(), 40, 1);
   const goal = { node: 4 };
   const plan = planGoal(model, perceived.frame, goal, 1);
   console.log("规划:", plan.status, plan.steps.map(s => `${s.state.node}→${s.next ? s.next.node : "?"}`).join(" "));

@@ -39,7 +39,7 @@ for (const bins of [17, 33, 65, 129]) {
   const buildMs = performance.now() - t;
   const n = m.mem.net.neuronCount;
   t = performance.now();
-  collectTransitions(m, bench, bins * 2 * 2, 1);
+  await collectTransitions(m, bench, bins * 2 * 2, 1);
   const learnMs = performance.now() - t;
   const memMB = heapMB() - before;
   // 预测时间（5 次取中位；大档位的单次预测成本本身就是被测量）

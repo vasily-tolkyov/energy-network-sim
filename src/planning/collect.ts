@@ -13,7 +13,7 @@ export interface Collection {
 }
 /** Resettable-bench corpus collection, not an embodied random walk. A seeded,
  * balanced schedule knows the alphabet and visit counts, never the answers. */
-export function collectTransitions(model: TransitionMemory, bench: TransitionBench, budget: number, seed: number): Collection {
+export async function collectTransitions(model: TransitionMemory, bench: TransitionBench, budget: number, seed: number): Promise<Collection> {
   integer(budget, "collection budget", 1);
   const rng = mulberry32(seed);
   const queries = frames(model.space.states).flatMap(state => model.actions.map(action => ({ state, action })));
@@ -25,7 +25,7 @@ export function collectTransitions(model: TransitionMemory, bench: TransitionBen
     for (const index of order) {
       if (episodes.length === budget) break;
       const { state, action } = queries[index]!;
-      const outcomes = bench.conduct(state, action.values);
+      const outcomes = await bench.conduct(state, action.values);
       model.observe(state, action, outcomes);
       const episode = { conditions: model.conditions(state, action), outcomes: { ...outcomes } };
       episodes.push(episode); distinct.set(index, episode);

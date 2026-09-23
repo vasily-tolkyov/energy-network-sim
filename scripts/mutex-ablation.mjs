@@ -15,7 +15,7 @@ const { frames } = await import("../dist/src/planning/space.js");
 
 function evalWorld(TM, space, truth, seed, budget) {
   const m = new TM(space);
-  collectTransitions(m, new MultistageBench({ name: "x", space, truth, tasks: [], factors: [], distractors: [] }), budget, seed);
+  await collectTransitions(m, new MultistageBench({ name: "x", space, truth, tasks: [], factors: [], distractors: [] }), budget, seed);
   let amb = 0, wrong = 0, total = 0;
   for (const s of frames(space.states)) {
     for (const a of m.actions) {

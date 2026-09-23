@@ -6,7 +6,7 @@ import { BOX_START } from "../../src/topics/box-world.js";
 
 test("箱子世界 agent：探索后听懂指令并绕行完成堆垛（Mock 后端）", async () => {
   const agent = new BoxAgent(new MockBackend());
-  agent.explore(1);
+  await agent.explore(1);
 
   // 指令解析 + 执行：摞两层
   const report = await agent.instruct("把箱子摞起来，摞两层", 1);
@@ -21,7 +21,7 @@ test("箱子世界 agent：探索后听懂指令并绕行完成堆垛（Mock 后
 
 test("指令含糊时如实拒动；无目标指令如实报无事可做", async () => {
   const agent = new BoxAgent(new MockBackend());
-  agent.explore(1);
+  await agent.explore(1);
   // Mock 对含糊文本命中不了"摞两层"标签 → 低置信 → unknownDims
   const vague = await agent.instruct("随便弄一下", 1);
   assert.equal(vague.planStatus, "unparsed");
@@ -36,7 +36,7 @@ test("无指令时自设目标：诚实两端（未学过不编造路线；全�
   assert.ok(!r1.reached);
   // 全探索后：所有状态都学过 → 如实说没有新目标可设
   const agent = new BoxAgent(new MockBackend());
-  agent.explore(1);
+  await agent.explore(1);
   const r2 = await agent.idleCuriosity(1);
   assert.equal(r2.planStatus, "nothing-new", `全探索后应如实报告: ${r2.note}`);
 });

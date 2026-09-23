@@ -1,0 +1,391 @@
+{
+  "schema": "general-bench/v1",
+  "seed": 1,
+  "note": "与 MC 现场演示并行，耗时含 CPU 争用（保守上界）",
+  "rows": [
+    {
+      "world": "key-door",
+      "seed": 1,
+      "neurons": 404,
+      "heapMB": 4.2,
+      "rules": 48,
+      "collectExperiments": 96,
+      "collectMs": 1226,
+      "readback": {
+        "wrong": 0,
+        "total": 48
+      },
+      "readbackAnneal": {
+        "n": 48,
+        "totalMs": 2364,
+        "mean": 49.2,
+        "p50": 38.9,
+        "p95": 68.8,
+        "max": 314.7
+      },
+      "tasks": [
+        {
+          "planStatus": "found",
+          "planSteps": 5,
+          "planAnneal": {
+            "n": 14,
+            "totalMs": 523,
+            "mean": 37.4,
+            "p50": 37.5,
+            "p95": 42.1,
+            "max": 42.1
+          },
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 601
+        },
+        {
+          "planStatus": "found",
+          "planSteps": 6,
+          "planAnneal": {
+            "n": 16,
+            "totalMs": 615,
+            "mean": 38.5,
+            "p50": 38.2,
+            "p95": 43.8,
+            "max": 43.8
+          },
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 700
+        }
+      ],
+      "unreachable": null,
+      "anneal": {
+        "n": 30,
+        "totalMs": 1138,
+        "mean": 37.9,
+        "p50": 37.6,
+        "p95": 42.9,
+        "max": 43.8
+      },
+      "totalMs": 4905
+    },
+    {
+      "world": "cooldown",
+      "seed": 1,
+      "neurons": 330,
+      "heapMB": 2.4,
+      "rules": 32,
+      "collectExperiments": 64,
+      "collectMs": 254,
+      "readback": {
+        "wrong": 0,
+        "total": 32
+      },
+      "readbackAnneal": {
+        "n": 32,
+        "totalMs": 1015,
+        "mean": 31.7,
+        "p50": 29.7,
+        "p95": 57.6,
+        "max": 57.8
+      },
+      "tasks": [
+        {
+          "planStatus": "found",
+          "planSteps": 13,
+          "planAnneal": {
+            "n": 26,
+            "totalMs": 628,
+            "mean": 24.2,
+            "p50": 24.1,
+            "p95": 27.3,
+            "max": 27.5
+          },
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 719
+        },
+        {
+          "planStatus": "found",
+          "planSteps": 9,
+          "planAnneal": {
+            "n": 18,
+            "totalMs": 431,
+            "mean": 24,
+            "p50": 23.6,
+            "p95": 30.3,
+            "max": 30.3
+          },
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 495
+        }
+      ],
+      "unreachable": null,
+      "anneal": {
+        "n": 44,
+        "totalMs": 1060,
+        "mean": 24.1,
+        "p50": 23.6,
+        "p95": 27.5,
+        "max": 30.3
+      },
+      "totalMs": 2493
+    },
+    {
+      "world": "conveyor",
+      "seed": 1,
+      "neurons": 186,
+      "heapMB": 0.8,
+      "rules": 16,
+      "collectExperiments": 32,
+      "collectMs": 83,
+      "readback": {
+        "wrong": 0,
+        "total": 16
+      },
+      "readbackAnneal": {
+        "n": 16,
+        "totalMs": 184,
+        "mean": 11.5,
+        "p50": 9.7,
+        "p95": 22.7,
+        "max": 22.7
+      },
+      "tasks": [
+        {
+          "planStatus": "found",
+          "planSteps": 5,
+          "planAnneal": {
+            "n": 10,
+            "totalMs": 78,
+            "mean": 7.8,
+            "p50": 7.9,
+            "p95": 8.9,
+            "max": 8.9
+          },
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 117
+        },
+        {
+          "planStatus": "found",
+          "planSteps": 6,
+          "planAnneal": {
+            "n": 12,
+            "totalMs": 96,
+            "mean": 8,
+            "p50": 7.7,
+            "p95": 10.9,
+            "max": 10.9
+          },
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 119
+        }
+      ],
+      "unreachable": {
+        "status": "no-known-route",
+        "anneal": {
+          "n": 6,
+          "totalMs": 42,
+          "mean": 7,
+          "p50": 7.1,
+          "p95": 7.7,
+          "max": 7.7
+        }
+      },
+      "anneal": {
+        "n": 28,
+        "totalMs": 216,
+        "mean": 7.7,
+        "p50": 7.6,
+        "p95": 9.8,
+        "max": 10.9
+      },
+      "totalMs": 554
+    },
+    {
+      "world": "energy-budget",
+      "seed": 1,
+      "neurons": 401,
+      "heapMB": 3.3,
+      "rules": 56,
+      "collectExperiments": 112,
+      "collectMs": 431,
+      "readback": {
+        "wrong": 0,
+        "total": 56
+      },
+      "readbackAnneal": {
+        "n": 56,
+        "totalMs": 1169,
+        "mean": 20.9,
+        "p50": 19.9,
+        "p95": 24.6,
+        "max": 52.9
+      },
+      "tasks": [
+        {
+          "planStatus": "found",
+          "planSteps": 7,
+          "planAnneal": {
+            "n": 14,
+            "totalMs": 273,
+            "mean": 19.5,
+            "p50": 19.6,
+            "p95": 22.3,
+            "max": 22.3
+          },
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 324
+        },
+        {
+          "planStatus": "found",
+          "planSteps": 10,
+          "planAnneal": {
+            "n": 20,
+            "totalMs": 377,
+            "mean": 18.8,
+            "p50": 18.7,
+            "p95": 20.2,
+            "max": 20.2
+          },
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 443
+        }
+      ],
+      "unreachable": null,
+      "anneal": {
+        "n": 34,
+        "totalMs": 650,
+        "mean": 19.1,
+        "p50": 18.9,
+        "p95": 21.8,
+        "max": 22.3
+      },
+      "totalMs": 2377
+    },
+    {
+      "world": "phase-lever",
+      "seed": 1,
+      "neurons": 289,
+      "heapMB": 1.8,
+      "rules": 28,
+      "collectExperiments": 56,
+      "collectMs": 193,
+      "readback": {
+        "wrong": 0,
+        "total": 28
+      },
+      "readbackAnneal": {
+        "n": 28,
+        "totalMs": 629,
+        "mean": 22.5,
+        "p50": 21.3,
+        "p95": 26.8,
+        "max": 47.1
+      },
+      "tasks": [
+        {
+          "planStatus": "found",
+          "planSteps": 5,
+          "planAnneal": {
+            "n": 10,
+            "totalMs": 186,
+            "mean": 18.6,
+            "p50": 18.9,
+            "p95": 21,
+            "max": 21
+          },
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 210
+        },
+        {
+          "planStatus": "found",
+          "planSteps": 4,
+          "planAnneal": {
+            "n": 8,
+            "totalMs": 155,
+            "mean": 19.4,
+            "p50": 19.1,
+            "p95": 21.7,
+            "max": 21.7
+          },
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 175
+        }
+      ],
+      "unreachable": null,
+      "anneal": {
+        "n": 18,
+        "totalMs": 341,
+        "mean": 18.9,
+        "p50": 18.9,
+        "p95": 21.7,
+        "max": 21.7
+      },
+      "totalMs": 1216
+    },
+    {
+      "world": "box-world(规模锚点)",
+      "seed": 1,
+      "neurons": 3852,
+      "heapMB": 99.9,
+      "rules": 900,
+      "collectExperiments": 1800,
+      "collectMs": 46741,
+      "readback": {
+        "wrong": 0,
+        "total": 64
+      },
+      "readbackAnneal": {
+        "n": 64,
+        "totalMs": 34099,
+        "mean": 532.8,
+        "p50": 493.3,
+        "p95": 595.2,
+        "max": 1612.4
+      },
+      "tasks": [
+        {
+          "planStatus": "found",
+          "planSteps": 21,
+          "planAnneal": {
+            "n": 480,
+            "totalMs": 248905,
+            "mean": 518.6,
+            "p50": 497.5,
+            "p95": 572.2,
+            "max": 1620.4
+          },
+          "reached": true,
+          "terminationReason": "goal-reached",
+          "replans": 0,
+          "execMs": 259328
+        }
+      ],
+      "unreachable": null,
+      "anneal": {
+        "n": 480,
+        "totalMs": 248905,
+        "mean": 518.6,
+        "p50": 497.5,
+        "p95": 572.2,
+        "max": 1620.4
+      },
+      "totalMs": 340215
+    }
+  ]
+}

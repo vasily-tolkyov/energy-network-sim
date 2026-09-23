@@ -22,7 +22,7 @@ for (const seed of seeds) {
   const out = (message: string) => { log.push(message); console.log(message); writeFileSync(`runs/plan-${seed}.log`, log.join("\n") + "\n"); };
   out(`PLAN-009 seed=${seed}, baseline=33f8b6a, source=${revision}; fixed collection budgets A=64/B=40, action budgets A=14/B=8`);
   const model = new TransitionMemory(PATH_SPACE);
-  const training = collectTransitions(model, new PathBench(), 64, seed);
+  const training = await collectTransitions(model, new PathBench(), 64, seed);
   const before = readback(model, seed + 100000), fingerprintBefore = learningFingerprint(model);
   const pairs = Array.from({ length: 8 }, (_, start) => Array.from({ length: 8 }, (_, goal) => ({ start, goal }))).flat().filter(p => p.start !== p.goal);
   const rng = mulberry32(seed);
@@ -40,16 +40,16 @@ for (const seed of seeds) {
   const unchanged = before.filter((p, i) => stableReadback(p) === stableReadback(after[i]!)).length;
   // Separate monitored arm, reset to the same training corpus for every trial.
   // Thus neither previous test outcomes nor corrections leak into a later trial.
-  const monitored = pairs.map(({ start, goal }, i) => {
+  const monitored = await Promise.all(pairs.map(async ({ start, goal }, i) => {
     const fresh = new TransitionMemory(PATH_SPACE);
-    collectTransitions(fresh, new PathBench(), 64, seed);
-    const result = executeGoal(fresh, new PathBench(), { pos: start }, { pos: goal }, seed * 1000000 + i * 100);
+    await collectTransitions(fresh, new PathBench(), 64, seed);
+    const result = await executeGoal(fresh, new PathBench(), { pos: start }, { pos: goal }, seed * 1000000 + i * 100);
     out(`A monitored ${start}->${goal}: reached=${result.reached} steps=${result.steps.length} replans=${result.replans.length}`);
     return result;
-  });
-  const chain = (scenario: "normal" | "closed-gate" | "displacement", replan: boolean) => {
+  }));
+  const chain = async (scenario: "normal" | "closed-gate" | "displacement", replan: boolean) => {
     const memory = new TransitionMemory(CHAIN_SPACE);
-    const collection = collectTransitions(memory, new OrderedChainBench(), 40, seed);
+    const collection = await collectTransitions(memory, new OrderedChainBench(), 40, seed);
     const pre = readback(memory, seed + 200000), hashBefore = learningFingerprint(memory);
     const probe = planGoal(memory, { node: 0 }, { node: 4 }, seed);
     const reverse = planGoal(memory, { node: 3 }, { node: 2 }, seed);
@@ -66,7 +66,7 @@ for (const seed of seeds) {
       if (scenario === "closed-gate" && state.node === 2 && action.advance === 0) injections.push({ state, natural, actual: natural });
       return natural;
     } };
-    const execution = executeGoal(memory, injecting, { node: 0 }, { node: 4 }, seed, { replan });
+    const execution = await executeGoal(memory, injecting, { node: 0 }, { node: 4 }, seed, { replan });
     const allPlans = [probe, reverse, ...execution.plans];
     const noReverseDoor = allPlans.every(p => p.steps.every(s => !(s.state.node === 3 && s.next?.node === 2)));
     const gateDetected = execution.steps.some(s => s.state.node === 2 && s.capture.class !== "within-envelope");
@@ -81,8 +81,8 @@ for (const seed of seeds) {
       injections, execution, success, noReverseDoor,
       predictions: [...pre, ...post, ...allPlans.flatMap(p => p.predictions)] };
   };
-  const chainTrials = [chain("normal", true), chain("closed-gate", true), chain("displacement", true),
-    chain("closed-gate", false), chain("displacement", false)];
+  const chainTrials = [await chain("normal", true), await chain("closed-gate", true), await chain("displacement", true),
+    await chain("closed-gate", false), await chain("displacement", false)];
   const randomChain = Array.from({ length: 56 }, (_, i) => randomActions(CHAIN_SPACE, new OrderedChainBench(), { node: 0 }, { node: 4 }, 8, seed * 1000000 + i * 100));
   const predictions = [...before, ...after, ...trials.flatMap(t => t.plan.predictions),
     ...monitored.flatMap(e => e.plans.flatMap(p => p.predictions)), ...chainTrials.flatMap(t => t.predictions)];

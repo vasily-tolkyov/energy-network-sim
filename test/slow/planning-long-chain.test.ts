@@ -24,11 +24,11 @@ function chainWorld(n: number): { space: TransitionSpace; bench: { conduct(s: Fr
   return { space, bench };
 }
 
-test("长链 16 步：三种子规划成立且逐步预测精确", () => {
+test("长链 16 步：三种子规划成立且逐步预测精确", async () => {
   for (const seed of [1, 2, 3]) {
     const { space, bench } = chainWorld(17);
     const m = new TransitionMemory(space);
-    collectTransitions(m, bench, 17 * 2 * 4, seed);
+    await collectTransitions(m, bench, 17 * 2 * 4, seed);
     const plan = planGoal(m, { node: 0 }, { node: 16 }, seed);
     assert.equal(plan.status, "found", `seed ${seed}: ${plan.status}`);
     assert.equal(plan.steps.length, 16);
@@ -36,10 +36,10 @@ test("长链 16 步：三种子规划成立且逐步预测精确", () => {
   }
 });
 
-test("长链 32 步（单种子）：规划成立且逐步预测精确", () => {
+test("长链 32 步（单种子）：规划成立且逐步预测精确", async () => {
   const { space, bench } = chainWorld(33);
   const m = new TransitionMemory(space);
-  collectTransitions(m, bench, 33 * 2 * 4, 1);
+  await collectTransitions(m, bench, 33 * 2 * 4, 1);
   const plan = planGoal(m, { node: 0 }, { node: 32 }, 1);
   assert.equal(plan.status, "found");
   assert.equal(plan.steps.length, 32);
